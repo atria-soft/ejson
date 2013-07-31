@@ -61,7 +61,10 @@ void Init(void)
 	            "		\"id\": \"file\",\n"
 	            "		\"value\": \"File\",\n"
 	            "		\"popup\": {\n"
-	            "			\"menuitem\": {\"value\": \"Close\", \"onclick\": \"CloseDoc()\"}\n"
+	            "			\"menuitem\": {\n"
+	            "				\"value\": \"Close\",\n"
+	            "				\"onclick\": \"CloseDoc()\"\n"
+	            "			}\n"
 	            "		}\n"
 	            "	}\n"
 	            "}\n";
@@ -69,15 +72,29 @@ void Init(void)
 	          -1,
 	          reference);
 	l_list.PushBack(check);
+	// ------------------------------------------------------
 	reference = "{\n"
 	            "	\"menu\": {\n"
 	            "		\"id\": \"file\",\n"
 	            "		\"value\": \"File\",\n"
 	            "		\"popup\": {\n"
 	            "			\"menuitem\": [\n"
-	            "				{\"value\": \"New\", \"onclick\": \"CreateNewDoc()\"},\n"
-	            "				{\"value\": \"Open\", \"onclick\": \"OpenDoc()\"},\n"
-	            "				{\"value\": \"Close\", \"onclick\": \"CloseDoc()\"}\n"
+	            "				{\n"
+	            "					\"value\": \"Close\",\n"
+	            "					\"onclick\": \"CloseDoc()\"\n"
+	            "				},\n"
+	            "				{\n"
+	            "					\"value\": \"New\",\n"
+	            "					\"onclick\": \"CreateNewDoc()\"\n"
+	            "				},\n"
+	            "				{\n"
+	            "					\"value\": \"Open\",\n"
+	            "					\"onclick\": \"OpenDoc()\"\n"
+	            "				},\n"
+	            "				{\n"
+	            "					\"value\": \"Close\",\n"
+	            "					\"onclick\": \"CloseDoc()\"\n"
+	            "				}\n"
 	            "			]\n"
 	            "		}\n"
 	            "	}\n"
@@ -85,6 +102,36 @@ void Init(void)
 	check.Set(reference,
 	          -1,
 	          reference);
+	l_list.PushBack(check);
+	// ------------------------------------------------------
+	check.Set(reference,
+	          -1,
+	          "{\n"
+	            "	menu: {\n"
+	            "		id: file,\n"
+	            "		value: File,\n"
+	            "		popup: {\n"
+	            "			menuitem: [\n"
+	            "				{\n"
+	            "					value: Close,\n"
+	            "					onclick: \"CloseDoc()\"\n"
+	            "				},\n"
+	            "				{\n"
+	            "					value: New,\n"
+	            "					onclick: \"CreateNewDoc()\"\n"
+	            "				},\n"
+	            "				{\n"
+	            "					value: Open,\n"
+	            "					onclick: \"OpenDoc()\"\n"
+	            "				},\n"
+	            "				{\n"
+	            "					value: Close,\n"
+	            "					onclick: \"CloseDoc()\"\n"
+	            "				}\n"
+	            "			]\n"
+	            "		}\n"
+	            "	}\n"
+	            "}\n");
 	l_list.PushBack(check);
 }
 

@@ -64,13 +64,15 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 						}
 					}
 				} else if (CheckAvaillable(_data[iii]) ) {
+					currentName += _data[iii];
 					for (iii++; iii<_data.Size(); iii++) {
 						_filePos.Check(_data[iii]);
 						#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
 							DrawElementParsed(_data[iii], _filePos);
 						#endif
-						if (CheckAvaillable(_data[iii])) {
+						if (false==CheckAvaillable(_data[iii])) {
 							mode = parseMiddle;
+							iii--;
 							break;
 						} else {
 							currentName += _data[iii];
@@ -102,6 +104,7 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 					}
 					tmpElement->IParse(_data, iii, _filePos, _doc);
 					m_value.Add(currentName, tmpElement);
+					currentName = "";
 				} else if (_data[iii]=='"') {
 					// find a string:
 					JSON_PARSE_ELEMENT("find String quoted");
@@ -112,8 +115,8 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 						return false;
 					}
 					tmpElement->IParse(_data, iii, _filePos, _doc);
-					JSON_WARNING(" add : " << currentName);
 					m_value.Add(currentName, tmpElement);
+					currentName = "";
 				} else if (_data[iii]=='[') {
 					// find a list:
 					JSON_PARSE_ELEMENT("find List");
@@ -125,6 +128,7 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 					}
 					tmpElement->IParse(_data, iii, _filePos, _doc);
 					m_value.Add(currentName, tmpElement);
+					currentName = "";
 				} else if( CheckAvaillable(_data[iii]) ) {
 					// find a string without "" ==> special hook for the etk-json parser
 					JSON_PARSE_ELEMENT("find String");
@@ -134,11 +138,14 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 						_pos=iii;
 						return false;
 					}
+					iii--;
 					tmpElement->IParse(_data, iii, _filePos, _doc);
+					iii--;
+					//JSON_ERROR(" add : " << currentName );
 					m_value.Add(currentName, tmpElement);
+					currentName = "";
 				} else if(_data[iii]==',') {
 					// find Separator : Restart cycle ...
-					JSON_INFO("start new parse ...");
 					mode = parseName;
 					currentName = "";
 				} else {
@@ -156,7 +163,6 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 }
 bool ejson::Object::IGenerate(etk::UString& _data, int32_t _indent) const
 {
-	AddIndent(_data, _indent);
 	_data += "{\n";
 	for (esize_t iii=0; iii<m_value.Size() ; iii++) {
 		AddIndent(_data, _indent);
@@ -164,10 +170,13 @@ bool ejson::Object::IGenerate(etk::UString& _data, int32_t _indent) const
 		_data += m_value.GetKey(iii);
 		_data += "\": ";
 		m_value.GetValue(iii)->IGenerate(_data, _indent+1);
+		if (iii<m_value.Size()-1) {
+			_data += ",";
+		}
 		_data += "\n";
 	}
-	AddIndent(_data, _indent);
-	_data += "}\n";
+	AddIndent(_data, _indent-1);
+	_data += "}";
 	return true;
 }
 

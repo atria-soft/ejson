@@ -38,7 +38,7 @@ bool ejson::String::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 			// white space ==> nothing to do ...
 		} else if(m_quoted==true) {
 			// TODO : manage \x
-			if(    _data[iii]!= '"') {
+			if(    _data[iii]!= '\"') {
 				m_value += _data[iii];
 			} else {
 				_pos = iii;
@@ -65,13 +65,13 @@ bool ejson::String::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 
 bool ejson::String::IGenerate(etk::UString& _data, int32_t _indent) const
 {
-	if (m_quoted==true) {
-		_data += '"';
-	}
+	//if (m_quoted==true) {
+		_data += "\"";;
+	//}
 	_data += m_value;
-	if (m_quoted==true) {
-		_data += '"';
-	}
+	//if (m_quoted==true) {
+		_data += "\"";;
+	//}
 	return true;
 }
 

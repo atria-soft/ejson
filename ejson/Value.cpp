@@ -75,6 +75,7 @@ bool ejson::Value::CheckAvaillable(const etk::UniChar& _val, bool _firstChar) co
 	    || _val == '+'
 	    || _val == ','
 	    || _val == '/'
+	    || _val == ':'
 	    || _val == ';'
 	    || _val == '<'
 	    || _val == '='

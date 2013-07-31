@@ -15,13 +15,13 @@
 
 namespace ejson
 {
-	#define ENABLE_DISPLAY_PARSED_ELEMENT
-	#if 0
+	//#define ENABLE_DISPLAY_PARSED_ELEMENT
+	#if 1
 		#define JSON_PARSE_ELEMENT JSON_VERBOSE
 	#else
 		#define JSON_PARSE_ELEMENT JSON_DEBUG
 	#endif
-	#if 0
+	#if 1
 		#define JSON_PARSE_ATTRIBUTE JSON_VERBOSE
 	#else
 		#define JSON_PARSE_ATTRIBUTE JSON_DEBUG

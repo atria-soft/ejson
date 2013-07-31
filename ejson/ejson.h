@@ -86,7 +86,7 @@ namespace ejson
 
 #define EJSON_CREATE_ERROR(doc,data,pos,filePos,comment) \
 	do { \
-		JSON_CRITICAL(comment); \
+		JSON_ERROR(comment); \
 		(doc).CreateError((data),(pos),(filePos),(comment)); \
 	} while (0)
 

@@ -37,13 +37,10 @@ ejson::Document::~Document(void)
 
 bool ejson::Document::IGenerate(etk::UString& _data, int32_t _indent) const
 {
-	AddIndent(_data, _indent);
-	_data += "{\n";
 	if (NULL!=m_subElement) {
 		m_subElement->IGenerate(_data, _indent+1);
 	}
-	AddIndent(_data, _indent);
-	_data += "}\n";
+	_data += "\n";
 	return true;
 }
 
