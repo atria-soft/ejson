@@ -9,13 +9,14 @@
 #ifndef __ETK_JSON_H__
 #define __ETK_JSON_H__
 
-#include <ejson/Object.h>
+#include <ejson/Value.h>
 #include <etk/unicode.h>
 #include <etk/Vector.h>
+#include <etk/UString.h>
 
 namespace ejson
 {
-	class Document : public ejson::Object
+	class Document : public ejson::Value
 	{
 		public:
 			/**
@@ -25,7 +26,7 @@ namespace ejson
 			/**
 			 * @brief Destructor
 			 */
-			virtual ~Document(void) { };
+			virtual ~Document(void);
 		public:
 			/**
 			 * @brief Parse a string that contain an XML
@@ -60,6 +61,10 @@ namespace ejson
 			 */
 			void Display(void);
 		private:
+			ejson::Value* m_subElement; //!< only element that contain the json document:
+		public:
+			// TODO : sdfsdfsdf
+		private:
 			bool m_writeErrorWhenDetexted;
 			etk::UString m_comment;
 			etk::UString m_Line;
@@ -72,7 +77,7 @@ namespace ejson
 			void DisplayError(void);
 		public: // herited function:
 			virtual nodeType_te GetType(void) const { return typeDocument; };
-			bool IParse(const etk::UString& _data, int32_t& _pos, exml::filePos& _filePos, ejson::Document& _doc);
+			bool IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			bool IGenerate(etk::UString& _data, int32_t _indent) const;
 			virtual ejson::Document* ToDocument(void) { return this; };
 			virtual const ejson::Document* ToDocument(void) const { return this; };
@@ -81,7 +86,7 @@ namespace ejson
 
 #define EJSON_CREATE_ERROR(doc,data,pos,filePos,comment) \
 	do { \
-		JSON_ERROR(comment); \
+		JSON_CRITICAL(comment); \
 		(doc).CreateError((data),(pos),(filePos),(comment)); \
 	} while (0)
 

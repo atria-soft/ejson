@@ -8,6 +8,7 @@
 
 #include <ejson/Value.h>
 #include <ejson/debug.h>
+#include <ejson/ejson.h>
 
 #undef __class__
 #define __class__	"Value"
@@ -23,12 +24,6 @@ etk::CCout& ejson::operator <<(etk::CCout& _os, const ejson::filePos& _obj)
 	return _os;
 }
 
-ejson::Value::Value(const etk::UString& _value) :
-	m_pos(0,0),
-	m_value(_value)
-{
-	// nothing to do.
-}
 
 void ejson::Value::AddIndent(etk::UString& _data, int32_t _indent) const
 {
@@ -64,22 +59,56 @@ int32_t ejson::Value::CountWhiteChar(const etk::UString& _data, int32_t _pos, ej
 	return white;
 }
 
-void ejson::Value::Clear(void)
+
+bool ejson::Value::CheckAvaillable(const etk::UniChar& _val, bool _firstChar) const
 {
-	m_value="";
-	m_pos.Clear();
+	if(    _val == '!'
+	    || _val == '"'
+	    || _val == '#'
+	    || _val == '$'
+	    || _val == '%'
+	    || _val == '&'
+	    || _val == '\'' // '
+	    || _val == '('
+	    || _val == ')'
+	    || _val == '*'
+	    || _val == '+'
+	    || _val == ','
+	    || _val == '/'
+	    || _val == ';'
+	    || _val == '<'
+	    || _val == '='
+	    || _val == '>'
+	    || _val == '?'
+	    || _val == '@'
+	    || _val == '['
+	    || _val == '\\'
+	    || _val == ']'
+	    || _val == '^'
+	    || _val == '`'
+	    || _val == '{'
+	    || _val == '|'
+	    || _val == '}'
+	    || _val == '~'
+	    || _val == ' '
+	    || _val == '\n'
+	    || _val == '\t'
+	    || _val == '\r') {
+		return false;
+	}
+	return true;
 }
 
 
-bool ejson::Value::IParse(const etk::UString& _data, int32_t& _pos, exml::filePos& _filePos, ejson::Document& _doc)
+bool ejson::Value::IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc)
 {
-	JSON_PARSE_ELEMENT("start parse : 'Value' named='" << m_value << "'");
-	for (int32_t iii=_pos; iii<_data.Size(); iii++) {
+	JSON_PARSE_ELEMENT("start parse : 'Value' ");
+	for (int32_t iii=_pos+1; iii<_data.Size(); iii++) {
 		_filePos.Check(_data[iii]);
 		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
 			DrawElementParsed(_data[iii], _filePos);
 		#endif
-		exml::filePos tmpPos;
+		ejson::filePos tmpPos;
 		if(    _data[iii]==' '
 		    || _data[iii]=='\t'
 		    || _data[iii]=='\n'
@@ -89,40 +118,23 @@ bool ejson::Value::IParse(const etk::UString& _data, int32_t& _pos, exml::filePo
 			// find an object:
 			
 		} else if (_data[iii]=='"') {
-			// find a string
+			// find a string:
 			
 		} else if (_data[iii]=='[') {
 			// find a list:
 			
-		} else if(    _data[iii]=='n'
-		           && iii+3<_data.Size()
-		           && _data[iii+1]=='u'
-		           && _data[iii+2]=='l'
-		           && _data[iii+3]=='l') {
-			// maybe find null:
+		} else if( CheckAvaillable(_data[iii]) ) {
+			// find a string without "" ==> special hook for the etk-json parser
 			
-		} else if(    _data[iii]=='t'
-		           && iii+3<_data.Size()
-		           && _data[iii+1]=='r'
-		           && _data[iii+2]=='u'
-		           && _data[iii+3]=='u') {
-			// maybe find true:
-			
-		} else if(    _data[iii]=='f'
-		           && iii+3<_data.Size()
-		           && _data[iii+1]=='a'
-		           && _data[iii+2]=='l'
-		           && _data[iii+3]=='s'
-		           && _data[iii+4]=='e') {
-			// maybe find false:
-			
-		} else if(    _data[iii]=>'0'
-		           && _data[iii]=<'9') {
-			// maybe find number:
-			
+		} else if(    _data[iii]==']'
+		           || _data[iii]=='}'
+		           || _data[iii]==',') {
+			// find end of value:
+			_pos+=iii; // ==> return the end element type ==> usefull to check end and check if adding element is needed
+			return true;
 		} else {
 			// find an error ....
-			CREATE_ERROR(_doc, _data, _pos, _filePos, "Find '>' with no element in the element...");
+			EJSON_CREATE_ERROR(_doc, _data, _pos, _filePos, "Find '>' with no element in the element...");
 			// move the curent index
 			_pos += iii+1;
 			return false;

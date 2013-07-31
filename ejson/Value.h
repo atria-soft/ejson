@@ -13,32 +13,30 @@
 #include <etk/UString.h>
 #include <etk/math/Vector2D.h>
 
-namespace exml
+namespace ejson
 {
-	#if 1
-		#define EXML_PARSE_ELEMENT EXML_VERBOSE
+	#define ENABLE_DISPLAY_PARSED_ELEMENT
+	#if 0
+		#define JSON_PARSE_ELEMENT JSON_VERBOSE
 	#else
-		#define EXML_PARSE_ELEMENT EXML_DEBUG
+		#define JSON_PARSE_ELEMENT JSON_DEBUG
 	#endif
-	#if 1
-		#define EXML_PARSE_ATTRIBUTE EXML_VERBOSE
+	#if 0
+		#define JSON_PARSE_ATTRIBUTE JSON_VERBOSE
 	#else
-		#define EXML_PARSE_ATTRIBUTE EXML_DEBUG
+		#define JSON_PARSE_ATTRIBUTE JSON_DEBUG
 	#endif
 	class Document;
-	class Attribute;
-	class Comment;
-	class Declaration;
-	class Element;
-	class Text;
+	class Array;
+	class Object;
+	class String;
 	
 	typedef enum {
 		typeUnknow, //!< might be an error ...
 		typeValue, //!< XXXXXX:*
 		typeDocument, //!< all the file main access
 		typeArray, //!< [...]
-		typeNull, //!< the 'null'
-		typeNumber,  //!< the 216516.211651e+5454
+		typeString, //!< the "" or %d numbers null ... 
 		typeObject, //!< the { ... }
 	} nodeType_te;
 	
@@ -105,12 +103,7 @@ namespace exml
 			/**
 			 * @brief basic element of a xml structure
 			 */
-			Value(void) : m_pos(0,0) { };
-			/**
-			 * @brief basic element of a xml structure
-			 * @param[in] value of the value
-			 */
-			Value(const etk::UString& _value);
+			Value(void) { };
 			/**
 			 * @brief destructor
 			 */
@@ -124,7 +117,7 @@ namespace exml
 			 * @param[in,out] file parsing position (line x col x)
 			 * @return false if an error occured.
 			 */
-			virtual bool IParse(const etk::UString& _data, int32_t& _pos, exml::filePos& _filePos, ejson::Document& _doc) = 0;
+			virtual bool IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			/**
 			 * @brief Generate a string with the tree of the xml
 			 * @param[in,out] _data string where to add the elements
@@ -132,19 +125,6 @@ namespace exml
 			 * @return false if an error occured.
 			 */
 			virtual bool IGenerate(etk::UString& _data, int32_t _indent) const { return true; };
-		protected:
-			etk::UString m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
-		public:
-			/**
-			 * @brief Set the value of the node.
-			 * @param[in] _value New value of the node.
-			 */
-			virtual void SetValue(etk::UString _value) { m_value = _value; };
-			/**
-			 * @brief Get the current element Value.
-			 * @return the reference of the string value.
-			 */
-			virtual const etk::UString& GetValue(void) const { return m_value; };
 		public:
 			/**
 			 * @brief Get the node type.
@@ -163,7 +143,13 @@ namespace exml
 			 * @param[in] _val Char that is parsed.
 			 * @param[in] _filePos Position of the char in the file.
 			 */
-			void DrawElementParsed(const etk::UniChar& _val, const exml::filePos& _filePos) const;
+			void DrawElementParsed(const etk::UniChar& _val, const ejson::filePos& _filePos) const;
+			/**
+			 * @brief check if an element or attribute is availlable (not : !"#$%&'()*+,/;<=>?@[\]^`{|}~ \n\t\r and for first char : not -.0123456789).
+			 * @param[in] _val Value to check the conformity.
+			 * @param[in] _firstChar True if the element check is the first char.
+			 */
+			bool CheckAvaillable(const etk::UniChar& _val, bool _firstChar=true) const;
 			/**
 			 * @brief count the number of white char in the string from the specify position (stop at the first element that is not a white char)
 			 * @param[in] _data Data to parse.
@@ -171,7 +157,7 @@ namespace exml
 			 * @param[out] _filePos new poistion of te file to add.
 			 * @return number of white element.
 			 */
-			int32_t CountWhiteChar(const etk::UString& _data, int32_t _pos, exml::filePos& _filePos) const;
+			int32_t CountWhiteChar(const etk::UString& _data, int32_t _pos, ejson::filePos& _filePos) const;
 		public:
 			/**
 			 * @brief Cast the element in a Document if it is possible.
@@ -192,23 +178,11 @@ namespace exml
 			virtual ejson::Object* ToObject(void) { return NULL; };
 			virtual const ejson::Object* ToObject(void) const{ return NULL; };
 			/**
-			 * @brief Cast the element in a Boolean if it is possible.
+			 * @brief Cast the element in a String if it is possible.
 			 * @return pointer on the class or NULL.
 			 */
-			virtual ejson::Boolean* ToBoolean(void) { return NULL; };
-			virtual const ejson::Boolean* ToBoolean(void) const{ return NULL; };
-			/**
-			 * @brief Cast the element in a Null if it is possible.
-			 * @return pointer on the class or NULL.
-			 */
-			virtual ejson::Null* ToNull(void) { return NULL; };
-			virtual const ejson::Null* ToNull(void) const{ return NULL; };
-			/**
-			 * @brief Cast the element in a Number if it is possible.
-			 * @return pointer on the class or NULL.
-			 */
-			virtual ejson::Number* ToNumber(void) { return NULL; };
-			virtual const ejson::Number* ToNumber(void) const{ return NULL; };
+			virtual ejson::String* ToString(void) { return NULL; };
+			virtual const ejson::String* ToString(void) const{ return NULL; };
 			
 			/**
 			 * @brief Check if the node is a ejson::Document
@@ -226,25 +200,15 @@ namespace exml
 			 */
 			bool IsObject(void) const { return GetType()==ejson::typeObject; };
 			/**
-			 * @brief Check if the node is a ejson::Boolean
-			 * @return true if the node is a ejson::Boolean
+			 * @brief Check if the node is a ejson::String
+			 * @return true if the node is a ejson::String
 			 */
-			bool IsBoolean(void) const { return GetType()==ejson::typeBoolean; };
-			/**
-			 * @brief Check if the node is a ejson::Null
-			 * @return true if the node is a ejson::Null
-			 */
-			bool IsNull(void) const { return GetType()==ejson::typeNull; };
-			/**
-			 * @brief Check if the node is a ejson::Number
-			 * @return true if the node is a ejson::Number
-			 */
-			bool IsNumber(void) const { return GetType()==ejson::typeNumber; };
+			bool IsString(void) const { return GetType()==ejson::typeString; };
 			
 			/**
 			 * @brief Clear the Node
 			 */
-			virtual void Clear(void);
+			virtual void Clear(void) {};
 	};
 };
 

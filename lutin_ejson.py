@@ -9,13 +9,9 @@ def Create(target):
 	
 	myModule.AddSrcFile([
 		'ejson/debug.cpp',
-		'ejson/Node.cpp',
 		'ejson/ejson.cpp',
 		'ejson/Array.cpp',
-		'ejson/Boolean.cpp',
-		'ejson/Node.cpp',
-		'ejson/Null.cpp',
-		'ejson/Number.cpp',
+		'ejson/String.cpp',
 		'ejson/Object.cpp',
 		'ejson/Value.cpp'])
 	
