@@ -31,12 +31,7 @@ bool ejson::String::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 			DrawElementParsed(_data[iii], _filePos);
 		#endif
 		ejson::filePos tmpPos;
-		if(    _data[iii]==' '
-		    || _data[iii]=='\t'
-		    || _data[iii]=='\n'
-		    || _data[iii]=='\r') {
-			// white space ==> nothing to do ...
-		} else if(m_quoted==true) {
+		if(m_quoted==true) {
 			// TODO : manage \x
 			if(    _data[iii]!= '\"') {
 				m_value += _data[iii];

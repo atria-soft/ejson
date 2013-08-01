@@ -48,7 +48,10 @@ namespace ejson
 		protected:
 			etk::Hash<ejson::Value*> m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
 		public:
-			
+			ejson::Value* GetSub(const etk::UString& _named) const;
+			ejson::Object* GetSubObject(const etk::UString& _named) const;
+			ejson::String* GetSubString(const etk::UString& _named) const;
+			ejson::Array* GetSubArray(const etk::UString& _named) const;
 		public:
 			/**
 			 * @brief Get the node type.

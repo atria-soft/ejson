@@ -13,6 +13,9 @@
 #include <etk/unicode.h>
 #include <etk/Vector.h>
 #include <etk/UString.h>
+#include <ejson/String.h>
+#include <ejson/Array.h>
+#include <ejson/Object.h>
 
 namespace ejson
 {
@@ -63,7 +66,10 @@ namespace ejson
 		private:
 			ejson::Value* m_subElement; //!< only element that contain the json document:
 		public:
-			// TODO : sdfsdfsdf
+			ejson::Value* GetSub(const etk::UString& _named) const;
+			ejson::Object* GetSubObject(const etk::UString& _named) const;
+			ejson::String* GetSubString(const etk::UString& _named) const;
+			ejson::Array* GetSubArray(const etk::UString& _named) const;
 		private:
 			bool m_writeErrorWhenDetexted;
 			etk::UString m_comment;

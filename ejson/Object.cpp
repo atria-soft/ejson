@@ -181,5 +181,34 @@ bool ejson::Object::IGenerate(etk::UString& _data, int32_t _indent) const
 }
 
 
+ejson::Value* ejson::Object::GetSub(const etk::UString& _named) const
+{
+	return m_value[_named];
+}
 
+ejson::Object* ejson::Object::GetSubObject(const etk::UString& _named) const
+{
+	ejson::Value* tmp = m_value[_named];
+	if (NULL == tmp) {
+		return NULL;
+	}
+	return tmp->ToObject();
+}
 
+ejson::String* ejson::Object::GetSubString(const etk::UString& _named) const
+{
+	ejson::Value* tmp = m_value[_named];
+	if (NULL == tmp) {
+		return NULL;
+	}
+	return tmp->ToString();
+}
+
+ejson::Array* ejson::Object::GetSubArray(const etk::UString& _named) const
+{
+	ejson::Value* tmp = m_value[_named];
+	if (NULL == tmp) {
+		return NULL;
+	}
+	return tmp->ToArray();
+}

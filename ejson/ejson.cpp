@@ -130,7 +130,7 @@ void ejson::Document::Display(void)
 	JSON_INFO("Generated JSON : \n" << tmpp);
 }
 
-etk::UString CreatePosPointer(const etk::UString& _line, int32_t _pos)
+static etk::UString CreatePosPointer(const etk::UString& _line, int32_t _pos)
 {
 	etk::UString out;
 	int32_t iii;
@@ -243,4 +243,44 @@ bool ejson::Document::IParse(const etk::UString& _data, int32_t& _pos, ejson::fi
 		}
 	}
 	return true;
+}
+
+
+ejson::Value* ejson::Document::GetSub(const etk::UString& _named) const
+{
+	if (m_subElement == NULL) {
+		return NULL;
+	}
+	ejson::Object* tmp = m_subElement->ToObject();
+	if (NULL==tmp) {
+		return NULL;
+	}
+	return tmp->GetSub(_named);
+}
+
+ejson::Object* ejson::Document::GetSubObject(const etk::UString& _named) const
+{
+	ejson::Value* tmp = GetSub(_named);
+	if (NULL == tmp) {
+		return NULL;
+	}
+	return tmp->ToObject();
+}
+
+ejson::String* ejson::Document::GetSubString(const etk::UString& _named) const
+{
+	ejson::Value* tmp = GetSub(_named);
+	if (NULL == tmp) {
+		return NULL;
+	}
+	return tmp->ToString();
+}
+
+ejson::Array* ejson::Document::GetSubArray(const etk::UString& _named) const
+{
+	ejson::Value* tmp = GetSub(_named);
+	if (NULL == tmp) {
+		return NULL;
+	}
+	return tmp->ToArray();
 }
