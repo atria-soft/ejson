@@ -53,6 +53,8 @@ namespace ejson
 			ejson::String* GetSubString(const etk::UString& _named) const;
 			ejson::Array* GetSubArray(const etk::UString& _named) const;
 		public:
+			void AddSub(const etk::UString& _name, ejson::Value* _value);
+		public:
 			/**
 			 * @brief Get the node type.
 			 * @return the type of the Node.

@@ -47,7 +47,8 @@ namespace ejson
 		private:
 			etk::Vector<ejson::Value*> m_value; //!< vector of sub elements
 		public:
-			
+			esize_t Size(void) { return m_value.Size(); };
+			ejson::Value* Get(esize_t _id) { return m_value[_id]; };
 		public:
 			/**
 			 * @brief Get the node type.

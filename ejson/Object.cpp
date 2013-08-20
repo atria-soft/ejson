@@ -212,3 +212,16 @@ ejson::Array* ejson::Object::GetSubArray(const etk::UString& _named) const
 	}
 	return tmp->ToArray();
 }
+
+
+void ejson::Object::AddSub(const etk::UString& _name, ejson::Value* _value)
+{
+	if (NULL == _value) {
+		return;
+	}
+	if (_name.Size()==0) {
+		return;
+	}
+	m_value.Add(_name, _value);
+}
+

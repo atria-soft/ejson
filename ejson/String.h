@@ -25,6 +25,7 @@ namespace ejson
 			 * @brief basic element of a xml structure
 			 */
 			String(bool _quoted=false) : m_quoted(_quoted) { };
+			String(const etk::UString& _value) : m_quoted(false), m_value(_value) { };
 			/**
 			 * @brief destructor
 			 */
@@ -53,7 +54,7 @@ namespace ejson
 			 * @brief Set the value of the node.
 			 * @param[in] _value New value of the node.
 			 */
-			void SetValue(etk::UString _value) { m_value = _value; };
+			void SetValue(const etk::UString& _value) { m_value = _value; };
 			/**
 			 * @brief Get the current element Value.
 			 * @return the reference of the string value.

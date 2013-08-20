@@ -160,6 +160,12 @@ namespace ejson
 			int32_t CountWhiteChar(const etk::UString& _data, int32_t _pos, ejson::filePos& _filePos) const;
 		public:
 			/**
+			 * @brief Cast the element in a Value if it is possible.
+			 * @return pointer on the class or NULL.
+			 */
+			virtual ejson::Value* ToValue(void) { return this; };
+			virtual const ejson::Value* ToValue(void) const { return this; };
+			/**
 			 * @brief Cast the element in a Document if it is possible.
 			 * @return pointer on the class or NULL.
 			 */
