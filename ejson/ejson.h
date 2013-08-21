@@ -70,6 +70,7 @@ namespace ejson
 			ejson::Object* GetSubObject(const etk::UString& _named) const;
 			ejson::String* GetSubString(const etk::UString& _named) const;
 			ejson::Array* GetSubArray(const etk::UString& _named) const;
+			bool SetSub(ejson::Value* _value);
 		private:
 			bool m_writeErrorWhenDetexted;
 			etk::UString m_comment;
@@ -87,6 +88,7 @@ namespace ejson
 			bool IGenerate(etk::UString& _data, int32_t _indent) const;
 			virtual ejson::Document* ToDocument(void) { return this; };
 			virtual const ejson::Document* ToDocument(void) const { return this; };
+			virtual void Clear(void);
 	};
 };
 

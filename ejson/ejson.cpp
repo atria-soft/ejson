@@ -284,3 +284,24 @@ ejson::Array* ejson::Document::GetSubArray(const etk::UString& _named) const
 	}
 	return tmp->ToArray();
 }
+
+
+bool ejson::Document::SetSub(ejson::Value* _value)
+{
+	if (NULL == _value) {
+		return false;
+	}
+	if (NULL!=m_subElement) {
+		delete(m_subElement);
+	}
+	m_subElement = _value;
+	return true;
+}
+
+void ejson::Document::Clear(void)
+{
+	if (NULL!=m_subElement) {
+		delete(m_subElement);
+		m_subElement=NULL;
+	}
+}
