@@ -14,6 +14,11 @@
 #define __class__	"Value"
 
 
+ejson::Value::~Value(void)
+{
+	Clear();
+}
+
 etk::CCout& ejson::operator <<(etk::CCout& _os, const ejson::filePos& _obj)
 {
 	_os << "(l=";

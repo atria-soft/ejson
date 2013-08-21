@@ -19,7 +19,14 @@
 
 void ejson::Array::Clear(void)
 {
-	
+	for (esize_t iii=0; iii<m_value.Size(); ++iii) {
+		if (NULL == m_value[iii]) {
+			continue;
+		}
+		delete(m_value[iii]);
+		m_value[iii] = NULL;
+	}
+	m_value.Clear();
 }
 
 bool ejson::Array::IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc)
@@ -119,6 +126,80 @@ bool ejson::Array::IGenerate(etk::UString& _data, int32_t _indent) const
 	return true;
 }
 
+bool ejson::Array::Add(ejson::Value* _element)
+{
+	if (NULL==_element) {
+		JSON_ERROR("Request add on an NULL pointer");
+		return false;
+	}
+	m_value.PushBack(_element);
+	return true;
+}
 
+
+bool ejson::Array::TransfertIn(ejson::Value* _obj)
+{
+	if (NULL==_obj) {
+		JSON_ERROR("Request transfer on an NULL pointer");
+		return false;
+	}
+	ejson::Array* other = _obj->ToArray();
+	if (NULL==other) {
+		JSON_ERROR("Request transfer on an element that is not an array");
+		return false;
+	}
+	// remove destination elements
+	other->Clear();
+	// Copy to the destination
+	other->m_value = m_value;
+	// remove current:
+	m_value.Clear();
+	return true;
+}
+
+// TODO : Manage error ...
+ejson::Value* ejson::Array::Duplicate(void) const
+{
+	ejson::Array* output = new ejson::Array();
+	if (NULL==output) {
+		JSON_ERROR("Allocation error ...");
+		return NULL;
+	}
+	for (esize_t iii=0; iii<m_value.Size(); ++iii) {
+		ejson::Value* val = m_value[iii];
+		if (NULL == val) {
+			continue;
+		}
+		output->Add(val->Duplicate());
+	}
+	return output;
+}
+
+ejson::Object* ejson::Array::GetObject(esize_t _id)
+{
+	ejson::Value* tmpElement = m_value[_id];
+	if (NULL == tmpElement) {
+		return NULL;
+	}
+	return tmpElement->ToObject();
+}
+
+ejson::String* ejson::Array::GetString(esize_t _id)
+{
+	ejson::Value* tmpElement = m_value[_id];
+	if (NULL == tmpElement) {
+		return NULL;
+	}
+	return tmpElement->ToString();
+}
+
+ejson::Array* ejson::Array::GetArray(esize_t _id)
+{
+	ejson::Value* tmpElement = m_value[_id];
+	if (NULL == tmpElement) {
+		return NULL;
+	}
+	return tmpElement->ToArray();
+}
 
 

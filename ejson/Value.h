@@ -107,7 +107,7 @@ namespace ejson
 			/**
 			 * @brief destructor
 			 */
-			virtual ~Value(void) { };
+			virtual ~Value(void);
 		public:
 			/**
 			 * @brief Parse the Current node [pure VIRUAL]
@@ -215,6 +215,18 @@ namespace ejson
 			 * @brief Clear the Node
 			 */
 			virtual void Clear(void) {};
+			/**
+			 * @brief Tranfert all element in the element set in parameter
+			 * @param[in,out] _obj move all parameter in the selected element
+			 * @return true if transfer is done corectly
+			 * @note all element is remove from the curent element.
+			 */
+			virtual bool TransfertIn(ejson::Value* _obj) { return false; };
+			/**
+			 * @brief Copy the curent node and all the child in the curent one.
+			 * @return NULL in an error occured, the pointer on the element otherwise
+			 */
+			virtual ejson::Value* Duplicate(void) const { return NULL; };
 	};
 };
 

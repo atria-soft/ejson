@@ -18,8 +18,17 @@
 
 void ejson::Object::Clear(void)
 {
-	
+	for (esize_t iii=0; iii<m_value.Size(); ++iii) {
+		if (NULL == m_value[iii]) {
+			continue;
+		}
+		delete(m_value[iii]);
+		m_value[iii] = NULL;
+	}
+	m_value.Clear();
 }
+
+
 typedef enum {
 	parseName,
 	parseMiddle,
@@ -103,7 +112,7 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 						return false;
 					}
 					tmpElement->IParse(_data, iii, _filePos, _doc);
-					m_value.Add(currentName, tmpElement);
+					AddSub(currentName, tmpElement);
 					currentName = "";
 				} else if (_data[iii]=='"') {
 					// find a string:
@@ -115,7 +124,7 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 						return false;
 					}
 					tmpElement->IParse(_data, iii, _filePos, _doc);
-					m_value.Add(currentName, tmpElement);
+					AddSub(currentName, tmpElement);
 					currentName = "";
 				} else if (_data[iii]=='[') {
 					// find a list:
@@ -127,7 +136,7 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 						return false;
 					}
 					tmpElement->IParse(_data, iii, _filePos, _doc);
-					m_value.Add(currentName, tmpElement);
+					AddSub(currentName, tmpElement);
 					currentName = "";
 				} else if( CheckAvaillable(_data[iii]) ) {
 					// find a string without "" ==> special hook for the etk-json parser
@@ -142,7 +151,7 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 					tmpElement->IParse(_data, iii, _filePos, _doc);
 					iii--;
 					//JSON_ERROR(" add : " << currentName );
-					m_value.Add(currentName, tmpElement);
+					AddSub(currentName, tmpElement);
 					currentName = "";
 				} else if(_data[iii]==',') {
 					// find Separator : Restart cycle ...
@@ -183,12 +192,15 @@ bool ejson::Object::IGenerate(etk::UString& _data, int32_t _indent) const
 
 ejson::Value* ejson::Object::GetSub(const etk::UString& _named) const
 {
+	if (false==m_value.Exist(_named)) {
+		return NULL;
+	}
 	return m_value[_named];
 }
 
 ejson::Object* ejson::Object::GetSubObject(const etk::UString& _named) const
 {
-	ejson::Value* tmp = m_value[_named];
+	ejson::Value* tmp = GetSub(_named);
 	if (NULL == tmp) {
 		return NULL;
 	}
@@ -197,7 +209,7 @@ ejson::Object* ejson::Object::GetSubObject(const etk::UString& _named) const
 
 ejson::String* ejson::Object::GetSubString(const etk::UString& _named) const
 {
-	ejson::Value* tmp = m_value[_named];
+	ejson::Value* tmp = GetSub(_named);
 	if (NULL == tmp) {
 		return NULL;
 	}
@@ -206,7 +218,7 @@ ejson::String* ejson::Object::GetSubString(const etk::UString& _named) const
 
 ejson::Array* ejson::Object::GetSubArray(const etk::UString& _named) const
 {
-	ejson::Value* tmp = m_value[_named];
+	ejson::Value* tmp = GetSub(_named);
 	if (NULL == tmp) {
 		return NULL;
 	}
@@ -214,14 +226,61 @@ ejson::Array* ejson::Object::GetSubArray(const etk::UString& _named) const
 }
 
 
-void ejson::Object::AddSub(const etk::UString& _name, ejson::Value* _value)
+bool ejson::Object::AddSub(const etk::UString& _name, ejson::Value* _value)
 {
 	if (NULL == _value) {
-		return;
+		return false;
 	}
 	if (_name.Size()==0) {
-		return;
+		return false;
+	}
+	if (m_value.Exist(_name)) {
+		ejson::Value* tmp = m_value[_name];
+		delete(tmp);
+		m_value[_name] = _value;
+		return true;
 	}
 	m_value.Add(_name, _value);
+	return true;
 }
 
+
+
+bool ejson::Object::TransfertIn(ejson::Value* _obj)
+{
+	if (NULL==_obj) {
+		JSON_ERROR("Request transfer on an NULL pointer");
+		return false;
+	}
+	ejson::Object* other = _obj->ToObject();
+	if (NULL==other) {
+		JSON_ERROR("Request transfer on an element that is not an object");
+		return false;
+	}
+	// remove destination elements
+	other->Clear();
+	// Copy to the destination
+	other->m_value = m_value;
+	// remove current:
+	m_value.Clear();
+	return true;
+}
+
+// TODO : Manage error ...
+ejson::Value* ejson::Object::Duplicate(void) const
+{
+	ejson::Object* output = new ejson::Object();
+	if (NULL==output) {
+		JSON_ERROR("Allocation error ...");
+		return NULL;
+	}
+	for (esize_t iii=0; iii<m_value.Size(); ++iii) {
+		ejson::Value* val = m_value.GetValue(iii);
+		etk::UString key = m_value.GetKey(iii);
+		if (NULL == val) {
+			continue;
+		}
+		output->AddSub(key, val->Duplicate());
+	}
+	return output;
+}

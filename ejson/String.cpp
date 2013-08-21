@@ -71,5 +71,34 @@ bool ejson::String::IGenerate(etk::UString& _data, int32_t _indent) const
 }
 
 
+bool ejson::String::TransfertIn(ejson::Value* _obj)
+{
+	if (NULL==_obj) {
+		JSON_ERROR("Request transfer on an NULL pointer");
+		return false;
+	}
+	ejson::String* other = _obj->ToString();
+	if (NULL==other) {
+		JSON_ERROR("Request transfer on an element that is not an String");
+		return false;
+	}
+	// remove destination elements
+	other->m_quoted = m_quoted;
+	other->m_value = m_value;
+	m_quoted = true;
+	m_value = "";
+	return true;
+}
+
+ejson::Value* ejson::String::Duplicate(void) const
+{
+	ejson::String* output = new ejson::String(m_quoted);
+	if (NULL==output) {
+		JSON_ERROR("Allocation error ...");
+		return NULL;
+	}
+	output->SetValue(m_value);
+	return output;
+}
 
 

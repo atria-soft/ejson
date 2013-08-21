@@ -28,49 +28,50 @@ namespace ejson
 			 * @brief destructor
 			 */
 			virtual ~Object(void) { };
-		public:
-			/**
-			 * @brief Parse the Current node [pure VIRUAL]
-			 * @param[in] _data data string to parse.
-			 * @param[in,out] _pos position in the string to start parse, return the position end of parsing.
-			 * @param[in] _caseSensitive Request a parsion of element that is not case sensitive (all element is in low case)
-			 * @param[in,out] file parsing position (line x col x)
-			 * @return false if an error occured.
-			 */
-			virtual bool IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
-			/**
-			 * @brief Generate a string with the tree of the xml
-			 * @param[in,out] _data string where to add the elements
-			 * @param[in] current indentation of the file
-			 * @return false if an error occured.
-			 */
-			virtual bool IGenerate(etk::UString& _data, int32_t _indent) const;
 		protected:
 			etk::Hash<ejson::Value*> m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
 		public:
-			ejson::Value* GetSub(const etk::UString& _named) const;
-			ejson::Object* GetSubObject(const etk::UString& _named) const;
-			ejson::String* GetSubString(const etk::UString& _named) const;
-			ejson::Array* GetSubArray(const etk::UString& _named) const;
-		public:
-			void AddSub(const etk::UString& _name, ejson::Value* _value);
+			/**
+			 * @brief Get tht sub element with his name (no cast check)
+			 * @param[in] _name name of the object
+			 * @return pointer on the element requested or NULL if it not the corect type or does not existed
+			 */
+			ejson::Value* GetSub(const etk::UString& _name) const;
+			/**
+			 * @brief Get tht sub element with his name (Casted as Object if it is possible)
+			 * @param[in] _name name of the object
+			 * @return pointer on the element requested or NULL if it not the corect type or does not existed
+			 */
+			ejson::Object* GetSubObject(const etk::UString& _name) const;
+			/**
+			 * @brief Get tht sub element with his name (Casted as String if it is possible)
+			 * @param[in] _name name of the object
+			 * @return pointer on the element requested or NULL if it not the corect type or does not existed
+			 */
+			ejson::String* GetSubString(const etk::UString& _name) const;
+			/**
+			 * @brief Get tht sub element with his name (Casted as Array if it is possible)
+			 * @param[in] _name name of the object
+			 * @return pointer on the element requested or NULL if it not the corect type or does not existed
+			 */
+			ejson::Array* GetSubArray(const etk::UString& _name) const;
 		public:
 			/**
-			 * @brief Get the node type.
-			 * @return the type of the Node.
+			 * @brief Add an element in the Object
+			 * @param[in] _name name of the object
+			 * @param[in] _value Element to add
+			 * @return false if an error occured
 			 */
+			bool AddSub(const etk::UString& _name, ejson::Value* _value);
+		public: // herited function :
+			virtual bool IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
+			virtual bool IGenerate(etk::UString& _data, int32_t _indent) const;
 			virtual nodeType_te GetType(void) const { return typeObject; };
-		public:
-			/**
-			 * @brief Cast the element in a Object if it is possible.
-			 * @return pointer on the class or NULL.
-			 */
 			virtual ejson::Object* ToObject(void) { return this; };
 			virtual const ejson::Object* ToObject(void) const{ return this; };
-			/**
-			 * @brief Clear the Node
-			 */
 			virtual void Clear(void);
+			virtual bool TransfertIn(ejson::Value* _obj);
+			virtual ejson::Value* Duplicate(void) const;
 	};
 };
 
