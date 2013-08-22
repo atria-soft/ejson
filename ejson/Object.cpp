@@ -10,6 +10,9 @@
 #include <ejson/Object.h>
 #include <ejson/Array.h>
 #include <ejson/String.h>
+#include <ejson/Null.h>
+#include <ejson/Number.h>
+#include <ejson/Boolean.h>
 #include <ejson/debug.h>
 #include <ejson/ejson.h>
 
@@ -72,14 +75,14 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 							currentName += _data[iii];
 						}
 					}
-				} else if (CheckAvaillable(_data[iii]) ) {
+				} else if (CheckString(_data[iii]) ) {
 					currentName += _data[iii];
 					for (iii++; iii<_data.Size(); iii++) {
 						_filePos.Check(_data[iii]);
 						#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
 							DrawElementParsed(_data[iii], _filePos);
 						#endif
-						if (false==CheckAvaillable(_data[iii])) {
+						if (false==CheckString(_data[iii])) {
 							mode = parseMiddle;
 							iii--;
 							break;
@@ -117,7 +120,7 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 				} else if (_data[iii]=='"') {
 					// find a string:
 					JSON_PARSE_ELEMENT("find String quoted");
-					ejson::String * tmpElement = new ejson::String(true);
+					ejson::String * tmpElement = new ejson::String();
 					if (NULL==tmpElement) {
 						EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in String");
 						_pos=iii;
@@ -138,19 +141,41 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 					tmpElement->IParse(_data, iii, _filePos, _doc);
 					AddSub(currentName, tmpElement);
 					currentName = "";
-				} else if( CheckAvaillable(_data[iii]) ) {
-					// find a string without "" ==> special hook for the etk-json parser
-					JSON_PARSE_ELEMENT("find String");
-					ejson::String * tmpElement = new ejson::String(false);
+				} else if(    _data[iii] == 'f'
+				           || _data[iii] == 't' ) {
+					// find boolean:
+					JSON_PARSE_ELEMENT("find Boolean");
+					ejson::Boolean * tmpElement = new ejson::Boolean();
 					if (NULL==tmpElement) {
-						EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in String");
+						EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Boolean");
 						_pos=iii;
 						return false;
 					}
-					iii--;
 					tmpElement->IParse(_data, iii, _filePos, _doc);
-					iii--;
-					//JSON_ERROR(" add : " << currentName );
+					AddSub(currentName, tmpElement);
+					currentName = "";
+				} else if( _data[iii] == 'n') {
+					// find null:
+					JSON_PARSE_ELEMENT("find Null");
+					ejson::Null * tmpElement = new ejson::Null();
+					if (NULL==tmpElement) {
+						EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Boolean");
+						_pos=iii;
+						return false;
+					}
+					tmpElement->IParse(_data, iii, _filePos, _doc);
+					AddSub(currentName, tmpElement);
+					currentName = "";
+				} else if(true==CheckNumber(_data[iii])) {
+					// find number:
+					JSON_PARSE_ELEMENT("find Number");
+					ejson::Number * tmpElement = new ejson::Number();
+					if (NULL==tmpElement) {
+						EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Boolean");
+						_pos=iii;
+						return false;
+					}
+					tmpElement->IParse(_data, iii, _filePos, _doc);
 					AddSub(currentName, tmpElement);
 					currentName = "";
 				} else if(_data[iii]==',') {
@@ -159,7 +184,7 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 					currentName = "";
 				} else {
 					// find an error ....
-					EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Find '>' with no element in the element...");
+					EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, etk::UString("Find '") + _data[iii] + "' with no element in the element...");
 					// move the curent index
 					_pos = iii+1;
 					return false;

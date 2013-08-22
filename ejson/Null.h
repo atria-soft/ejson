@@ -1,0 +1,42 @@
+/**
+ * @author Edouard DUPIN
+ * 
+ * @copyright 2011, Edouard DUPIN, all right reserved
+ * 
+ * @license BSD v3 (see license file)
+ */
+
+#ifndef __ETK_JSON_NULL_H__
+#define __ETK_JSON_NULL_H__
+
+#include <etk/types.h>
+#include <etk/UString.h>
+#include <etk/math/Vector2D.h>
+#include <ejson/Value.h>
+
+namespace ejson
+{
+	class Null : public ejson::Value
+	{
+		public:
+			/**
+			 * @brief basic element of a xml structure
+			 */
+			Null(void) { };
+			/**
+			 * @brief destructor
+			 */
+			virtual ~Null(void) { };
+		public: // herited function :
+			virtual bool IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
+			virtual bool IGenerate(etk::UString& _data, int32_t _indent) const;
+			virtual nodeType_te GetType(void) const { return typeString; };
+			virtual ejson::Null* ToNull(void) { return this; };
+			virtual const ejson::Null* ToNull(void) const{ return this; };
+			virtual bool TransfertIn(ejson::Value* _obj);
+			virtual ejson::Value* Duplicate(void) const;
+	};
+};
+
+#endif
+

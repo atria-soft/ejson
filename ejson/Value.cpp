@@ -65,7 +65,7 @@ int32_t ejson::Value::CountWhiteChar(const etk::UString& _data, int32_t _pos, ej
 }
 
 
-bool ejson::Value::CheckAvaillable(const etk::UniChar& _val, bool _firstChar) const
+bool ejson::Value::CheckString(const etk::UniChar& _val) const
 {
 	if(    _val == '!'
 	    || _val == '"'
@@ -105,47 +105,16 @@ bool ejson::Value::CheckAvaillable(const etk::UniChar& _val, bool _firstChar) co
 	return true;
 }
 
-
-bool ejson::Value::IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc)
+bool ejson::Value::CheckNumber(const etk::UniChar& _val) const
 {
-	JSON_PARSE_ELEMENT("start parse : 'Value' ");
-	for (int32_t iii=_pos+1; iii<_data.Size(); iii++) {
-		_filePos.Check(_data[iii]);
-		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
-			DrawElementParsed(_data[iii], _filePos);
-		#endif
-		ejson::filePos tmpPos;
-		if(    _data[iii]==' '
-		    || _data[iii]=='\t'
-		    || _data[iii]=='\n'
-		    || _data[iii]=='\r') {
-			// white space ==> nothing to do ...
-		} else if (_data[iii]=='{') {
-			// find an object:
-			
-		} else if (_data[iii]=='"') {
-			// find a string:
-			
-		} else if (_data[iii]=='[') {
-			// find a list:
-			
-		} else if( CheckAvaillable(_data[iii]) ) {
-			// find a string without "" ==> special hook for the etk-json parser
-			
-		} else if(    _data[iii]==']'
-		           || _data[iii]=='}'
-		           || _data[iii]==',') {
-			// find end of value:
-			_pos+=iii; // ==> return the end element type ==> usefull to check end and check if adding element is needed
-			return true;
-		} else {
-			// find an error ....
-			EJSON_CREATE_ERROR(_doc, _data, _pos, _filePos, "Find '>' with no element in the element...");
-			// move the curent index
-			_pos += iii+1;
-			return false;
-		}
+	if(    _val=='-'
+	    || _val=='+'
+	    || _val=='e'
+	    || _val=='.'
+	    || (    _val>='0'
+	         && _val<='9' ) ) {
+		return true;
 	}
-	
 	return false;
 }
+

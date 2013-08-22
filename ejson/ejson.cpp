@@ -13,6 +13,9 @@
 #include <ejson/Object.h>
 #include <ejson/Array.h>
 #include <ejson/String.h>
+#include <ejson/Null.h>
+#include <ejson/Number.h>
+#include <ejson/Boolean.h>
 
 #undef __class__
 #define __class__	"Document"
@@ -219,12 +222,35 @@ bool ejson::Document::IParse(const etk::UString& _data, int32_t& _pos, ejson::fi
 			}
 			tmpElement->IParse(_data, iii, _filePos, _doc);
 			m_subElement = tmpElement;
-		} else if( CheckAvaillable(_data[iii]) ) {
-			// find a string without "" ==> special hook for the etk-json parser
-			JSON_PARSE_ELEMENT("find String");
-			ejson::String * tmpElement = new ejson::String(false);
+		} else if(    _data[iii] == 'f'
+		           || _data[iii] == 't' ) {
+			// find boolean:
+			JSON_PARSE_ELEMENT("find Boolean");
+			ejson::Boolean * tmpElement = new ejson::Boolean();
 			if (NULL==tmpElement) {
-				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in String");
+				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Boolean");
+				_pos=iii;
+				return false;
+			}
+			tmpElement->IParse(_data, iii, _filePos, _doc);
+			m_subElement = tmpElement;
+		} else if( _data[iii] == 'n') {
+			// find null:
+			JSON_PARSE_ELEMENT("find Null");
+			ejson::Null * tmpElement = new ejson::Null();
+			if (NULL==tmpElement) {
+				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Boolean");
+				_pos=iii;
+				return false;
+			}
+			tmpElement->IParse(_data, iii, _filePos, _doc);
+			m_subElement = tmpElement;
+		} else if(true==CheckNumber(_data[iii])) {
+			// find number:
+			JSON_PARSE_ELEMENT("find Number");
+			ejson::Number * tmpElement = new ejson::Number();
+			if (NULL==tmpElement) {
+				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Boolean");
 				_pos=iii;
 				return false;
 			}

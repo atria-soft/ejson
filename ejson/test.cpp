@@ -104,6 +104,7 @@ void Init(void)
 	          reference);
 	l_list.PushBack(check);
 	// ------------------------------------------------------
+	/*
 	check.Set(reference,
 	          -1,
 	          "{\n"
@@ -133,6 +134,7 @@ void Init(void)
 	            "	}\n"
 	            "}\n");
 	l_list.PushBack(check);
+	*/
 }
 
 int main(int argc, const char *argv[])

@@ -29,6 +29,9 @@ namespace ejson
 	class Document;
 	class Array;
 	class Object;
+	class Boolean;
+	class Null;
+	class Number;
 	class String;
 	
 	typedef enum {
@@ -36,7 +39,10 @@ namespace ejson
 		typeValue, //!< XXXXXX:*
 		typeDocument, //!< all the file main access
 		typeArray, //!< [...]
-		typeString, //!< the "" or %d numbers null ... 
+		typeString, //!< the "" 
+		typeNumber, //!< the -1565.21515
+		typeBoolean, //!< the true and false
+		typeNull, //!< the null element
 		typeObject, //!< the { ... }
 	} nodeType_te;
 	
@@ -117,7 +123,7 @@ namespace ejson
 			 * @param[in,out] file parsing position (line x col x)
 			 * @return false if an error occured.
 			 */
-			virtual bool IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
+			virtual bool IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) = 0;
 			/**
 			 * @brief Generate a string with the tree of the xml
 			 * @param[in,out] _data string where to add the elements
@@ -145,11 +151,15 @@ namespace ejson
 			 */
 			void DrawElementParsed(const etk::UniChar& _val, const ejson::filePos& _filePos) const;
 			/**
-			 * @brief check if an element or attribute is availlable (not : !"#$%&'()*+,/;<=>?@[\]^`{|}~ \n\t\r and for first char : not -.0123456789).
+			 * @brief check if an name (for object named) (not : !"#$%&'()*+,/;<=>?@[\]^`{|}~ \n\t\r).
 			 * @param[in] _val Value to check the conformity.
-			 * @param[in] _firstChar True if the element check is the first char.
 			 */
-			bool CheckAvaillable(const etk::UniChar& _val, bool _firstChar=true) const;
+			bool CheckString(const etk::UniChar& _val) const;
+			/**
+			 * @brief check if an number -+.0123456789e).
+			 * @param[in] _val Value to check the conformity.
+			 */
+			bool CheckNumber(const etk::UniChar& _val) const;
 			/**
 			 * @brief count the number of white char in the string from the specify position (stop at the first element that is not a white char)
 			 * @param[in] _data Data to parse.
@@ -189,6 +199,24 @@ namespace ejson
 			 */
 			virtual ejson::String* ToString(void) { return NULL; };
 			virtual const ejson::String* ToString(void) const{ return NULL; };
+			/**
+			 * @brief Cast the element in a Number if it is possible.
+			 * @return pointer on the class or NULL.
+			 */
+			virtual ejson::Number* ToNumber(void) { return NULL; };
+			virtual const ejson::Number* ToNumber(void) const{ return NULL; };
+			/**
+			 * @brief Cast the element in a Boolean if it is possible.
+			 * @return pointer on the class or NULL.
+			 */
+			virtual ejson::Boolean* ToBoolean(void) { return NULL; };
+			virtual const ejson::Boolean* ToBoolean(void) const{ return NULL; };
+			/**
+			 * @brief Cast the element in a Null if it is possible.
+			 * @return pointer on the class or NULL.
+			 */
+			virtual ejson::Null* ToNull(void) { return NULL; };
+			virtual const ejson::Null* ToNull(void) const{ return NULL; };
 			
 			/**
 			 * @brief Check if the node is a ejson::Document
@@ -210,6 +238,21 @@ namespace ejson
 			 * @return true if the node is a ejson::String
 			 */
 			bool IsString(void) const { return GetType()==ejson::typeString; };
+			/**
+			 * @brief Check if the node is a ejson::Number
+			 * @return true if the node is a ejson::Number
+			 */
+			bool IsNumber(void) const { return GetType()==ejson::typeNumber; };
+			/**
+			 * @brief Check if the node is a ejson::Boolean
+			 * @return true if the node is a ejson::Boolean
+			 */
+			bool IsBoolean(void) const { return GetType()==ejson::typeBoolean; };
+			/**
+			 * @brief Check if the node is a ejson::Null
+			 * @return true if the node is a ejson::Null
+			 */
+			bool IsNull(void) const { return GetType()==ejson::typeNull; };
 			
 			/**
 			 * @brief Clear the Node

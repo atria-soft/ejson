@@ -7,31 +7,27 @@
  */
 
 
-#include <ejson/Object.h>
-#include <ejson/Array.h>
-#include <ejson/String.h>
+#include <ejson/Number.h>
 #include <ejson/debug.h>
 #include <ejson/ejson.h>
 
 #undef __class__
-#define __class__	"String"
+#define __class__	"Number"
 
-
-
-bool ejson::String::IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc)
+bool ejson::Number::IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc)
 {
-	JSON_PARSE_ELEMENT("start parse : 'String' ");
+	JSON_PARSE_ELEMENT("start parse : 'Number' ");
+	etk::UString tmpVal;
 	for (int32_t iii=_pos+1; iii<_data.Size(); iii++) {
 		_filePos.Check(_data[iii]);
 		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
 			DrawElementParsed(_data[iii], _filePos);
 		#endif
-		ejson::filePos tmpPos;
-		// TODO : manage \x
-		if(    _data[iii]!= '\"') {
-			m_value += _data[iii];
+		if(true==CheckNumber(_data[iii])) {
+			tmpVal+=_data[iii];
 		} else {
 			_pos = iii;
+			m_value = tmpVal.ToDouble();
 			return true;
 		}
 	}
@@ -41,34 +37,33 @@ bool ejson::String::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 }
 
 
-bool ejson::String::IGenerate(etk::UString& _data, int32_t _indent) const
+bool ejson::Number::IGenerate(etk::UString& _data, int32_t _indent) const
 {
-	_data += "\"";;
 	_data += m_value;
-	_data += "\"";;
 	return true;
 }
 
 
-bool ejson::String::TransfertIn(ejson::Value* _obj)
+bool ejson::Number::TransfertIn(ejson::Value* _obj)
 {
 	if (NULL==_obj) {
 		JSON_ERROR("Request transfer on an NULL pointer");
 		return false;
 	}
-	ejson::String* other = _obj->ToString();
+	ejson::Number* other = _obj->ToNumber();
 	if (NULL==other) {
-		JSON_ERROR("Request transfer on an element that is not an String");
+		JSON_ERROR("Request transfer on an element that is not an Number");
 		return false;
 	}
+	// remove destination elements
 	other->m_value = m_value;
-	m_value = "";
+	m_value = 0;
 	return true;
 }
 
-ejson::Value* ejson::String::Duplicate(void) const
+ejson::Value* ejson::Number::Duplicate(void) const
 {
-	ejson::String* output = new ejson::String(m_value);
+	ejson::Number* output = new ejson::Number(m_value);
 	if (NULL==output) {
 		JSON_ERROR("Allocation error ...");
 		return NULL;

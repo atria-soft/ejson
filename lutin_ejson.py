@@ -11,6 +11,9 @@ def Create(target):
 		'ejson/debug.cpp',
 		'ejson/ejson.cpp',
 		'ejson/Array.cpp',
+		'ejson/Boolean.cpp',
+		'ejson/Null.cpp',
+		'ejson/Number.cpp',
 		'ejson/String.cpp',
 		'ejson/Object.cpp',
 		'ejson/Value.cpp'])
