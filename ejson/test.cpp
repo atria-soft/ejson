@@ -259,201 +259,238 @@ void Init(void)
 	l_list.PushBack(check);
 	
 //////////////////////////////////////////////////////////////////////////
-	"
-	{
-    \"glossary\": {
-        \"title\": \"example glossary\",
-		\"GlossDiv\": {
-            \"title\": \"S\",
-			\"GlossList\": {
-                \"GlossEntry\": {
-                    \"ID\": \"SGML\",
-					\"SortAs\": \"SGML\",
-					\"GlossTerm\": \"Standard Generalized Markup Language\",
-					\"Acronym\": \"SGML\",
-					\"Abbrev\": \"ISO 8879:1986\",
-					\"GlossDef\": {
-                        \"para\": \"A meta-markup language, used to create markup languages such as DocBook.\",
-						\"GlossSeeAlso\": [\"GML\", \"XML\"]
-                    },
-					\"GlossSee\": \"markup\"
-                }
-            }
-        }
-    }
-}
-"
-//////////////////////////////////////////////////////////////////////////
-"
-{\"menu\": {
-  \"id\": \"file\",
-  \"value\": \"File\",
-  \"popup\": {
-    \"menuitem\": [
-      {\"value\": \"New\", \"onclick\": \"CreateNewDoc()\"},
-      {\"value\": \"Open\", \"onclick\": \"OpenDoc()\"},
-      {\"value\": \"Close\", \"onclick\": \"CloseDoc()\"}
-    ]
-  }
-}}
-"
-//////////////////////////////////////////////////////////////////////////
-"
-{\"widget\": {
-    \"debug\": \"on\",
-    \"window\": {
-        \"title\": \"Sample Konfabulator Widget\",
-        \"name\": \"main_window\",
-        \"width\": 500,
-        \"height\": 500
-    },
-    \"image\": { 
-        \"src\": \"Images/Sun.png\",
-        \"name\": \"sun1\",
-        \"hOffset\": 250,
-        \"vOffset\": 250,
-        \"alignment\": \"center\"
-    },
-    \"text\": {
-        \"data\": \"Click Here\",
-        \"size\": 36,
-        \"style\": \"bold\",
-        \"name\": \"text1\",
-        \"hOffset\": 250,
-        \"vOffset\": 100,
-        \"alignment\": \"center\",
-        \"onMouseUp\": \"sun1.opacity = (sun1.opacity / 100) * 90;\"
-    }
-}}    
-"
+	reference = "{\n"
+	            "	\"glossary\": {\n"
+	            "		\"title\": \"example glossary\",\n"
+	            "		\"GlossDiv\": {\n"
+	            "			\"title\": \"S\",\n"
+	            "			\"GlossList\": {\n"
+	            "				\"GlossEntry\": {\n"
+	            "					\"ID\": \"SGML\",\n"
+	            "					\"SortAs\": \"SGML\",\n"
+	            "					\"GlossTerm\": \"Standard Generalized Markup Language\",\n"
+	            "					\"Acronym\": \"SGML\",\n"
+	            "					\"Abbrev\": \"ISO 8879:1986\",\n"
+	            "					\"GlossDef\": {\n"
+	            "						\"para\": \"A meta-markup language, used to create markup languages such as DocBook.\",\n"
+	            "						\"GlossSeeAlso\": [\n"
+	            "							\"GML\",\n"
+	            "							\"XML\"\n"
+	            "						]\n"
+	            "					},\n"
+	            "					\"GlossSee\": \"markup\"\n"
+	            "				}\n"
+	            "			}\n"
+	            "		}\n"
+	            "	}\n"
+	            "}\n";
+	check.Set(reference,
+	          -1,
+	          reference);
+	l_list.PushBack(check);
+	// ------------------------------------------------------
+	reference = "{\n"
+	            "	\"menu\": {\n"
+	            "		\"id\": \"file\",\n"
+	            "		\"value\": \"File\",\n"
+	            "		\"popup\": {\n"
+	            "			\"menuitem\": [\n"
+	            "				{\n"
+	            "					\"value\": \"New\",\n"
+	            "					\"onclick\": \"CreateNewDoc()\"\n"
+	            "				},\n"
+	            "				{\n"
+	            "					\"value\": \"Open\",\n"
+	            "					\"onclick\": \"OpenDoc()\"\n"
+	            "				},\n"
+	            "				{\n"
+	            "					\"value\": \"Close\",\n"
+	            "					\"onclick\": \"CloseDoc()\"\n"
+	            "				}\n"
+	            "			]\n"
+	            "		}\n"
+	            "	}\n"
+	            "}\n";
+	check.Set(reference,
+	          -1,
+	          reference);
+	l_list.PushBack(check);
+	// ------------------------------------------------------
+
 
 //////////////////////////////////////////////////////////////////////////
 
+	reference = "{\n"
+	            "	\"widget\": {\n"
+	            "		\"debug\": \"on\",\n"
+	            "		\"window\": {\n"
+	            "			\"title\": \"Sample Konfabulator Widget\",\n"
+	            "			\"name\": \"main_window\",\n"
+	            "			\"width\": 500.000000,\n"
+	            "			\"height\": 500.000000\n"
+	            "		},\n"
+	            "		\"image\": {\n"
+	            "			\"src\": \"Images/Sun.png\",\n"
+	            "			\"name\": \"sun1\",\n"
+	            "			\"hOffset\": 250.000000,\n"
+	            "			\"vOffset\": 250.000000,\n"
+	            "			\"alignment\": \"center\"\n"
+	            "		},\n"
+	            "		\"text\": {\n"
+	            "			\"data\": \"Click Here\",\n"
+	            "			\"size\": 36.000000,\n"
+	            "			\"style\": \"bold\",\n"
+	            "			\"name\": \"text1\",\n"
+	            "			\"hOffset\": 250.000000,\n"
+	            "			\"vOffset\": 100.000000,\n"
+	            "			\"alignment\": \"center\",\n"
+	            "			\"onMouseUp\": \"sun1.opacity = (sun1.opacity / 100) * 90;\"\n"
+	            "		}\n"
+	            "	}\n"
+	            "}\n";
+	check.Set(reference,
+	          -1,
+	          reference);
+	l_list.PushBack(check);
+	// ------------------------------------------------------
 
 
-
-"
-{\"web-app\": {
-  \"servlet\": [   
-    {
-      \"servlet-name\": \"cofaxCDS\",
-      \"servlet-class\": \"org.cofax.cds.CDSServlet\",
-      \"init-param\": {
-        \"configGlossary:installationAt\": \"Philadelphia, PA\",
-        \"configGlossary:adminEmail\": \"ksm@pobox.com\",
-        \"configGlossary:poweredBy\": \"Cofax\",
-        \"configGlossary:poweredByIcon\": \"/images/cofax.gif\",
-        \"configGlossary:staticPath\": \"/content/static\",
-        \"templateProcessorClass\": \"org.cofax.WysiwygTemplate\",
-        \"templateLoaderClass\": \"org.cofax.FilesTemplateLoader\",
-        \"templatePath\": \"templates\",
-        \"templateOverridePath\": \"\",
-        \"defaultListTemplate\": \"listTemplate.htm\",
-        \"defaultFileTemplate\": \"articleTemplate.htm\",
-        \"useJSP\": false,
-        \"jspListTemplate\": \"listTemplate.jsp\",
-        \"jspFileTemplate\": \"articleTemplate.jsp\",
-        \"cachePackageTagsTrack\": 200,
-        \"cachePackageTagsStore\": 200,
-        \"cachePackageTagsRefresh\": 60,
-        \"cacheTemplatesTrack\": 100,
-        \"cacheTemplatesStore\": 50,
-        \"cacheTemplatesRefresh\": 15,
-        \"cachePagesTrack\": 200,
-        \"cachePagesStore\": 100,
-        \"cachePagesRefresh\": 10,
-        \"cachePagesDirtyRead\": 10,
-        \"searchEngineListTemplate\": \"forSearchEnginesList.htm\",
-        \"searchEngineFileTemplate\": \"forSearchEngines.htm\",
-        \"searchEngineRobotsDb\": \"WEB-INF/robots.db\",
-        \"useDataStore\": true,
-        \"dataStoreClass\": \"org.cofax.SqlDataStore\",
-        \"redirectionClass\": \"org.cofax.SqlRedirection\",
-        \"dataStoreName\": \"cofax\",
-        \"dataStoreDriver\": \"com.microsoft.jdbc.sqlserver.SQLServerDriver\",
-        \"dataStoreUrl\": \"jdbc:microsoft:sqlserver://LOCALHOST:1433;DatabaseName=goon\",
-        \"dataStoreUser\": \"sa\",
-        \"dataStorePassword\": \"dataStoreTestQuery\",
-        \"dataStoreTestQuery\": \"SET NOCOUNT ON;select test='test';\",
-        \"dataStoreLogFile\": \"/usr/local/tomcat/logs/datastore.log\",
-        \"dataStoreInitConns\": 10,
-        \"dataStoreMaxConns\": 100,
-        \"dataStoreConnUsageLimit\": 100,
-        \"dataStoreLogLevel\": \"debug\",
-        \"maxUrlLength\": 500}},
-    {
-      \"servlet-name\": \"cofaxEmail\",
-      \"servlet-class\": \"org.cofax.cds.EmailServlet\",
-      \"init-param\": {
-      \"mailHost\": \"mail1\",
-      \"mailHostOverride\": \"mail2\"}},
-    {
-      \"servlet-name\": \"cofaxAdmin\",
-      \"servlet-class\": \"org.cofax.cds.AdminServlet\"},
- 
-    {
-      \"servlet-name\": \"fileServlet\",
-      \"servlet-class\": \"org.cofax.cds.FileServlet\"},
-    {
-      \"servlet-name\": \"cofaxTools\",
-      \"servlet-class\": \"org.cofax.cms.CofaxToolsServlet\",
-      \"init-param\": {
-        \"templatePath\": \"toolstemplates/\",
-        \"log\": 1,
-        \"logLocation\": \"/usr/local/tomcat/logs/CofaxTools.log\",
-        \"logMaxSize\": \"\",
-        \"dataLog\": 1,
-        \"dataLogLocation\": \"/usr/local/tomcat/logs/dataLog.log\",
-        \"dataLogMaxSize\": \"\",
-        \"removePageCache\": \"/content/admin/remove?cache=pages&id=\",
-        \"removeTemplateCache\": \"/content/admin/remove?cache=templates&id=\",
-        \"fileTransferFolder\": \"/usr/local/tomcat/webapps/content/fileTransferFolder\",
-        \"lookInContext\": 1,
-        \"adminGroupID\": 4,
-        \"betaServer\": true}}],
-  \"servlet-mapping\": {
-    \"cofaxCDS\": \"/\",
-    \"cofaxEmail\": \"/cofaxutil/aemail/*\",
-    \"cofaxAdmin\": \"/admin/*\",
-    \"fileServlet\": \"/static/*\",
-    \"cofaxTools\": \"/tools/*\"},
- 
-  \"taglib\": {
-    \"taglib-uri\": \"cofax.tld\",
-    \"taglib-location\": \"/WEB-INF/tlds/cofax.tld\"}}}
-    
-"
 //////////////////////////////////////////////////////////////////////////
+/*
+	reference = "{\n"
+	            "\"web-app\": {\n"
+	            "	\"servlet\": [\n"
+	            "		{\n"
+	            "			\"servlet-name\": \"cofaxCDS\",\n"
+	            "			\"servlet-class\": \"org.cofax.cds.CDSServlet\",\n"
+	            "			\"init-param\": {\n"
+	            "				\"configGlossary:installationAt\": \"Philadelphia, PA\",\n"
+	            "				\"configGlossary:adminEmail\": \"ksm@pobox.com\",\n"
+	            "				\"configGlossary:poweredBy\": \"Cofax\",\n"
+	            "				\"configGlossary:poweredByIcon\": \"/images/cofax.gif\",\n"
+	            "				\"configGlossary:staticPath\": \"/content/static\",\n"
+	            "				\"templateProcessorClass\": \"org.cofax.WysiwygTemplate\",\n"
+	            "				\"templateLoaderClass\": \"org.cofax.FilesTemplateLoader\",\n"
+	            "				\"templatePath\": \"templates\",\n"
+	            "				\"templateOverridePath\": \"\",\n"
+	            "				\"defaultListTemplate\": \"listTemplate.htm\",\n"
+	            "				\"defaultFileTemplate\": \"articleTemplate.htm\",\n"
+	            "				\"useJSP\": false,\n"
+	            "				\"jspListTemplate\": \"listTemplate.jsp\",\n"
+	            "				\"jspFileTemplate\": \"articleTemplate.jsp\",\n"
+	            "				\"cachePackageTagsTrack\": 200,\n"
+	            "				\"cachePackageTagsStore\": 200,\n"
+	            "				\"cachePackageTagsRefresh\": 60,\n"
+	            "				\"cacheTemplatesTrack\": 100,\n"
+	            "				\"cacheTemplatesStore\": 50,\n"
+	            "				\"cacheTemplatesRefresh\": 15,\n"
+	            "				\"cachePagesTrack\": 200,\n"
+	            "				\"cachePagesStore\": 100,\n"
+	            "				\"cachePagesRefresh\": 10,\n"
+	            "				\"cachePagesDirtyRead\": 10,\n"
+	            "				\"searchEngineListTemplate\": \"forSearchEnginesList.htm\",\n"
+	            "				\"searchEngineFileTemplate\": \"forSearchEngines.htm\",\n"
+	            "				\"searchEngineRobotsDb\": \"WEB-INF/robots.db\",\n"
+	            "				\"useDataStore\": true,\n"
+	            "				\"dataStoreClass\": \"org.cofax.SqlDataStore\",\n"
+	            "				\"redirectionClass\": \"org.cofax.SqlRedirection\",\n"
+	            "				\"dataStoreName\": \"cofax\",\n"
+	            "				\"dataStoreDriver\": \"com.microsoft.jdbc.sqlserver.SQLServerDriver\",\n"
+	            "				\"dataStoreUrl\": \"jdbc:microsoft:sqlserver://LOCALHOST:1433;DatabaseName=goon\",\n"
+	            "				\"dataStoreUser\": \"sa\",\n"
+	            "				\"dataStorePassword\": \"dataStoreTestQuery\",\n"
+	            "				\"dataStoreTestQuery\": \"SET NOCOUNT ON;select test='test';\",\n"
+	            "				\"dataStoreLogFile\": \"/usr/local/tomcat/logs/datastore.log\",\n"
+	            "				\"dataStoreInitConns\": 10,\n"
+	            "				\"dataStoreMaxConns\": 100,\n"
+	            "				\"dataStoreConnUsageLimit\": 100,\n"
+	            "				\"dataStoreLogLevel\": \"debug\",\n"
+	            "				\"maxUrlLength\": 500\n"
+	            "			}\n"
+	            "		},\n"
+	            "		{\n"
+	            "			\"servlet-name\": \"cofaxEmail\",\n"
+	            "			\"servlet-class\": \"org.cofax.cds.EmailServlet\",\n"
+	            "			\"init-param\": {\n"
+	            "			\"mailHost\": \"mail1\",\n"
+	            "			\"mailHostOverride\": \"mail2\"}},\n"
+	            "		{\n"
+	            "			\"servlet-name\": \"cofaxAdmin\",\n"
+	            "			\"servlet-class\": \"org.cofax.cds.AdminServlet\"},\n"
+	            " \n"
+	            "		{\n"
+	            "			\"servlet-name\": \"fileServlet\",\n"
+	            "			\"servlet-class\": \"org.cofax.cds.FileServlet\"},\n"
+	            "		{\n"
+	            "			\"servlet-name\": \"cofaxTools\",\n"
+	            "			\"servlet-class\": \"org.cofax.cms.CofaxToolsServlet\",\n"
+	            "			\"init-param\": {\n"
+	            "				\"templatePath\": \"toolstemplates/\",\n"
+	            "				\"log\": 1,\n"
+	            "				\"logLocation\": \"/usr/local/tomcat/logs/CofaxTools.log\",\n"
+	            "				\"logMaxSize\": \"\",\n"
+	            "				\"dataLog\": 1,\n"
+	            "				\"dataLogLocation\": \"/usr/local/tomcat/logs/dataLog.log\",\n"
+	            "				\"dataLogMaxSize\": \"\",\n"
+	            "				\"removePageCache\": \"/content/admin/remove?cache=pages&id=\",\n"
+	            "				\"removeTemplateCache\": \"/content/admin/remove?cache=templates&id=\",\n"
+	            "				\"fileTransferFolder\": \"/usr/local/tomcat/webapps/content/fileTransferFolder\",\n"
+	            "				\"lookInContext\": 1,\n"
+	            "				\"adminGroupID\": 4,\n"
+	            "				\"betaServer\": true}}],\n"
+	            "	\"servlet-mapping\": {\n"
+	            "		\"cofaxCDS\": \"/\",\n"
+	            "		\"cofaxEmail\": \"/cofaxutil/aemail/*\",\n"
+	            "		\"cofaxAdmin\": \"/admin/*\",\n"
+	            "		\"fileServlet\": \"/static/*\",\n"
+	            "		\"cofaxTools\": \"/tools/*\"},\n"
+	            " \n"
+	            "	\"taglib\": {\n"
+	            "		\"taglib-uri\": \"cofax.tld\",\n"
+	            "		\"taglib-location\": \"/WEB-INF/tlds/cofax.tld\"}}}\n"
+	            "		\n"
+	            "";
+	check.Set(reference,
+	          -1,
+	          reference);
+	l_list.PushBack(check);
+	// ------------------------------------------------------
+//////////////////////////////////////////////////////////////////////////
+*/
 
-"
-{\"menu\": {
-    \"header\": \"SVG Viewer\",
-    \"items\": [
-        {\"id\": \"Open\"},
-        {\"id\": \"OpenNew\", \"label\": \"Open New\"},
-        null,
-        {\"id\": \"ZoomIn\", \"label\": \"Zoom In\"},
-        {\"id\": \"ZoomOut\", \"label\": \"Zoom Out\"},
-        {\"id\": \"OriginalView\", \"label\": \"Original View\"},
-        null,
-        {\"id\": \"Quality\"},
-        {\"id\": \"Pause\"},
-        {\"id\": \"Mute\"},
-        null,
-        {\"id\": \"Find\", \"label\": \"Find...\"},
-        {\"id\": \"FindAgain\", \"label\": \"Find Again\"},
-        {\"id\": \"Copy\"},
-        {\"id\": \"CopyAgain\", \"label\": \"Copy Again\"},
-        {\"id\": \"CopySVG\", \"label\": \"Copy SVG\"},
-        {\"id\": \"ViewSVG\", \"label\": \"View SVG\"},
-        {\"id\": \"ViewSource\", \"label\": \"View Source\"},
-        {\"id\": \"SaveAs\", \"label\": \"Save As\"},
-        null,
-        {\"id\": \"Help\"},
-        {\"id\": \"About\", \"label\": \"About Adobe CVG Viewer...\"}
-    ]
-}}
-"
+	reference = "{\n"
+	            "\"menu\": {\n"
+	            "    \"header\": \"SVG Viewer\",\n"
+	            "    \"items\": [\n"
+	            "        {\"id\": \"Open\"},\n"
+	            "        {\"id\": \"OpenNew\", \"label\": \"Open New\"},\n"
+	            "        null,\n"
+	            "        {\"id\": \"ZoomIn\", \"label\": \"Zoom In\"},\n"
+	            "        {\"id\": \"ZoomOut\", \"label\": \"Zoom Out\"},\n"
+	            "        {\"id\": \"OriginalView\", \"label\": \"Original View\"},\n"
+	            "        null,\n"
+	            "        {\"id\": \"Quality\"},\n"
+	            "        {\"id\": \"Pause\"},\n"
+	            "        {\"id\": \"Mute\"},\n"
+	            "        null,\n"
+	            "        {\"id\": \"Find\", \"label\": \"Find...\"},\n"
+	            "        {\"id\": \"FindAgain\", \"label\": \"Find Again\"},\n"
+	            "        {\"id\": \"Copy\"},\n"
+	            "        {\"id\": \"CopyAgain\", \"label\": \"Copy Again\"},\n"
+	            "        {\"id\": \"CopySVG\", \"label\": \"Copy SVG\"},\n"
+	            "        {\"id\": \"ViewSVG\", \"label\": \"View SVG\"},\n"
+	            "        {\"id\": \"ViewSource\", \"label\": \"View Source\"},\n"
+	            "        {\"id\": \"SaveAs\", \"label\": \"Save As\"},\n"
+	            "        null,\n"
+	            "        {\"id\": \"Help\"},\n"
+	            "        {\"id\": \"About\", \"label\": \"About Adobe CVG Viewer...\"}\n"
+	            "    ]\n"
+	            "}}\n";
+	check.Set(reference,
+	          -1,
+	          reference);
+	l_list.PushBack(check);
+	// ------------------------------------------------------
 //////////////////////////////////////////////////////////////////////////
 
 

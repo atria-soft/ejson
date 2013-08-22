@@ -26,8 +26,9 @@ bool ejson::Number::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 		if(true==CheckNumber(_data[iii])) {
 			tmpVal+=_data[iii];
 		} else {
-			_pos = iii;
+			_pos = iii-1;
 			m_value = tmpVal.ToDouble();
+			JSON_PARSE_ELEMENT("end parse : 'Number' ");
 			return true;
 		}
 	}
