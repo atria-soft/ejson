@@ -19,7 +19,7 @@
 
 namespace ejson
 {
-	class Document : public ejson::Value
+	class Document : public ejson::Object
 	{
 		public:
 			/**
@@ -64,14 +64,6 @@ namespace ejson
 			 */
 			void Display(void);
 		private:
-			ejson::Value* m_subElement; //!< only element that contain the json document:
-		public:
-			ejson::Value* GetSub(const etk::UString& _named) const;
-			ejson::Object* GetSubObject(const etk::UString& _named) const;
-			ejson::String* GetSubString(const etk::UString& _named) const;
-			ejson::Array* GetSubArray(const etk::UString& _named) const;
-			bool SetSub(ejson::Value* _value);
-		private:
 			bool m_writeErrorWhenDetexted;
 			etk::UString m_comment;
 			etk::UString m_Line;
@@ -84,11 +76,10 @@ namespace ejson
 			void DisplayError(void);
 		public: // herited function:
 			virtual nodeType_te GetType(void) const { return typeDocument; };
-			bool IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
-			bool IGenerate(etk::UString& _data, int32_t _indent) const;
+			virtual bool IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
+			virtual bool IGenerate(etk::UString& _data, int32_t _indent) const;
 			virtual ejson::Document* ToDocument(void) { return this; };
 			virtual const ejson::Document* ToDocument(void) const { return this; };
-			virtual void Clear(void);
 	};
 };
 

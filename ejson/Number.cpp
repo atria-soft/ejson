@@ -18,7 +18,7 @@ bool ejson::Number::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 {
 	JSON_PARSE_ELEMENT("start parse : 'Number' ");
 	etk::UString tmpVal;
-	for (int32_t iii=_pos+1; iii<_data.Size(); iii++) {
+	for (int32_t iii=_pos; iii<_data.Size(); iii++) {
 		_filePos.Check(_data[iii]);
 		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
 			DrawElementParsed(_data[iii], _filePos);

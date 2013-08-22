@@ -43,7 +43,13 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 	statusParsing_te mode = parseName;
 	etk::UString currentName;
 	JSON_PARSE_ELEMENT("start parse : 'Object' ");
-	for (int32_t iii=_pos+1; iii<_data.Size(); iii++) {
+	bool standalone = true;
+	int32_t startPos = _pos+1;
+	if (_data[_pos] != '{' ) { // when the main node call it, it can be start with != '{'
+		standalone = false;
+		startPos = _pos;
+	}
+	for (int32_t iii=startPos; iii<_data.Size(); iii++) {
 		_filePos.Check(_data[iii]);
 		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
 			DrawElementParsed(_data[iii], _filePos);
@@ -193,6 +199,9 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 		}
 	}
 	_pos = _data.Size();
+	if (false==standalone) {
+		return true;
+	}
 	return false;
 }
 bool ejson::Object::IGenerate(etk::UString& _data, int32_t _indent) const

@@ -21,7 +21,6 @@
 #define __class__	"Document"
 
 ejson::Document::Document(void) : 
-	m_subElement(NULL),
 	m_writeErrorWhenDetexted(true),
 	m_comment(""),
 	m_Line(""),
@@ -32,17 +31,12 @@ ejson::Document::Document(void) :
 
 ejson::Document::~Document(void)
 {
-	if (NULL!=m_subElement) {
-		delete m_subElement;
-		m_subElement=NULL;
-	}
+
 }
 
 bool ejson::Document::IGenerate(etk::UString& _data, int32_t _indent) const
 {
-	if (NULL!=m_subElement) {
-		m_subElement->IGenerate(_data, _indent+1);
-	}
+	ejson::Object::IGenerate(_data, _indent+1);
 	_data += "\n";
 	return true;
 }
@@ -177,7 +171,9 @@ void ejson::Document::CreateError(const etk::UString& _data, int32_t _pos, const
 
 bool ejson::Document::IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc)
 {
-	JSON_PARSE_ELEMENT("start parse : 'Value' ");
+	JSON_PARSE_ELEMENT("start parse : 'Document' ");
+	bool haveMainNode=false;
+	bool nodeParsed=false;
 	for (int32_t iii=_pos; iii<_data.Size(); iii++) {
 		_filePos.Check(_data[iii]);
 		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
@@ -190,144 +186,40 @@ bool ejson::Document::IParse(const etk::UString& _data, int32_t& _pos, ejson::fi
 		    || _data[iii]=='\r') {
 			// white space ==> nothing to do ...
 		} else if (_data[iii]=='{') {
-			// find an object:
-			JSON_PARSE_ELEMENT("find Object");
-			ejson::Object * tmpElement = new ejson::Object();
-			if (NULL==tmpElement) {
-				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in object");
+			if (nodeParsed==true) {
+				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "element already parsed");
 				_pos=iii;
-				return false;
 			}
-			tmpElement->IParse(_data, iii, _filePos, _doc);
-			m_subElement = tmpElement;
-		} else if (_data[iii]=='"') {
-			// find a string:
-			JSON_PARSE_ELEMENT("find String quoted");
-			ejson::String * tmpElement = new ejson::String(true);
-			if (NULL==tmpElement) {
-				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in String");
-				_pos=iii;
-				return false;
-			}
-			tmpElement->IParse(_data, iii, _filePos, _doc);
-			m_subElement = tmpElement;
-		} else if (_data[iii]=='[') {
-			// find a list:
-			JSON_PARSE_ELEMENT("find List");
-			ejson::Array * tmpElement = new ejson::Array();
-			if (NULL==tmpElement) {
-				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Array");
-				_pos=iii;
-				return false;
-			}
-			tmpElement->IParse(_data, iii, _filePos, _doc);
-			m_subElement = tmpElement;
-		} else if(    _data[iii] == 'f'
-		           || _data[iii] == 't' ) {
-			// find boolean:
-			JSON_PARSE_ELEMENT("find Boolean");
-			ejson::Boolean * tmpElement = new ejson::Boolean();
-			if (NULL==tmpElement) {
-				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Boolean");
-				_pos=iii;
-				return false;
-			}
-			tmpElement->IParse(_data, iii, _filePos, _doc);
-			m_subElement = tmpElement;
-		} else if( _data[iii] == 'n') {
-			// find null:
-			JSON_PARSE_ELEMENT("find Null");
-			ejson::Null * tmpElement = new ejson::Null();
-			if (NULL==tmpElement) {
-				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Boolean");
-				_pos=iii;
-				return false;
-			}
-			tmpElement->IParse(_data, iii, _filePos, _doc);
-			m_subElement = tmpElement;
-		} else if(true==CheckNumber(_data[iii])) {
-			// find number:
-			JSON_PARSE_ELEMENT("find Number");
-			ejson::Number * tmpElement = new ejson::Number();
-			if (NULL==tmpElement) {
-				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Boolean");
-				_pos=iii;
-				return false;
-			}
-			tmpElement->IParse(_data, iii, _filePos, _doc);
-			m_subElement = tmpElement;
+			// find a main object:
+			// ==> generic sub parsing
+			iii++;
+			haveMainNode=true;
+			nodeParsed=true;
+			ejson::Object::IParse(_data, iii, _filePos, _doc);
 		} else if(_data[iii]=='}') {
-			// find end of value:
 			_pos=iii; // ==> return the end element type ==> usefull to check end and check if adding element is needed
-			return true;
+			if (haveMainNode==true) {
+				// find end of value:
+				return true;
+			} else {
+				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "find } but never start !!!");
+				return false;
+			}
 		} else {
-			// find an error ....
-			EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, etk::UString("Find '") + _data[iii] + "' with no element in the element...");
-			// move the curent index
-			_pos = iii+1;
-			return false;
+			if (nodeParsed==true) {
+				_pos=iii;
+				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "element already parsed");
+				return false;
+			}
+			nodeParsed=true;
+			// this might not have the '{' start element !!!
+			if (false==ejson::Object::IParse(_data, iii, _filePos, _doc)) {
+				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Object sub parsing in error");
+				_pos = iii;
+				return false;
+			}
 		}
 	}
 	return true;
 }
 
-
-ejson::Value* ejson::Document::GetSub(const etk::UString& _named) const
-{
-	if (m_subElement == NULL) {
-		return NULL;
-	}
-	ejson::Object* tmp = m_subElement->ToObject();
-	if (NULL==tmp) {
-		return NULL;
-	}
-	return tmp->GetSub(_named);
-}
-
-ejson::Object* ejson::Document::GetSubObject(const etk::UString& _named) const
-{
-	ejson::Value* tmp = GetSub(_named);
-	if (NULL == tmp) {
-		return NULL;
-	}
-	return tmp->ToObject();
-}
-
-ejson::String* ejson::Document::GetSubString(const etk::UString& _named) const
-{
-	ejson::Value* tmp = GetSub(_named);
-	if (NULL == tmp) {
-		return NULL;
-	}
-	return tmp->ToString();
-}
-
-ejson::Array* ejson::Document::GetSubArray(const etk::UString& _named) const
-{
-	ejson::Value* tmp = GetSub(_named);
-	if (NULL == tmp) {
-		return NULL;
-	}
-	return tmp->ToArray();
-}
-
-
-bool ejson::Document::SetSub(ejson::Value* _value)
-{
-	if (NULL == _value) {
-		return false;
-	}
-	if (NULL!=m_subElement) {
-		delete(m_subElement);
-	}
-	m_subElement = _value;
-	return true;
-}
-
-void ejson::Document::Clear(void)
-{
-	if (NULL!=m_subElement) {
-		delete(m_subElement);
-		m_subElement=NULL;
-	}
-}
