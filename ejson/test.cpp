@@ -110,7 +110,7 @@ void Init(void)
 	check.Set("test ejson::number", -2, "");
 	l_list.PushBack(check);
 	// ------------------------------------------------------
-	reference = "{\n\t\"tmpElement\": 956256.000000\n}\n";
+	reference = "{\n\t\"tmpElement\": 956256\n}\n";
 	check.Set(reference,
 	          -1,
 	          "{ tmpElement:956256 }\n");
@@ -126,26 +126,37 @@ void Init(void)
 	          "tmpElement:956256\n");
 	l_list.PushBack(check);
 	// ------------------------------------------------------
-	check.Set("{\n\t\"tmpElement\": 956256.000000\n}\n",
+	check.Set("{\n\t\"tmpElement\": 956256\n}\n",
 	          -1,
 	          "{tmpElement:956256}\n");
 	l_list.PushBack(check);
 	// ------------------------------------------------------
-	check.Set("{\n\t\"tmpElement\": -956256.000000\n}\n",
+	check.Set("{\n\t\"tmpElement\": -956256\n}\n",
 	          -1,
 	          "{tmpElement:-956256}\n");
 	l_list.PushBack(check);
 	// ------------------------------------------------------
-	check.Set("{\n\t\"tmpElement\": -956256.000000\n}\n",
+	check.Set("{\n\t\"tmpElement\": -956256\n}\n",
 	          -1,
 	          "{tmpElement:-956256}\n");
 	l_list.PushBack(check);
 	// ------------------------------------------------------
-	check.Set("{\n\t\"tmpElement\": -956.256000\n}\n",
+	check.Set("{\n\t\"tmpElement\": -956.256\n}\n",
 	          -1,
 	          "{tmpElement:-956.256}\n");
 	l_list.PushBack(check);
-	
+	/*
+	// ------------------------------------------------------
+	check.Set("{\n\t\"tmpElement\": -956956544454621184\n}\n",
+	          -1,
+	          "{tmpElement:-956956544454621354.256}\n");
+	l_list.PushBack(check);
+	// ------------------------------------------------------
+	check.Set("{\n\t\"tmpElement\": 0.000002\n}\n",
+	          -1,
+	          "{tmpElement:+.000001565464}\n");
+	l_list.PushBack(check);
+	*/
 	
 	
 	// ======================================================
@@ -295,23 +306,23 @@ void Init(void)
 	            "		\"window\": {\n"
 	            "			\"title\": \"Sample Konfabulator Widget\",\n"
 	            "			\"name\": \"main_window\",\n"
-	            "			\"width\": 500.000000,\n"
-	            "			\"height\": 500.000000\n"
+	            "			\"width\": 500,\n"
+	            "			\"height\": 500\n"
 	            "		},\n"
 	            "		\"image\": {\n"
 	            "			\"src\": \"Images/Sun.png\",\n"
 	            "			\"name\": \"sun1\",\n"
-	            "			\"hOffset\": 250.000000,\n"
-	            "			\"vOffset\": 250.000000,\n"
+	            "			\"hOffset\": 250,\n"
+	            "			\"vOffset\": 250,\n"
 	            "			\"alignment\": \"center\"\n"
 	            "		},\n"
 	            "		\"text\": {\n"
 	            "			\"data\": \"Click Here\",\n"
-	            "			\"size\": 36.000000,\n"
+	            "			\"size\": 36,\n"
 	            "			\"style\": \"bold\",\n"
 	            "			\"name\": \"text1\",\n"
-	            "			\"hOffset\": 250.000000,\n"
-	            "			\"vOffset\": 100.000000,\n"
+	            "			\"hOffset\": 250,\n"
+	            "			\"vOffset\": 100,\n"
 	            "			\"alignment\": \"center\",\n"
 	            "			\"onMouseUp\": \"sun1.opacity = (sun1.opacity / 100) * 90;\"\n"
 	            "		}\n"
@@ -343,16 +354,16 @@ void Init(void)
 	            "					\"useJSP\": false,\n"
 	            "					\"jspListTemplate\": \"listTemplate.jsp\",\n"
 	            "					\"jspFileTemplate\": \"articleTemplate.jsp\",\n"
-	            "					\"cachePackageTagsTrack\": 200.000000,\n"
-	            "					\"cachePackageTagsStore\": 200.000000,\n"
-	            "					\"cachePackageTagsRefresh\": 60.000000,\n"
-	            "					\"cacheTemplatesTrack\": 100.000000,\n"
-	            "					\"cacheTemplatesStore\": 50.000000,\n"
-	            "					\"cacheTemplatesRefresh\": 15.000000,\n"
-	            "					\"cachePagesTrack\": 200.000000,\n"
-	            "					\"cachePagesStore\": 100.000000,\n"
-	            "					\"cachePagesRefresh\": 10.000000,\n"
-	            "					\"cachePagesDirtyRead\": 10.000000,\n"
+	            "					\"cachePackageTagsTrack\": 200,\n"
+	            "					\"cachePackageTagsStore\": 200,\n"
+	            "					\"cachePackageTagsRefresh\": 60,\n"
+	            "					\"cacheTemplatesTrack\": 100,\n"
+	            "					\"cacheTemplatesStore\": 50,\n"
+	            "					\"cacheTemplatesRefresh\": 15,\n"
+	            "					\"cachePagesTrack\": 200,\n"
+	            "					\"cachePagesStore\": 100,\n"
+	            "					\"cachePagesRefresh\": 10,\n"
+	            "					\"cachePagesDirtyRead\": 10,\n"
 	            "					\"searchEngineListTemplate\": \"forSearchEnginesList.htm\",\n"
 	            "					\"searchEngineFileTemplate\": \"forSearchEngines.htm\",\n"
 	            "					\"searchEngineRobotsDb\": \"WEB-INF/robots.db\",\n"
@@ -366,11 +377,11 @@ void Init(void)
 	            "					\"dataStorePassword\": \"dataStoreTestQuery\",\n"
 	            "					\"dataStoreTestQuery\": \"SET NOCOUNT ON;select test='test';\",\n"
 	            "					\"dataStoreLogFile\": \"/usr/local/tomcat/logs/datastore.log\",\n"
-	            "					\"dataStoreInitConns\": 10.000000,\n"
-	            "					\"dataStoreMaxConns\": 100.000000,\n"
-	            "					\"dataStoreConnUsageLimit\": 100.000000,\n"
+	            "					\"dataStoreInitConns\": 10,\n"
+	            "					\"dataStoreMaxConns\": 100,\n"
+	            "					\"dataStoreConnUsageLimit\": 100,\n"
 	            "					\"dataStoreLogLevel\": \"debug\",\n"
-	            "					\"maxUrlLength\": 500.000000\n"
+	            "					\"maxUrlLength\": 500\n"
 	            "				}\n"
 	            "			},\n"
 	            "			{\n"
@@ -388,17 +399,17 @@ void Init(void)
 	            "				\"servlet-class\": \"org.cofax.cms.CofaxToolsServlet\",\n"
 	            "				\"init-param\": {\n"
 	            "					\"templatePath\": \"toolstemplates/\",\n"
-	            "					\"log\": 1.000000,\n"
+	            "					\"log\": 1,\n"
 	            "					\"logLocation\": \"/usr/local/tomcat/logs/CofaxTools.log\",\n"
 	            "					\"logMaxSize\": \"\",\n"
-	            "					\"dataLog\": 1.000000,\n"
+	            "					\"dataLog\": 1,\n"
 	            "					\"dataLogLocation\": \"/usr/local/tomcat/logs/dataLog.log\",\n"
 	            "					\"dataLogMaxSize\": \"\",\n"
 	            "					\"removePageCache\": \"/content/admin/remove?cache=pages&id=\",\n"
 	            "					\"removeTemplateCache\": \"/content/admin/remove?cache=templates&id=\",\n"
 	            "					\"fileTransferFolder\": \"/usr/local/tomcat/webapps/content/fileTransferFolder\",\n"
-	            "					\"lookInContext\": 1.000000,\n"
-	            "					\"adminGroupID\": 4.000000,\n"
+	            "					\"lookInContext\": 1,\n"
+	            "					\"adminGroupID\": 4,\n"
 	            "					\"betaServer\": true\n"
 	            "				}\n"
 	            "			}\n"

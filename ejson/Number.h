@@ -34,12 +34,14 @@ namespace ejson
 			 * @brief Set the value of the node.
 			 * @param[in] _value New value of the node.
 			 */
-			void SetValue(double _value) { m_value = _value; };
+			void Set(double _value) { m_value = _value; };
 			/**
 			 * @brief Get the current element Value.
 			 * @return the reference of the string value.
 			 */
-			double GetValue(void) const { return m_value; };
+			double Get(void) const { return m_value; };
+			int32_t GetInt32(void) const { return (int32_t)m_value; };
+			int64_t GetInt64(void) const { return (int64_t)m_value; };
 		public: // herited function :
 			virtual bool IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			virtual bool IGenerate(etk::UString& _data, int32_t _indent) const;

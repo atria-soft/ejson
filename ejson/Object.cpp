@@ -121,7 +121,7 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 						return false;
 					}
 					tmpElement->IParse(_data, iii, _filePos, _doc);
-					AddSub(currentName, tmpElement);
+					Add(currentName, tmpElement);
 					currentName = "";
 				} else if (_data[iii]=='"') {
 					// find a string:
@@ -133,7 +133,7 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 						return false;
 					}
 					tmpElement->IParse(_data, iii, _filePos, _doc);
-					AddSub(currentName, tmpElement);
+					Add(currentName, tmpElement);
 					currentName = "";
 				} else if (_data[iii]=='[') {
 					// find a list:
@@ -145,7 +145,7 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 						return false;
 					}
 					tmpElement->IParse(_data, iii, _filePos, _doc);
-					AddSub(currentName, tmpElement);
+					Add(currentName, tmpElement);
 					currentName = "";
 				} else if(    _data[iii] == 'f'
 				           || _data[iii] == 't' ) {
@@ -158,7 +158,7 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 						return false;
 					}
 					tmpElement->IParse(_data, iii, _filePos, _doc);
-					AddSub(currentName, tmpElement);
+					Add(currentName, tmpElement);
 					currentName = "";
 				} else if( _data[iii] == 'n') {
 					// find null:
@@ -170,7 +170,7 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 						return false;
 					}
 					tmpElement->IParse(_data, iii, _filePos, _doc);
-					AddSub(currentName, tmpElement);
+					Add(currentName, tmpElement);
 					currentName = "";
 				} else if(true==CheckNumber(_data[iii])) {
 					// find number:
@@ -182,7 +182,7 @@ bool ejson::Object::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 						return false;
 					}
 					tmpElement->IParse(_data, iii, _filePos, _doc);
-					AddSub(currentName, tmpElement);
+					Add(currentName, tmpElement);
 					currentName = "";
 				} else if(_data[iii]==',') {
 					// find Separator : Restart cycle ...
@@ -228,7 +228,7 @@ bool ejson::Object::IGenerate(etk::UString& _data, int32_t _indent) const
 			if (true==tmp->IsString()) {
 				ejson::String* tmp2 = tmp->ToString();
 				if (NULL!=tmp2) {
-					if(    tmp2->GetValue().Size()>25
+					if(    tmp2->Get().Size()>25
 					    || m_value.GetKey(iii).Size()>25) {
 						oneLine=false;
 						break;
@@ -266,44 +266,112 @@ bool ejson::Object::IGenerate(etk::UString& _data, int32_t _indent) const
 	return true;
 }
 
-
-ejson::Value* ejson::Object::GetSub(const etk::UString& _named) const
+bool ejson::Object::Exist(const etk::UString& _name) const
 {
-	if (false==m_value.Exist(_named)) {
-		return NULL;
-	}
-	return m_value[_named];
+	return m_value.Exist(_name);
 }
 
-ejson::Object* ejson::Object::GetSubObject(const etk::UString& _named) const
+ejson::Value* ejson::Object::Get(const etk::UString& _name) const
 {
-	ejson::Value* tmp = GetSub(_named);
+	if (false==m_value.Exist(_name)) {
+		return NULL;
+	}
+	return m_value[_name];
+}
+
+ejson::Object* ejson::Object::GetObject(const etk::UString& _name) const
+{
+	ejson::Value* tmp = Get(_name);
 	if (NULL == tmp) {
 		return NULL;
 	}
 	return tmp->ToObject();
 }
 
-ejson::String* ejson::Object::GetSubString(const etk::UString& _named) const
+ejson::Array* ejson::Object::GetArray(const etk::UString& _name) const
 {
-	ejson::Value* tmp = GetSub(_named);
-	if (NULL == tmp) {
-		return NULL;
-	}
-	return tmp->ToString();
-}
-
-ejson::Array* ejson::Object::GetSubArray(const etk::UString& _named) const
-{
-	ejson::Value* tmp = GetSub(_named);
+	ejson::Value* tmp = Get(_name);
 	if (NULL == tmp) {
 		return NULL;
 	}
 	return tmp->ToArray();
 }
 
+ejson::Null* ejson::Object::GetNull(const etk::UString& _name) const
+{
+	ejson::Value* tmp = Get(_name);
+	if (NULL == tmp) {
+		return NULL;
+	}
+	return tmp->ToNull();
+}
 
-bool ejson::Object::AddSub(const etk::UString& _name, ejson::Value* _value)
+ejson::String* ejson::Object::GetString(const etk::UString& _name) const
+{
+	ejson::Value* tmp = Get(_name);
+	if (NULL == tmp) {
+		return NULL;
+	}
+	return tmp->ToString();
+}
+
+const etk::UString& ejson::Object::GetStringValue(const etk::UString& _name) const
+{
+	static const etk::UString errorString("");
+	ejson::String* tmpp = GetString(_name);
+	if (NULL==tmpp) {
+		return errorString;
+	}
+	return tmpp->Get();
+}
+
+etk::UString ejson::Object::GetStringValue(const etk::UString& _name, const etk::UString& _errorValue) const
+{
+	ejson::String* tmpp = GetString(_name);
+	if (NULL==tmpp) {
+		return _errorValue;
+	}
+	return tmpp->Get();
+}
+
+ejson::Boolean* ejson::Object::GetBoolean(const etk::UString& _name) const
+{
+	ejson::Value* tmp = Get(_name);
+	if (NULL == tmp) {
+		return NULL;
+	}
+	return tmp->ToBoolean();
+}
+
+bool ejson::Object::GetBooleanValue(const etk::UString& _name, bool _errorValue) const
+{
+	ejson::Boolean* tmpp = GetBoolean(_name);
+	if (NULL==tmpp) {
+		return _errorValue;
+	}
+	return tmpp->Get();
+}
+
+ejson::Number* ejson::Object::GetNumber(const etk::UString& _name) const
+{
+	ejson::Value* tmp = Get(_name);
+	if (NULL == tmp) {
+		return NULL;
+	}
+	return tmp->ToNumber();
+}
+
+double ejson::Object::GetNumberValue(const etk::UString& _name, double _errorValue) const
+{
+	ejson::Number* tmpp = GetNumber(_name);
+	if (NULL==tmpp) {
+		return _errorValue;
+	}
+	return tmpp->Get();
+}
+
+
+bool ejson::Object::Add(const etk::UString& _name, ejson::Value* _value)
 {
 	if (NULL == _value) {
 		return false;
@@ -321,7 +389,25 @@ bool ejson::Object::AddSub(const etk::UString& _name, ejson::Value* _value)
 	return true;
 }
 
+bool ejson::Object::AddString(const etk::UString& _name, const etk::UString& _value)
+{
+	return Add(_name, new ejson::String(_value));
+}
 
+bool ejson::Object::AddNull(const etk::UString& _name)
+{
+	return Add(_name, new ejson::Null());
+}
+
+bool ejson::Object::AddBoolean(const etk::UString& _name, bool _value)
+{
+	return Add(_name, new ejson::Boolean(_value));
+}
+
+bool ejson::Object::AddNumber(const etk::UString& _name, double _value)
+{
+	return Add(_name, new ejson::Number(_value));
+}
 
 bool ejson::Object::TransfertIn(ejson::Value* _obj)
 {
@@ -357,7 +443,7 @@ ejson::Value* ejson::Object::Duplicate(void) const
 		if (NULL == val) {
 			continue;
 		}
-		output->AddSub(key, val->Duplicate());
+		output->Add(key, val->Duplicate());
 	}
 	return output;
 }

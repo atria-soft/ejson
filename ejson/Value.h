@@ -130,7 +130,7 @@ namespace ejson
 			 * @param[in] current indentation of the file
 			 * @return false if an error occured.
 			 */
-			virtual bool IGenerate(etk::UString& _data, int32_t _indent) const { return true; };
+			virtual bool IGenerate(etk::UString& _data, int32_t _indent) const = 0;
 		public:
 			/**
 			 * @brief Get the node type.

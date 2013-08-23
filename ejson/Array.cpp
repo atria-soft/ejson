@@ -155,7 +155,7 @@ bool ejson::Array::IGenerate(etk::UString& _data, int32_t _indent) const
 			if (true==tmp->IsString()) {
 				ejson::String* tmp2 = tmp->ToString();
 				if (NULL!=tmp2) {
-					if(tmp2->GetValue().Size()>40) {
+					if(tmp2->Get().Size()>40) {
 						oneLine=false;
 						break;
 					}
@@ -199,6 +199,26 @@ bool ejson::Array::Add(ejson::Value* _element)
 	}
 	m_value.PushBack(_element);
 	return true;
+}
+
+bool ejson::Array::AddString(const etk::UString& _value)
+{
+	return Add(new ejson::String(_value));
+}
+
+bool ejson::Array::AddNull(void)
+{
+	return Add(new ejson::Null());
+}
+
+bool ejson::Array::AddBoolean(bool _value)
+{
+	return Add(new ejson::Boolean(_value));
+}
+
+bool ejson::Array::AddNumber(double _value)
+{
+	return Add(new ejson::Number(_value));
 }
 
 
@@ -267,4 +287,30 @@ ejson::Array* ejson::Array::GetArray(esize_t _id)
 	return tmpElement->ToArray();
 }
 
+ejson::Null* ejson::Array::GetNull(esize_t _id)
+{
+	ejson::Value* tmpElement = m_value[_id];
+	if (NULL == tmpElement) {
+		return NULL;
+	}
+	return tmpElement->ToNull();
+}
+
+ejson::Number* ejson::Array::GetNumber(esize_t _id)
+{
+	ejson::Value* tmpElement = m_value[_id];
+	if (NULL == tmpElement) {
+		return NULL;
+	}
+	return tmpElement->ToNumber();
+}
+
+ejson::Boolean* ejson::Array::GetBoolean(esize_t _id)
+{
+	ejson::Value* tmpElement = m_value[_id];
+	if (NULL == tmpElement) {
+		return NULL;
+	}
+	return tmpElement->ToBoolean();
+}
 
