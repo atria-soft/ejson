@@ -135,18 +135,58 @@ bool ejson::Array::IParse(const etk::UString& _data, int32_t& _pos, ejson::fileP
 
 bool ejson::Array::IGenerate(etk::UString& _data, int32_t _indent) const
 {
-	_data += "[\n";
+	bool oneLine=true;
+	if (m_value.Size()>3) {
+		oneLine=false;
+	} else {
+		for (esize_t iii=0; iii<m_value.Size() ; iii++) {
+			ejson::Value* tmp = m_value[iii];
+			if (tmp == NULL) {
+				continue;
+			}
+			if (true==tmp->IsObject()) {
+				oneLine=false;
+				break;
+			}
+			if (true==tmp->IsArray()) {
+				oneLine=false;
+				break;
+			}
+			if (true==tmp->IsString()) {
+				ejson::String* tmp2 = tmp->ToString();
+				if (NULL!=tmp2) {
+					if(tmp2->GetValue().Size()>40) {
+						oneLine=false;
+						break;
+					}
+				}
+			}
+		}
+	}
+	if (true==oneLine) {
+		_data += "[ ";
+	} else {
+		_data += "[\n";
+	}
 	for (esize_t iii=0; iii<m_value.Size() ; iii++) {
-		AddIndent(_data, _indent);
+		if (false==oneLine) {
+			AddIndent(_data, _indent);
+		}
 		if (NULL != m_value[iii]) {
 			m_value[iii]->IGenerate(_data, _indent+1);
 			if (iii<m_value.Size()-1) {
 				_data += ",";
 			}
 		}
-		_data += "\n";
+		if (true==oneLine) {
+			_data += " ";
+		} else {
+			_data += "\n";
+		}
 	}
-	AddIndent(_data, _indent-1);
+	if (false==oneLine) {
+		AddIndent(_data, _indent-1);
+	}
 	_data += "]";
 	return true;
 }

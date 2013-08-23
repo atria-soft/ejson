@@ -209,6 +209,8 @@ bool ejson::Object::IGenerate(etk::UString& _data, int32_t _indent) const
 	bool oneLine=true;
 	if (m_value.Size()>3) {
 		oneLine=false;
+	} else if (_indent<=1) {
+		oneLine=false;
 	} else {
 		for (esize_t iii=0; iii<m_value.Size() ; iii++) {
 			ejson::Value* tmp = m_value[iii];
@@ -226,7 +228,8 @@ bool ejson::Object::IGenerate(etk::UString& _data, int32_t _indent) const
 			if (true==tmp->IsString()) {
 				ejson::String* tmp2 = tmp->ToString();
 				if (NULL!=tmp2) {
-					if (tmp2->GetValue().Size()>50) {
+					if(    tmp2->GetValue().Size()>25
+					    || m_value.GetKey(iii).Size()>25) {
 						oneLine=false;
 						break;
 					}
@@ -234,11 +237,10 @@ bool ejson::Object::IGenerate(etk::UString& _data, int32_t _indent) const
 			}
 		}
 	}
-	
-	if (false==oneLine) {
-		_data += "{\n";
-	} else {
+	if (true==oneLine) {
 		_data += "{ ";
+	} else {
+		_data += "{\n";
 	}
 	for (esize_t iii=0; iii<m_value.Size() ; iii++) {
 		if (false==oneLine) {
@@ -251,10 +253,10 @@ bool ejson::Object::IGenerate(etk::UString& _data, int32_t _indent) const
 		if (iii<m_value.Size()-1) {
 			_data += ",";
 		}
-		if (false==oneLine) {
-			_data += "\n";
-		} else {
+		if (true==oneLine) {
 			_data += " ";
+		} else {
+			_data += "\n";
 		}
 	}
 	if (false==oneLine) {
