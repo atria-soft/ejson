@@ -314,3 +314,41 @@ ejson::Boolean* ejson::Array::GetBoolean(esize_t _id)
 	return tmpElement->ToBoolean();
 }
 
+const etk::UString& ejson::Array::GetStringValue(esize_t _id)
+{
+	static const etk::UString errorValue("");
+	ejson::String* tmpElement = GetString(_id);
+	if (NULL == tmpElement) {
+		return errorValue;
+	}
+	return tmpElement->Get();
+}
+
+etk::UString ejson::Array::GetStringValue(esize_t _id, const etk::UString& _errorValue)
+{
+	ejson::String* tmpElement = GetString(_id);
+	if (NULL == tmpElement) {
+		return _errorValue;
+	}
+	return tmpElement->Get();
+}
+
+double ejson::Array::GetNumberValue(esize_t _id, double _errorValue)
+{
+	ejson::Number* tmpElement = GetNumber(_id);
+	if (NULL == tmpElement) {
+		return _errorValue;
+	}
+	return tmpElement->Get();
+}
+
+bool ejson::Array::GetBooleanValue(esize_t _id, bool _errorValue)
+{
+	ejson::Boolean* tmpElement = GetBoolean(_id);
+	if (NULL == tmpElement) {
+		return _errorValue;
+	}
+	return tmpElement->Get();
+}
+
+

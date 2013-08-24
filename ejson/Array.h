@@ -34,12 +34,13 @@ namespace ejson
 			 * @brief Get the number of sub element in the current one
 			 * @return the Number of stored element
 			 */
-			esize_t Size(void) { return m_value.Size(); };
+			esize_t Size(void) const { return m_value.Size(); };
 			/**
 			 * @brief Get the pointer on an element reference with his ID.
 			 * @param[in] _id Id of the element.
 			 * @return NULL if the element does not exist.
 			 */
+			const ejson::Value* Get(esize_t _id) const { return m_value[_id]; };
 			ejson::Value* Get(esize_t _id) { return m_value[_id]; };
 			/**
 			 * @brief Get the pointer on an element reference with his ID (casted in Object if it is an object).
@@ -54,15 +55,16 @@ namespace ejson
 			 */
 			ejson::String* GetString(esize_t _id);
 			/**
-			 * @brief Get the value of the string element (if not a strin return "")
+			 * @brief Get the value of the string element (if not a string return "")
 			 * @param[in] _id Id of the element.
-			 * @return value of the element
+			 * @return value of the element.
 			 */
 			const etk::UString& GetStringValue(esize_t _id);
 			/**
-			 * @brief Get the value of the string element (if not a strin return "")
+			 * @brief Get the value of the string element
 			 * @param[in] _id Id of the element.
-			 * @return value of the element
+			 * @param[in] _errorValue The return value if an error occured.
+			 * @return value of the element, or the _errorValue.
 			 */
 			etk::UString GetStringValue(esize_t _id, const etk::UString& _errorValue);
 			/**
@@ -84,13 +86,25 @@ namespace ejson
 			 */
 			ejson::Number* GetNumber(esize_t _id);
 			/**
+			 * @brief Get the value of the Number element
+			 * @param[in] _id Id of the element.
+			 * @param[in] _errorValue The return value if an error occured.
+			 * @return value of the element, or the _errorValue.
+			 */
+			double GetNumberValue(esize_t _id, double _errorValue);
+			/**
 			 * @brief Get the pointer on an element reference with his ID (casted in Boolean if it is an Boolean).
 			 * @param[in] _id Id of the element.
 			 * @return NULL if the element does not exist.
 			 */
 			ejson::Boolean* GetBoolean(esize_t _id);
-			
-			
+			/**
+			 * @brief Get the value of the Boolean element
+			 * @param[in] _id Id of the element.
+			 * @param[in] _errorValue The return value if an error occured.
+			 * @return value of the element, or the _errorValue.
+			 */
+			bool GetBooleanValue(esize_t _id, bool _errorValue);
 			/**
 			 * @brief Add an element on the array.
 			 * @param[in] _element element to add.
