@@ -31,119 +31,119 @@ namespace ejson
 			etk::Vector<ejson::Value*> m_value; //!< vector of sub elements
 		public:
 			/**
-			 * @brief Get the number of sub element in the current one
+			 * @brief get the number of sub element in the current one
 			 * @return the Number of stored element
 			 */
-			esize_t Size(void) const { return m_value.Size(); };
+			esize_t size(void) const { return m_value.size(); };
 			/**
-			 * @brief Get the pointer on an element reference with his ID.
+			 * @brief get the pointer on an element reference with his ID.
 			 * @param[in] _id Id of the element.
 			 * @return NULL if the element does not exist.
 			 */
-			const ejson::Value* Get(esize_t _id) const { return m_value[_id]; };
-			ejson::Value* Get(esize_t _id) { return m_value[_id]; };
+			const ejson::Value* get(esize_t _id) const { return m_value[_id]; };
+			ejson::Value* get(esize_t _id) { return m_value[_id]; };
 			/**
-			 * @brief Get the pointer on an element reference with his ID (casted in Object if it is an object).
+			 * @brief get the pointer on an element reference with his ID (casted in Object if it is an object).
 			 * @param[in] _id Id of the element.
 			 * @return NULL if the element does not exist.
 			 */
-			ejson::Object* GetObject(esize_t _id);
+			ejson::Object* getObject(esize_t _id);
 			/**
-			 * @brief Get the pointer on an element reference with his ID (casted in String if it is an String).
+			 * @brief get the pointer on an element reference with his ID (casted in String if it is an String).
 			 * @param[in] _id Id of the element.
 			 * @return NULL if the element does not exist.
 			 */
-			ejson::String* GetString(esize_t _id);
+			ejson::String* getString(esize_t _id);
 			/**
-			 * @brief Get the value of the string element (if not a string return "")
+			 * @brief get the value of the string element (if not a string return "")
 			 * @param[in] _id Id of the element.
 			 * @return value of the element.
 			 */
-			const etk::UString& GetStringValue(esize_t _id);
+			const etk::UString& getStringValue(esize_t _id);
 			/**
-			 * @brief Get the value of the string element
+			 * @brief get the value of the string element
 			 * @param[in] _id Id of the element.
 			 * @param[in] _errorValue The return value if an error occured.
 			 * @return value of the element, or the _errorValue.
 			 */
-			etk::UString GetStringValue(esize_t _id, const etk::UString& _errorValue);
+			etk::UString getStringValue(esize_t _id, const etk::UString& _errorValue);
 			/**
-			 * @brief Get the pointer on an element reference with his ID (casted in Array if it is an Array).
+			 * @brief get the pointer on an element reference with his ID (casted in Array if it is an Array).
 			 * @param[in] _id Id of the element.
 			 * @return NULL if the element does not exist.
 			 */
-			ejson::Array* GetArray(esize_t _id);
+			ejson::Array* getArray(esize_t _id);
 			/**
-			 * @brief Get the pointer on an element reference with his ID (casted in Null if it is an Null).
+			 * @brief get the pointer on an element reference with his ID (casted in Null if it is an Null).
 			 * @param[in] _id Id of the element.
 			 * @return NULL if the element does not exist.
 			 */
-			ejson::Null* GetNull(esize_t _id);
+			ejson::Null* getNull(esize_t _id);
 			/**
-			 * @brief Get the pointer on an element reference with his ID (casted in Number if it is an Number).
+			 * @brief get the pointer on an element reference with his ID (casted in Number if it is an Number).
 			 * @param[in] _id Id of the element.
 			 * @return NULL if the element does not exist.
 			 */
-			ejson::Number* GetNumber(esize_t _id);
+			ejson::Number* getNumber(esize_t _id);
 			/**
-			 * @brief Get the value of the Number element
+			 * @brief get the value of the Number element
 			 * @param[in] _id Id of the element.
 			 * @param[in] _errorValue The return value if an error occured.
 			 * @return value of the element, or the _errorValue.
 			 */
-			double GetNumberValue(esize_t _id, double _errorValue);
+			double getNumberValue(esize_t _id, double _errorValue);
 			/**
-			 * @brief Get the pointer on an element reference with his ID (casted in Boolean if it is an Boolean).
+			 * @brief get the pointer on an element reference with his ID (casted in Boolean if it is an Boolean).
 			 * @param[in] _id Id of the element.
 			 * @return NULL if the element does not exist.
 			 */
-			ejson::Boolean* GetBoolean(esize_t _id);
+			ejson::Boolean* getBoolean(esize_t _id);
 			/**
-			 * @brief Get the value of the Boolean element
+			 * @brief get the value of the Boolean element
 			 * @param[in] _id Id of the element.
 			 * @param[in] _errorValue The return value if an error occured.
 			 * @return value of the element, or the _errorValue.
 			 */
-			bool GetBooleanValue(esize_t _id, bool _errorValue);
+			bool getBooleanValue(esize_t _id, bool _errorValue);
 			/**
-			 * @brief Add an element on the array.
+			 * @brief add an element on the array.
 			 * @param[in] _element element to add.
 			 * @return false if an error occured.
 			 */
-			bool Add(ejson::Value* _element);
+			bool add(ejson::Value* _element);
 			/**
-			 * @brief Add a string element in the Object (automatic creation)
+			 * @brief add a string element in the Object (automatic creation)
 			 * @param[in] _value string value to add
 			 * @return false if an error occured
 			 */
-			bool AddString(const etk::UString& _value);
+			bool addString(const etk::UString& _value);
 			/**
-			 * @brief Add a "null" element in the Object (automatic creation)
+			 * @brief add a "null" element in the Object (automatic creation)
 			 * @return false if an error occured
 			 */
-			bool AddNull(void);
+			bool addNull(void);
 			/**
-			 * @brief Add a boolean element in the Object (automatic creation)
+			 * @brief add a boolean element in the Object (automatic creation)
 			 * @param[in] _value boolean value to add
 			 * @return false if an error occured
 			 */
-			bool AddBoolean(bool _value);
+			bool addBoolean(bool _value);
 			/**
-			 * @brief Add a double element in the Object (automatic creation)
+			 * @brief add a double element in the Object (automatic creation)
 			 * @param[in] _value double value to add
 			 * @return false if an error occured
 			 */
-			bool AddNumber(double _value);
+			bool addNumber(double _value);
 			
 		public: // herited function :
-			virtual bool IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
-			virtual bool IGenerate(etk::UString& _data, int32_t _indent) const;
-			virtual nodeType_te GetType(void) const { return typeArray; };
-			virtual ejson::Array* ToArray(void) { return this; };
-			virtual const ejson::Array* ToArray(void) const{ return this; };
-			virtual void Clear(void);
-			virtual bool TransfertIn(ejson::Value* _obj);
-			virtual ejson::Value* Duplicate(void) const;
+			virtual bool iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
+			virtual bool iGenerate(etk::UString& _data, int32_t _indent) const;
+			virtual nodeType_te getType(void) const { return typeArray; };
+			virtual ejson::Array* toArray(void) { return this; };
+			virtual const ejson::Array* toArray(void) const{ return this; };
+			virtual void clear(void);
+			virtual bool transfertIn(ejson::Value* _obj);
+			virtual ejson::Value* duplicate(void) const;
 	};
 };
 

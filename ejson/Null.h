@@ -28,13 +28,13 @@ namespace ejson
 			 */
 			virtual ~Null(void) { };
 		public: // herited function :
-			virtual bool IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
-			virtual bool IGenerate(etk::UString& _data, int32_t _indent) const;
-			virtual nodeType_te GetType(void) const { return typeString; };
-			virtual ejson::Null* ToNull(void) { return this; };
-			virtual const ejson::Null* ToNull(void) const{ return this; };
-			virtual bool TransfertIn(ejson::Value* _obj);
-			virtual ejson::Value* Duplicate(void) const;
+			virtual bool iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
+			virtual bool iGenerate(etk::UString& _data, int32_t _indent) const;
+			virtual nodeType_te getType(void) const { return typeString; };
+			virtual ejson::Null* toNull(void) { return this; };
+			virtual const ejson::Null* toNull(void) const{ return this; };
+			virtual bool transfertIn(ejson::Value* _obj);
+			virtual ejson::Value* duplicate(void) const;
 	};
 };
 

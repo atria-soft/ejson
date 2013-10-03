@@ -14,10 +14,9 @@
 #undef __class__
 #define __class__	"Null"
 
-bool ejson::Null::IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc)
-{
+bool ejson::Null::iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'Null' ");
-	if (_pos+3 >= _data.Size()){
+	if (_pos+3 >= _data.size()){
 		EJSON_CREATE_ERROR(_doc, _data, _pos, _filePos, "can not parse null !!! ");
 		return false;
 	}
@@ -34,31 +33,28 @@ bool ejson::Null::IParse(const etk::UString& _data, int32_t& _pos, ejson::filePo
 }
 
 
-bool ejson::Null::IGenerate(etk::UString& _data, int32_t _indent) const
-{
+bool ejson::Null::iGenerate(etk::UString& _data, int32_t _indent) const {
 	_data += "null";
 	return true;
 }
 
 
-bool ejson::Null::TransfertIn(ejson::Value* _obj)
-{
-	if (NULL==_obj) {
+bool ejson::Null::transfertIn(ejson::Value* _obj) {
+	if (NULL == _obj) {
 		JSON_ERROR("Request transfer on an NULL pointer");
 		return false;
 	}
-	ejson::Null* other = _obj->ToNull();
-	if (NULL==other) {
+	ejson::Null* other = _obj->toNull();
+	if (NULL == other) {
 		JSON_ERROR("Request transfer on an element that is not an Null");
 		return false;
 	}
 	return true;
 }
 
-ejson::Value* ejson::Null::Duplicate(void) const
-{
+ejson::Value* ejson::Null::duplicate(void) const {
 	ejson::Null* output = new ejson::Null();
-	if (NULL==output) {
+	if (NULL == output) {
 		JSON_ERROR("Allocation error ...");
 		return NULL;
 	}

@@ -14,47 +14,42 @@
 #define __class__	"Value"
 
 
-ejson::Value::~Value(void)
-{
-	Clear();
+ejson::Value::~Value(void) {
+	clear();
 }
 
-etk::CCout& ejson::operator <<(etk::CCout& _os, const ejson::filePos& _obj)
-{
+etk::CCout& ejson::operator <<(etk::CCout& _os, const ejson::filePos& _obj) {
 	_os << "(l=";
-	_os << _obj.GetLine();
+	_os << _obj.getLine();
 	_os << ",c=";
-	_os << _obj.GetCol();
+	_os << _obj.getCol();
 	_os << ")";
 	return _os;
 }
 
 
-void ejson::Value::AddIndent(etk::UString& _data, int32_t _indent) const
-{
+void ejson::Value::addIndent(etk::UString& _data, int32_t _indent) const {
 	for (int32_t iii=0; iii<_indent; iii++) {
 		_data+="\t";
 	}
 }
 
-void ejson::Value::DrawElementParsed(const etk::UniChar& _val, const ejson::filePos& _filePos) const
-{
-	if (_val=='\n') {
-		JSON_DEBUG(_filePos << " Parse '\\n'");
-	} else if (_val=='\t') {
-		JSON_DEBUG(_filePos << " Parse '\\t'");
+void ejson::Value::drawElementParsed(const etk::UniChar& _val, const ejson::filePos& _filePos) const {
+	if (_val == '\n') {
+		JSON_DEBUG(_filePos << " parse '\\n'");
+	} else if (_val == '\t') {
+		JSON_DEBUG(_filePos << " parse '\\t'");
 	} else {
-		JSON_DEBUG(_filePos << " Parse '" << _val << "'");
+		JSON_DEBUG(_filePos << " parse '" << _val << "'");
 	}
 }
 
-int32_t ejson::Value::CountWhiteChar(const etk::UString& _data, int32_t _pos, ejson::filePos& _filePos) const
-{
-	_filePos.Clear();
+int32_t ejson::Value::countWhiteChar(const etk::UString& _data, int32_t _pos, ejson::filePos& _filePos) const {
+	_filePos.clear();
 	int32_t white=0;
-	for (int32_t iii=_pos; iii<_data.Size(); iii++) {
-		_filePos.Check(_data[iii]);
-		if(true == _data[iii].IsWhiteChar()) {
+	for (int32_t iii=_pos; iii<_data.size(); iii++) {
+		_filePos.check(_data[iii]);
+		if(true == _data[iii].isWhiteChar()) {
 			white++;
 		} else {
 			break;
@@ -65,8 +60,7 @@ int32_t ejson::Value::CountWhiteChar(const etk::UString& _data, int32_t _pos, ej
 }
 
 
-bool ejson::Value::CheckString(const etk::UniChar& _val) const
-{
+bool ejson::Value::checkString(const etk::UniChar& _val) const {
 	if(    _val == '!'
 	    || _val == '"'
 	    || _val == '#'
@@ -105,12 +99,11 @@ bool ejson::Value::CheckString(const etk::UniChar& _val) const
 	return true;
 }
 
-bool ejson::Value::CheckNumber(const etk::UniChar& _val) const
-{
-	if(    _val=='-'
-	    || _val=='+'
-	    || _val=='e'
-	    || _val=='.'
+bool ejson::Value::checkNumber(const etk::UniChar& _val) const {
+	if(    _val == '-'
+	    || _val == '+'
+	    || _val == 'e'
+	    || _val == '.'
 	    || (    _val>='0'
 	         && _val<='9' ) ) {
 		return true;

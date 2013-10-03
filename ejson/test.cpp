@@ -15,15 +15,13 @@
 #undef __class__
 #define __class__	"ejson::test"
 
-class testCheck
-{
+class testCheck {
 	public:
 		etk::UString m_ref;
 		etk::UString m_input;
 		int32_t m_errorPos; // -1 : no error , 1 : parsing error, 2 generation error, 3 comparaison error ????
 		testCheck(void) {};
-		void Set(const etk::UString& _ref, int32_t _pos, const etk::UString& _input)
-		{
+		void set(const etk::UString& _ref, int32_t _pos, const etk::UString& _input) {
 			m_ref = _ref;
 			m_input = _input;
 			m_errorPos = _pos;
@@ -32,137 +30,136 @@ class testCheck
 
 etk::Vector<testCheck> l_list;
 
-void Init(void)
-{
+void Init(void) {
 	etk::UString reference;
 	etk::UString input;
 	testCheck check;
 	
-	// ======================================================
-	check.Set("test ejson::Doc", -2, "");
-	l_list.PushBack(check);
-	// ======================================================
+	//  == ====================================================
+	check.set("test ejson::Doc", -2, "");
+	l_list.pushBack(check);
+	//  == ====================================================
 	reference = "{\n}\n";
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          "{}\n");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          "{    \t\r   }\n");
-	l_list.PushBack(check);
-	// ======================================================
-	check.Set("test ejson::null", -2, "");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
+	//  == ====================================================
+	check.set("test ejson::null", -2, "");
+	l_list.pushBack(check);
 	// ------------------------------------------------------
 	reference = "{\n\t\"tmpElement\": null\n}\n";
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          "{ tmpElement:null }\n");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          "{ \t\ntmpElement:null \t\n }\n");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          "tmpElement:null\n");
-	l_list.PushBack(check);
-	// ======================================================
-	check.Set("test ejson::boolean", -2, "");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
+	//  == ====================================================
+	check.set("test ejson::boolean", -2, "");
+	l_list.pushBack(check);
 	// ------------------------------------------------------
 	reference = "{\n\t\"tmpElement\": true\n}\n";
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          "{ tmpElement:true }\n");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          "{ \t\ntmpElement:true \t\n }\n");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          "tmpElement:true\n");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
 	reference = "{\n\t\"tmpElement\": false\n}\n";
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          "{ tmpElement:false }\n");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          "{ \t\ntmpElement:false \t\n }\n");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          "tmpElement:false\n");
-	l_list.PushBack(check);
-	// ======================================================
-	check.Set("test ejson::number", -2, "");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
+	//  == ====================================================
+	check.set("test ejson::number", -2, "");
+	l_list.pushBack(check);
 	// ------------------------------------------------------
 	reference = "{\n\t\"tmpElement\": 956256\n}\n";
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          "{ tmpElement:956256 }\n");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          "{ \t\ntmpElement:956256 \t\n }\n");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          "tmpElement:956256\n");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
-	check.Set("{\n\t\"tmpElement\": 956256\n}\n",
+	check.set("{\n\t\"tmpElement\": 956256\n}\n",
 	          -1,
 	          "{tmpElement:956256}\n");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
-	check.Set("{\n\t\"tmpElement\": -956256\n}\n",
+	check.set("{\n\t\"tmpElement\": -956256\n}\n",
 	          -1,
 	          "{tmpElement:-956256}\n");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
-	check.Set("{\n\t\"tmpElement\": -956256\n}\n",
+	check.set("{\n\t\"tmpElement\": -956256\n}\n",
 	          -1,
 	          "{tmpElement:-956256}\n");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
-	check.Set("{\n\t\"tmpElement\": -956.256\n}\n",
+	check.set("{\n\t\"tmpElement\": -956.256\n}\n",
 	          -1,
 	          "{tmpElement:-956.256}\n");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	/*
 	// ------------------------------------------------------
-	check.Set("{\n\t\"tmpElement\": -956956544454621184\n}\n",
+	check.set("{\n\t\"tmpElement\": -956956544454621184\n}\n",
 	          -1,
 	          "{tmpElement:-956956544454621354.256}\n");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
-	check.Set("{\n\t\"tmpElement\": 0.000002\n}\n",
+	check.set("{\n\t\"tmpElement\": 0.000002\n}\n",
 	          -1,
 	          "{tmpElement:+.000001565464}\n");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	*/
 	
 	
-	// ======================================================
-	check.Set("test ejson::all", -2, "");
-	l_list.PushBack(check);
-	// ======================================================
+	//  == ====================================================
+	check.set("test ejson::all", -2, "");
+	l_list.pushBack(check);
+	//  == ====================================================
 	reference = "{\n"
 	            "	\"menu\": {\n"
 	            "		\"id\": \"file\",\n"
@@ -172,10 +169,10 @@ void Init(void)
 	            "		}\n"
 	            "	}\n"
 	            "}\n";
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          reference);
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
 	reference = "{\n"
 	            "	\"menu\": {\n"
@@ -191,12 +188,12 @@ void Init(void)
 	            "		}\n"
 	            "	}\n"
 	            "}\n";
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          reference);
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	            "{\n"
 	            "	menu: {\n"
@@ -224,9 +221,9 @@ void Init(void)
 	            "		}\n"
 	            "	}\n"
 	            "}\n");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	            "menu: {\n"
 	            "	id: \"file\",\n"
@@ -252,7 +249,7 @@ void Init(void)
 	            "		]\n"
 	            "	}\n"
 	            "}\n");
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	
 //////////////////////////////////////////////////////////////////////////
 	reference = "{\n"
@@ -277,10 +274,10 @@ void Init(void)
 	            "		}\n"
 	            "	}\n"
 	            "}\n";
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          reference);
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
 	reference = "{\n"
 	            "	\"menu\": {\n"
@@ -295,10 +292,10 @@ void Init(void)
 	            "		}\n"
 	            "	}\n"
 	            "}\n";
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          reference);
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
 	reference = "{\n"
 	            "	\"widget\": {\n"
@@ -328,10 +325,10 @@ void Init(void)
 	            "		}\n"
 	            "	}\n"
 	            "}\n";
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          reference);
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
 	reference = "{\n"
 	            "	\"web-app\": {\n"
@@ -424,10 +421,10 @@ void Init(void)
 	            "		\"taglib\": { \"taglib-uri\": \"cofax.tld\", \"taglib-location\": \"/WEB-INF/tlds/cofax.tld\" }\n"
 	            "	}\n"
 	            "}\n";
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          reference);
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
 	reference = "{\n"
 	            "	\"menu\": {\n"
@@ -458,23 +455,22 @@ void Init(void)
 	            "		]\n"
 	            "	}\n"
 	            "}\n";
-	check.Set(reference,
+	check.set(reference,
 	          -1,
 	          reference);
-	l_list.PushBack(check);
+	l_list.pushBack(check);
 	// ------------------------------------------------------
 }
 
-int main(int argc, const char *argv[])
-{
+int main(int argc, const char *argv[]) {
 	GeneralDebugSetLevel(etk::LOG_LEVEL_VERBOSE);
 	Init();
 	int32_t countError = 0;
 	int32_t countSeparator = 0;
 	int32_t sectionID = 0;
-	for (int32_t iii=0 ; iii<l_list.Size() ; iii++) {
+	for (int32_t iii=0 ; iii<l_list.size() ; iii++) {
 		int32_t jjj= iii-countSeparator+1;
-		if (l_list[iii].m_errorPos==-2) {
+		if (l_list[iii].m_errorPos == -2) {
 			countSeparator++;
 			sectionID = 0;
 			JSON_INFO("-------------------------------------------------------------");
@@ -486,8 +482,8 @@ int main(int argc, const char *argv[])
 		ejson::Document doc;
 		etk::UString out("");
 		//JSON_DEBUG("parse : \n" << l_list[iii].m_input);
-		if (false==doc.Parse(l_list[iii].m_input)) {
-			if (l_list[iii].m_errorPos==1) {
+		if (false == doc.parse(l_list[iii].m_input)) {
+			if (l_list[iii].m_errorPos == 1) {
 				JSON_INFO("[TEST] " << sectionID << ":" << jjj << " {  OK  } Parsing in error (correct result)");
 			} else {
 				JSON_ERROR("[TEST] " << sectionID << ":" << jjj << " {ERROR } Parsing might be OK");
@@ -496,30 +492,30 @@ int main(int argc, const char *argv[])
 			}
 			continue;
 		}
-		if (l_list[iii].m_errorPos==1) {
+		if (l_list[iii].m_errorPos == 1) {
 			JSON_ERROR("[TEST] " << sectionID << ":" << jjj << " {ERROR } Parsing might be in error ...");
 			JSON_ERROR("parse : \n" << l_list[iii].m_input);
 			doc.Display();
 			countError++;
 			continue;
 		}
-		if (false == doc.Generate(out)) {
-			if (l_list[iii].m_errorPos==2) {
+		if (false == doc.generate(out)) {
+			if (l_list[iii].m_errorPos == 2) {
 				JSON_INFO("[TEST] " << sectionID << ":" << jjj << " {  OK  } generate in error (correct result)");
 			} else {
-				JSON_ERROR("[TEST] " << sectionID << ":" << jjj << " {ERROR } Generate output might be OK");
+				JSON_ERROR("[TEST] " << sectionID << ":" << jjj << " {ERROR } generate output might be OK");
 				JSON_ERROR("generate : \n" << out);
 				countError++;
 			}
 			continue;
 		}
-		if (l_list[iii].m_errorPos==2) {
+		if (l_list[iii].m_errorPos == 2) {
 			JSON_ERROR("[TEST] " << sectionID << ":" << jjj << " {ERROR } Generating might be in error ...");
 			countError++;
 			continue;
 		}
 		if (l_list[iii].m_ref != out) {
-			if (l_list[iii].m_errorPos==3) {
+			if (l_list[iii].m_errorPos == 3) {
 				JSON_INFO("[TEST] " << sectionID << ":" << jjj << " {  OK  } Result in error (normal case)");
 			} else {
 				JSON_ERROR("[TEST] " << sectionID << ":" << jjj << " {ERROR } different output");
@@ -527,12 +523,12 @@ int main(int argc, const char *argv[])
 				etk::Vector<etk::UString> tmpref = l_list[iii].m_ref.Split('\n');
 				//JSON_ERROR("generate : \n" << out);
 				//JSON_ERROR("reference : \n" << l_list[iii].m_ref);
-				for (int32_t jjj=0; jjj<tmpout.Size() || jjj<tmpref.Size(); ++jjj) {
-					if (jjj<tmpref.Size()) {
+				for (int32_t jjj=0; jjj<tmpout.size() || jjj<tmpref.Size(); ++jjj) {
+					if (jjj<tmpref.size()) {
 						JSON_INFO("[" << jjj << "] " << tmpref[jjj] );
 					}
-					if (jjj<tmpout.Size()) {
-						if (jjj>=tmpref.Size() || tmpref[jjj] != tmpout[jjj]) {
+					if (jjj<tmpout.size()) {
+						if (jjj>=tmpref.size() || tmpref[jjj] != tmpout[jjj]) {
 							JSON_ERROR("[" << jjj << "] " << tmpout[jjj] );
 						}
 					}
@@ -541,18 +537,18 @@ int main(int argc, const char *argv[])
 			}
 			continue;
 		}
-		if (l_list[iii].m_errorPos==3) {
+		if (l_list[iii].m_errorPos == 3) {
 			JSON_ERROR("[TEST] " << sectionID << ":" << jjj << " {ERROR} checking result might be in error...");
 			etk::Vector<etk::UString> tmpout = out.Split('\n');
 			etk::Vector<etk::UString> tmpref = l_list[iii].m_ref.Split('\n');
 			//JSON_ERROR("generate : \n" << out);
 			//JSON_ERROR("reference : \n" << l_list[iii].m_ref);
-			for (int32_t jjj=0; jjj<tmpout.Size() || jjj<tmpref.Size(); ++jjj) {
-				if (jjj<tmpref.Size()) {
+			for (int32_t jjj=0; jjj<tmpout.size() || jjj<tmpref.Size(); ++jjj) {
+				if (jjj<tmpref.size()) {
 					JSON_INFO("[" << jjj << "] " << tmpref[jjj] );
 				}
-				if (jjj<tmpout.Size()) {
-					if (jjj>=tmpref.Size() || tmpref[jjj] != tmpout[jjj]) {
+				if (jjj<tmpout.size()) {
+					if (jjj>=tmpref.size() || tmpref[jjj] != tmpout[jjj]) {
 						JSON_ERROR("[" << jjj << "] " << tmpout[jjj] );
 					}
 				}
@@ -563,9 +559,9 @@ int main(int argc, const char *argv[])
 		JSON_INFO("[TEST] " << sectionID << ":" << jjj << " {  OK  }");
 	}
 	if (countError>0) {
-		JSON_ERROR("[TEST] produce " << countError << " error on " << l_list.Size()-countSeparator << " test");
+		JSON_ERROR("[TEST] produce " << countError << " error on " << l_list.size()-countSeparator << " test");
 	} else {
-		JSON_INFO("[TEST] produce " << countError << " error on " << l_list.Size()-countSeparator << " test");
+		JSON_INFO("[TEST] produce " << countError << " error on " << l_list.size()-countSeparator << " test");
 	}
 	return 0;
 }

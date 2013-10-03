@@ -20,104 +20,102 @@
 #define __class__	"Array"
 
 
-void ejson::Array::Clear(void)
-{
-	for (esize_t iii=0; iii<m_value.Size(); ++iii) {
+void ejson::Array::clear(void) {
+	for (esize_t iii=0; iii<m_value.size(); ++iii) {
 		if (NULL == m_value[iii]) {
 			continue;
 		}
 		delete(m_value[iii]);
 		m_value[iii] = NULL;
 	}
-	m_value.Clear();
+	m_value.clear();
 }
 
-bool ejson::Array::IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc)
-{
+bool ejson::Array::iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'Object' ");
-	for (int32_t iii=_pos+1; iii<_data.Size(); iii++) {
-		_filePos.Check(_data[iii]);
+	for (int32_t iii=_pos+1; iii<_data.size(); iii++) {
+		_filePos.check(_data[iii]);
 		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
-			DrawElementParsed(_data[iii], _filePos);
+		 drawElementParsed(_data[iii], _filePos);
 		#endif
 		ejson::filePos tmpPos;
-		if(    _data[iii]==' '
-		    || _data[iii]=='\t'
-		    || _data[iii]=='\n'
-		    || _data[iii]=='\r') {
-			// white space ==> nothing to do ...
-		} else if(_data[iii]==']') {
+		if(    _data[iii] == ' '
+		    || _data[iii] == '\t'
+		    || _data[iii] == '\n'
+		    || _data[iii] == '\r') {
+			// white space  == > nothing to do ...
+		} else if(_data[iii] == ']') {
 			// find end of value:
-			_pos=iii; // ==> return the end element type ==> usefull to check end and check if adding element is needed
+			_pos=iii; //  == > return the end element type ==> usefull to check end and check if adding element is needed
 			return true;
-		} else if (_data[iii]=='{') {
+		} else if (_data[iii] == '{') {
 			// find an object:
 			JSON_PARSE_ELEMENT("find Object");
 			ejson::Object * tmpElement = new ejson::Object();
-			if (NULL==tmpElement) {
+			if (NULL == tmpElement) {
 				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in object");
 				_pos=iii;
 				return false;
 			}
-			tmpElement->IParse(_data, iii, _filePos, _doc);
-			m_value.PushBack(tmpElement);
-		} else if (_data[iii]=='"') {
+			tmpElement->iParse(_data, iii, _filePos, _doc);
+			m_value.pushBack(tmpElement);
+		} else if (_data[iii] == '"') {
 			// find a string:
 			JSON_PARSE_ELEMENT("find String quoted");
 			ejson::String * tmpElement = new ejson::String();
-			if (NULL==tmpElement) {
+			if (NULL == tmpElement) {
 				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in String");
 				_pos=iii;
 				return false;
 			}
-			tmpElement->IParse(_data, iii, _filePos, _doc);
-			m_value.PushBack(tmpElement);
-		} else if (_data[iii]=='[') {
+			tmpElement->iParse(_data, iii, _filePos, _doc);
+			m_value.pushBack(tmpElement);
+		} else if (_data[iii] == '[') {
 			// find a list:
 			JSON_PARSE_ELEMENT("find List");
 			ejson::Array * tmpElement = new ejson::Array();
-			if (NULL==tmpElement) {
+			if (NULL == tmpElement) {
 				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Array");
 				_pos=iii;
 				return false;
 			}
-			tmpElement->IParse(_data, iii, _filePos, _doc);
-			m_value.PushBack(tmpElement);
+			tmpElement->iParse(_data, iii, _filePos, _doc);
+			m_value.pushBack(tmpElement);
 		} else if(    _data[iii] == 'f'
 		           || _data[iii] == 't' ) {
 			// find boolean:
 			JSON_PARSE_ELEMENT("find Boolean");
 			ejson::Boolean * tmpElement = new ejson::Boolean();
-			if (NULL==tmpElement) {
+			if (NULL == tmpElement) {
 				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Boolean");
 				_pos=iii;
 				return false;
 			}
-			tmpElement->IParse(_data, iii, _filePos, _doc);
-			m_value.PushBack(tmpElement);
+			tmpElement->iParse(_data, iii, _filePos, _doc);
+			m_value.pushBack(tmpElement);
 		} else if( _data[iii] == 'n') {
 			// find null:
 			JSON_PARSE_ELEMENT("find Null");
 			ejson::Null * tmpElement = new ejson::Null();
-			if (NULL==tmpElement) {
+			if (NULL == tmpElement) {
 				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Boolean");
 				_pos=iii;
 				return false;
 			}
-			tmpElement->IParse(_data, iii, _filePos, _doc);
-			m_value.PushBack(tmpElement);
-		} else if(true==CheckNumber(_data[iii])) {
+			tmpElement->iParse(_data, iii, _filePos, _doc);
+			m_value.pushBack(tmpElement);
+		} else if(true == checkNumber(_data[iii])) {
 			// find number:
 			JSON_PARSE_ELEMENT("find Number");
 			ejson::Number * tmpElement = new ejson::Number();
-			if (NULL==tmpElement) {
+			if (NULL == tmpElement) {
 				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Boolean");
 				_pos=iii;
 				return false;
 			}
-			tmpElement->IParse(_data, iii, _filePos, _doc);
-			m_value.PushBack(tmpElement);
-		} else if(_data[iii]==',') {
+			tmpElement->iParse(_data, iii, _filePos, _doc);
+			m_value.pushBack(tmpElement);
+		} else if(_data[iii] == ',') {
 			// find Separator : Restart cycle ...
 			// TODO : check if element are separated with ','
 		} else {
@@ -128,34 +126,33 @@ bool ejson::Array::IParse(const etk::UString& _data, int32_t& _pos, ejson::fileP
 			return false;
 		}
 	}
-	_pos = _data.Size();
+	_pos = _data.size();
 	return false;
 }
 
 
-bool ejson::Array::IGenerate(etk::UString& _data, int32_t _indent) const
-{
+bool ejson::Array::iGenerate(etk::UString& _data, int32_t _indent) const {
 	bool oneLine=true;
-	if (m_value.Size()>3) {
+	if (m_value.size()>3) {
 		oneLine=false;
 	} else {
-		for (esize_t iii=0; iii<m_value.Size() ; iii++) {
+		for (esize_t iii=0; iii<m_value.size() ; iii++) {
 			ejson::Value* tmp = m_value[iii];
 			if (tmp == NULL) {
 				continue;
 			}
-			if (true==tmp->IsObject()) {
+			if (true == tmp->isObject()) {
 				oneLine=false;
 				break;
 			}
-			if (true==tmp->IsArray()) {
+			if (true == tmp->isArray()) {
 				oneLine=false;
 				break;
 			}
-			if (true==tmp->IsString()) {
-				ejson::String* tmp2 = tmp->ToString();
+			if (true == tmp->isString()) {
+				ejson::String* tmp2 = tmp->toString();
 				if (NULL!=tmp2) {
-					if(tmp2->Get().Size()>40) {
+					if(tmp2->get().size()>40) {
 						oneLine=false;
 						break;
 					}
@@ -163,192 +160,175 @@ bool ejson::Array::IGenerate(etk::UString& _data, int32_t _indent) const
 			}
 		}
 	}
-	if (true==oneLine) {
+	if (true == oneLine) {
 		_data += "[ ";
 	} else {
 		_data += "[\n";
 	}
-	for (esize_t iii=0; iii<m_value.Size() ; iii++) {
-		if (false==oneLine) {
-			AddIndent(_data, _indent);
+	for (esize_t iii=0; iii<m_value.size() ; iii++) {
+		if (false == oneLine) {
+			addIndent(_data, _indent);
 		}
 		if (NULL != m_value[iii]) {
-			m_value[iii]->IGenerate(_data, _indent+1);
-			if (iii<m_value.Size()-1) {
+			m_value[iii]->iGenerate(_data, _indent+1);
+			if (iii<m_value.size()-1) {
 				_data += ",";
 			}
 		}
-		if (true==oneLine) {
+		if (true == oneLine) {
 			_data += " ";
 		} else {
 			_data += "\n";
 		}
 	}
-	if (false==oneLine) {
-		AddIndent(_data, _indent-1);
+	if (false == oneLine) {
+		addIndent(_data, _indent-1);
 	}
 	_data += "]";
 	return true;
 }
 
-bool ejson::Array::Add(ejson::Value* _element)
-{
-	if (NULL==_element) {
+bool ejson::Array::add(ejson::Value* _element) {
+	if (NULL == _element) {
 		JSON_ERROR("Request add on an NULL pointer");
 		return false;
 	}
-	m_value.PushBack(_element);
+	m_value.pushBack(_element);
 	return true;
 }
 
-bool ejson::Array::AddString(const etk::UString& _value)
-{
-	return Add(new ejson::String(_value));
+bool ejson::Array::addString(const etk::UString& _value) {
+	return add(new ejson::String(_value));
 }
 
-bool ejson::Array::AddNull(void)
-{
-	return Add(new ejson::Null());
+bool ejson::Array::addNull(void) {
+	return add(new ejson::Null());
 }
 
-bool ejson::Array::AddBoolean(bool _value)
-{
-	return Add(new ejson::Boolean(_value));
+bool ejson::Array::addBoolean(bool _value) {
+	return add(new ejson::Boolean(_value));
 }
 
-bool ejson::Array::AddNumber(double _value)
-{
-	return Add(new ejson::Number(_value));
+bool ejson::Array::addNumber(double _value) {
+	return add(new ejson::Number(_value));
 }
 
 
-bool ejson::Array::TransfertIn(ejson::Value* _obj)
-{
-	if (NULL==_obj) {
+bool ejson::Array::transfertIn(ejson::Value* _obj) {
+	if (NULL == _obj) {
 		JSON_ERROR("Request transfer on an NULL pointer");
 		return false;
 	}
-	ejson::Array* other = _obj->ToArray();
-	if (NULL==other) {
+	ejson::Array* other = _obj->toArray();
+	if (NULL == other) {
 		JSON_ERROR("Request transfer on an element that is not an array");
 		return false;
 	}
 	// remove destination elements
-	other->Clear();
+	other->clear();
 	// Copy to the destination
 	other->m_value = m_value;
 	// remove current:
-	m_value.Clear();
+	m_value.clear();
 	return true;
 }
 
 // TODO : Manage error ...
-ejson::Value* ejson::Array::Duplicate(void) const
-{
+ejson::Value* ejson::Array::duplicate(void) const {
 	ejson::Array* output = new ejson::Array();
-	if (NULL==output) {
+	if (NULL == output) {
 		JSON_ERROR("Allocation error ...");
 		return NULL;
 	}
-	for (esize_t iii=0; iii<m_value.Size(); ++iii) {
+	for (esize_t iii=0; iii<m_value.size(); ++iii) {
 		ejson::Value* val = m_value[iii];
 		if (NULL == val) {
 			continue;
 		}
-		output->Add(val->Duplicate());
+		output->add(val->duplicate());
 	}
 	return output;
 }
 
-ejson::Object* ejson::Array::GetObject(esize_t _id)
-{
+ejson::Object* ejson::Array::getObject(esize_t _id) {
 	ejson::Value* tmpElement = m_value[_id];
 	if (NULL == tmpElement) {
 		return NULL;
 	}
-	return tmpElement->ToObject();
+	return tmpElement->toObject();
 }
 
-ejson::String* ejson::Array::GetString(esize_t _id)
-{
+ejson::String* ejson::Array::getString(esize_t _id) {
 	ejson::Value* tmpElement = m_value[_id];
 	if (NULL == tmpElement) {
 		return NULL;
 	}
-	return tmpElement->ToString();
+	return tmpElement->toString();
 }
 
-ejson::Array* ejson::Array::GetArray(esize_t _id)
-{
+ejson::Array* ejson::Array::getArray(esize_t _id) {
 	ejson::Value* tmpElement = m_value[_id];
 	if (NULL == tmpElement) {
 		return NULL;
 	}
-	return tmpElement->ToArray();
+	return tmpElement->toArray();
 }
 
-ejson::Null* ejson::Array::GetNull(esize_t _id)
-{
+ejson::Null* ejson::Array::getNull(esize_t _id) {
 	ejson::Value* tmpElement = m_value[_id];
 	if (NULL == tmpElement) {
 		return NULL;
 	}
-	return tmpElement->ToNull();
+	return tmpElement->toNull();
 }
 
-ejson::Number* ejson::Array::GetNumber(esize_t _id)
-{
+ejson::Number* ejson::Array::getNumber(esize_t _id) {
 	ejson::Value* tmpElement = m_value[_id];
 	if (NULL == tmpElement) {
 		return NULL;
 	}
-	return tmpElement->ToNumber();
+	return tmpElement->toNumber();
 }
 
-ejson::Boolean* ejson::Array::GetBoolean(esize_t _id)
-{
+ejson::Boolean* ejson::Array::getBoolean(esize_t _id) {
 	ejson::Value* tmpElement = m_value[_id];
 	if (NULL == tmpElement) {
 		return NULL;
 	}
-	return tmpElement->ToBoolean();
+	return tmpElement->toBoolean();
 }
 
-const etk::UString& ejson::Array::GetStringValue(esize_t _id)
-{
+const etk::UString& ejson::Array::getStringValue(esize_t _id) {
 	static const etk::UString errorValue("");
-	ejson::String* tmpElement = GetString(_id);
+	ejson::String* tmpElement = getString(_id);
 	if (NULL == tmpElement) {
 		return errorValue;
 	}
-	return tmpElement->Get();
+	return tmpElement->get();
 }
 
-etk::UString ejson::Array::GetStringValue(esize_t _id, const etk::UString& _errorValue)
-{
-	ejson::String* tmpElement = GetString(_id);
+etk::UString ejson::Array::getStringValue(esize_t _id, const etk::UString& _errorValue) {
+	ejson::String* tmpElement = getString(_id);
 	if (NULL == tmpElement) {
 		return _errorValue;
 	}
-	return tmpElement->Get();
+	return tmpElement->get();
 }
 
-double ejson::Array::GetNumberValue(esize_t _id, double _errorValue)
-{
-	ejson::Number* tmpElement = GetNumber(_id);
+double ejson::Array::getNumberValue(esize_t _id, double _errorValue) {
+	ejson::Number* tmpElement = getNumber(_id);
 	if (NULL == tmpElement) {
 		return _errorValue;
 	}
-	return tmpElement->Get();
+	return tmpElement->get();
 }
 
-bool ejson::Array::GetBooleanValue(esize_t _id, bool _errorValue)
-{
-	ejson::Boolean* tmpElement = GetBoolean(_id);
+bool ejson::Array::getBooleanValue(esize_t _id, bool _errorValue) {
+	ejson::Boolean* tmpElement = getBoolean(_id);
 	if (NULL == tmpElement) {
 		return _errorValue;
 	}
-	return tmpElement->Get();
+	return tmpElement->get();
 }
 
 

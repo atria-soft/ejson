@@ -31,25 +31,25 @@ namespace ejson
 			double m_value; //!< value of the node
 		public:
 			/**
-			 * @brief Set the value of the node.
+			 * @brief set the value of the node.
 			 * @param[in] _value New value of the node.
 			 */
-			void Set(double _value) { m_value = _value; };
+			void set(double _value) { m_value = _value; };
 			/**
-			 * @brief Get the current element Value.
+			 * @brief get the current element Value.
 			 * @return the reference of the string value.
 			 */
-			double Get(void) const { return m_value; };
-			int32_t GetInt32(void) const { return (int32_t)m_value; };
-			int64_t GetInt64(void) const { return (int64_t)m_value; };
+			double get(void) const { return m_value; };
+			int32_t getInt32(void) const { return (int32_t)m_value; };
+			int64_t getInt64(void) const { return (int64_t)m_value; };
 		public: // herited function :
-			virtual bool IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
-			virtual bool IGenerate(etk::UString& _data, int32_t _indent) const;
-			virtual nodeType_te GetType(void) const { return typeString; };
-			virtual ejson::Number* ToNumber(void) { return this; };
-			virtual const ejson::Number* ToNumber(void) const{ return this; };
-			virtual bool TransfertIn(ejson::Value* _obj);
-			virtual ejson::Value* Duplicate(void) const;
+			virtual bool iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
+			virtual bool iGenerate(etk::UString& _data, int32_t _indent) const;
+			virtual nodeType_te getType(void) const { return typeString; };
+			virtual ejson::Number* toNumber(void) { return this; };
+			virtual const ejson::Number* toNumber(void) const{ return this; };
+			virtual bool transfertIn(ejson::Value* _obj);
+			virtual ejson::Value* duplicate(void) const;
 	};
 };
 

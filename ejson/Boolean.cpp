@@ -13,11 +13,10 @@
 #undef __class__
 #define __class__	"Boolean"
 
-bool ejson::Boolean::IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc)
-{
+bool ejson::Boolean::iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'Boolean' ");
 	if(    _data[_pos] == 't'
-	    && _pos+3 < _data.Size()
+	    && _pos+3 < _data.size()
 	    && _data[_pos+1] == 'r'
 	    && _data[_pos+2] == 'u'
 	    && _data[_pos+3] == 'e'){
@@ -27,7 +26,7 @@ bool ejson::Boolean::IParse(const etk::UString& _data, int32_t& _pos, ejson::fil
 		return true;
 	}
 	if(    _data[_pos] == 'f'
-	    && _pos+4 < _data.Size()
+	    && _pos+4 < _data.size()
 	    && _data[_pos+1] == 'a'
 	    && _data[_pos+2] == 'l'
 	    && _data[_pos+3] == 's'
@@ -42,9 +41,8 @@ bool ejson::Boolean::IParse(const etk::UString& _data, int32_t& _pos, ejson::fil
 }
 
 
-bool ejson::Boolean::IGenerate(etk::UString& _data, int32_t _indent) const
-{
-	if (true==m_value) {
+bool ejson::Boolean::iGenerate(etk::UString& _data, int32_t _indent) const {
+	if (true == m_value) {
 		_data += "true";
 	} else {
 		_data += "false";
@@ -53,14 +51,13 @@ bool ejson::Boolean::IGenerate(etk::UString& _data, int32_t _indent) const
 }
 
 
-bool ejson::Boolean::TransfertIn(ejson::Value* _obj)
-{
-	if (NULL==_obj) {
+bool ejson::Boolean::transfertIn(ejson::Value* _obj) {
+	if (NULL == _obj) {
 		JSON_ERROR("Request transfer on an NULL pointer");
 		return false;
 	}
-	ejson::Boolean* other = _obj->ToBoolean();
-	if (NULL==other) {
+	ejson::Boolean* other = _obj->toBoolean();
+	if (NULL == other) {
 		JSON_ERROR("Request transfer on an element that is not an Boolean");
 		return false;
 	}
@@ -70,10 +67,9 @@ bool ejson::Boolean::TransfertIn(ejson::Value* _obj)
 	return true;
 }
 
-ejson::Value* ejson::Boolean::Duplicate(void) const
-{
+ejson::Value* ejson::Boolean::duplicate(void) const {
 	ejson::Boolean* output = new ejson::Boolean(m_value);
-	if (NULL==output) {
+	if (NULL == output) {
 		JSON_ERROR("Allocation error ...");
 		return NULL;
 	}

@@ -18,13 +18,12 @@
 
 
 
-bool ejson::String::IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc)
-{
+bool ejson::String::iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'String' ");
-	for (int32_t iii=_pos+1; iii<_data.Size(); iii++) {
-		_filePos.Check(_data[iii]);
+	for (int32_t iii=_pos+1; iii<_data.size(); iii++) {
+		_filePos.check(_data[iii]);
 		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
-			DrawElementParsed(_data[iii], _filePos);
+		 drawElementParsed(_data[iii], _filePos);
 		#endif
 		ejson::filePos tmpPos;
 		// TODO : manage \x
@@ -35,14 +34,13 @@ bool ejson::String::IParse(const etk::UString& _data, int32_t& _pos, ejson::file
 			return true;
 		}
 	}
-	_pos=_data.Size();
+	_pos=_data.size();
 	EJSON_CREATE_ERROR(_doc, _data, _pos, _filePos, "get end of string whithout fincding end of quote");
 	return false;
 }
 
 
-bool ejson::String::IGenerate(etk::UString& _data, int32_t _indent) const
-{
+bool ejson::String::iGenerate(etk::UString& _data, int32_t _indent) const {
 	_data += "\"";;
 	_data += m_value;
 	_data += "\"";;
@@ -50,14 +48,13 @@ bool ejson::String::IGenerate(etk::UString& _data, int32_t _indent) const
 }
 
 
-bool ejson::String::TransfertIn(ejson::Value* _obj)
-{
-	if (NULL==_obj) {
+bool ejson::String::transfertIn(ejson::Value* _obj) {
+	if (NULL == _obj) {
 		JSON_ERROR("Request transfer on an NULL pointer");
 		return false;
 	}
-	ejson::String* other = _obj->ToString();
-	if (NULL==other) {
+	ejson::String* other = _obj->toString();
+	if (NULL == other) {
 		JSON_ERROR("Request transfer on an element that is not an String");
 		return false;
 	}
@@ -66,10 +63,9 @@ bool ejson::String::TransfertIn(ejson::Value* _obj)
 	return true;
 }
 
-ejson::Value* ejson::String::Duplicate(void) const
-{
+ejson::Value* ejson::String::duplicate(void) const {
 	ejson::String* output = new ejson::String(m_value);
-	if (NULL==output) {
+	if (NULL == output) {
 		JSON_ERROR("Allocation error ...");
 		return NULL;
 	}

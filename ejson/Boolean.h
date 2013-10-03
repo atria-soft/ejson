@@ -31,23 +31,23 @@ namespace ejson
 			bool m_value; //!< value of the node
 		public:
 			/**
-			 * @brief Set the value of the node.
+			 * @brief set the value of the node.
 			 * @param[in] _value New value of the node.
 			 */
-			void Set(bool _value) { m_value = _value; };
+			void set(bool _value) { m_value = _value; };
 			/**
-			 * @brief Get the current element Value.
+			 * @brief get the current element Value.
 			 * @return the reference of the string value.
 			 */
-			bool Get(void) const { return m_value; };
+			bool get(void) const { return m_value; };
 		public: // herited function :
-			virtual bool IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
-			virtual bool IGenerate(etk::UString& _data, int32_t _indent) const;
-			virtual nodeType_te GetType(void) const { return typeString; };
-			virtual ejson::Boolean* ToBoolean(void) { return this; };
-			virtual const ejson::Boolean* ToBoolean(void) const{ return this; };
-			virtual bool TransfertIn(ejson::Value* _obj);
-			virtual ejson::Value* Duplicate(void) const;
+			virtual bool iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
+			virtual bool iGenerate(etk::UString& _data, int32_t _indent) const;
+			virtual nodeType_te getType(void) const { return typeString; };
+			virtual ejson::Boolean* toBoolean(void) { return this; };
+			virtual const ejson::Boolean* toBoolean(void) const{ return this; };
+			virtual bool transfertIn(ejson::Value* _obj);
+			virtual ejson::Value* duplicate(void) const;
 	};
 };
 

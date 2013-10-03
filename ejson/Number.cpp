@@ -14,45 +14,42 @@
 #undef __class__
 #define __class__	"Number"
 
-bool ejson::Number::IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc)
-{
+bool ejson::Number::iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'Number' ");
 	etk::UString tmpVal;
-	for (int32_t iii=_pos; iii<_data.Size(); iii++) {
-		_filePos.Check(_data[iii]);
+	for (int32_t iii=_pos; iii<_data.size(); iii++) {
+		_filePos.check(_data[iii]);
 		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
-			DrawElementParsed(_data[iii], _filePos);
+		 drawElementParsed(_data[iii], _filePos);
 		#endif
-		if(true==CheckNumber(_data[iii])) {
+		if(true == checkNumber(_data[iii])) {
 			tmpVal+=_data[iii];
 		} else {
 			_pos = iii-1;
-			m_value = tmpVal.ToDouble();
+			m_value = tmpVal.toDouble();
 			JSON_PARSE_ELEMENT("end parse : 'Number' ");
 			return true;
 		}
 	}
-	_pos=_data.Size();
+	_pos=_data.size();
 	EJSON_CREATE_ERROR(_doc, _data, _pos, _filePos, "get end of string whithout fincding end of quote");
 	return false;
 }
 
 
-bool ejson::Number::IGenerate(etk::UString& _data, int32_t _indent) const
-{
+bool ejson::Number::iGenerate(etk::UString& _data, int32_t _indent) const {
 	_data += m_value;
 	return true;
 }
 
 
-bool ejson::Number::TransfertIn(ejson::Value* _obj)
-{
-	if (NULL==_obj) {
+bool ejson::Number::transfertIn(ejson::Value* _obj) {
+	if (NULL == _obj) {
 		JSON_ERROR("Request transfer on an NULL pointer");
 		return false;
 	}
-	ejson::Number* other = _obj->ToNumber();
-	if (NULL==other) {
+	ejson::Number* other = _obj->toNumber();
+	if (NULL == other) {
 		JSON_ERROR("Request transfer on an element that is not an Number");
 		return false;
 	}
@@ -62,10 +59,9 @@ bool ejson::Number::TransfertIn(ejson::Value* _obj)
 	return true;
 }
 
-ejson::Value* ejson::Number::Duplicate(void) const
-{
+ejson::Value* ejson::Number::duplicate(void) const {
 	ejson::Number* output = new ejson::Number(m_value);
-	if (NULL==output) {
+	if (NULL == output) {
 		JSON_ERROR("Allocation error ...");
 		return NULL;
 	}

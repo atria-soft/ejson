@@ -57,9 +57,8 @@ namespace ejson
 			~filePos(void) { };
 			filePos& operator ++(void) { m_col++; return *this; };
 			filePos& operator --(void) { m_col--; if(m_col<0) { m_col=0;} return *this; };
-			const filePos& operator +=(const filePos& _obj)
-			{
-				if (_obj.m_line==0) {
+			const filePos& operator +=(const filePos& _obj) {
+				if (_obj.m_line == 0) {
 					m_col += _obj.m_col;
 				} else {
 					m_col = _obj.m_col;
@@ -67,39 +66,34 @@ namespace ejson
 				}
 				return *this;
 			};
-			const filePos& operator +=(int32_t _col)
-			{
+			const filePos& operator +=(int32_t _col) {
 				m_col += _col;
 				return *this;
 			};
-			const filePos& operator= (const filePos& _obj )
-			{
+			const filePos& operator= (const filePos& _obj ) {
 				m_col = _obj.m_col;
 				m_line = _obj.m_line;
 				return *this;
 			}
-			void NewLine(void) { m_col=0; m_line++; };
-			bool Check(const etk::UniChar& _val)
-			{
+			void newLine(void) { m_col=0; m_line++; };
+			bool check(const etk::UniChar& _val) {
 				m_col++;
-				if (_val=='\n') {
-					NewLine();
+				if (_val == '\n') {
+					newLine();
 					return true;
 				}
 				return false;
 			}
-			void Set(int32_t _line, int32_t _col)
-			{
+			void set(int32_t _line, int32_t _col) {
 				m_col = _col;
 				m_line = _line;
 			}
-			void Clear(void)
-			{
+			void clear(void) {
 				m_col = 0;
 				m_line = 0;
 			}
-			int32_t GetCol(void) const { return m_col; };
-			int32_t GetLine(void) const { return m_line; };
+			int32_t getCol(void) const { return m_col; };
+			int32_t getLine(void) const { return m_line; };
 	};
 	etk::CCout& operator <<(etk::CCout& _os, const filePos& _obj);
 	
@@ -116,50 +110,50 @@ namespace ejson
 			virtual ~Value(void);
 		public:
 			/**
-			 * @brief Parse the Current node [pure VIRUAL]
+			 * @brief parse the Current node [pure VIRUAL]
 			 * @param[in] _data data string to parse.
 			 * @param[in,out] _pos position in the string to start parse, return the position end of parsing.
 			 * @param[in] _caseSensitive Request a parsion of element that is not case sensitive (all element is in low case)
 			 * @param[in,out] file parsing position (line x col x)
 			 * @return false if an error occured.
 			 */
-			virtual bool IParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) = 0;
+			virtual bool iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) = 0;
 			/**
-			 * @brief Generate a string with the tree of the xml
+			 * @brief generate a string with the tree of the xml
 			 * @param[in,out] _data string where to add the elements
 			 * @param[in] current indentation of the file
 			 * @return false if an error occured.
 			 */
-			virtual bool IGenerate(etk::UString& _data, int32_t _indent) const = 0;
+			virtual bool iGenerate(etk::UString& _data, int32_t _indent) const = 0;
 		public:
 			/**
-			 * @brief Get the node type.
+			 * @brief get the node type.
 			 * @return the type of the Node.
 			 */
-			virtual nodeType_te GetType(void) const { return typeValue; };
+			virtual nodeType_te getType(void) const { return typeValue; };
 		protected:
 			/**
-			 * @brief Add indentation of the string input.
+			 * @brief add indentation of the string input.
 			 * @param[in,out] _data String where the indentation is done.
 			 * @param[in] _indent Number of tab to add at the string.
 			 */
-			void AddIndent(etk::UString& _data, int32_t _indent) const;
+			void addIndent(etk::UString& _data, int32_t _indent) const;
 			/**
 			 * @brief Display the cuurent element that is curently parse.
 			 * @param[in] _val Char that is parsed.
 			 * @param[in] _filePos Position of the char in the file.
 			 */
-			void DrawElementParsed(const etk::UniChar& _val, const ejson::filePos& _filePos) const;
+			void drawElementParsed(const etk::UniChar& _val, const ejson::filePos& _filePos) const;
 			/**
 			 * @brief check if an name (for object named) (not : !"#$%&'()*+,/;<=>?@[\]^`{|}~ \n\t\r).
 			 * @param[in] _val Value to check the conformity.
 			 */
-			bool CheckString(const etk::UniChar& _val) const;
+			bool checkString(const etk::UniChar& _val) const;
 			/**
 			 * @brief check if an number -+.0123456789e).
 			 * @param[in] _val Value to check the conformity.
 			 */
-			bool CheckNumber(const etk::UniChar& _val) const;
+			bool checkNumber(const etk::UniChar& _val) const;
 			/**
 			 * @brief count the number of white char in the string from the specify position (stop at the first element that is not a white char)
 			 * @param[in] _data Data to parse.
@@ -167,109 +161,109 @@ namespace ejson
 			 * @param[out] _filePos new poistion of te file to add.
 			 * @return number of white element.
 			 */
-			int32_t CountWhiteChar(const etk::UString& _data, int32_t _pos, ejson::filePos& _filePos) const;
+			int32_t countWhiteChar(const etk::UString& _data, int32_t _pos, ejson::filePos& _filePos) const;
 		public:
 			/**
 			 * @brief Cast the element in a Value if it is possible.
 			 * @return pointer on the class or NULL.
 			 */
-			virtual ejson::Value* ToValue(void) { return this; };
-			virtual const ejson::Value* ToValue(void) const { return this; };
+			virtual ejson::Value* toValue(void) { return this; };
+			virtual const ejson::Value* toValue(void) const { return this; };
 			/**
 			 * @brief Cast the element in a Document if it is possible.
 			 * @return pointer on the class or NULL.
 			 */
-			virtual ejson::Document* ToDocument(void) { return NULL; };
-			virtual const ejson::Document* ToDocument(void) const { return NULL; };
+			virtual ejson::Document* toDocument(void) { return NULL; };
+			virtual const ejson::Document* toDocument(void) const { return NULL; };
 			/**
 			 * @brief Cast the element in a Array if it is possible.
 			 * @return pointer on the class or NULL.
 			 */
-			virtual ejson::Array* ToArray(void) { return NULL; };
-			virtual const ejson::Array* ToArray(void) const{ return NULL; };
+			virtual ejson::Array* toArray(void) { return NULL; };
+			virtual const ejson::Array* toArray(void) const{ return NULL; };
 			/**
 			 * @brief Cast the element in a Object if it is possible.
 			 * @return pointer on the class or NULL.
 			 */
-			virtual ejson::Object* ToObject(void) { return NULL; };
-			virtual const ejson::Object* ToObject(void) const{ return NULL; };
+			virtual ejson::Object* toObject(void) { return NULL; };
+			virtual const ejson::Object* toObject(void) const{ return NULL; };
 			/**
 			 * @brief Cast the element in a String if it is possible.
 			 * @return pointer on the class or NULL.
 			 */
-			virtual ejson::String* ToString(void) { return NULL; };
-			virtual const ejson::String* ToString(void) const{ return NULL; };
+			virtual ejson::String* toString(void) { return NULL; };
+			virtual const ejson::String* toString(void) const{ return NULL; };
 			/**
 			 * @brief Cast the element in a Number if it is possible.
 			 * @return pointer on the class or NULL.
 			 */
-			virtual ejson::Number* ToNumber(void) { return NULL; };
-			virtual const ejson::Number* ToNumber(void) const{ return NULL; };
+			virtual ejson::Number* toNumber(void) { return NULL; };
+			virtual const ejson::Number* toNumber(void) const{ return NULL; };
 			/**
 			 * @brief Cast the element in a Boolean if it is possible.
 			 * @return pointer on the class or NULL.
 			 */
-			virtual ejson::Boolean* ToBoolean(void) { return NULL; };
-			virtual const ejson::Boolean* ToBoolean(void) const{ return NULL; };
+			virtual ejson::Boolean* toBoolean(void) { return NULL; };
+			virtual const ejson::Boolean* toBoolean(void) const{ return NULL; };
 			/**
 			 * @brief Cast the element in a Null if it is possible.
 			 * @return pointer on the class or NULL.
 			 */
-			virtual ejson::Null* ToNull(void) { return NULL; };
-			virtual const ejson::Null* ToNull(void) const{ return NULL; };
+			virtual ejson::Null* toNull(void) { return NULL; };
+			virtual const ejson::Null* toNull(void) const{ return NULL; };
 			
 			/**
-			 * @brief Check if the node is a ejson::Document
+			 * @brief check if the node is a ejson::Document
 			 * @return true if the node is a ejson::Document
 			 */
-			bool IsDocument(void) const { return GetType()==ejson::typeDocument; };
+			bool isDocument(void) const { return getType() == ejson::typeDocument; };
 			/**
-			 * @brief Check if the node is a ejson::Array
+			 * @brief check if the node is a ejson::Array
 			 * @return true if the node is a ejson::Array
 			 */
-			bool IsArray(void) const { return GetType()==ejson::typeArray; };
+			bool isArray(void) const { return getType() == ejson::typeArray; };
 			/**
-			 * @brief Check if the node is a ejson::Object
+			 * @brief check if the node is a ejson::Object
 			 * @return true if the node is a ejson::Object
 			 */
-			bool IsObject(void) const { return GetType()==ejson::typeObject; };
+			bool isObject(void) const { return getType() == ejson::typeObject; };
 			/**
-			 * @brief Check if the node is a ejson::String
+			 * @brief check if the node is a ejson::String
 			 * @return true if the node is a ejson::String
 			 */
-			bool IsString(void) const { return GetType()==ejson::typeString; };
+			bool isString(void) const { return getType() == ejson::typeString; };
 			/**
-			 * @brief Check if the node is a ejson::Number
+			 * @brief check if the node is a ejson::Number
 			 * @return true if the node is a ejson::Number
 			 */
-			bool IsNumber(void) const { return GetType()==ejson::typeNumber; };
+			bool isNumber(void) const { return getType() == ejson::typeNumber; };
 			/**
-			 * @brief Check if the node is a ejson::Boolean
+			 * @brief check if the node is a ejson::Boolean
 			 * @return true if the node is a ejson::Boolean
 			 */
-			bool IsBoolean(void) const { return GetType()==ejson::typeBoolean; };
+			bool isBoolean(void) const { return getType() == ejson::typeBoolean; };
 			/**
-			 * @brief Check if the node is a ejson::Null
+			 * @brief check if the node is a ejson::Null
 			 * @return true if the node is a ejson::Null
 			 */
-			bool IsNull(void) const { return GetType()==ejson::typeNull; };
+			bool isNull(void) const { return getType() == ejson::typeNull; };
 			
 			/**
-			 * @brief Clear the Node
+			 * @brief clear the Node
 			 */
-			virtual void Clear(void) {};
+			virtual void clear(void) {};
 			/**
 			 * @brief Tranfert all element in the element set in parameter
 			 * @param[in,out] _obj move all parameter in the selected element
 			 * @return true if transfer is done corectly
 			 * @note all element is remove from the curent element.
 			 */
-			virtual bool TransfertIn(ejson::Value* _obj) { return false; };
+			virtual bool transfertIn(ejson::Value* _obj) { return false; };
 			/**
 			 * @brief Copy the curent node and all the child in the curent one.
 			 * @return NULL in an error occured, the pointer on the element otherwise
 			 */
-			virtual ejson::Value* Duplicate(void) const { return NULL; };
+			virtual ejson::Value* duplicate(void) const { return NULL; };
 	};
 };
 
