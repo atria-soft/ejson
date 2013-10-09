@@ -30,7 +30,7 @@ class testCheck {
 
 etk::Vector<testCheck> l_list;
 
-void Init(void) {
+void init(void) {
 	etk::UString reference;
 	etk::UString input;
 	testCheck check;
@@ -463,8 +463,8 @@ void Init(void) {
 }
 
 int main(int argc, const char *argv[]) {
-	GeneralDebugSetLevel(etk::LOG_LEVEL_VERBOSE);
-	Init();
+	debug::setGeneralLevel(etk::LOG_LEVEL_VERBOSE);
+	init();
 	int32_t countError = 0;
 	int32_t countSeparator = 0;
 	int32_t sectionID = 0;
@@ -495,7 +495,7 @@ int main(int argc, const char *argv[]) {
 		if (l_list[iii].m_errorPos == 1) {
 			JSON_ERROR("[TEST] " << sectionID << ":" << jjj << " {ERROR } Parsing might be in error ...");
 			JSON_ERROR("parse : \n" << l_list[iii].m_input);
-			doc.Display();
+			doc.display();
 			countError++;
 			continue;
 		}
@@ -519,11 +519,11 @@ int main(int argc, const char *argv[]) {
 				JSON_INFO("[TEST] " << sectionID << ":" << jjj << " {  OK  } Result in error (normal case)");
 			} else {
 				JSON_ERROR("[TEST] " << sectionID << ":" << jjj << " {ERROR } different output");
-				etk::Vector<etk::UString> tmpout = out.Split('\n');
-				etk::Vector<etk::UString> tmpref = l_list[iii].m_ref.Split('\n');
+				etk::Vector<etk::UString> tmpout = out.split('\n');
+				etk::Vector<etk::UString> tmpref = l_list[iii].m_ref.split('\n');
 				//JSON_ERROR("generate : \n" << out);
 				//JSON_ERROR("reference : \n" << l_list[iii].m_ref);
-				for (int32_t jjj=0; jjj<tmpout.size() || jjj<tmpref.Size(); ++jjj) {
+				for (int32_t jjj=0; jjj<tmpout.size() || jjj<tmpref.size(); ++jjj) {
 					if (jjj<tmpref.size()) {
 						JSON_INFO("[" << jjj << "] " << tmpref[jjj] );
 					}
@@ -539,11 +539,11 @@ int main(int argc, const char *argv[]) {
 		}
 		if (l_list[iii].m_errorPos == 3) {
 			JSON_ERROR("[TEST] " << sectionID << ":" << jjj << " {ERROR} checking result might be in error...");
-			etk::Vector<etk::UString> tmpout = out.Split('\n');
-			etk::Vector<etk::UString> tmpref = l_list[iii].m_ref.Split('\n');
+			etk::Vector<etk::UString> tmpout = out.split('\n');
+			etk::Vector<etk::UString> tmpref = l_list[iii].m_ref.split('\n');
 			//JSON_ERROR("generate : \n" << out);
 			//JSON_ERROR("reference : \n" << l_list[iii].m_ref);
-			for (int32_t jjj=0; jjj<tmpout.size() || jjj<tmpref.Size(); ++jjj) {
+			for (int32_t jjj=0; jjj<tmpout.size() || jjj<tmpref.size(); ++jjj) {
 				if (jjj<tmpref.size()) {
 					JSON_INFO("[" << jjj << "] " << tmpref[jjj] );
 				}
