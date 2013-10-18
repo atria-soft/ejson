@@ -76,7 +76,7 @@ namespace ejson
 				return *this;
 			}
 			void newLine(void) { m_col=0; m_line++; };
-			bool check(const etk::UniChar& _val) {
+			bool check(const etk::UChar& _val) {
 				m_col++;
 				if (_val == '\n') {
 					newLine();
@@ -143,17 +143,17 @@ namespace ejson
 			 * @param[in] _val Char that is parsed.
 			 * @param[in] _filePos Position of the char in the file.
 			 */
-			void drawElementParsed(const etk::UniChar& _val, const ejson::filePos& _filePos) const;
+			void drawElementParsed(const etk::UChar& _val, const ejson::filePos& _filePos) const;
 			/**
 			 * @brief check if an name (for object named) (not : !"#$%&'()*+,/;<=>?@[\]^`{|}~ \n\t\r).
 			 * @param[in] _val Value to check the conformity.
 			 */
-			bool checkString(const etk::UniChar& _val) const;
+			bool checkString(const etk::UChar& _val) const;
 			/**
 			 * @brief check if an number -+.0123456789e).
 			 * @param[in] _val Value to check the conformity.
 			 */
-			bool checkNumber(const etk::UniChar& _val) const;
+			bool checkNumber(const etk::UChar& _val) const;
 			/**
 			 * @brief count the number of white char in the string from the specify position (stop at the first element that is not a white char)
 			 * @param[in] _data Data to parse.

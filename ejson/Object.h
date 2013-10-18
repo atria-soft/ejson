@@ -11,7 +11,7 @@
 
 #include <etk/types.h>
 #include <etk/UString.h>
-#include <etk/Hach.h>
+#include <etk/Hash.h>
 #include <etk/math/Vector2D.h>
 #include <ejson/Value.h>
 

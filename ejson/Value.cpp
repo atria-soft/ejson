@@ -34,7 +34,7 @@ void ejson::Value::addIndent(etk::UString& _data, int32_t _indent) const {
 	}
 }
 
-void ejson::Value::drawElementParsed(const etk::UniChar& _val, const ejson::filePos& _filePos) const {
+void ejson::Value::drawElementParsed(const etk::UChar& _val, const ejson::filePos& _filePos) const {
 	if (_val == '\n') {
 		JSON_DEBUG(_filePos << " parse '\\n'");
 	} else if (_val == '\t') {
@@ -60,7 +60,7 @@ int32_t ejson::Value::countWhiteChar(const etk::UString& _data, int32_t _pos, ej
 }
 
 
-bool ejson::Value::checkString(const etk::UniChar& _val) const {
+bool ejson::Value::checkString(const etk::UChar& _val) const {
 	if(    _val == '!'
 	    || _val == '"'
 	    || _val == '#'
@@ -99,7 +99,7 @@ bool ejson::Value::checkString(const etk::UniChar& _val) const {
 	return true;
 }
 
-bool ejson::Value::checkNumber(const etk::UniChar& _val) const {
+bool ejson::Value::checkNumber(const etk::UChar& _val) const {
 	if(    _val == '-'
 	    || _val == '+'
 	    || _val == 'e'
