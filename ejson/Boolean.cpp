@@ -15,6 +15,7 @@
 
 bool ejson::Boolean::iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'Boolean' ");
+	m_value=false;
 	if(    _data[_pos] == 't'
 	    && _pos+3 < _data.size()
 	    && _data[_pos+1] == 'r'

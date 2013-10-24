@@ -22,11 +22,15 @@ namespace ejson
 			/**
 			 * @brief basic element of a xml structure
 			 */
-			Array(void) { };
+			Array(void) {
+				
+			};
 			/**
 			 * @brief destructor
 			 */
-			virtual ~Array(void) { };
+			virtual ~Array(void) {
+				
+			};
 		private:
 			etk::Vector<ejson::Value*> m_value; //!< vector of sub elements
 		public:
@@ -34,14 +38,20 @@ namespace ejson
 			 * @brief get the number of sub element in the current one
 			 * @return the Number of stored element
 			 */
-			esize_t size(void) const { return m_value.size(); };
+			esize_t size(void) const {
+				return m_value.size();
+			};
 			/**
 			 * @brief get the pointer on an element reference with his ID.
 			 * @param[in] _id Id of the element.
 			 * @return NULL if the element does not exist.
 			 */
-			const ejson::Value* get(esize_t _id) const { return m_value[_id]; };
-			ejson::Value* get(esize_t _id) { return m_value[_id]; };
+			const ejson::Value* get(esize_t _id) const {
+				return m_value[_id];
+			};
+			ejson::Value* get(esize_t _id) {
+				return m_value[_id];
+			};
 			/**
 			 * @brief get the pointer on an element reference with his ID (casted in Object if it is an object).
 			 * @param[in] _id Id of the element.
@@ -138,9 +148,15 @@ namespace ejson
 		public: // herited function :
 			virtual bool iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			virtual bool iGenerate(etk::UString& _data, int32_t _indent) const;
-			virtual nodeType_te getType(void) const { return typeArray; };
-			virtual ejson::Array* toArray(void) { return this; };
-			virtual const ejson::Array* toArray(void) const{ return this; };
+			virtual nodeType_te getType(void) const {
+				return typeArray;
+			};
+			virtual ejson::Array* toArray(void) {
+				return this;
+			};
+			virtual const ejson::Array* toArray(void) const {
+				return this;
+			};
 			virtual void clear(void);
 			virtual bool transfertIn(ejson::Value* _obj);
 			virtual ejson::Value* duplicate(void) const;
