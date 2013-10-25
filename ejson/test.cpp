@@ -6,7 +6,6 @@
  * @license BSD v3 (see license file)
  */
 
-#include <etk/Debug.h>
 #include <etk/Vector.h>
 #include <etk/UString.h>
 #include <ejson/debug.h>
