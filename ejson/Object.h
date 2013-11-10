@@ -144,7 +144,7 @@ namespace ejson
 		public: // herited function :
 			virtual bool iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			virtual bool iGenerate(etk::UString& _data, int32_t _indent) const;
-			virtual nodeType_te getType(void) const {
+			virtual enum nodeType getType(void) const {
 				return typeObject;
 			};
 			virtual ejson::Object* toObject(void) {

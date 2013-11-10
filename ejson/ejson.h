@@ -69,17 +69,27 @@ namespace ejson
 			etk::UString m_Line;
 			ejson::filePos m_filePos;
 		public:
-			void displayErrorWhenDetected(void) { m_writeErrorWhenDetexted=true; };
-			void notDisplayErrorWhenDetected(void) { m_writeErrorWhenDetexted=false; };
+			void displayErrorWhenDetected(void) {
+				m_writeErrorWhenDetexted=true;
+			};
+			void notDisplayErrorWhenDetected(void) {
+				m_writeErrorWhenDetexted=false;
+			};
 			
 			void createError(const etk::UString& _data, int32_t _pos, const ejson::filePos& _filePos, const etk::UString& _comment);
 			void displayError(void);
 		public: // herited function:
-			virtual nodeType_te getType(void) const { return typeDocument; };
+			virtual enum nodeType getType(void) const {
+				return typeDocument;
+			};
 			virtual bool iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			virtual bool iGenerate(etk::UString& _data, int32_t _indent) const;
-			virtual ejson::Document* toDocument(void) { return this; };
-			virtual const ejson::Document* toDocument(void) const { return this; };
+			virtual ejson::Document* toDocument(void) {
+				return this;
+			};
+			virtual const ejson::Document* toDocument(void) const {
+				return this;
+			};
 	};
 };
 

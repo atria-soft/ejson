@@ -83,7 +83,7 @@ bool ejson::Document::load(const etk::UString& _file) {
 	tmpFile.fileClose();
 	
 	// convert in UTF8 :
-	etk::UString tmpDataUnicode(fileBuffer, unicode::EDN_CHARSET_UTF8);
+	etk::UString tmpDataUnicode(fileBuffer, unicode::charsetUTF8);
 	// remove temporary buffer:
 	delete(fileBuffer);
 	// parse the data :

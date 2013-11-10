@@ -22,7 +22,10 @@ namespace ejson
 			/**
 			 * @brief basic element of a xml structure
 			 */
-			Number(double _value=0.0) : m_value(_value) { };
+			Number(double _value=0.0) :
+			  m_value(_value) {
+				
+			};
 			/**
 			 * @brief destructor
 			 */
@@ -34,20 +37,42 @@ namespace ejson
 			 * @brief set the value of the node.
 			 * @param[in] _value New value of the node.
 			 */
-			void set(double _value) { m_value = _value; };
+			void set(double _value) {
+				m_value = _value;
+			};
 			/**
-			 * @brief get the current element Value.
-			 * @return the reference of the string value.
+			 * @brief Get the current element Value.
+			 * @return The double number registered
 			 */
-			double get(void) const { return m_value; };
-			int32_t getInt32(void) const { return (int32_t)m_value; };
-			int64_t getInt64(void) const { return (int64_t)m_value; };
+			double get(void) const {
+				return m_value;
+			};
+			/**
+			 * @brief Get the current element Value.
+			 * @return The 32 bit integer number registered
+			 */
+			int32_t getInt32(void) const {
+				return (int32_t)m_value;
+			};
+			/**
+			 * @brief Get the current element Value.
+			 * @return The 64 bit integer number registered
+			 */
+			int64_t getInt64(void) const {
+				return (int64_t)m_value;
+			};
 		public: // herited function :
 			virtual bool iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			virtual bool iGenerate(etk::UString& _data, int32_t _indent) const;
-			virtual nodeType_te getType(void) const { return typeString; };
-			virtual ejson::Number* toNumber(void) { return this; };
-			virtual const ejson::Number* toNumber(void) const{ return this; };
+			virtual enum nodeType getType(void) const {
+				return typeString;
+			};
+			virtual ejson::Number* toNumber(void) {
+				return this;
+			};
+			virtual const ejson::Number* toNumber(void) const{
+				return this;
+			};
 			virtual bool transfertIn(ejson::Value* _obj);
 			virtual ejson::Value* duplicate(void) const;
 	};

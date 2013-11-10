@@ -31,14 +31,14 @@ void ejson::Object::clear(void) {
 }
 
 
-typedef enum {
+enum statusParsing {
 	parseName,
 	parseMiddle,
 	parseValue,
-} statusParsing_te;
+};
 
 bool ejson::Object::iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
-	statusParsing_te mode = parseName;
+	enum statusParsing mode = parseName;
 	etk::UString currentName;
 	JSON_PARSE_ELEMENT("start parse : 'Object' ");
 	bool standalone = true;
