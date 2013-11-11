@@ -13,7 +13,7 @@
 #undef __class__
 #define __class__	"Boolean"
 
-bool ejson::Boolean::iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
+bool ejson::Boolean::iParse(const std::u32string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'Boolean' ");
 	m_value=false;
 	if(    _data[_pos] == 't'
@@ -42,7 +42,7 @@ bool ejson::Boolean::iParse(const etk::UString& _data, int32_t& _pos, ejson::fil
 }
 
 
-bool ejson::Boolean::iGenerate(etk::UString& _data, int32_t _indent) const {
+bool ejson::Boolean::iGenerate(std::u32string& _data, int32_t _indent) const {
 	if (true == m_value) {
 		_data += "true";
 	} else {

@@ -31,7 +31,7 @@ void ejson::Array::clear(void) {
 	m_value.clear();
 }
 
-bool ejson::Array::iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
+bool ejson::Array::iParse(const std::u32string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'Object' ");
 	for (int32_t iii=_pos+1; iii<_data.size(); iii++) {
 		_filePos.check(_data[iii]);
@@ -58,7 +58,7 @@ bool ejson::Array::iParse(const etk::UString& _data, int32_t& _pos, ejson::fileP
 				return false;
 			}
 			tmpElement->iParse(_data, iii, _filePos, _doc);
-			m_value.pushBack(tmpElement);
+			m_value.push_back(tmpElement);
 		} else if (_data[iii] == '"') {
 			// find a string:
 			JSON_PARSE_ELEMENT("find String quoted");
@@ -69,7 +69,7 @@ bool ejson::Array::iParse(const etk::UString& _data, int32_t& _pos, ejson::fileP
 				return false;
 			}
 			tmpElement->iParse(_data, iii, _filePos, _doc);
-			m_value.pushBack(tmpElement);
+			m_value.push_back(tmpElement);
 		} else if (_data[iii] == '[') {
 			// find a list:
 			JSON_PARSE_ELEMENT("find List");
@@ -80,7 +80,7 @@ bool ejson::Array::iParse(const etk::UString& _data, int32_t& _pos, ejson::fileP
 				return false;
 			}
 			tmpElement->iParse(_data, iii, _filePos, _doc);
-			m_value.pushBack(tmpElement);
+			m_value.push_back(tmpElement);
 		} else if(    _data[iii] == 'f'
 		           || _data[iii] == 't' ) {
 			// find boolean:
@@ -92,7 +92,7 @@ bool ejson::Array::iParse(const etk::UString& _data, int32_t& _pos, ejson::fileP
 				return false;
 			}
 			tmpElement->iParse(_data, iii, _filePos, _doc);
-			m_value.pushBack(tmpElement);
+			m_value.push_back(tmpElement);
 		} else if( _data[iii] == 'n') {
 			// find null:
 			JSON_PARSE_ELEMENT("find Null");
@@ -103,7 +103,7 @@ bool ejson::Array::iParse(const etk::UString& _data, int32_t& _pos, ejson::fileP
 				return false;
 			}
 			tmpElement->iParse(_data, iii, _filePos, _doc);
-			m_value.pushBack(tmpElement);
+			m_value.push_back(tmpElement);
 		} else if(true == checkNumber(_data[iii])) {
 			// find number:
 			JSON_PARSE_ELEMENT("find Number");
@@ -114,7 +114,7 @@ bool ejson::Array::iParse(const etk::UString& _data, int32_t& _pos, ejson::fileP
 				return false;
 			}
 			tmpElement->iParse(_data, iii, _filePos, _doc);
-			m_value.pushBack(tmpElement);
+			m_value.push_back(tmpElement);
 		} else if(_data[iii] == ',') {
 			// find Separator : Restart cycle ...
 			// TODO : check if element are separated with ','
@@ -131,7 +131,7 @@ bool ejson::Array::iParse(const etk::UString& _data, int32_t& _pos, ejson::fileP
 }
 
 
-bool ejson::Array::iGenerate(etk::UString& _data, int32_t _indent) const {
+bool ejson::Array::iGenerate(std::u32string& _data, int32_t _indent) const {
 	bool oneLine=true;
 	if (m_value.size()>3) {
 		oneLine=false;
@@ -193,11 +193,11 @@ bool ejson::Array::add(ejson::Value* _element) {
 		JSON_ERROR("Request add on an NULL pointer");
 		return false;
 	}
-	m_value.pushBack(_element);
+	m_value.push_back(_element);
 	return true;
 }
 
-bool ejson::Array::addString(const etk::UString& _value) {
+bool ejson::Array::addString(const std::u32string& _value) {
 	return add(new ejson::String(_value));
 }
 
@@ -298,8 +298,8 @@ ejson::Boolean* ejson::Array::getBoolean(esize_t _id) {
 	return tmpElement->toBoolean();
 }
 
-const etk::UString& ejson::Array::getStringValue(esize_t _id) {
-	static const etk::UString errorValue("");
+const std::u32string& ejson::Array::getStringValue(esize_t _id) {
+	static const std::u32string errorValue("");
 	ejson::String* tmpElement = getString(_id);
 	if (NULL == tmpElement) {
 		return errorValue;
@@ -307,7 +307,7 @@ const etk::UString& ejson::Array::getStringValue(esize_t _id) {
 	return tmpElement->get();
 }
 
-etk::UString ejson::Array::getStringValue(esize_t _id, const etk::UString& _errorValue) {
+std::u32string ejson::Array::getStringValue(esize_t _id, const std::u32string& _errorValue) {
 	ejson::String* tmpElement = getString(_id);
 	if (NULL == tmpElement) {
 		return _errorValue;

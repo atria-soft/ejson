@@ -37,9 +37,9 @@ enum statusParsing {
 	parseValue,
 };
 
-bool ejson::Object::iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
+bool ejson::Object::iParse(const std::u32string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	enum statusParsing mode = parseName;
-	etk::UString currentName;
+	std::u32string currentName;
 	JSON_PARSE_ELEMENT("start parse : 'Object' ");
 	bool standalone = true;
 	int32_t startPos = _pos+1;
@@ -188,7 +188,7 @@ bool ejson::Object::iParse(const etk::UString& _data, int32_t& _pos, ejson::file
 					currentName = "";
 				} else {
 					// find an error ....
-					EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, etk::UString("Find '") + _data[iii] + "' with no element in the element...");
+					EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, std::u32string("Find '") + _data[iii] + "' with no element in the element...");
 					// move the curent index
 					_pos = iii+1;
 					return false;
@@ -202,7 +202,7 @@ bool ejson::Object::iParse(const etk::UString& _data, int32_t& _pos, ejson::file
 	}
 	return false;
 }
-bool ejson::Object::iGenerate(etk::UString& _data, int32_t _indent) const {
+bool ejson::Object::iGenerate(std::u32string& _data, int32_t _indent) const {
 	bool oneLine=true;
 	if (m_value.size()>3) {
 		oneLine=false;
@@ -263,18 +263,18 @@ bool ejson::Object::iGenerate(etk::UString& _data, int32_t _indent) const {
 	return true;
 }
 
-bool ejson::Object::exist(const etk::UString& _name) const {
+bool ejson::Object::exist(const std::u32string& _name) const {
 	return m_value.exist(_name);
 }
 
-ejson::Value* ejson::Object::get(const etk::UString& _name) const {
+ejson::Value* ejson::Object::get(const std::u32string& _name) const {
 	if (false == m_value.exist(_name)) {
 		return NULL;
 	}
 	return m_value[_name];
 }
 
-ejson::Object* ejson::Object::getObject(const etk::UString& _name) const {
+ejson::Object* ejson::Object::getObject(const std::u32string& _name) const {
 	ejson::Value* tmp = get(_name);
 	if (NULL == tmp) {
 		return NULL;
@@ -282,7 +282,7 @@ ejson::Object* ejson::Object::getObject(const etk::UString& _name) const {
 	return tmp->toObject();
 }
 
-ejson::Array* ejson::Object::getArray(const etk::UString& _name) const {
+ejson::Array* ejson::Object::getArray(const std::u32string& _name) const {
 	ejson::Value* tmp = get(_name);
 	if (NULL == tmp) {
 		return NULL;
@@ -290,7 +290,7 @@ ejson::Array* ejson::Object::getArray(const etk::UString& _name) const {
 	return tmp->toArray();
 }
 
-ejson::Null* ejson::Object::getNull(const etk::UString& _name) const {
+ejson::Null* ejson::Object::getNull(const std::u32string& _name) const {
 	ejson::Value* tmp = get(_name);
 	if (NULL == tmp) {
 		return NULL;
@@ -298,7 +298,7 @@ ejson::Null* ejson::Object::getNull(const etk::UString& _name) const {
 	return tmp->toNull();
 }
 
-ejson::String* ejson::Object::getString(const etk::UString& _name) const {
+ejson::String* ejson::Object::getString(const std::u32string& _name) const {
 	ejson::Value* tmp = get(_name);
 	if (NULL == tmp) {
 		return NULL;
@@ -306,8 +306,8 @@ ejson::String* ejson::Object::getString(const etk::UString& _name) const {
 	return tmp->toString();
 }
 
-const etk::UString& ejson::Object::getStringValue(const etk::UString& _name) const {
-	static const etk::UString errorString("");
+const std::u32string& ejson::Object::getStringValue(const std::u32string& _name) const {
+	static const std::u32string errorString("");
 	ejson::String* tmpp = getString(_name);
 	if (NULL == tmpp) {
 		return errorString;
@@ -315,7 +315,7 @@ const etk::UString& ejson::Object::getStringValue(const etk::UString& _name) con
 	return tmpp->get();
 }
 
-etk::UString ejson::Object::getStringValue(const etk::UString& _name, const etk::UString& _errorValue) const {
+std::u32string ejson::Object::getStringValue(const std::u32string& _name, const std::u32string& _errorValue) const {
 	ejson::String* tmpp = getString(_name);
 	if (NULL == tmpp) {
 		return _errorValue;
@@ -323,7 +323,7 @@ etk::UString ejson::Object::getStringValue(const etk::UString& _name, const etk:
 	return tmpp->get();
 }
 
-ejson::Boolean* ejson::Object::getBoolean(const etk::UString& _name) const {
+ejson::Boolean* ejson::Object::getBoolean(const std::u32string& _name) const {
 	ejson::Value* tmp = get(_name);
 	if (NULL == tmp) {
 		return NULL;
@@ -331,7 +331,7 @@ ejson::Boolean* ejson::Object::getBoolean(const etk::UString& _name) const {
 	return tmp->toBoolean();
 }
 
-bool ejson::Object::getBooleanValue(const etk::UString& _name, bool _errorValue) const {
+bool ejson::Object::getBooleanValue(const std::u32string& _name, bool _errorValue) const {
 	ejson::Boolean* tmpp = getBoolean(_name);
 	if (NULL == tmpp) {
 		return _errorValue;
@@ -339,7 +339,7 @@ bool ejson::Object::getBooleanValue(const etk::UString& _name, bool _errorValue)
 	return tmpp->get();
 }
 
-ejson::Number* ejson::Object::getNumber(const etk::UString& _name) const {
+ejson::Number* ejson::Object::getNumber(const std::u32string& _name) const {
 	ejson::Value* tmp = get(_name);
 	if (NULL == tmp) {
 		return NULL;
@@ -347,7 +347,7 @@ ejson::Number* ejson::Object::getNumber(const etk::UString& _name) const {
 	return tmp->toNumber();
 }
 
-double ejson::Object::getNumberValue(const etk::UString& _name, double _errorValue) const {
+double ejson::Object::getNumberValue(const std::u32string& _name, double _errorValue) const {
 	ejson::Number* tmpp = getNumber(_name);
 	if (NULL == tmpp) {
 		return _errorValue;
@@ -356,7 +356,7 @@ double ejson::Object::getNumberValue(const etk::UString& _name, double _errorVal
 }
 
 
-bool ejson::Object::add(const etk::UString& _name, ejson::Value* _value) {
+bool ejson::Object::add(const std::u32string& _name, ejson::Value* _value) {
 	if (NULL == _value) {
 		return false;
 	}
@@ -373,19 +373,19 @@ bool ejson::Object::add(const etk::UString& _name, ejson::Value* _value) {
 	return true;
 }
 
-bool ejson::Object::addString(const etk::UString& _name, const etk::UString& _value) {
+bool ejson::Object::addString(const std::u32string& _name, const std::u32string& _value) {
 	return add(_name, new ejson::String(_value));
 }
 
-bool ejson::Object::addNull(const etk::UString& _name) {
+bool ejson::Object::addNull(const std::u32string& _name) {
 	return add(_name, new ejson::Null());
 }
 
-bool ejson::Object::addBoolean(const etk::UString& _name, bool _value) {
+bool ejson::Object::addBoolean(const std::u32string& _name, bool _value) {
 	return add(_name, new ejson::Boolean(_value));
 }
 
-bool ejson::Object::addNumber(const etk::UString& _name, double _value) {
+bool ejson::Object::addNumber(const std::u32string& _name, double _value) {
 	return add(_name, new ejson::Number(_value));
 }
 
@@ -417,7 +417,7 @@ ejson::Value* ejson::Object::duplicate(void) const {
 	}
 	for (esize_t iii=0; iii<m_value.size(); ++iii) {
 		ejson::Value* val = m_value.getValue(iii);
-		etk::UString key = m_value.getKey(iii);
+		std::u32string key = m_value.getKey(iii);
 		if (NULL == val) {
 			continue;
 		}

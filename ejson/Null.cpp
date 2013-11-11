@@ -14,7 +14,7 @@
 #undef __class__
 #define __class__	"Null"
 
-bool ejson::Null::iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
+bool ejson::Null::iParse(const std::u32string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'Null' ");
 	if (_pos+3 >= _data.size()){
 		EJSON_CREATE_ERROR(_doc, _data, _pos, _filePos, "can not parse null !!! ");
@@ -33,7 +33,7 @@ bool ejson::Null::iParse(const etk::UString& _data, int32_t& _pos, ejson::filePo
 }
 
 
-bool ejson::Null::iGenerate(etk::UString& _data, int32_t _indent) const {
+bool ejson::Null::iGenerate(std::u32string& _data, int32_t _indent) const {
 	_data += "null";
 	return true;
 }

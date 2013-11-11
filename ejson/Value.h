@@ -94,7 +94,7 @@ namespace ejson {
 				m_col=0;
 				m_line++;
 			};
-			bool check(const etk::UChar& _val) {
+			bool check(char32_t _val) {
 				m_col++;
 				if (_val == '\n') {
 					newLine();
@@ -138,14 +138,14 @@ namespace ejson {
 			 * @param[in,out] file parsing position (line x col x)
 			 * @return false if an error occured.
 			 */
-			virtual bool iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) = 0;
+			virtual bool iParse(const std::u32string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) = 0;
 			/**
 			 * @brief generate a string with the tree of the xml
 			 * @param[in,out] _data string where to add the elements
 			 * @param[in] current indentation of the file
 			 * @return false if an error occured.
 			 */
-			virtual bool iGenerate(etk::UString& _data, int32_t _indent) const = 0;
+			virtual bool iGenerate(std::u32string& _data, int32_t _indent) const = 0;
 		public:
 			/**
 			 * @brief get the node type.
@@ -160,23 +160,23 @@ namespace ejson {
 			 * @param[in,out] _data String where the indentation is done.
 			 * @param[in] _indent Number of tab to add at the string.
 			 */
-			void addIndent(etk::UString& _data, int32_t _indent) const;
+			void addIndent(std::u32string& _data, int32_t _indent) const;
 			/**
 			 * @brief Display the cuurent element that is curently parse.
 			 * @param[in] _val Char that is parsed.
 			 * @param[in] _filePos Position of the char in the file.
 			 */
-			void drawElementParsed(const etk::UChar& _val, const ejson::filePos& _filePos) const;
+			void drawElementParsed(char32_t _val, const ejson::filePos& _filePos) const;
 			/**
 			 * @brief check if an name (for object named) (not : !"#$%&'()*+,/;<=>?@[\]^`{|}~ \n\t\r).
 			 * @param[in] _val Value to check the conformity.
 			 */
-			bool checkString(const etk::UChar& _val) const;
+			bool checkString(char32_t _val) const;
 			/**
 			 * @brief check if an number -+.0123456789e).
 			 * @param[in] _val Value to check the conformity.
 			 */
-			bool checkNumber(const etk::UChar& _val) const;
+			bool checkNumber(char32_t _val) const;
 			/**
 			 * @brief count the number of white char in the string from the specify position (stop at the first element that is not a white char)
 			 * @param[in] _data Data to parse.
@@ -184,7 +184,7 @@ namespace ejson {
 			 * @param[out] _filePos new poistion of te file to add.
 			 * @return number of white element.
 			 */
-			int32_t countWhiteChar(const etk::UString& _data, int32_t _pos, ejson::filePos& _filePos) const;
+			int32_t countWhiteChar(const std::u32string& _data, int32_t _pos, ejson::filePos& _filePos) const;
 		public:
 			/**
 			 * @brief Cast the element in a Value if it is possible.

@@ -32,7 +32,7 @@ namespace ejson
 				
 			};
 		private:
-			etk::Vector<ejson::Value*> m_value; //!< vector of sub elements
+			std::vector<ejson::Value*> m_value; //!< vector of sub elements
 		public:
 			/**
 			 * @brief get the number of sub element in the current one
@@ -69,14 +69,14 @@ namespace ejson
 			 * @param[in] _id Id of the element.
 			 * @return value of the element.
 			 */
-			const etk::UString& getStringValue(esize_t _id);
+			const std::u32string& getStringValue(esize_t _id);
 			/**
 			 * @brief get the value of the string element
 			 * @param[in] _id Id of the element.
 			 * @param[in] _errorValue The return value if an error occured.
 			 * @return value of the element, or the _errorValue.
 			 */
-			etk::UString getStringValue(esize_t _id, const etk::UString& _errorValue);
+			std::u32string getStringValue(esize_t _id, const std::u32string& _errorValue);
 			/**
 			 * @brief get the pointer on an element reference with his ID (casted in Array if it is an Array).
 			 * @param[in] _id Id of the element.
@@ -126,7 +126,7 @@ namespace ejson
 			 * @param[in] _value string value to add
 			 * @return false if an error occured
 			 */
-			bool addString(const etk::UString& _value);
+			bool addString(const std::u32string& _value);
 			/**
 			 * @brief add a "null" element in the Object (automatic creation)
 			 * @return false if an error occured
@@ -146,8 +146,8 @@ namespace ejson
 			bool addNumber(double _value);
 			
 		public: // herited function :
-			virtual bool iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
-			virtual bool iGenerate(etk::UString& _data, int32_t _indent) const;
+			virtual bool iParse(const std::u32string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
+			virtual bool iGenerate(std::u32string& _data, int32_t _indent) const;
 			virtual enum nodeType getType(void) const {
 				return typeArray;
 			};

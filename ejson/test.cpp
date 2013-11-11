@@ -6,7 +6,7 @@
  * @license BSD v3 (see license file)
  */
 
-#include <etk/Vector.h>
+#include <vector>
 #include <etk/UString.h>
 #include <ejson/debug.h>
 #include <ejson/ejson.h>
@@ -16,148 +16,148 @@
 
 class testCheck {
 	public:
-		etk::UString m_ref;
-		etk::UString m_input;
+		std::u32string m_ref;
+		std::u32string m_input;
 		int32_t m_errorPos; // -1 : no error , 1 : parsing error, 2 generation error, 3 comparaison error ????
 		testCheck(void) {};
-		void set(const etk::UString& _ref, int32_t _pos, const etk::UString& _input) {
+		void set(const std::u32string& _ref, int32_t _pos, const std::u32string& _input) {
 			m_ref = _ref;
 			m_input = _input;
 			m_errorPos = _pos;
 		}
 };
 
-etk::Vector<testCheck> l_list;
+std::vector<testCheck> l_list;
 
 void init(void) {
-	etk::UString reference;
-	etk::UString input;
+	std::u32string reference;
+	std::u32string input;
 	testCheck check;
 	
 	//  == ====================================================
 	check.set("test ejson::Doc", -2, "");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	//  == ====================================================
 	reference = "{\n}\n";
 	check.set(reference,
 	          -1,
 	          "{}\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	check.set(reference,
 	          -1,
 	          "{    \t\r   }\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	//  == ====================================================
 	check.set("test ejson::null", -2, "");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	reference = "{\n\t\"tmpElement\": null\n}\n";
 	check.set(reference,
 	          -1,
 	          "{ tmpElement:null }\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	check.set(reference,
 	          -1,
 	          "{ \t\ntmpElement:null \t\n }\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	check.set(reference,
 	          -1,
 	          "tmpElement:null\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	//  == ====================================================
 	check.set("test ejson::boolean", -2, "");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	reference = "{\n\t\"tmpElement\": true\n}\n";
 	check.set(reference,
 	          -1,
 	          "{ tmpElement:true }\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	check.set(reference,
 	          -1,
 	          "{ \t\ntmpElement:true \t\n }\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	check.set(reference,
 	          -1,
 	          "tmpElement:true\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	reference = "{\n\t\"tmpElement\": false\n}\n";
 	check.set(reference,
 	          -1,
 	          "{ tmpElement:false }\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	check.set(reference,
 	          -1,
 	          "{ \t\ntmpElement:false \t\n }\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	check.set(reference,
 	          -1,
 	          "tmpElement:false\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	//  == ====================================================
 	check.set("test ejson::number", -2, "");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	reference = "{\n\t\"tmpElement\": 956256\n}\n";
 	check.set(reference,
 	          -1,
 	          "{ tmpElement:956256 }\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	check.set(reference,
 	          -1,
 	          "{ \t\ntmpElement:956256 \t\n }\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	check.set(reference,
 	          -1,
 	          "tmpElement:956256\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	check.set("{\n\t\"tmpElement\": 956256\n}\n",
 	          -1,
 	          "{tmpElement:956256}\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	check.set("{\n\t\"tmpElement\": -956256\n}\n",
 	          -1,
 	          "{tmpElement:-956256}\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	check.set("{\n\t\"tmpElement\": -956256\n}\n",
 	          -1,
 	          "{tmpElement:-956256}\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	check.set("{\n\t\"tmpElement\": -956.256\n}\n",
 	          -1,
 	          "{tmpElement:-956.256}\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	/*
 	// ------------------------------------------------------
 	check.set("{\n\t\"tmpElement\": -956956544454621184\n}\n",
 	          -1,
 	          "{tmpElement:-956956544454621354.256}\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	check.set("{\n\t\"tmpElement\": 0.000002\n}\n",
 	          -1,
 	          "{tmpElement:+.000001565464}\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	*/
 	
 	
 	//  == ====================================================
 	check.set("test ejson::all", -2, "");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	//  == ====================================================
 	reference = "{\n"
 	            "	\"menu\": {\n"
@@ -171,7 +171,7 @@ void init(void) {
 	check.set(reference,
 	          -1,
 	          reference);
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	reference = "{\n"
 	            "	\"menu\": {\n"
@@ -190,7 +190,7 @@ void init(void) {
 	check.set(reference,
 	          -1,
 	          reference);
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	check.set(reference,
 	          -1,
@@ -220,7 +220,7 @@ void init(void) {
 	            "		}\n"
 	            "	}\n"
 	            "}\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	check.set(reference,
 	          -1,
@@ -248,7 +248,7 @@ void init(void) {
 	            "		]\n"
 	            "	}\n"
 	            "}\n");
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	
 //////////////////////////////////////////////////////////////////////////
 	reference = "{\n"
@@ -276,7 +276,7 @@ void init(void) {
 	check.set(reference,
 	          -1,
 	          reference);
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	reference = "{\n"
 	            "	\"menu\": {\n"
@@ -294,7 +294,7 @@ void init(void) {
 	check.set(reference,
 	          -1,
 	          reference);
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	reference = "{\n"
 	            "	\"widget\": {\n"
@@ -327,7 +327,7 @@ void init(void) {
 	check.set(reference,
 	          -1,
 	          reference);
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	reference = "{\n"
 	            "	\"web-app\": {\n"
@@ -423,7 +423,7 @@ void init(void) {
 	check.set(reference,
 	          -1,
 	          reference);
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 	reference = "{\n"
 	            "	\"menu\": {\n"
@@ -457,12 +457,12 @@ void init(void) {
 	check.set(reference,
 	          -1,
 	          reference);
-	l_list.pushBack(check);
+	l_list.push_back(check);
 	// ------------------------------------------------------
 }
 
 int main(int argc, const char *argv[]) {
-	debug::setGeneralLevel(etk::LOG_LEVEL_VERBOSE);
+	debug::setGeneralLevel(etk::logLevelVerbose);
 	init();
 	int32_t countError = 0;
 	int32_t countSeparator = 0;
@@ -479,7 +479,7 @@ int main(int argc, const char *argv[]) {
 		}
 		sectionID++;
 		ejson::Document doc;
-		etk::UString out("");
+		std::u32string out("");
 		//JSON_DEBUG("parse : \n" << l_list[iii].m_input);
 		if (false == doc.parse(l_list[iii].m_input)) {
 			if (l_list[iii].m_errorPos == 1) {
@@ -518,8 +518,8 @@ int main(int argc, const char *argv[]) {
 				JSON_INFO("[TEST] " << sectionID << ":" << jjj << " {  OK  } Result in error (normal case)");
 			} else {
 				JSON_ERROR("[TEST] " << sectionID << ":" << jjj << " {ERROR } different output");
-				etk::Vector<etk::UString> tmpout = out.split('\n');
-				etk::Vector<etk::UString> tmpref = l_list[iii].m_ref.split('\n');
+				std::vector<std::u32string> tmpout = out.split('\n');
+				std::vector<std::u32string> tmpref = l_list[iii].m_ref.split('\n');
 				//JSON_ERROR("generate : \n" << out);
 				//JSON_ERROR("reference : \n" << l_list[iii].m_ref);
 				for (int32_t jjj=0; jjj<tmpout.size() || jjj<tmpref.size(); ++jjj) {
@@ -538,8 +538,8 @@ int main(int argc, const char *argv[]) {
 		}
 		if (l_list[iii].m_errorPos == 3) {
 			JSON_ERROR("[TEST] " << sectionID << ":" << jjj << " {ERROR} checking result might be in error...");
-			etk::Vector<etk::UString> tmpout = out.split('\n');
-			etk::Vector<etk::UString> tmpref = l_list[iii].m_ref.split('\n');
+			std::vector<std::u32string> tmpout = out.split('\n');
+			std::vector<std::u32string> tmpref = l_list[iii].m_ref.split('\n');
 			//JSON_ERROR("generate : \n" << out);
 			//JSON_ERROR("reference : \n" << l_list[iii].m_ref);
 			for (int32_t jjj=0; jjj<tmpout.size() || jjj<tmpref.size(); ++jjj) {

@@ -28,8 +28,8 @@ namespace ejson
 			 */
 			virtual ~Null(void) { };
 		public: // herited function :
-			virtual bool iParse(const etk::UString& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
-			virtual bool iGenerate(etk::UString& _data, int32_t _indent) const;
+			virtual bool iParse(const std::u32string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
+			virtual bool iGenerate(std::u32string& _data, int32_t _indent) const;
 			virtual enum nodeType getType(void) const {
 				return typeString;
 			};
