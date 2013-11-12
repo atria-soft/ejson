@@ -14,9 +14,9 @@
 #undef __class__
 #define __class__	"Number"
 
-bool ejson::Number::iParse(const std::u32string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
+bool ejson::Number::iParse(const std::string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'Number' ");
-	std::u32string tmpVal;
+	std::string tmpVal;
 	for (int32_t iii=_pos; iii<_data.size(); iii++) {
 		_filePos.check(_data[iii]);
 		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
@@ -26,7 +26,7 @@ bool ejson::Number::iParse(const std::u32string& _data, int32_t& _pos, ejson::fi
 			tmpVal+=_data[iii];
 		} else {
 			_pos = iii-1;
-			m_value = tmpVal.toDouble();
+			m_value = std::stod(tmpVal);
 			JSON_PARSE_ELEMENT("end parse : 'Number' ");
 			return true;
 		}
@@ -37,7 +37,7 @@ bool ejson::Number::iParse(const std::u32string& _data, int32_t& _pos, ejson::fi
 }
 
 
-bool ejson::Number::iGenerate(std::u32string& _data, int32_t _indent) const {
+bool ejson::Number::iGenerate(std::string& _data, int32_t _indent) const {
 	_data += m_value;
 	return true;
 }

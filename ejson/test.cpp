@@ -16,11 +16,11 @@
 
 class testCheck {
 	public:
-		std::u32string m_ref;
-		std::u32string m_input;
+		std::string m_ref;
+		std::string m_input;
 		int32_t m_errorPos; // -1 : no error , 1 : parsing error, 2 generation error, 3 comparaison error ????
 		testCheck(void) {};
-		void set(const std::u32string& _ref, int32_t _pos, const std::u32string& _input) {
+		void set(const std::string& _ref, int32_t _pos, const std::string& _input) {
 			m_ref = _ref;
 			m_input = _input;
 			m_errorPos = _pos;
@@ -30,8 +30,8 @@ class testCheck {
 std::vector<testCheck> l_list;
 
 void init(void) {
-	std::u32string reference;
-	std::u32string input;
+	std::string reference;
+	std::string input;
 	testCheck check;
 	
 	//  == ====================================================
@@ -479,7 +479,7 @@ int main(int argc, const char *argv[]) {
 		}
 		sectionID++;
 		ejson::Document doc;
-		std::u32string out("");
+		std::string out("");
 		//JSON_DEBUG("parse : \n" << l_list[iii].m_input);
 		if (false == doc.parse(l_list[iii].m_input)) {
 			if (l_list[iii].m_errorPos == 1) {
@@ -518,8 +518,8 @@ int main(int argc, const char *argv[]) {
 				JSON_INFO("[TEST] " << sectionID << ":" << jjj << " {  OK  } Result in error (normal case)");
 			} else {
 				JSON_ERROR("[TEST] " << sectionID << ":" << jjj << " {ERROR } different output");
-				std::vector<std::u32string> tmpout = out.split('\n');
-				std::vector<std::u32string> tmpref = l_list[iii].m_ref.split('\n');
+				std::vector<std::string> tmpout = out.split('\n');
+				std::vector<std::string> tmpref = l_list[iii].m_ref.split('\n');
 				//JSON_ERROR("generate : \n" << out);
 				//JSON_ERROR("reference : \n" << l_list[iii].m_ref);
 				for (int32_t jjj=0; jjj<tmpout.size() || jjj<tmpref.size(); ++jjj) {
@@ -538,8 +538,8 @@ int main(int argc, const char *argv[]) {
 		}
 		if (l_list[iii].m_errorPos == 3) {
 			JSON_ERROR("[TEST] " << sectionID << ":" << jjj << " {ERROR} checking result might be in error...");
-			std::vector<std::u32string> tmpout = out.split('\n');
-			std::vector<std::u32string> tmpref = l_list[iii].m_ref.split('\n');
+			std::vector<std::string> tmpout = out.split('\n');
+			std::vector<std::string> tmpref = l_list[iii].m_ref.split('\n');
 			//JSON_ERROR("generate : \n" << out);
 			//JSON_ERROR("reference : \n" << l_list[iii].m_ref);
 			for (int32_t jjj=0; jjj<tmpout.size() || jjj<tmpref.size(); ++jjj) {

@@ -32,13 +32,13 @@ ejson::Document::~Document(void) {
 	
 }
 
-bool ejson::Document::iGenerate(std::u32string& _data, int32_t _indent) const {
+bool ejson::Document::iGenerate(std::string& _data, int32_t _indent) const {
 	ejson::Object::iGenerate(_data, _indent+1);
 	_data += "\n";
 	return true;
 }
 
-bool ejson::Document::parse(const std::u32string& _data) {
+bool ejson::Document::parse(const std::string& _data) {
 	JSON_VERBOSE("Start parsing document (type: string) size=" << _data.size());
 	clear();
 	ejson::filePos filePos(1,0);
@@ -46,12 +46,12 @@ bool ejson::Document::parse(const std::u32string& _data) {
 	return iParse(_data, parsePos, filePos, *this);
 }
 
-bool ejson::Document::generate(std::u32string& _data) {
+bool ejson::Document::generate(std::string& _data) {
 	_data = "";
 	return iGenerate(_data,0);
 }
 
-bool ejson::Document::load(const std::u32string& _file) {
+bool ejson::Document::load(const std::string& _file) {
 	// Start loading the XML : 
 	JSON_VERBOSE("open file (xml) \"" << _file << "\"");
 	clear();
@@ -83,7 +83,7 @@ bool ejson::Document::load(const std::u32string& _file) {
 	tmpFile.fileClose();
 	
 	// convert in UTF8 :
-	std::u32string tmpDataUnicode(fileBuffer, unicode::charsetUTF8);
+	std::string tmpDataUnicode(fileBuffer, unicode::charsetUTF8);
 	// remove temporary buffer:
 	delete(fileBuffer);
 	// parse the data :
@@ -92,8 +92,8 @@ bool ejson::Document::load(const std::u32string& _file) {
 	return ret;
 }
 
-bool ejson::Document::store(const std::u32string& _file) {
-	std::u32string createData;
+bool ejson::Document::store(const std::string& _file) {
+	std::string createData;
 	if (false == generate(createData)) {
 		JSON_ERROR("Error while creating the XML : " << _file);
 		return false;
@@ -103,8 +103,7 @@ bool ejson::Document::store(const std::u32string& _file) {
 		JSON_ERROR("Can not open (w) the file : " << _file);
 		return false;
 	}
-	etk::Char endTable = createData.c_str();
-	if (tmpFile.fileWrite(endTable, sizeof(char), endTable.size()) != endTable.size()) {
+	if (tmpFile.fileWrite((char*)createData.c_str(), sizeof(char), createData.size()) != createData.size()) {
 		JSON_ERROR("Error while writing output XML file : " << _file);
 		tmpFile.fileClose();
 		return false;
@@ -114,13 +113,13 @@ bool ejson::Document::store(const std::u32string& _file) {
 }
 
 void ejson::Document::display(void) {
-	std::u32string tmpp;
+	std::string tmpp;
 	iGenerate(tmpp, 0);
 	JSON_INFO("Generated JSON : \n" << tmpp);
 }
 
-static std::u32string createPosPointer(const std::u32string& _line, int32_t _pos) {
-	std::u32string out;
+static std::string createPosPointer(const std::string& _line, int32_t _pos) {
+	std::string out;
 	int32_t iii;
 	for (iii=0; iii<_pos && iii<_line.size(); iii++) {
 		if (_line[iii] == '\t') {
@@ -149,16 +148,16 @@ void ejson::Document::displayError(void) {
 	#endif
 }
 
-void ejson::Document::createError(const std::u32string& _data, int32_t _pos, const ejson::filePos& _filePos, const std::u32string& _comment) {
+void ejson::Document::createError(const std::string& _data, int32_t _pos, const ejson::filePos& _filePos, const std::string& _comment) {
 	m_comment = _comment;
-	m_Line = _data.extractLine(_pos);
+	m_Line = extract_line(_data, _pos);
 	m_filePos = _filePos;
 	if (true == m_writeErrorWhenDetexted) {
 		displayError();
 	}
 }
 
-bool ejson::Document::iParse(const std::u32string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
+bool ejson::Document::iParse(const std::string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'Document' ");
 	bool haveMainNode=false;
 	bool nodeParsed=false;

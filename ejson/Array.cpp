@@ -31,7 +31,7 @@ void ejson::Array::clear(void) {
 	m_value.clear();
 }
 
-bool ejson::Array::iParse(const std::u32string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
+bool ejson::Array::iParse(const std::string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'Object' ");
 	for (int32_t iii=_pos+1; iii<_data.size(); iii++) {
 		_filePos.check(_data[iii]);
@@ -131,7 +131,7 @@ bool ejson::Array::iParse(const std::u32string& _data, int32_t& _pos, ejson::fil
 }
 
 
-bool ejson::Array::iGenerate(std::u32string& _data, int32_t _indent) const {
+bool ejson::Array::iGenerate(std::string& _data, int32_t _indent) const {
 	bool oneLine=true;
 	if (m_value.size()>3) {
 		oneLine=false;
@@ -197,7 +197,7 @@ bool ejson::Array::add(ejson::Value* _element) {
 	return true;
 }
 
-bool ejson::Array::addString(const std::u32string& _value) {
+bool ejson::Array::addString(const std::string& _value) {
 	return add(new ejson::String(_value));
 }
 
@@ -298,8 +298,8 @@ ejson::Boolean* ejson::Array::getBoolean(esize_t _id) {
 	return tmpElement->toBoolean();
 }
 
-const std::u32string& ejson::Array::getStringValue(esize_t _id) {
-	static const std::u32string errorValue("");
+const std::string& ejson::Array::getStringValue(esize_t _id) {
+	static const std::string errorValue("");
 	ejson::String* tmpElement = getString(_id);
 	if (NULL == tmpElement) {
 		return errorValue;
@@ -307,7 +307,7 @@ const std::u32string& ejson::Array::getStringValue(esize_t _id) {
 	return tmpElement->get();
 }
 
-std::u32string ejson::Array::getStringValue(esize_t _id, const std::u32string& _errorValue) {
+std::string ejson::Array::getStringValue(esize_t _id, const std::string& _errorValue) {
 	ejson::String* tmpElement = getString(_id);
 	if (NULL == tmpElement) {
 		return _errorValue;
