@@ -137,7 +137,7 @@ void init(void) {
 	          "{tmpElement:-956256}\n");
 	l_list.push_back(check);
 	// ------------------------------------------------------
-	check.set("{\n\t\"tmpElement\": -956.256\n}\n",
+	check.set("{\n\t\"tmpElement\": -956.256000\n}\n",
 	          -1,
 	          "{tmpElement:-956.256}\n");
 	l_list.push_back(check);
@@ -518,8 +518,8 @@ int main(int argc, const char *argv[]) {
 				JSON_INFO("[TEST] " << sectionID << ":" << jjj << " {  OK  } Result in error (normal case)");
 			} else {
 				JSON_ERROR("[TEST] " << sectionID << ":" << jjj << " {ERROR } different output");
-				std::vector<std::string> tmpout = out.split('\n');
-				std::vector<std::string> tmpref = l_list[iii].m_ref.split('\n');
+				std::vector<std::string> tmpout = string_split(out, '\n');
+				std::vector<std::string> tmpref = string_split(l_list[iii].m_ref, '\n');
 				//JSON_ERROR("generate : \n" << out);
 				//JSON_ERROR("reference : \n" << l_list[iii].m_ref);
 				for (int32_t jjj=0; jjj<tmpout.size() || jjj<tmpref.size(); ++jjj) {
@@ -538,8 +538,8 @@ int main(int argc, const char *argv[]) {
 		}
 		if (l_list[iii].m_errorPos == 3) {
 			JSON_ERROR("[TEST] " << sectionID << ":" << jjj << " {ERROR} checking result might be in error...");
-			std::vector<std::string> tmpout = out.split('\n');
-			std::vector<std::string> tmpref = l_list[iii].m_ref.split('\n');
+			std::vector<std::string> tmpout = string_split(out, '\n');
+			std::vector<std::string> tmpref = string_split(l_list[iii].m_ref, '\n');
 			//JSON_ERROR("generate : \n" << out);
 			//JSON_ERROR("reference : \n" << l_list[iii].m_ref);
 			for (int32_t jjj=0; jjj<tmpout.size() || jjj<tmpref.size(); ++jjj) {

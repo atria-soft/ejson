@@ -20,14 +20,14 @@ bool ejson::Number::iParse(const std::string& _data, int32_t& _pos, ejson::fileP
 	for (int32_t iii=_pos; iii<_data.size(); iii++) {
 		_filePos.check(_data[iii]);
 		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
-		 drawElementParsed(_data[iii], _filePos);
+			drawElementParsed(_data[iii], _filePos);
 		#endif
 		if(true == checkNumber(_data[iii])) {
 			tmpVal+=_data[iii];
 		} else {
 			_pos = iii-1;
 			m_value = std::stod(tmpVal);
-			JSON_PARSE_ELEMENT("end parse : 'Number' ");
+			JSON_PARSE_ELEMENT("end parse : 'Number' " << tmpVal << " >> " << m_value);
 			return true;
 		}
 	}
@@ -38,7 +38,13 @@ bool ejson::Number::iParse(const std::string& _data, int32_t& _pos, ejson::fileP
 
 
 bool ejson::Number::iGenerate(std::string& _data, int32_t _indent) const {
-	_data += m_value;
+	// special thing to remove .000000 at the end of perfect number ...
+	int64_t tmpVal = m_value;
+	if ((double)tmpVal == m_value) {
+		_data += std::to_string(tmpVal);
+	} else {
+		_data += std::to_string(m_value);
+	}
 	return true;
 }
 
