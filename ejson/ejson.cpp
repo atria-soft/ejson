@@ -82,8 +82,7 @@ bool ejson::Document::load(const std::string& _file) {
 	// close the file:
 	tmpFile.fileClose();
 	
-	// convert in UTF8 :
-	std::string tmpDataUnicode(fileBuffer, unicode::charsetUTF8);
+	std::string tmpDataUnicode(fileBuffer);
 	// remove temporary buffer:
 	delete(fileBuffer);
 	// parse the data :
