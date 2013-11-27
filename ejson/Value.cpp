@@ -28,8 +28,8 @@ etk::CCout& ejson::operator <<(etk::CCout& _os, const ejson::filePos& _obj) {
 }
 
 
-void ejson::Value::addIndent(std::string& _data, int32_t _indent) const {
-	for (int32_t iii=0; iii<_indent; iii++) {
+void ejson::Value::addIndent(std::string& _data, size_t _indent) const {
+	for (size_t iii=0; iii<_indent; iii++) {
 		_data+="\t";
 	}
 }
@@ -44,10 +44,10 @@ void ejson::Value::drawElementParsed(char32_t _val, const ejson::filePos& _fileP
 	}
 }
 
-int32_t ejson::Value::countWhiteChar(const std::string& _data, int32_t _pos, ejson::filePos& _filePos) const {
+int32_t ejson::Value::countWhiteChar(const std::string& _data, size_t _pos, ejson::filePos& _filePos) const {
 	_filePos.clear();
-	int32_t white=0;
-	for (int32_t iii=_pos; iii<_data.size(); iii++) {
+	size_t white=0;
+	for (size_t iii=_pos; iii<_data.size(); iii++) {
 		_filePos.check(_data[iii]);
 		if(true == etk::isWhiteChar(_data[iii])) {
 			white++;

@@ -15,10 +15,8 @@
 #include <etk/math/Vector2D.h>
 #include <ejson/Value.h>
 
-namespace ejson
-{
-	class Object : public ejson::Value
-	{
+namespace ejson {
+	class Object : public ejson::Value {
 		public:
 			/**
 			 * @brief basic element of a xml structure
@@ -142,8 +140,8 @@ namespace ejson
 			 */
 			bool addNumber(const std::string& _name, double _value);
 		public: // herited function :
-			virtual bool iParse(const std::string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
-			virtual bool iGenerate(std::string& _data, int32_t _indent) const;
+			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
+			virtual bool iGenerate(std::string& _data, size_t _indent) const;
 			virtual enum nodeType getType(void) const {
 				return typeObject;
 			};

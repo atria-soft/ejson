@@ -17,10 +17,8 @@
 #include <ejson/Array.h>
 #include <ejson/Object.h>
 
-namespace ejson
-{
-	class Document : public ejson::Object
-	{
+namespace ejson {
+	class Document : public ejson::Object {
 		public:
 			/**
 			 * @brief Constructor
@@ -76,14 +74,14 @@ namespace ejson
 				m_writeErrorWhenDetexted=false;
 			};
 			
-			void createError(const std::string& _data, int32_t _pos, const ejson::filePos& _filePos, const std::string& _comment);
+			void createError(const std::string& _data, size_t _pos, const ejson::filePos& _filePos, const std::string& _comment);
 			void displayError(void);
 		public: // herited function:
 			virtual enum nodeType getType(void) const {
 				return typeDocument;
 			};
-			virtual bool iParse(const std::string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
-			virtual bool iGenerate(std::string& _data, int32_t _indent) const;
+			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
+			virtual bool iGenerate(std::string& _data, size_t _indent) const;
 			virtual ejson::Document* toDocument(void) {
 				return this;
 			};

@@ -47,15 +47,15 @@ namespace ejson {
 	
 	class filePos {
 		private:
-			int32_t m_col;
-			int32_t m_line;
+			size_t m_col;
+			size_t m_line;
 		public:
 			filePos(void) :
 			  m_col(0),
 			  m_line(0) {
 				
 			};
-			filePos(int32_t _line, int32_t _col) :
+			filePos(size_t _line, size_t _col) :
 			  m_col(_col),
 			  m_line(_line) {
 				
@@ -66,9 +66,8 @@ namespace ejson {
 				return *this;
 			};
 			filePos& operator --(void) {
-				m_col--;
-				if(m_col<0) {
-					m_col=0;
+				if(m_col>0) {
+					m_col--;
 				}
 				return *this;
 			};
@@ -81,7 +80,7 @@ namespace ejson {
 				}
 				return *this;
 			};
-			const filePos& operator +=(int32_t _col) {
+			const filePos& operator +=(size_t _col) {
 				m_col += _col;
 				return *this;
 			};
@@ -102,7 +101,7 @@ namespace ejson {
 				}
 				return false;
 			}
-			void set(int32_t _line, int32_t _col) {
+			void set(size_t _line, size_t _col) {
 				m_col = _col;
 				m_line = _line;
 			}
@@ -138,14 +137,14 @@ namespace ejson {
 			 * @param[in,out] file parsing position (line x col x)
 			 * @return false if an error occured.
 			 */
-			virtual bool iParse(const std::string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) = 0;
+			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) = 0;
 			/**
 			 * @brief generate a string with the tree of the xml
 			 * @param[in,out] _data string where to add the elements
 			 * @param[in] current indentation of the file
 			 * @return false if an error occured.
 			 */
-			virtual bool iGenerate(std::string& _data, int32_t _indent) const = 0;
+			virtual bool iGenerate(std::string& _data, size_t _indent) const = 0;
 		public:
 			/**
 			 * @brief get the node type.
@@ -160,7 +159,7 @@ namespace ejson {
 			 * @param[in,out] _data String where the indentation is done.
 			 * @param[in] _indent Number of tab to add at the string.
 			 */
-			void addIndent(std::string& _data, int32_t _indent) const;
+			void addIndent(std::string& _data, size_t _indent) const;
 			/**
 			 * @brief Display the cuurent element that is curently parse.
 			 * @param[in] _val Char that is parsed.
@@ -184,7 +183,7 @@ namespace ejson {
 			 * @param[out] _filePos new poistion of te file to add.
 			 * @return number of white element.
 			 */
-			int32_t countWhiteChar(const std::string& _data, int32_t _pos, ejson::filePos& _filePos) const;
+			int32_t countWhiteChar(const std::string& _data, size_t _pos, ejson::filePos& _filePos) const;
 		public:
 			/**
 			 * @brief Cast the element in a Value if it is possible.

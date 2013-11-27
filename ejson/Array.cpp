@@ -21,7 +21,7 @@
 
 
 void ejson::Array::clear(void) {
-	for (esize_t iii=0; iii<m_value.size(); ++iii) {
+	for (size_t iii=0; iii<m_value.size(); ++iii) {
 		if (NULL == m_value[iii]) {
 			continue;
 		}
@@ -31,9 +31,9 @@ void ejson::Array::clear(void) {
 	m_value.clear();
 }
 
-bool ejson::Array::iParse(const std::string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
+bool ejson::Array::iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'Object' ");
-	for (int32_t iii=_pos+1; iii<_data.size(); iii++) {
+	for (size_t iii=_pos+1; iii<_data.size(); iii++) {
 		_filePos.check(_data[iii]);
 		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
 		 drawElementParsed(_data[iii], _filePos);
@@ -131,12 +131,12 @@ bool ejson::Array::iParse(const std::string& _data, int32_t& _pos, ejson::filePo
 }
 
 
-bool ejson::Array::iGenerate(std::string& _data, int32_t _indent) const {
+bool ejson::Array::iGenerate(std::string& _data, size_t _indent) const {
 	bool oneLine=true;
 	if (m_value.size()>3) {
 		oneLine=false;
 	} else {
-		for (esize_t iii=0; iii<m_value.size() ; iii++) {
+		for (size_t iii=0; iii<m_value.size() ; iii++) {
 			ejson::Value* tmp = m_value[iii];
 			if (tmp == NULL) {
 				continue;
@@ -165,7 +165,7 @@ bool ejson::Array::iGenerate(std::string& _data, int32_t _indent) const {
 	} else {
 		_data += "[\n";
 	}
-	for (esize_t iii=0; iii<m_value.size() ; iii++) {
+	for (size_t iii=0; iii<m_value.size() ; iii++) {
 		if (false == oneLine) {
 			addIndent(_data, _indent);
 		}
@@ -240,7 +240,7 @@ ejson::Value* ejson::Array::duplicate(void) const {
 		JSON_ERROR("Allocation error ...");
 		return NULL;
 	}
-	for (esize_t iii=0; iii<m_value.size(); ++iii) {
+	for (size_t iii=0; iii<m_value.size(); ++iii) {
 		ejson::Value* val = m_value[iii];
 		if (NULL == val) {
 			continue;
@@ -250,7 +250,7 @@ ejson::Value* ejson::Array::duplicate(void) const {
 	return output;
 }
 
-ejson::Object* ejson::Array::getObject(esize_t _id) {
+ejson::Object* ejson::Array::getObject(size_t _id) {
 	ejson::Value* tmpElement = m_value[_id];
 	if (NULL == tmpElement) {
 		return NULL;
@@ -258,7 +258,7 @@ ejson::Object* ejson::Array::getObject(esize_t _id) {
 	return tmpElement->toObject();
 }
 
-ejson::String* ejson::Array::getString(esize_t _id) {
+ejson::String* ejson::Array::getString(size_t _id) {
 	ejson::Value* tmpElement = m_value[_id];
 	if (NULL == tmpElement) {
 		return NULL;
@@ -266,7 +266,7 @@ ejson::String* ejson::Array::getString(esize_t _id) {
 	return tmpElement->toString();
 }
 
-ejson::Array* ejson::Array::getArray(esize_t _id) {
+ejson::Array* ejson::Array::getArray(size_t _id) {
 	ejson::Value* tmpElement = m_value[_id];
 	if (NULL == tmpElement) {
 		return NULL;
@@ -274,7 +274,7 @@ ejson::Array* ejson::Array::getArray(esize_t _id) {
 	return tmpElement->toArray();
 }
 
-ejson::Null* ejson::Array::getNull(esize_t _id) {
+ejson::Null* ejson::Array::getNull(size_t _id) {
 	ejson::Value* tmpElement = m_value[_id];
 	if (NULL == tmpElement) {
 		return NULL;
@@ -282,7 +282,7 @@ ejson::Null* ejson::Array::getNull(esize_t _id) {
 	return tmpElement->toNull();
 }
 
-ejson::Number* ejson::Array::getNumber(esize_t _id) {
+ejson::Number* ejson::Array::getNumber(size_t _id) {
 	ejson::Value* tmpElement = m_value[_id];
 	if (NULL == tmpElement) {
 		return NULL;
@@ -290,7 +290,7 @@ ejson::Number* ejson::Array::getNumber(esize_t _id) {
 	return tmpElement->toNumber();
 }
 
-ejson::Boolean* ejson::Array::getBoolean(esize_t _id) {
+ejson::Boolean* ejson::Array::getBoolean(size_t _id) {
 	ejson::Value* tmpElement = m_value[_id];
 	if (NULL == tmpElement) {
 		return NULL;
@@ -298,7 +298,7 @@ ejson::Boolean* ejson::Array::getBoolean(esize_t _id) {
 	return tmpElement->toBoolean();
 }
 
-const std::string& ejson::Array::getStringValue(esize_t _id) {
+const std::string& ejson::Array::getStringValue(size_t _id) {
 	static const std::string errorValue("");
 	ejson::String* tmpElement = getString(_id);
 	if (NULL == tmpElement) {
@@ -307,7 +307,7 @@ const std::string& ejson::Array::getStringValue(esize_t _id) {
 	return tmpElement->get();
 }
 
-std::string ejson::Array::getStringValue(esize_t _id, const std::string& _errorValue) {
+std::string ejson::Array::getStringValue(size_t _id, const std::string& _errorValue) {
 	ejson::String* tmpElement = getString(_id);
 	if (NULL == tmpElement) {
 		return _errorValue;
@@ -315,7 +315,7 @@ std::string ejson::Array::getStringValue(esize_t _id, const std::string& _errorV
 	return tmpElement->get();
 }
 
-double ejson::Array::getNumberValue(esize_t _id, double _errorValue) {
+double ejson::Array::getNumberValue(size_t _id, double _errorValue) {
 	ejson::Number* tmpElement = getNumber(_id);
 	if (NULL == tmpElement) {
 		return _errorValue;
@@ -323,7 +323,7 @@ double ejson::Array::getNumberValue(esize_t _id, double _errorValue) {
 	return tmpElement->get();
 }
 
-bool ejson::Array::getBooleanValue(esize_t _id, bool _errorValue) {
+bool ejson::Array::getBooleanValue(size_t _id, bool _errorValue) {
 	ejson::Boolean* tmpElement = getBoolean(_id);
 	if (NULL == tmpElement) {
 		return _errorValue;

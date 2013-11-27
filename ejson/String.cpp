@@ -18,9 +18,9 @@
 
 
 
-bool ejson::String::iParse(const std::string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
+bool ejson::String::iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'String' ");
-	for (int32_t iii=_pos+1; iii<_data.size(); iii++) {
+	for (size_t iii=_pos+1; iii<_data.size(); iii++) {
 		_filePos.check(_data[iii]);
 		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
 		 drawElementParsed(_data[iii], _filePos);
@@ -40,7 +40,7 @@ bool ejson::String::iParse(const std::string& _data, int32_t& _pos, ejson::fileP
 }
 
 
-bool ejson::String::iGenerate(std::string& _data, int32_t _indent) const {
+bool ejson::String::iGenerate(std::string& _data, size_t _indent) const {
 	_data += "\"";;
 	_data += m_value;
 	_data += "\"";;

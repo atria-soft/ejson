@@ -50,8 +50,8 @@ namespace ejson
 				return m_value;
 			};
 		public: // herited function :
-			virtual bool iParse(const std::string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
-			virtual bool iGenerate(std::string& _data, int32_t _indent) const;
+			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
+			virtual bool iGenerate(std::string& _data, size_t _indent) const;
 			virtual enum nodeType getType(void) const {
 				return typeString;
 			};

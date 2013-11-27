@@ -20,7 +20,7 @@
 #define __class__	"Object"
 
 void ejson::Object::clear(void) {
-	for (esize_t iii=0; iii<m_value.size(); ++iii) {
+	for (int32_t iii=0; iii<m_value.size(); ++iii) {
 		if (NULL == m_value[iii]) {
 			continue;
 		}
@@ -37,17 +37,17 @@ enum statusParsing {
 	parseValue,
 };
 
-bool ejson::Object::iParse(const std::string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
+bool ejson::Object::iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	enum statusParsing mode = parseName;
 	std::string currentName;
 	JSON_PARSE_ELEMENT("start parse : 'Object' ");
 	bool standalone = true;
-	int32_t startPos = _pos+1;
+	size_t startPos = _pos+1;
 	if (_data[_pos] != '{' ) { // when the main node call it, it can be start with != '{'
 		standalone = false;
 		startPos = _pos;
 	}
-	for (int32_t iii=startPos; iii<_data.size(); iii++) {
+	for (size_t iii=startPos; iii<_data.size(); iii++) {
 		_filePos.check(_data[iii]);
 		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
 		 drawElementParsed(_data[iii], _filePos);
@@ -202,14 +202,14 @@ bool ejson::Object::iParse(const std::string& _data, int32_t& _pos, ejson::fileP
 	}
 	return false;
 }
-bool ejson::Object::iGenerate(std::string& _data, int32_t _indent) const {
+bool ejson::Object::iGenerate(std::string& _data, size_t _indent) const {
 	bool oneLine=true;
 	if (m_value.size()>3) {
 		oneLine=false;
 	} else if (_indent<=1) {
 		oneLine=false;
 	} else {
-		for (esize_t iii=0; iii<m_value.size() ; iii++) {
+		for (int32_t iii=0; iii<m_value.size() ; iii++) {
 			ejson::Value* tmp = m_value[iii];
 			if (tmp == NULL) {
 				continue;
@@ -239,7 +239,7 @@ bool ejson::Object::iGenerate(std::string& _data, int32_t _indent) const {
 	} else {
 		_data += "{\n";
 	}
-	for (esize_t iii=0; iii<m_value.size() ; iii++) {
+	for (int32_t iii=0; iii<m_value.size() ; iii++) {
 		if (false == oneLine) {
 			addIndent(_data, _indent);
 		}
@@ -415,7 +415,7 @@ ejson::Value* ejson::Object::duplicate(void) const {
 		JSON_ERROR("Allocation error ...");
 		return NULL;
 	}
-	for (esize_t iii=0; iii<m_value.size(); ++iii) {
+	for (int32_t iii=0; iii<m_value.size(); ++iii) {
 		ejson::Value* val = m_value.getValue(iii);
 		std::string key = m_value.getKey(iii);
 		if (NULL == val) {

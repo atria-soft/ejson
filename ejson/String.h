@@ -22,7 +22,10 @@ namespace ejson
 			/**
 			 * @brief basic element of a xml structure
 			 */
-			String(const std::string& _value="") : m_value(_value) { };
+			String(const std::string& _value="") :
+			  m_value(_value) {
+				
+			};
 			/**
 			 * @brief destructor
 			 */
@@ -34,15 +37,19 @@ namespace ejson
 			 * @brief set the value of the node.
 			 * @param[in] _value New value of the node.
 			 */
-			void set(const std::string& _value) { m_value = _value; };
+			void set(const std::string& _value) {
+				m_value = _value;
+			};
 			/**
 			 * @brief get the current element Value.
 			 * @return the reference of the string value.
 			 */
-			const std::string& get(void) const { return m_value; };
+			const std::string& get(void) const {
+				return m_value;
+			};
 		public: // herited function :
-			virtual bool iParse(const std::string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
-			virtual bool iGenerate(std::string& _data, int32_t _indent) const;
+			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
+			virtual bool iGenerate(std::string& _data, size_t _indent) const;
 			virtual enum nodeType getType(void) const {
 				return typeString;
 			};

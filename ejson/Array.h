@@ -38,7 +38,7 @@ namespace ejson
 			 * @brief get the number of sub element in the current one
 			 * @return the Number of stored element
 			 */
-			esize_t size(void) const {
+			size_t size(void) const {
 				return m_value.size();
 			};
 			/**
@@ -46,10 +46,10 @@ namespace ejson
 			 * @param[in] _id Id of the element.
 			 * @return NULL if the element does not exist.
 			 */
-			const ejson::Value* get(esize_t _id) const {
+			const ejson::Value* get(size_t _id) const {
 				return m_value[_id];
 			};
-			ejson::Value* get(esize_t _id) {
+			ejson::Value* get(size_t _id) {
 				return m_value[_id];
 			};
 			/**
@@ -57,64 +57,64 @@ namespace ejson
 			 * @param[in] _id Id of the element.
 			 * @return NULL if the element does not exist.
 			 */
-			ejson::Object* getObject(esize_t _id);
+			ejson::Object* getObject(size_t _id);
 			/**
 			 * @brief get the pointer on an element reference with his ID (casted in String if it is an String).
 			 * @param[in] _id Id of the element.
 			 * @return NULL if the element does not exist.
 			 */
-			ejson::String* getString(esize_t _id);
+			ejson::String* getString(size_t _id);
 			/**
 			 * @brief get the value of the string element (if not a string return "")
 			 * @param[in] _id Id of the element.
 			 * @return value of the element.
 			 */
-			const std::string& getStringValue(esize_t _id);
+			const std::string& getStringValue(size_t _id);
 			/**
 			 * @brief get the value of the string element
 			 * @param[in] _id Id of the element.
 			 * @param[in] _errorValue The return value if an error occured.
 			 * @return value of the element, or the _errorValue.
 			 */
-			std::string getStringValue(esize_t _id, const std::string& _errorValue);
+			std::string getStringValue(size_t _id, const std::string& _errorValue);
 			/**
 			 * @brief get the pointer on an element reference with his ID (casted in Array if it is an Array).
 			 * @param[in] _id Id of the element.
 			 * @return NULL if the element does not exist.
 			 */
-			ejson::Array* getArray(esize_t _id);
+			ejson::Array* getArray(size_t _id);
 			/**
 			 * @brief get the pointer on an element reference with his ID (casted in Null if it is an Null).
 			 * @param[in] _id Id of the element.
 			 * @return NULL if the element does not exist.
 			 */
-			ejson::Null* getNull(esize_t _id);
+			ejson::Null* getNull(size_t _id);
 			/**
 			 * @brief get the pointer on an element reference with his ID (casted in Number if it is an Number).
 			 * @param[in] _id Id of the element.
 			 * @return NULL if the element does not exist.
 			 */
-			ejson::Number* getNumber(esize_t _id);
+			ejson::Number* getNumber(size_t _id);
 			/**
 			 * @brief get the value of the Number element
 			 * @param[in] _id Id of the element.
 			 * @param[in] _errorValue The return value if an error occured.
 			 * @return value of the element, or the _errorValue.
 			 */
-			double getNumberValue(esize_t _id, double _errorValue);
+			double getNumberValue(size_t _id, double _errorValue);
 			/**
 			 * @brief get the pointer on an element reference with his ID (casted in Boolean if it is an Boolean).
 			 * @param[in] _id Id of the element.
 			 * @return NULL if the element does not exist.
 			 */
-			ejson::Boolean* getBoolean(esize_t _id);
+			ejson::Boolean* getBoolean(size_t _id);
 			/**
 			 * @brief get the value of the Boolean element
 			 * @param[in] _id Id of the element.
 			 * @param[in] _errorValue The return value if an error occured.
 			 * @return value of the element, or the _errorValue.
 			 */
-			bool getBooleanValue(esize_t _id, bool _errorValue);
+			bool getBooleanValue(size_t _id, bool _errorValue);
 			/**
 			 * @brief add an element on the array.
 			 * @param[in] _element element to add.
@@ -146,8 +146,8 @@ namespace ejson
 			bool addNumber(double _value);
 			
 		public: // herited function :
-			virtual bool iParse(const std::string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
-			virtual bool iGenerate(std::string& _data, int32_t _indent) const;
+			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
+			virtual bool iGenerate(std::string& _data, size_t _indent) const;
 			virtual enum nodeType getType(void) const {
 				return typeArray;
 			};

@@ -32,7 +32,7 @@ ejson::Document::~Document(void) {
 	
 }
 
-bool ejson::Document::iGenerate(std::string& _data, int32_t _indent) const {
+bool ejson::Document::iGenerate(std::string& _data, size_t _indent) const {
 	ejson::Object::iGenerate(_data, _indent+1);
 	_data += "\n";
 	return true;
@@ -42,7 +42,7 @@ bool ejson::Document::parse(const std::string& _data) {
 	JSON_VERBOSE("Start parsing document (type: string) size=" << _data.size());
 	clear();
 	ejson::filePos filePos(1,0);
-	int32_t parsePos = 0;
+	size_t parsePos = 0;
 	return iParse(_data, parsePos, filePos, *this);
 }
 
@@ -102,7 +102,7 @@ bool ejson::Document::store(const std::string& _file) {
 		JSON_ERROR("Can not open (w) the file : " << _file);
 		return false;
 	}
-	if (tmpFile.fileWrite((char*)createData.c_str(), sizeof(char), createData.size()) != createData.size()) {
+	if (tmpFile.fileWrite((char*)createData.c_str(), sizeof(char), createData.size()) != (int32_t)createData.size()) {
 		JSON_ERROR("Error while writing output XML file : " << _file);
 		tmpFile.fileClose();
 		return false;
@@ -117,9 +117,9 @@ void ejson::Document::display(void) {
 	JSON_INFO("Generated JSON : \n" << tmpp);
 }
 
-static std::string createPosPointer(const std::string& _line, int32_t _pos) {
+static std::string createPosPointer(const std::string& _line, size_t _pos) {
 	std::string out;
-	int32_t iii;
+	size_t iii;
 	for (iii=0; iii<_pos && iii<_line.size(); iii++) {
 		if (_line[iii] == '\t') {
 			out += "\t";
@@ -147,7 +147,7 @@ void ejson::Document::displayError(void) {
 	#endif
 }
 
-void ejson::Document::createError(const std::string& _data, int32_t _pos, const ejson::filePos& _filePos, const std::string& _comment) {
+void ejson::Document::createError(const std::string& _data, size_t _pos, const ejson::filePos& _filePos, const std::string& _comment) {
 	m_comment = _comment;
 	m_Line = extract_line(_data, _pos);
 	m_filePos = _filePos;
@@ -156,11 +156,11 @@ void ejson::Document::createError(const std::string& _data, int32_t _pos, const 
 	}
 }
 
-bool ejson::Document::iParse(const std::string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
+bool ejson::Document::iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'Document' ");
 	bool haveMainNode=false;
 	bool nodeParsed=false;
-	for (int32_t iii=_pos; iii<_data.size(); iii++) {
+	for (size_t iii=_pos; iii<_data.size(); iii++) {
 		_filePos.check(_data[iii]);
 		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
 			drawElementParsed(_data[iii], _filePos);

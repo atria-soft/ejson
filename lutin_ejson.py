@@ -7,6 +7,8 @@ def Create(target):
 	
 	myModule.AddModuleDepend(['etk'])
 	
+	# add extra compilation flags :
+	myModule.add_extra_compile_flags()
 	myModule.AddSrcFile([
 		'ejson/debug.cpp',
 		'ejson/ejson.cpp',

@@ -14,10 +14,10 @@
 #undef __class__
 #define __class__	"Number"
 
-bool ejson::Number::iParse(const std::string& _data, int32_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
+bool ejson::Number::iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'Number' ");
 	std::string tmpVal;
-	for (int32_t iii=_pos; iii<_data.size(); iii++) {
+	for (size_t iii=_pos; iii<_data.size(); iii++) {
 		_filePos.check(_data[iii]);
 		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
 			drawElementParsed(_data[iii], _filePos);
@@ -37,7 +37,7 @@ bool ejson::Number::iParse(const std::string& _data, int32_t& _pos, ejson::fileP
 }
 
 
-bool ejson::Number::iGenerate(std::string& _data, int32_t _indent) const {
+bool ejson::Number::iGenerate(std::string& _data, size_t _indent) const {
 	// special thing to remove .000000 at the end of perfect number ...
 	int64_t tmpVal = m_value;
 	if ((double)tmpVal == m_value) {
