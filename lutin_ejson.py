@@ -4,6 +4,8 @@ import lutinTools
 
 def Create(target):
 	myModule = lutinModule.module(__file__, 'ejson', 'LIBRARY')
+	# enable doculentation :
+	myModule.doc_enable()
 	
 	myModule.AddModuleDepend(['etk'])
 	
