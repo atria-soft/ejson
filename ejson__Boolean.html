@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>ejson Library</title>
+	<link rel="stylesheet" href="base.css">
+</head>
+<body>
+	<div class="navbar navbar-fixed-top">
+		<div class="container">
+			<h1>ejson Library</h1>
+				<li>ejson</li>
+				<ul>
+				<li><a href="ejson__Array.html">Array</a></li>
+				<li><a href="ejson__Boolean.html">Boolean</a></li>
+				<li><a href="ejson__Document.html">Document</a></li>
+				<li><a href="ejson__Null.html">Null</a></li>
+				<li><a href="ejson__Number.html">Number</a></li>
+				<li><a href="ejson__Object.html">Object</a></li>
+				<li><a href="ejson__String.html">String</a></li>
+				<li><a href="ejson__Value.html">Value</a></li>
+				<li><a href="ejson__filePos.html">filePos</a></li>
+				</ul>
+				<li><a href="ejson__nodeType.html">nodeType</a></li>
+				</ul>
+		</div>
+	</div>
+	<div class="container" id="content">
+<h1>Class: ejson::Boolean</h1>
+<br/>
+<h2>Synopsis:</h2>
+<pre>
++                          <a class="code-function" href="#Boolean">Boolean</a>      (<span class="code-type">bool</span> <span class="code-argument">_value</span>);<br>+                         ~<a class="code-function" href="#Boolean">Boolean</a>      (<span class="code-type">void</span>);<br>+  <span class="code-type">void</span>                    <a class="code-function" href="#set">set</a>          (<span class="code-type">bool</span> <span class="code-argument">_value</span>);<br>+  <span class="code-type">bool</span>                    <a class="code-function" href="#get">get</a>          (<span class="code-type">void</span>);<br>+  <span class="code-type">bool</span>                    <a class="code-function" href="#iParse">iParse</a>       (<span class="code-storage-keyword">const</span> <a href="http://www.cplusplus.com/reference/string/string/" class="code-type">std::string</a> & <span class="code-argument">_data</span>,<br/>                                         <span class="code-type">size_t</span> & <span class="code-argument">_pos</span>,<br/>                                         <a href="ejson__filePos.html" class="code-type">ejson::filePos</a> & <span class="code-argument">_filePos</span>,<br/>                                         <a href="ejson__Document.html" class="code-type">ejson::Document</a> & <span class="code-argument">_doc</span>);<br>+  <span class="code-type">bool</span>                    <a class="code-function" href="#iGenerate">iGenerate</a>    (<a href="http://www.cplusplus.com/reference/string/string/" class="code-type">std::string</a> & <span class="code-argument">_data</span>,<br/>                                         <span class="code-type">size_t</span> <span class="code-argument">_indent</span>);<br>+  <span class="code-storage-keyword">enum</span> nodeType           <a class="code-function" href="#getType">getType</a>      (<span class="code-type">void</span>);<br>+  <a href="ejson__Boolean.html" class="code-type">ejson::Boolean</a> *        <a class="code-function" href="#toBoolean">toBoolean</a>    (<span class="code-type">void</span>);<br>+  <span class="code-storage-keyword">const</span> <a href="ejson__Boolean.html" class="code-type">ejson::Boolean</a> *  <a class="code-function" href="#toBoolean">toBoolean</a>    (<span class="code-type">void</span>);<br>+  <span class="code-type">bool</span>                    <a class="code-function" href="#transfertIn">transfertIn</a>  (<a href="ejson__Value.html" class="code-type">ejson::Value</a> * <span class="code-argument">_obj</span>);<br>+  <a href="ejson__Value.html" class="code-type">ejson::Value</a> *          <a class="code-function" href="#duplicate">duplicate</a>    (<span class="code-type">void</span>);<br></pre>
+
+
+<h2>Object Hierarchy:</h2>
+<pre>
+<a href="ejson__Value.html">ejson::Value</a>
+    +--> <b>ejson::Boolean</b>
+</pre>
+<br/>
+<h2>Detail:<h2>
+<h3>ejson::<a id="Boolean">Boolean</a> ()</h3>
+
+<pre>
+<span class="code-function">Boolean</span>(<span class="code-type">bool</span> <span class="code-argument">_value</span>);</pre>
+<br/>
+basic element of a xml structure
+<br/><br/>
+
+<hr/>
+<h3>ejson::~<a id="Boolean">Boolean</a> ()</h3>
+
+<pre>
+~<span class="code-function">Boolean</span>(<span class="code-type">void</span>);</pre>
+<br/>
+destructor
+<br/><br/>
+
+<hr/>
+<h3><a id="set">set</a> ()</h3>
+
+<pre>
+<span class="code-type">void</span> <span class="code-function">set</span>(<span class="code-type">bool</span> <span class="code-argument">_value</span>);</pre>
+<br/>
+set the value of the node.
+<br/><ul>
+<b>Parameter [input]:</b> <span class="code-argument">_value</span>  New value of the node.
+<br/></ul>
+<br/>
+
+<hr/>
+<h3><a id="get">get</a> ()</h3>
+
+<pre>
+<span class="code-type">bool</span> <span class="code-function">get</span>(<span class="code-type">void</span>);</pre>
+<br/>
+get the current element Value.
+<br/><ul>
+<b>Return:</b> the reference of the string value.
+<br/></ul>
+<br/>
+
+<hr/>
+<h3><a id="iParse">iParse</a> ()</h3>
+
+<pre>
+<span class="code-type">bool</span> <span class="code-function">iParse</span>(<span class="code-storage-keyword">const</span> <a href="http://www.cplusplus.com/reference/string/string/" class="code-type">std::string</a> & <span class="code-argument">_data</span>,
+            <span class="code-type">size_t</span> & <span class="code-argument">_pos</span>,
+            <a href="ejson__filePos.html" class="code-type">ejson::filePos</a> & <span class="code-argument">_filePos</span>,
+            <a href="ejson__Document.html" class="code-type">ejson::Document</a> & <span class="code-argument">_doc</span>);</pre>
+<br/>
+<br/>
+
+<hr/>
+<h3><a id="iGenerate">iGenerate</a> ()</h3>
+
+<pre>
+<span class="code-type">bool</span> <span class="code-function">iGenerate</span>(<a href="http://www.cplusplus.com/reference/string/string/" class="code-type">std::string</a> & <span class="code-argument">_data</span>,
+               <span class="code-type">size_t</span> <span class="code-argument">_indent</span>);</pre>
+<br/>
+<br/>
+
+<hr/>
+<h3><a id="getType">getType</a> ()</h3>
+
+<pre>
+<span class="code-storage-keyword">enum</span> nodeType <span class="code-function">getType</span>(<span class="code-type">void</span>);</pre>
+<br/>
+<br/>
+
+<hr/>
+<h3><a id="toBoolean">toBoolean</a> ()</h3>
+
+<pre>
+<a href="ejson__Boolean.html" class="code-type">ejson::Boolean</a> * <span class="code-function">toBoolean</span>(<span class="code-type">void</span>);</pre>
+<br/>
+<br/>
+
+<hr/>
+<h3><a id="toBoolean">toBoolean</a> ()</h3>
+
+<pre>
+<span class="code-storage-keyword">const</span> <a href="ejson__Boolean.html" class="code-type">ejson::Boolean</a> * <span class="code-function">toBoolean</span>(<span class="code-type">void</span>);</pre>
+<br/>
+<br/>
+
+<hr/>
+<h3><a id="transfertIn">transfertIn</a> ()</h3>
+
+<pre>
+<span class="code-type">bool</span> <span class="code-function">transfertIn</span>(<a href="ejson__Value.html" class="code-type">ejson::Value</a> * <span class="code-argument">_obj</span>);</pre>
+<br/>
+<br/>
+
+<hr/>
+<h3><a id="duplicate">duplicate</a> ()</h3>
+
+<pre>
+<a href="ejson__Value.html" class="code-type">ejson::Value</a> * <span class="code-function">duplicate</span>(<span class="code-type">void</span>);</pre>
+<br/>
+<br/>
+
+<hr/>
+	</div>
+</body>
+</html>
