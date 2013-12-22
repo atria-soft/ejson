@@ -4,11 +4,6 @@ import lutinTools
 
 def Create(target):
 	myModule = lutinModule.module(__file__, 'ejson', 'LIBRARY')
-	# enable doculentation :
-	myModule.doc_enable()
-	myModule.documentation.set_website("http://HeeroYui.github.io/ejson/")
-	myModule.documentation.set_path(lutinTools.GetCurrentPath(__file__) + "/ejson/")
-	myModule.documentation.set_external_link(['ewol'])
 	
 	myModule.AddModuleDepend(['etk'])
 	
