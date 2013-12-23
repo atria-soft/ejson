@@ -2,6 +2,9 @@
 import monkModule as module
 import monkTools as tools
 
+def get_desc():
+	return "e-json Json parser and genrator"
+
 def create():
 	# module name is 'edn' and type binary.
 	myModule = module.Module(__file__, 'ejson', 'LIBRARY')
@@ -11,5 +14,3 @@ def create():
 	# add the currrent module at the 
 	return myModule
 
-def get_desc():
-	return ""

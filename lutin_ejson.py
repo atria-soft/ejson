@@ -1,15 +1,19 @@
 #!/usr/bin/python
-import lutinModule
-import lutinTools
+import lutinModule as module
+import lutinTools as tools
 
-def Create(target):
-	myModule = lutinModule.module(__file__, 'ejson', 'LIBRARY')
+def get_desc():
+	return "e-json Json parser and genrator"
+
+
+def create(target):
+	myModule = module.Module(__file__, 'ejson', 'LIBRARY')
 	
-	myModule.AddModuleDepend(['etk'])
+	myModule.add_module_depend(['etk'])
 	
 	# add extra compilation flags :
 	myModule.add_extra_compile_flags()
-	myModule.AddSrcFile([
+	myModule.add_src_file([
 		'ejson/debug.cpp',
 		'ejson/ejson.cpp',
 		'ejson/Array.cpp',
@@ -20,7 +24,7 @@ def Create(target):
 		'ejson/Object.cpp',
 		'ejson/Value.cpp'])
 	
-	myModule.AddExportPath(lutinTools.GetCurrentPath(__file__))
+	myModule.add_export_path(tools.get_current_path(__file__))
 	
 	# add the currrent module at the 
 	return myModule
