@@ -10,14 +10,12 @@
 #define __ETK_JSON_NULL_H__
 
 #include <etk/types.h>
-#include <etk/UString.h>
+#include <etk/types.h>
 #include <etk/math/Vector2D.h>
 #include <ejson/Value.h>
 
-namespace ejson
-{
-	class Null : public ejson::Value
-	{
+namespace ejson {
+	class Null : public ejson::Value {
 		public:
 			/**
 			 * @brief basic element of a xml structure

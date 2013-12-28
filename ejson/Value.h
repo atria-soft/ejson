@@ -10,7 +10,7 @@
 #define __ETK_JSON_VALUE_H__
 
 #include <etk/types.h>
-#include <etk/UString.h>
+#include <etk/types.h>
 #include <etk/math/Vector2D.h>
 
 namespace ejson {
@@ -336,6 +336,12 @@ namespace ejson {
 			virtual ejson::Value* duplicate(void) const {
 				return NULL;
 			};
+		protected:
+			/**
+			 * @brief check if the current element is white or not : '\t' '\n' '\r' ' '
+			 * @return tue if it is white char
+			 */
+			static bool isWhiteChar(char32_t _val);
 	};
 };
 

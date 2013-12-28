@@ -7,7 +7,7 @@
  */
 
 #include <vector>
-#include <etk/UString.h>
+#include <etk/types.h>
 #include <ejson/debug.h>
 #include <ejson/ejson.h>
 
@@ -518,8 +518,8 @@ int main(int argc, const char *argv[]) {
 				JSON_INFO("[TEST] " << sectionID << ":" << jjj << " {  OK  } Result in error (normal case)");
 			} else {
 				JSON_ERROR("[TEST] " << sectionID << ":" << jjj << " {ERROR } different output");
-				std::vector<std::string> tmpout = string_split(out, '\n');
-				std::vector<std::string> tmpref = string_split(l_list[iii].m_ref, '\n');
+				std::vector<std::string> tmpout = std::split(out, '\n');
+				std::vector<std::string> tmpref = std::split(l_list[iii].m_ref, '\n');
 				//JSON_ERROR("generate : \n" << out);
 				//JSON_ERROR("reference : \n" << l_list[iii].m_ref);
 				for (int32_t jjj=0; jjj<tmpout.size() || jjj<tmpref.size(); ++jjj) {
@@ -538,8 +538,8 @@ int main(int argc, const char *argv[]) {
 		}
 		if (l_list[iii].m_errorPos == 3) {
 			JSON_ERROR("[TEST] " << sectionID << ":" << jjj << " {ERROR} checking result might be in error...");
-			std::vector<std::string> tmpout = string_split(out, '\n');
-			std::vector<std::string> tmpref = string_split(l_list[iii].m_ref, '\n');
+			std::vector<std::string> tmpout = std::split(out, '\n');
+			std::vector<std::string> tmpref = std::split(l_list[iii].m_ref, '\n');
 			//JSON_ERROR("generate : \n" << out);
 			//JSON_ERROR("reference : \n" << l_list[iii].m_ref);
 			for (int32_t jjj=0; jjj<tmpout.size() || jjj<tmpref.size(); ++jjj) {

@@ -14,6 +14,7 @@
 #define __class__	"Value"
 
 
+
 ejson::Value::~Value(void) {
 	clear();
 }
@@ -25,6 +26,17 @@ etk::CCout& ejson::operator <<(etk::CCout& _os, const ejson::filePos& _obj) {
 	_os << _obj.getCol();
 	_os << ")";
 	return _os;
+}
+
+
+bool ejson::Value::isWhiteChar(char32_t _val) {
+	if(    _val == ' '
+	    || _val == '\t'
+	    || _val == '\n'
+	    || _val == '\r') {
+		return true;
+	}
+	return false;
 }
 
 
@@ -49,7 +61,7 @@ int32_t ejson::Value::countWhiteChar(const std::string& _data, size_t _pos, ejso
 	size_t white=0;
 	for (size_t iii=_pos; iii<_data.size(); iii++) {
 		_filePos.check(_data[iii]);
-		if(true == etk::isWhiteChar(_data[iii])) {
+		if(true == isWhiteChar(_data[iii])) {
 			white++;
 		} else {
 			break;

@@ -10,9 +10,8 @@
 #define __ETK_JSON_H__
 
 #include <ejson/Value.h>
-#include <etk/unicode.h>
 #include <vector>
-#include <etk/UString.h>
+#include <etk/types.h>
 #include <ejson/String.h>
 #include <ejson/Array.h>
 #include <ejson/Object.h>
