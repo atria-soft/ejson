@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>ejson Library</title>
+	<link rel="stylesheet" href="base.css">
+	<link rel="stylesheet" href="menu.css">
+</head>
+<body>
+	<div class="navbar navbar-fixed-top">
+		<div class="container">
+			<h1><a href="index.html">ejson library</a></h1>
+			<h4><a href="http://github.com/heeroyui/ejson/">&nbsp;&nbsp;&nbsp;[ sources ]</a></h4>
+<h3>API:</h3>			<div id="menu">
+<ul class="niveau1">
+	<li><a href="namespace_ejson.html">ejson</a>
+	</li>
+</ul>
+			</div>
+<br/><h3>Associate libraries:</h3><div id="menu">
+<ul class="niveau1"><li><a href="../ewol/index.html">ewol</a></li>
+</ul><ul class="niveau1"><li><a href="../egami/index.html">egami</a></li>
+</ul><ul class="niveau1"><li><a href="../ege/index.html">ege</a></li>
+</ul><ul class="niveau1"><li><a href="../esvg/index.html">esvg</a></li>
+</ul><ul class="niveau1"><li><a href="../etk/index.html">etk</a></li>
+</ul><ul class="niveau1"><li><a href="../exml/index.html">exml</a></li>
+</ul></div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+		</div>
+	</div>
+	<div class="container" id="content">
+<h1>class: ejson::Object</h1><hr/><h2>Description:</h2>
+
+<br/><br/>
+<h2>Constructor and Destructor:</h2>
+<pre>
++                                  <a class="code-function" href="#5973">Object</a>          (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-storage-keyword">virtual</span>                          <a class="code-function" href="#5975">~Object</a>         (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<br/>
+<h2>Synopsis:</h2>
+<pre>
+#         <a class="code-type" href="class_etk__Hash.html">etk::Hash</a>&lt;ejson::Value*&gt; <a class="code-member" href="#5977">m_value</a>;<br/>+         <span class="code-type" >bool</span>                     <a class="code-function" href="#5978">exist</a>           (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>) <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>*            <a class="code-function" href="#5980">get</a>             (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>) <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>*           <a class="code-function" href="#5982">getObject</a>       (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>) <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>*            <a class="code-function" href="#5984">getArray</a>        (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>) <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Null.html">ejson::Null</a>*             <a class="code-function" href="#5986">getNull</a>         (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>) <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__String.html">ejson::String</a>*           <a class="code-function" href="#5988">getString</a>       (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>) <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> &      <a class="code-function" href="#5990">getStringValue</a>  (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>) <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a>              <a class="code-function" href="#5992">getStringValue</a>  (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>,<br/>                                                    <span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_errorValue</span>) <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Boolean.html">ejson::Boolean</a>*          <a class="code-function" href="#5995">getBoolean</a>      (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>) <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >bool</span>                     <a class="code-function" href="#5997">getBooleanValue</a> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>,<br/>                                                    <span class="code-type" >bool</span> <span class="code-argument">_errorValue</span>) <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>*           <a class="code-function" href="#6000">getNumber</a>       (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>) <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >double</span>                   <a class="code-function" href="#6002">getNumberValue</a>  (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>,<br/>                                                    <span class="code-type" >double</span> <span class="code-argument">_errorValue</span>) <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >bool</span>                     <a class="code-function" href="#6005">add</a>             (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>,<br/>                                                    <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-argument">_value</span>);<br/>+         <span class="code-type" >bool</span>                     <a class="code-function" href="#6008">addString</a>       (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>,<br/>                                                    <span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_value</span>);<br/>+         <span class="code-type" >bool</span>                     <a class="code-function" href="#6011">addNull</a>         (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>);<br/>+         <span class="code-type" >bool</span>                     <a class="code-function" href="#6013">addBoolean</a>      (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>,<br/>                                                    <span class="code-type" >bool</span> <span class="code-argument">_value</span>);<br/>+         <span class="code-type" >bool</span>                     <a class="code-function" href="#6016">addNumber</a>       (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>,<br/>                                                    <span class="code-type" >double</span> <span class="code-argument">_value</span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>                     <a class="code-function" href="#6019">iParse</a>          (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                                                    size_t & <span class="code-argument">_pos</span>,<br/>                                                    <a class="code-type" href="class_ejson__filePos.html">ejson::filePos</a> & <span class="code-argument">_filePos</span>,<br/>                                                    <a class="code-type" href="class_ejson__Document.html">ejson::Document</a> & <span class="code-argument">_doc</span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>                     <a class="code-function" href="#6024">iGenerate</a>       (<a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                                                    size_t <span class="code-argument">_indent</span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">enum</span> nodeType            <a class="code-function" href="#6027">getType</a>         (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>*           <a class="code-function" href="#6029">toObject</a>        (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>*     <a class="code-function" href="#6031">toObject</a>        (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >void</span>                     <a class="code-function" href="#6033">clear</a>           (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>                     <a class="code-function" href="#6035">transfertIn</a>     (<a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-argument">_obj</span>);<br/>+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>*            <a class="code-function" href="#6037">duplicate</a>       (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+<br/>
+<h2>Object Hierarchy:<h2>
+<pre>
++<a href="class_ejson__Value.html">ejson::Value</a><br/>  +--> ejson::Object<br/>         +--> <a href="class_ejson__Document.html">ejson::Document</a><br/></pre>
+<h2>Detail:</h2>
+<a id="5973"/><a id="5975"/><h3>Object</h3><pre>
++  <span class="code-function">Object</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+basic element of a xml structure<br/>
+<br/>
+<hr/>
+<a id="5977"/><h3>~Object</h3><pre>
++ <span class="code-storage-keyword">virtual</span>  <span class="code-function">~Object</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+destructor<br/>
+<br/>
+<hr/>
+<a id="5978"/><h3>m_value</h3><pre>
+# <a class="code-type" href="class_etk__Hash.html">etk::Hash</a>&lt;ejson::Value*&gt; <span class="code-member">m_value</span>;<br/></pre>
+
+value of the node (for element this is the name, for text it is the inside text ...)<br/>
+<br/>
+<hr/>
+<a id="5980"/><h3>exist</h3><pre>
++ <span class="code-type" >bool</span> <span class="code-function">exist</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+check if an element exist.<br/><ul>
+<table class="parameter-list">
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_name</span> </td><td> name of the object.</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>The existance of the element.</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="5982"/><h3>get</h3><pre>
++ <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-function">get</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+get the sub element with his name (no cast check)<br/><ul>
+<table class="parameter-list">
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_name</span> </td><td> name of the object</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>pointer on the element requested or NULL if it not the corect type or does not existed</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="5984"/><h3>getObject</h3><pre>
++ <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>* <span class="code-function">getObject</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+get the sub element with his name (Casted as Object if it is possible)<br/><ul>
+<table class="parameter-list">
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_name</span> </td><td> name of the object</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>pointer on the element requested or NULL if it not the corect type or does not existed</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="5986"/><h3>getArray</h3><pre>
++ <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>* <span class="code-function">getArray</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+get the sub element with his name (Casted as Array if it is possible)<br/><ul>
+<table class="parameter-list">
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_name</span> </td><td> name of the object</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>pointer on the element requested or NULL if it not the corect type or does not existed</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="5988"/><h3>getNull</h3><pre>
++ <a class="code-type" href="class_ejson__Null.html">ejson::Null</a>* <span class="code-function">getNull</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+get the sub element with his name (Casted as Null if it is possible)<br/><ul>
+<table class="parameter-list">
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_name</span> </td><td> name of the object</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>pointer on the element requested or NULL if it not the corect type or does not existed</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="5990"/><h3>getString</h3><pre>
++ <a class="code-type" href="class_ejson__String.html">ejson::String</a>* <span class="code-function">getString</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+get the sub element with his name (Casted as String if it is possible)<br/><ul>
+<table class="parameter-list">
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_name</span> </td><td> name of the object</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>pointer on the element requested or NULL if it not the corect type or does not existed</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="5992"/><h3>getStringValue</h3><pre>
++ <span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-function">getStringValue</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+get the sub string value of the requested element<br/><ul>
+<table class="parameter-list">
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_name</span> </td><td> name of the object</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>Value of the string or an error string (empty)</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="5995"/><h3>getStringValue</h3><pre>
++ <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> <span class="code-function">getStringValue</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>,<br/>                              <span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_errorValue</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+get the sub string value of the requested element (with error return value)<br/><ul>
+<table class="parameter-list">
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_name</span> </td><td> name of the object</td></tr>
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_errorValue</span> </td><td> The return value if the element does not exist.</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>Value of the string or an error string (empty)</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="5997"/><h3>getBoolean</h3><pre>
++ <a class="code-type" href="class_ejson__Boolean.html">ejson::Boolean</a>* <span class="code-function">getBoolean</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+get the sub element with his name (Casted as Boolean if it is possible)<br/><ul>
+<table class="parameter-list">
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_name</span> </td><td> name of the object</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>pointer on the element requested or NULL if it not the corect type or does not existed</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="6000"/><h3>getBooleanValue</h3><pre>
++ <span class="code-type" >bool</span> <span class="code-function">getBooleanValue</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>,<br/>                        <span class="code-type" >bool</span> <span class="code-argument">_errorValue</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+get the sub boolean value of the requested element.<br/><ul>
+<table class="parameter-list">
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_name</span> </td><td> name of the object.</td></tr>
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_errorValue</span> </td><td> The return value if the element does not exist.</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>Value of the Boolean or the _errorValue;</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="6002"/><h3>getNumber</h3><pre>
++ <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>* <span class="code-function">getNumber</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+get the sub element with his name (Casted as Number if it is possible)<br/><ul>
+<table class="parameter-list">
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_name</span> </td><td> name of the object</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>pointer on the element requested or NULL if it not the corect type or does not existed</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="6005"/><h3>getNumberValue</h3><pre>
++ <span class="code-type" >double</span> <span class="code-function">getNumberValue</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>,<br/>                         <span class="code-type" >double</span> <span class="code-argument">_errorValue</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+get the sub Number value of the requested element.<br/><ul>
+<table class="parameter-list">
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_name</span> </td><td> name of the object.</td></tr>
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_errorValue</span> </td><td> The return value if the element does not exist.</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>Value of the Number or the _errorValue;</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="6008"/><h3>add</h3><pre>
++ <span class="code-type" >bool</span> <span class="code-function">add</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>,<br/>            <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-argument">_value</span>);<br/></pre>
+add an element in the Object<br/><ul>
+<table class="parameter-list">
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_name</span> </td><td> name of the object</td></tr>
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_value</span> </td><td> Element to add</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>false if an error occured</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="6011"/><h3>addString</h3><pre>
++ <span class="code-type" >bool</span> <span class="code-function">addString</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>,<br/>                  <span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_value</span>);<br/></pre>
+add a string element in the Object (automatic creation)<br/><ul>
+<table class="parameter-list">
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_name</span> </td><td> name of the object</td></tr>
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_value</span> </td><td> string value to add</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>false if an error occured</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="6013"/><h3>addNull</h3><pre>
++ <span class="code-type" >bool</span> <span class="code-function">addNull</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>);<br/></pre>
+add a "null" element in the Object (automatic creation)<br/><ul>
+<table class="parameter-list">
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_name</span> </td><td> name of the object</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>false if an error occured</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="6016"/><h3>addBoolean</h3><pre>
++ <span class="code-type" >bool</span> <span class="code-function">addBoolean</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>,<br/>                   <span class="code-type" >bool</span> <span class="code-argument">_value</span>);<br/></pre>
+add a boolean element in the Object (automatic creation)<br/><ul>
+<table class="parameter-list">
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_name</span> </td><td> name of the object</td></tr>
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_value</span> </td><td> boolean value to add</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>false if an error occured</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="6019"/><h3>addNumber</h3><pre>
++ <span class="code-type" >bool</span> <span class="code-function">addNumber</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_name</span>,<br/>                  <span class="code-type" >double</span> <span class="code-argument">_value</span>);<br/></pre>
+add a double element in the Object (automatic creation)<br/><ul>
+<table class="parameter-list">
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_name</span> </td><td> name of the object</td></tr>
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_value</span> </td><td> double value to add</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>false if an error occured</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="6024"/><h3>iParse</h3><pre>
++ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span> <span class="code-function">iParse</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                       size_t & <span class="code-argument">_pos</span>,<br/>                       <a class="code-type" href="class_ejson__filePos.html">ejson::filePos</a> & <span class="code-argument">_filePos</span>,<br/>                       <a class="code-type" href="class_ejson__Document.html">ejson::Document</a> & <span class="code-argument">_doc</span>);<br/></pre>
+parse the Current node [pure VIRUAL]<br/><ul>
+<table class="parameter-list">
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_data</span> </td><td> data string to parse.</td></tr>
+<td><b>Parameter [input] [output]:</b></td><td><span class="code-argument">_pos</span> </td><td> position in the string to start parse, return the position end of parsing.</td></tr>
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">_caseSensitive</span> </td><td> Request a parsion of element that is not case sensitive (all element is in low case)</td></tr>
+<td><b>Parameter [input] [output]:</b></td><td><span class="code-argument">file</span> </td><td> parsing position (line x col x)</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>false if an error occured.</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="6027"/><h3>iGenerate</h3><pre>
++ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span> <span class="code-function">iGenerate</span> (<a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                          size_t <span class="code-argument">_indent</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+generate a string with the tree of the xml<br/><ul>
+<table class="parameter-list">
+<td><b>Parameter [input] [output]:</b></td><td><span class="code-argument">_data</span> </td><td> string where to add the elements</td></tr>
+<td><b>Parameter [input]:</b></td><td><span class="code-argument">current</span> </td><td> indentation of the file</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>false if an error occured.</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="6029"/><h3>getType</h3><pre>
++ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">enum</span> nodeType <span class="code-function">getType</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+get the node type.<br/><ul>
+<table class="parameter-list">
+<tr><td><b>Return: </b></td><td></td><td>the type of the Node.</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="6031"/><h3>toObject</h3><pre>
++ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>* <span class="code-function">toObject</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+Cast the element in a Object if it is possible.<br/><ul>
+<table class="parameter-list">
+<tr><td><b>Return: </b></td><td></td><td>pointer on the class or NULL.</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="6033"/><h3>toObject</h3><pre>
++ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>* <span class="code-function">toObject</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+Cast the element in a Object if it is possible.<br/><ul>
+<table class="parameter-list">
+<tr><td><b>Return: </b></td><td></td><td>pointer on the class or NULL.</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<a id="6035"/><h3>clear</h3><pre>
++ <span class="code-storage-keyword">virtual</span> <span class="code-type" >void</span> <span class="code-function">clear</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+clear the Node<br/>
+<br/>
+<hr/>
+<a id="6037"/><h3>transfertIn</h3><pre>
++ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span> <span class="code-function">transfertIn</span> (<a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-argument">_obj</span>);<br/></pre>
+Tranfert all element in the element set in parameter<br/><b>Note:</b> all element is remove from the curent element.<br/> <ul>
+<table class="parameter-list">
+<td><b>Parameter [input] [output]:</b></td><td><span class="code-argument">_obj</span> </td><td> move all parameter in the selected element</td></tr>
+<tr><td><b>Return: </b></td><td></td><td>true if transfer is done corectly</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+<h3>duplicate</h3><pre>
++ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-function">duplicate</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+Copy the curent node and all the child in the curent one.<br/><ul>
+<table class="parameter-list">
+<tr><td><b>Return: </b></td><td></td><td>NULL in an error occured, the pointer on the element otherwise</td></tr></table>
+</ul>
+
+<br/>
+<hr/>
+	</div>
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-46753803-1', 'heeroyui.github.io');
+	ga('send', 'pageview');
+</script>
+</body>
+</html>
