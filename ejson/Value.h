@@ -44,7 +44,7 @@ namespace ejson {
 		typeNull, //!< the null element
 		typeObject, //!< the { ... }
 	};
-	
+	//! @not-in-doc
 	class filePos {
 		private:
 			size_t m_col;
@@ -192,6 +192,7 @@ namespace ejson {
 			virtual ejson::Value* toValue(void) {
 				return this;
 			};
+			//! @previous
 			virtual const ejson::Value* toValue(void) const {
 				return this;
 			};
@@ -202,6 +203,7 @@ namespace ejson {
 			virtual ejson::Document* toDocument(void) {
 				return NULL;
 			};
+			//! @previous
 			virtual const ejson::Document* toDocument(void) const {
 				return NULL;
 			};
@@ -212,6 +214,7 @@ namespace ejson {
 			virtual ejson::Array* toArray(void) {
 				return NULL;
 			};
+			//! @previous
 			virtual const ejson::Array* toArray(void) const{
 				return NULL;
 			};
@@ -222,6 +225,7 @@ namespace ejson {
 			virtual ejson::Object* toObject(void) {
 				return NULL;
 			};
+			//! @previous
 			virtual const ejson::Object* toObject(void) const{
 				return NULL;
 			};
@@ -232,6 +236,7 @@ namespace ejson {
 			virtual ejson::String* toString(void) {
 				return NULL;
 			};
+			//! @previous
 			virtual const ejson::String* toString(void) const{
 				return NULL;
 			};
@@ -242,6 +247,7 @@ namespace ejson {
 			virtual ejson::Number* toNumber(void) {
 				return NULL;
 			};
+			//! @previous
 			virtual const ejson::Number* toNumber(void) const{
 				return NULL;
 			};
@@ -252,6 +258,7 @@ namespace ejson {
 			virtual ejson::Boolean* toBoolean(void) {
 				return NULL;
 			};
+			//! @previous
 			virtual const ejson::Boolean* toBoolean(void) const{
 				return NULL;
 			};
@@ -262,6 +269,7 @@ namespace ejson {
 			virtual ejson::Null* toNull(void) {
 				return NULL;
 			};
+			//! @previous
 			virtual const ejson::Null* toNull(void) const{
 				return NULL;
 			};

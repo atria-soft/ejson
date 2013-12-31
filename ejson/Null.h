@@ -34,6 +34,7 @@ namespace ejson {
 			virtual ejson::Null* toNull(void) {
 				return this;
 			};
+			//! @previous
 			virtual const ejson::Null* toNull(void) const{
 				return this;
 			};

@@ -267,14 +267,21 @@ bool ejson::Object::exist(const std::string& _name) const {
 	return m_value.exist(_name);
 }
 
-ejson::Value* ejson::Object::get(const std::string& _name) const {
+ejson::Value* ejson::Object::get(const std::string& _name) {
 	if (false == m_value.exist(_name)) {
 		return NULL;
 	}
 	return m_value[_name];
 }
 
-ejson::Object* ejson::Object::getObject(const std::string& _name) const {
+const ejson::Value* ejson::Object::get(const std::string& _name) const {
+	if (false == m_value.exist(_name)) {
+		return NULL;
+	}
+	return m_value[_name];
+}
+
+ejson::Object* ejson::Object::getObject(const std::string& _name) {
 	ejson::Value* tmp = get(_name);
 	if (NULL == tmp) {
 		return NULL;
@@ -282,7 +289,15 @@ ejson::Object* ejson::Object::getObject(const std::string& _name) const {
 	return tmp->toObject();
 }
 
-ejson::Array* ejson::Object::getArray(const std::string& _name) const {
+const ejson::Object* ejson::Object::getObject(const std::string& _name) const {
+	const ejson::Value* tmp = get(_name);
+	if (NULL == tmp) {
+		return NULL;
+	}
+	return tmp->toObject();
+}
+
+ejson::Array* ejson::Object::getArray(const std::string& _name) {
 	ejson::Value* tmp = get(_name);
 	if (NULL == tmp) {
 		return NULL;
@@ -290,7 +305,15 @@ ejson::Array* ejson::Object::getArray(const std::string& _name) const {
 	return tmp->toArray();
 }
 
-ejson::Null* ejson::Object::getNull(const std::string& _name) const {
+const ejson::Array* ejson::Object::getArray(const std::string& _name) const {
+	const ejson::Value* tmp = get(_name);
+	if (NULL == tmp) {
+		return NULL;
+	}
+	return tmp->toArray();
+}
+
+ejson::Null* ejson::Object::getNull(const std::string& _name) {
 	ejson::Value* tmp = get(_name);
 	if (NULL == tmp) {
 		return NULL;
@@ -298,8 +321,24 @@ ejson::Null* ejson::Object::getNull(const std::string& _name) const {
 	return tmp->toNull();
 }
 
-ejson::String* ejson::Object::getString(const std::string& _name) const {
+const ejson::Null* ejson::Object::getNull(const std::string& _name) const {
+	const ejson::Value* tmp = get(_name);
+	if (NULL == tmp) {
+		return NULL;
+	}
+	return tmp->toNull();
+}
+
+ejson::String* ejson::Object::getString(const std::string& _name) {
 	ejson::Value* tmp = get(_name);
+	if (NULL == tmp) {
+		return NULL;
+	}
+	return tmp->toString();
+}
+
+const ejson::String* ejson::Object::getString(const std::string& _name) const {
+	const ejson::Value* tmp = get(_name);
 	if (NULL == tmp) {
 		return NULL;
 	}
@@ -308,7 +347,7 @@ ejson::String* ejson::Object::getString(const std::string& _name) const {
 
 const std::string& ejson::Object::getStringValue(const std::string& _name) const {
 	static const std::string errorString("");
-	ejson::String* tmpp = getString(_name);
+	const ejson::String* tmpp = getString(_name);
 	if (NULL == tmpp) {
 		return errorString;
 	}
@@ -316,14 +355,14 @@ const std::string& ejson::Object::getStringValue(const std::string& _name) const
 }
 
 std::string ejson::Object::getStringValue(const std::string& _name, const std::string& _errorValue) const {
-	ejson::String* tmpp = getString(_name);
+	const ejson::String* tmpp = getString(_name);
 	if (NULL == tmpp) {
 		return _errorValue;
 	}
 	return tmpp->get();
 }
 
-ejson::Boolean* ejson::Object::getBoolean(const std::string& _name) const {
+ejson::Boolean* ejson::Object::getBoolean(const std::string& _name) {
 	ejson::Value* tmp = get(_name);
 	if (NULL == tmp) {
 		return NULL;
@@ -331,15 +370,23 @@ ejson::Boolean* ejson::Object::getBoolean(const std::string& _name) const {
 	return tmp->toBoolean();
 }
 
+const ejson::Boolean* ejson::Object::getBoolean(const std::string& _name) const {
+	const ejson::Value* tmp = get(_name);
+	if (NULL == tmp) {
+		return NULL;
+	}
+	return tmp->toBoolean();
+}
+
 bool ejson::Object::getBooleanValue(const std::string& _name, bool _errorValue) const {
-	ejson::Boolean* tmpp = getBoolean(_name);
+	const ejson::Boolean* tmpp = getBoolean(_name);
 	if (NULL == tmpp) {
 		return _errorValue;
 	}
 	return tmpp->get();
 }
 
-ejson::Number* ejson::Object::getNumber(const std::string& _name) const {
+ejson::Number* ejson::Object::getNumber(const std::string& _name) {
 	ejson::Value* tmp = get(_name);
 	if (NULL == tmp) {
 		return NULL;
@@ -347,8 +394,16 @@ ejson::Number* ejson::Object::getNumber(const std::string& _name) const {
 	return tmp->toNumber();
 }
 
+const ejson::Number* ejson::Object::getNumber(const std::string& _name) const {
+	const ejson::Value* tmp = get(_name);
+	if (NULL == tmp) {
+		return NULL;
+	}
+	return tmp->toNumber();
+}
+
 double ejson::Object::getNumberValue(const std::string& _name, double _errorValue) const {
-	ejson::Number* tmpp = getNumber(_name);
+	const ejson::Number* tmpp = getNumber(_name);
 	if (NULL == tmpp) {
 		return _errorValue;
 	}

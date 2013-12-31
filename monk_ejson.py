@@ -12,6 +12,7 @@ def create():
 	myModule.set_website("http://heeroyui.github.io/ejson/")
 	myModule.set_website_sources("http://github.com/heeroyui/ejson/")
 	myModule.set_path(tools.get_current_path(__file__) + "/ejson/")
+	myModule.set_path_general_doc(tools.get_current_path(__file__) + "/doc/")
 	# add the currrent module at the 
 	return myModule
 

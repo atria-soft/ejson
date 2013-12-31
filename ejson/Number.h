@@ -68,6 +68,7 @@ namespace ejson {
 			virtual ejson::Number* toNumber(void) {
 				return this;
 			};
+			//! @previous
 			virtual const ejson::Number* toNumber(void) const{
 				return this;
 			};

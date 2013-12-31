@@ -29,6 +29,7 @@ namespace ejson {
 		protected:
 			etk::Hash<ejson::Value*> m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
 		public:
+			// TODO : add direct id  access....
 			/**
 			 * @brief check if an element exist.
 			 * @param[in] _name name of the object.
@@ -40,31 +41,91 @@ namespace ejson {
 			 * @param[in] _name name of the object
 			 * @return pointer on the element requested or NULL if it not the corect type or does not existed
 			 */
-			ejson::Value* get(const std::string& _name) const;
+			ejson::Value* get(const std::string& _name);
+			//! @previous
+			const ejson::Value* get(const std::string& _name) const;
+			//! @previous
+			ejson::Value* operator[] (const std::string& _name) {
+				return get(_name);
+			}
+			//! @previous
+			const ejson::Value* operator[] (const std::string& _name) const {
+				return get(_name);
+			}
+			/**
+			 * @brief Get all the element name (keys).
+			 * @return a vector of all name (key).
+			 */
+			std::vector<std::string> getKeys(void) const {
+				return m_value.getKeys();
+			}
+			/**
+			 * @brief get the number of sub element in the current one
+			 * @return the Number of stored element
+			 */
+			size_t size(void) const {
+				return m_value.size();
+			};
+			/**
+			 * @brief get the pointer on an element reference with his ID.
+			 * @param[in] _id Id of the element.
+			 * @return NULL if the element does not exist.
+			 */
+			ejson::Value* get(size_t _id) {
+				return m_value[_id];
+			};
+			//! @previous
+			const ejson::Value* get(size_t _id) const{
+				return m_value[_id];
+			};
+			//! @previous
+			ejson::Value* operator[] (size_t _id) {
+				return m_value[_id];
+			}
+			//! @previous
+			const ejson::Value* operator[] (size_t _id) const {
+				return m_value[_id];
+			}
+			/**
+			 * @brief Get the element name (key).
+			 * @param[in] _id Id of the element.
+			 * @return The name (key).
+			 */
+			std::string getKey(size_t _id) const {
+				return m_value.getKey(_id);
+			}
 			/**
 			 * @brief get the sub element with his name (Casted as Object if it is possible)
 			 * @param[in] _name name of the object
 			 * @return pointer on the element requested or NULL if it not the corect type or does not existed
 			 */
-			ejson::Object* getObject(const std::string& _name) const;
+			ejson::Object* getObject(const std::string& _name);
+			//! @previous
+			const ejson::Object* getObject(const std::string& _name) const;
 			/**
 			 * @brief get the sub element with his name (Casted as Array if it is possible)
 			 * @param[in] _name name of the object
 			 * @return pointer on the element requested or NULL if it not the corect type or does not existed
 			 */
-			ejson::Array* getArray(const std::string& _name) const;
+			ejson::Array* getArray(const std::string& _name);
+			//! @previous
+			const ejson::Array* getArray(const std::string& _name) const;
 			/**
 			 * @brief get the sub element with his name (Casted as Null if it is possible)
 			 * @param[in] _name name of the object
 			 * @return pointer on the element requested or NULL if it not the corect type or does not existed
 			 */
-			ejson::Null* getNull(const std::string& _name) const;
+			ejson::Null* getNull(const std::string& _name);
+			//! @previous
+			const ejson::Null* getNull(const std::string& _name) const;
 			/**
 			 * @brief get the sub element with his name (Casted as String if it is possible)
 			 * @param[in] _name name of the object
 			 * @return pointer on the element requested or NULL if it not the corect type or does not existed
 			 */
-			ejson::String* getString(const std::string& _name) const;
+			ejson::String* getString(const std::string& _name);
+			//! @previous
+			const ejson::String* getString(const std::string& _name) const;
 			/**
 			 * @brief get the sub string value of the requested element
 			 * @param[in] _name name of the object
@@ -83,7 +144,9 @@ namespace ejson {
 			 * @param[in] _name name of the object
 			 * @return pointer on the element requested or NULL if it not the corect type or does not existed
 			 */
-			ejson::Boolean* getBoolean(const std::string& _name) const;
+			ejson::Boolean* getBoolean(const std::string& _name);
+			//! @previous
+			const ejson::Boolean* getBoolean(const std::string& _name) const;
 			/**
 			 * @brief get the sub boolean value of the requested element.
 			 * @param[in] _name name of the object.
@@ -96,7 +159,9 @@ namespace ejson {
 			 * @param[in] _name name of the object
 			 * @return pointer on the element requested or NULL if it not the corect type or does not existed
 			 */
-			ejson::Number* getNumber(const std::string& _name) const;
+			ejson::Number* getNumber(const std::string& _name);
+			//! @previous
+			const ejson::Number* getNumber(const std::string& _name) const;
 			/**
 			 * @brief get the sub Number value of the requested element.
 			 * @param[in] _name name of the object.
@@ -148,6 +213,7 @@ namespace ejson {
 			virtual ejson::Object* toObject(void) {
 				return this;
 			};
+			//! @previous
 			virtual const ejson::Object* toObject(void) const{
 				return this;
 			};

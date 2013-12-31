@@ -54,6 +54,7 @@ namespace ejson {
 			virtual ejson::String* toString(void) {
 				return this;
 			};
+			//! @previous
 			virtual const ejson::String* toString(void) const {
 				return this;
 			};

@@ -56,6 +56,7 @@ namespace ejson {
 			virtual ejson::Boolean* toBoolean(void) {
 				return this;
 			};
+			//! @previous
 			virtual const ejson::Boolean* toBoolean(void) const{
 				return this;
 			};
