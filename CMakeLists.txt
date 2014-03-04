@@ -28,18 +28,35 @@ include_directories(.)
 #Create src file list
 set(src_files
 	ejson/debug.cpp
+	ejson/debug.h
 	ejson/ejson.cpp
+	ejson/ejson.h
 	ejson/Array.cpp
+	ejson/Array.h
 	ejson/Boolean.cpp
+	ejson/Boolean.h
 	ejson/Null.cpp
+	ejson/Null.h
 	ejson/Number.cpp
+	ejson/Number.h
 	ejson/String.cpp
+	ejson/String.h
 	ejson/Object.cpp
+	ejson/Object.h
 	ejson/Value.cpp
+	ejson/Value.h
 )
 
 add_definitions( -DDEBUG_LEVEL=3 )
 add_definitions( -DDEBUG=1 )
+if (APPLE)
+	add_definitions( -D__TARGET_OS__MacOs )
+elseif (UNIX)
+	add_definitions( -D__TARGET_OS__Linux )
+elseif (WIN32)
+	add_definitions( -D__TARGET_OS__Windows )
+endif ()
+
 
 include_directories(${etk_SOURCE_DIR})
 include_directories(${linearmath_SOURCE_DIR}/bullet/src/)

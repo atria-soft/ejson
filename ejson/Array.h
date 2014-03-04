@@ -10,8 +10,6 @@
 #define __ETK_JSON_ARRAY_H__
 
 #include <etk/types.h>
-#include <etk/types.h>
-#include <etk/math/Vector2D.h>
 #include <ejson/Value.h>
 
 namespace ejson {
@@ -165,16 +163,6 @@ namespace ejson {
 		public: // herited function :
 			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			virtual bool iGenerate(std::string& _data, size_t _indent) const;
-			virtual enum nodeType getType(void) const {
-				return typeArray;
-			};
-			virtual ejson::Array* toArray(void) {
-				return this;
-			};
-			//! @previous
-			virtual const ejson::Array* toArray(void) const {
-				return this;
-			};
 			virtual void clear(void);
 			virtual bool transfertIn(ejson::Value* _obj);
 			virtual ejson::Value* duplicate(void) const;

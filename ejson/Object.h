@@ -10,9 +10,8 @@
 #define __ETK_JSON_OBJECT_H__
 
 #include <etk/types.h>
-#include <etk/types.h>
-#include <etk/Hash.h>
-#include <etk/math/Vector2D.h>
+#include <map>
+#include <algorithm>
 #include <ejson/Value.h>
 
 namespace ejson {
@@ -27,7 +26,7 @@ namespace ejson {
 			 */
 			virtual ~Object(void) { };
 		protected:
-			etk::Hash<ejson::Value*> m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
+			std::map<std::string, ejson::Value*> m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
 		public:
 			// TODO : add direct id  access....
 			/**
@@ -52,12 +51,17 @@ namespace ejson {
 			const ejson::Value* operator[] (const std::string& _name) const {
 				return get(_name);
 			}
+		public:
 			/**
 			 * @brief Get all the element name (keys).
 			 * @return a vector of all name (key).
 			 */
 			std::vector<std::string> getKeys(void) const {
-				return m_value.getKeys();
+				std::vector<std::string> keys;
+				for (auto &it : m_value) {
+					keys.push_back(it.first);
+				}
+				return keys;
 			}
 			/**
 			 * @brief get the number of sub element in the current one
@@ -72,19 +76,31 @@ namespace ejson {
 			 * @return NULL if the element does not exist.
 			 */
 			ejson::Value* get(size_t _id) {
-				return m_value[_id];
+				size_t id = 0;
+				for(auto &it : m_value) {
+					if (id == _id) {
+						return it.second;
+					}
+				}
+				return NULL;
 			};
 			//! @previous
 			const ejson::Value* get(size_t _id) const{
-				return m_value[_id];
+				size_t id = 0;
+				for(auto &it : m_value) {
+					if (id == _id) {
+						return it.second;
+					}
+				}
+				return NULL;
 			};
 			//! @previous
 			ejson::Value* operator[] (size_t _id) {
-				return m_value[_id];
+				return get(_id);
 			}
 			//! @previous
 			const ejson::Value* operator[] (size_t _id) const {
-				return m_value[_id];
+				return get(_id);
 			}
 			/**
 			 * @brief Get the element name (key).
@@ -92,7 +108,13 @@ namespace ejson {
 			 * @return The name (key).
 			 */
 			std::string getKey(size_t _id) const {
-				return m_value.getKey(_id);
+				size_t id = 0;
+				for(auto it = m_value.begin(); it != m_value.end(); ++it, ++id) {
+					if (id == _id) {
+						return it->first;
+					}
+				}
+				return NULL;
 			}
 			/**
 			 * @brief get the sub element with his name (Casted as Object if it is possible)
@@ -207,16 +229,6 @@ namespace ejson {
 		public: // herited function :
 			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			virtual bool iGenerate(std::string& _data, size_t _indent) const;
-			virtual enum nodeType getType(void) const {
-				return typeObject;
-			};
-			virtual ejson::Object* toObject(void) {
-				return this;
-			};
-			//! @previous
-			virtual const ejson::Object* toObject(void) const{
-				return this;
-			};
 			virtual void clear(void);
 			virtual bool transfertIn(ejson::Value* _obj);
 			virtual ejson::Value* duplicate(void) const;

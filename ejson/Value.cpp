@@ -123,3 +123,46 @@ bool ejson::Value::checkNumber(char32_t _val) const {
 	return false;
 }
 
+
+ejson::Document* ejson::Value::toDocument(void) {
+	return dynamic_cast<ejson::Document*>(this);
+};
+const ejson::Document* ejson::Value::toDocument(void) const {
+	return dynamic_cast<const ejson::Document*>(this);
+};
+ejson::Array* ejson::Value::toArray(void) {
+	return dynamic_cast<ejson::Array*>(this);
+};
+const ejson::Array* ejson::Value::toArray(void) const{
+	return dynamic_cast<const ejson::Array*>(this);
+};
+ejson::Object* ejson::Value::toObject(void) {
+	return dynamic_cast<ejson::Object*>(this);
+};
+const ejson::Object* ejson::Value::toObject(void) const{
+	return dynamic_cast<const ejson::Object*>(this);
+};
+ejson::String* ejson::Value::toString(void) {
+	return dynamic_cast<ejson::String*>(this);
+};
+const ejson::String* ejson::Value::toString(void) const{
+	return dynamic_cast<const ejson::String*>(this);
+};
+ejson::Number* ejson::Value::toNumber(void) {
+	return dynamic_cast<ejson::Number*>(this);
+};
+const ejson::Number* ejson::Value::toNumber(void) const{
+	return dynamic_cast<const ejson::Number*>(this);
+};
+ejson::Boolean* ejson::Value::toBoolean(void) {
+	return dynamic_cast<ejson::Boolean*>(this);
+};
+const ejson::Boolean* ejson::Value::toBoolean(void) const{
+	return dynamic_cast<const ejson::Boolean*>(this);
+};
+ejson::Null* ejson::Value::toNull(void) {
+	return dynamic_cast<ejson::Null*>(this);
+};
+const ejson::Null* ejson::Value::toNull(void) const{
+	return dynamic_cast<const ejson::Null*>(this);
+};
