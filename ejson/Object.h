@@ -81,6 +81,7 @@ namespace ejson {
 					if (id == _id) {
 						return it.second;
 					}
+					id++;
 				}
 				return NULL;
 			};
@@ -91,6 +92,7 @@ namespace ejson {
 					if (id == _id) {
 						return it.second;
 					}
+					id++;
 				}
 				return NULL;
 			};
