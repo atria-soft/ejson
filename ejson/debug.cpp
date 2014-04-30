@@ -8,4 +8,8 @@
 
 #include <ejson/debug.h>
 
-const char * g_ejsonLibName = "ejson    ";
+int32_t ejson::getLogId(void) {
+	static int32_t g_val = etk::log::registerInstance("ejson");
+	return g_val;
+}
+

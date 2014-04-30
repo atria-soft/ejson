@@ -102,7 +102,7 @@ namespace ejson {
 				return m_line;
 			};
 	};
-	etk::CCout& operator <<(etk::CCout& _os, const filePos& _obj);
+	std::ostream& operator <<(std::ostream& _os, const filePos& _obj);
 	
 	class Value {
 		public:

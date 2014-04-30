@@ -19,7 +19,7 @@ ejson::Value::~Value(void) {
 	clear();
 }
 
-etk::CCout& ejson::operator <<(etk::CCout& _os, const ejson::filePos& _obj) {
+std::ostream& ejson::operator <<(std::ostream& _os, const ejson::filePos& _obj) {
 	_os << "(l=";
 	_os << _obj.getLine();
 	_os << ",c=";
