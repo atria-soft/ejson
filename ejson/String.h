@@ -25,7 +25,7 @@ namespace ejson {
 			/**
 			 * @brief destructor
 			 */
-			virtual ~String(void) { };
+			virtual ~String() { };
 		protected:
 			std::string m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
 		public:
@@ -40,14 +40,14 @@ namespace ejson {
 			 * @brief get the current element Value.
 			 * @return the reference of the string value.
 			 */
-			const std::string& get(void) const {
+			const std::string& get() const {
 				return m_value;
 			};
 		public: // herited function :
 			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			virtual bool iGenerate(std::string& _data, size_t _indent) const;
 			virtual bool transfertIn(ejson::Value* _obj);
-			virtual ejson::Value* duplicate(void) const;
+			virtual ejson::Value* duplicate() const;
 	};
 };
 

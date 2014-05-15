@@ -18,11 +18,11 @@ namespace ejson {
 			/**
 			 * @brief basic element of a xml structure
 			 */
-			Array(void) { };
+			Array() { };
 			/**
 			 * @brief destructor
 			 */
-			virtual ~Array(void) { };
+			virtual ~Array() { };
 		private:
 			std::vector<ejson::Value*> m_value; //!< vector of sub elements
 		public:
@@ -30,7 +30,7 @@ namespace ejson {
 			 * @brief get the number of sub element in the current one
 			 * @return the Number of stored element
 			 */
-			size_t size(void) const {
+			size_t size() const {
 				return m_value.size();
 			};
 			/**
@@ -146,7 +146,7 @@ namespace ejson {
 			 * @brief add a "null" element in the Object (automatic creation)
 			 * @return false if an error occured
 			 */
-			bool addNull(void);
+			bool addNull();
 			/**
 			 * @brief add a boolean element in the Object (automatic creation)
 			 * @param[in] _value boolean value to add
@@ -163,9 +163,9 @@ namespace ejson {
 		public: // herited function :
 			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			virtual bool iGenerate(std::string& _data, size_t _indent) const;
-			virtual void clear(void);
+			virtual void clear();
 			virtual bool transfertIn(ejson::Value* _obj);
-			virtual ejson::Value* duplicate(void) const;
+			virtual ejson::Value* duplicate() const;
 	};
 };
 

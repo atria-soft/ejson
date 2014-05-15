@@ -36,7 +36,7 @@ namespace ejson {
 			size_t m_col;
 			size_t m_line;
 		public:
-			filePos(void) :
+			filePos() :
 			  m_col(0),
 			  m_line(0) {
 				
@@ -46,12 +46,12 @@ namespace ejson {
 			  m_line(_line) {
 				
 			};
-			~filePos(void) { };
-			filePos& operator ++(void) {
+			~filePos() { };
+			filePos& operator ++() {
 				m_col++;
 				return *this;
 			};
-			filePos& operator --(void) {
+			filePos& operator --() {
 				if(m_col>0) {
 					m_col--;
 				}
@@ -75,7 +75,7 @@ namespace ejson {
 				m_line = _obj.m_line;
 				return *this;
 			}
-			void newLine(void) {
+			void newLine() {
 				m_col=0;
 				m_line++;
 			};
@@ -91,14 +91,14 @@ namespace ejson {
 				m_col = _col;
 				m_line = _line;
 			}
-			void clear(void) {
+			void clear() {
 				m_col = 0;
 				m_line = 0;
 			}
-			int32_t getCol(void) const {
+			int32_t getCol() const {
 				return m_col;
 			};
-			int32_t getLine(void) const {
+			int32_t getLine() const {
 				return m_line;
 			};
 	};
@@ -109,11 +109,11 @@ namespace ejson {
 			/**
 			 * @brief basic element of a xml structure
 			 */
-			Value(void) { };
+			Value() { };
 			/**
 			 * @brief destructor
 			 */
-			virtual ~Value(void);
+			virtual ~Value();
 		public:
 			/**
 			 * @brief parse the Current node [pure VIRUAL]
@@ -167,117 +167,117 @@ namespace ejson {
 			 * @brief Cast the element in a Value if it is possible.
 			 * @return pointer on the class or NULL.
 			 */
-			ejson::Value* toValue(void) {
+			ejson::Value* toValue() {
 				return this;
 			};
 			//! @previous
-			const ejson::Value* toValue(void) const {
+			const ejson::Value* toValue() const {
 				return this;
 			};
 			/**
 			 * @brief Cast the element in a Document if it is possible.
 			 * @return pointer on the class or NULL.
 			 */
-			ejson::Document* toDocument(void);
+			ejson::Document* toDocument();
 			//! @previous
-			const ejson::Document* toDocument(void) const;
+			const ejson::Document* toDocument() const;
 			/**
 			 * @brief Cast the element in a Array if it is possible.
 			 * @return pointer on the class or NULL.
 			 */
-			ejson::Array* toArray(void);
+			ejson::Array* toArray();
 			//! @previous
-			const ejson::Array* toArray(void) const;
+			const ejson::Array* toArray() const;
 			/**
 			 * @brief Cast the element in a Object if it is possible.
 			 * @return pointer on the class or NULL.
 			 */
-			ejson::Object* toObject(void);
+			ejson::Object* toObject();
 			//! @previous
-			const ejson::Object* toObject(void) const;
+			const ejson::Object* toObject() const;
 			/**
 			 * @brief Cast the element in a String if it is possible.
 			 * @return pointer on the class or NULL.
 			 */
-			ejson::String* toString(void);
+			ejson::String* toString();
 			//! @previous
-			const ejson::String* toString(void) const;
+			const ejson::String* toString() const;
 			/**
 			 * @brief Cast the element in a Number if it is possible.
 			 * @return pointer on the class or NULL.
 			 */
-			ejson::Number* toNumber(void);
+			ejson::Number* toNumber();
 			//! @previous
-			const ejson::Number* toNumber(void) const;
+			const ejson::Number* toNumber() const;
 			/**
 			 * @brief Cast the element in a Boolean if it is possible.
 			 * @return pointer on the class or NULL.
 			 */
-			ejson::Boolean* toBoolean(void);
+			ejson::Boolean* toBoolean();
 			//! @previous
-			const ejson::Boolean* toBoolean(void) const;
+			const ejson::Boolean* toBoolean() const;
 			/**
 			 * @brief Cast the element in a Null if it is possible.
 			 * @return pointer on the class or NULL.
 			 */
-			ejson::Null* toNull(void);
+			ejson::Null* toNull();
 			//! @previous
-			const ejson::Null* toNull(void) const;
+			const ejson::Null* toNull() const;
 			
 			/**
 			 * @brief check if the node is a ejson::Document
 			 * @return true if the node is a ejson::Document
 			 */
-			bool isDocument(void) const {
+			bool isDocument() const {
 				return toDocument() != NULL;
 			};
 			/**
 			 * @brief check if the node is a ejson::Array
 			 * @return true if the node is a ejson::Array
 			 */
-			bool isArray(void) const {
+			bool isArray() const {
 				return toArray() != NULL;
 			};
 			/**
 			 * @brief check if the node is a ejson::Object
 			 * @return true if the node is a ejson::Object
 			 */
-			bool isObject(void) const {
+			bool isObject() const {
 				return toObject() != NULL;
 			};
 			/**
 			 * @brief check if the node is a ejson::String
 			 * @return true if the node is a ejson::String
 			 */
-			bool isString(void) const {
+			bool isString() const {
 				return toString() != NULL;
 			};
 			/**
 			 * @brief check if the node is a ejson::Number
 			 * @return true if the node is a ejson::Number
 			 */
-			bool isNumber(void) const {
+			bool isNumber() const {
 				return toNumber() != NULL;
 			};
 			/**
 			 * @brief check if the node is a ejson::Boolean
 			 * @return true if the node is a ejson::Boolean
 			 */
-			bool isBoolean(void) const {
+			bool isBoolean() const {
 				return toBoolean() != NULL;
 			};
 			/**
 			 * @brief check if the node is a ejson::Null
 			 * @return true if the node is a ejson::Null
 			 */
-			bool isNull(void) const {
+			bool isNull() const {
 				return toNull() != NULL;
 			};
 			
 			/**
 			 * @brief clear the Node
 			 */
-			virtual void clear(void) {};
+			virtual void clear() {};
 			/**
 			 * @brief Tranfert all element in the element set in parameter
 			 * @param[in,out] _obj move all parameter in the selected element
@@ -291,7 +291,7 @@ namespace ejson {
 			 * @brief Copy the curent node and all the child in the curent one.
 			 * @return NULL in an error occured, the pointer on the element otherwise
 			 */
-			virtual ejson::Value* duplicate(void) const {
+			virtual ejson::Value* duplicate() const {
 				return NULL;
 			};
 		protected:

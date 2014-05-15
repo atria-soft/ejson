@@ -15,7 +15,7 @@
 
 
 
-ejson::Value::~Value(void) {
+ejson::Value::~Value() {
 	clear();
 }
 
@@ -124,45 +124,45 @@ bool ejson::Value::checkNumber(char32_t _val) const {
 }
 
 
-ejson::Document* ejson::Value::toDocument(void) {
+ejson::Document* ejson::Value::toDocument() {
 	return dynamic_cast<ejson::Document*>(this);
 };
-const ejson::Document* ejson::Value::toDocument(void) const {
+const ejson::Document* ejson::Value::toDocument() const {
 	return dynamic_cast<const ejson::Document*>(this);
 };
-ejson::Array* ejson::Value::toArray(void) {
+ejson::Array* ejson::Value::toArray() {
 	return dynamic_cast<ejson::Array*>(this);
 };
-const ejson::Array* ejson::Value::toArray(void) const{
+const ejson::Array* ejson::Value::toArray() const{
 	return dynamic_cast<const ejson::Array*>(this);
 };
-ejson::Object* ejson::Value::toObject(void) {
+ejson::Object* ejson::Value::toObject() {
 	return dynamic_cast<ejson::Object*>(this);
 };
-const ejson::Object* ejson::Value::toObject(void) const{
+const ejson::Object* ejson::Value::toObject() const{
 	return dynamic_cast<const ejson::Object*>(this);
 };
-ejson::String* ejson::Value::toString(void) {
+ejson::String* ejson::Value::toString() {
 	return dynamic_cast<ejson::String*>(this);
 };
-const ejson::String* ejson::Value::toString(void) const{
+const ejson::String* ejson::Value::toString() const{
 	return dynamic_cast<const ejson::String*>(this);
 };
-ejson::Number* ejson::Value::toNumber(void) {
+ejson::Number* ejson::Value::toNumber() {
 	return dynamic_cast<ejson::Number*>(this);
 };
-const ejson::Number* ejson::Value::toNumber(void) const{
+const ejson::Number* ejson::Value::toNumber() const{
 	return dynamic_cast<const ejson::Number*>(this);
 };
-ejson::Boolean* ejson::Value::toBoolean(void) {
+ejson::Boolean* ejson::Value::toBoolean() {
 	return dynamic_cast<ejson::Boolean*>(this);
 };
-const ejson::Boolean* ejson::Value::toBoolean(void) const{
+const ejson::Boolean* ejson::Value::toBoolean() const{
 	return dynamic_cast<const ejson::Boolean*>(this);
 };
-ejson::Null* ejson::Value::toNull(void) {
+ejson::Null* ejson::Value::toNull() {
 	return dynamic_cast<ejson::Null*>(this);
 };
-const ejson::Null* ejson::Value::toNull(void) const{
+const ejson::Null* ejson::Value::toNull() const{
 	return dynamic_cast<const ejson::Null*>(this);
 };

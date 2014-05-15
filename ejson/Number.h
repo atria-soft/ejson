@@ -25,7 +25,7 @@ namespace ejson {
 			/**
 			 * @brief destructor
 			 */
-			virtual ~Number(void) { };
+			virtual ~Number() { };
 		protected:
 			double m_value; //!< value of the node
 		public:
@@ -40,28 +40,28 @@ namespace ejson {
 			 * @brief Get the current element Value.
 			 * @return The double number registered
 			 */
-			double get(void) const {
+			double get() const {
 				return m_value;
 			};
 			/**
 			 * @brief Get the current element Value.
 			 * @return The 32 bit integer number registered
 			 */
-			int32_t getInt32(void) const {
+			int32_t getInt32() const {
 				return (int32_t)m_value;
 			};
 			/**
 			 * @brief Get the current element Value.
 			 * @return The 64 bit integer number registered
 			 */
-			int64_t getInt64(void) const {
+			int64_t getInt64() const {
 				return (int64_t)m_value;
 			};
 		public: // herited function :
 			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			virtual bool iGenerate(std::string& _data, size_t _indent) const;
 			virtual bool transfertIn(ejson::Value* _obj);
-			virtual ejson::Value* duplicate(void) const;
+			virtual ejson::Value* duplicate() const;
 	};
 };
 

@@ -22,11 +22,11 @@ namespace ejson {
 			/**
 			 * @brief Constructor
 			 */
-			Document(void);
+			Document();
 			/**
 			 * @brief Destructor
 			 */
-			virtual ~Document(void);
+			virtual ~Document();
 		public:
 			/**
 			 * @brief parse a string that contain an XML
@@ -59,22 +59,22 @@ namespace ejson {
 			/**
 			 * @brief Display the Document on console
 			 */
-			void display(void);
+			void display();
 		private:
 			bool m_writeErrorWhenDetexted;
 			std::string m_comment;
 			std::string m_Line;
 			ejson::filePos m_filePos;
 		public:
-			void displayErrorWhenDetected(void) {
+			void displayErrorWhenDetected() {
 				m_writeErrorWhenDetexted=true;
 			};
-			void notDisplayErrorWhenDetected(void) {
+			void notDisplayErrorWhenDetected() {
 				m_writeErrorWhenDetexted=false;
 			};
 			
 			void createError(const std::string& _data, size_t _pos, const ejson::filePos& _filePos, const std::string& _comment);
-			void displayError(void);
+			void displayError();
 		public: // herited function:
 			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			virtual bool iGenerate(std::string& _data, size_t _indent) const;

@@ -18,16 +18,16 @@ namespace ejson {
 			/**
 			 * @brief basic element of a xml structure
 			 */
-			Null(void) { };
+			Null() { };
 			/**
 			 * @brief destructor
 			 */
-			virtual ~Null(void) { };
+			virtual ~Null() { };
 		public: // herited function :
 			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			virtual bool iGenerate(std::string& _data, size_t _indent) const;
 			virtual bool transfertIn(ejson::Value* _obj);
-			virtual ejson::Value* duplicate(void) const;
+			virtual ejson::Value* duplicate() const;
 	};
 };
 

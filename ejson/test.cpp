@@ -19,7 +19,7 @@ class testCheck {
 		std::string m_ref;
 		std::string m_input;
 		int32_t m_errorPos; // -1 : no error , 1 : parsing error, 2 generation error, 3 comparaison error ????
-		testCheck(void) {};
+		testCheck() {};
 		void set(const std::string& _ref, int32_t _pos, const std::string& _input) {
 			m_ref = _ref;
 			m_input = _input;
@@ -29,7 +29,7 @@ class testCheck {
 
 std::vector<testCheck> l_list;
 
-void init(void) {
+void init() {
 	std::string reference;
 	std::string input;
 	testCheck check;

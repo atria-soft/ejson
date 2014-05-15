@@ -19,7 +19,7 @@
 #undef __class__
 #define __class__	"Object"
 
-void ejson::Object::clear(void) {
+void ejson::Object::clear() {
 	for(auto &it : m_value) {
 		if (it.second == NULL) {
 			continue;
@@ -492,7 +492,7 @@ bool ejson::Object::transfertIn(ejson::Value* _obj) {
 }
 
 // TODO : Manage error ...
-ejson::Value* ejson::Object::duplicate(void) const {
+ejson::Value* ejson::Object::duplicate() const {
 	ejson::Object* output = new ejson::Object();
 	if (NULL == output) {
 		JSON_ERROR("Allocation error ...");

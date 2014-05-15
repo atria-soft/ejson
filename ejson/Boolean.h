@@ -25,7 +25,7 @@ namespace ejson {
 			/**
 			 * @brief destructor
 			 */
-			virtual ~Boolean(void) {
+			virtual ~Boolean() {
 				
 			};
 		protected:
@@ -42,14 +42,14 @@ namespace ejson {
 			 * @brief get the current element Value.
 			 * @return the reference of the string value.
 			 */
-			bool get(void) const {
+			bool get() const {
 				return m_value;
 			};
 		public: // herited function :
 			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			virtual bool iGenerate(std::string& _data, size_t _indent) const;
 			virtual bool transfertIn(ejson::Value* _obj);
-			virtual ejson::Value* duplicate(void) const;
+			virtual ejson::Value* duplicate() const;
 	};
 };
 

@@ -20,7 +20,7 @@
 #define __class__	"Array"
 
 
-void ejson::Array::clear(void) {
+void ejson::Array::clear() {
 	for (size_t iii=0; iii<m_value.size(); ++iii) {
 		if (NULL == m_value[iii]) {
 			continue;
@@ -201,7 +201,7 @@ bool ejson::Array::addString(const std::string& _value) {
 	return add(new ejson::String(_value));
 }
 
-bool ejson::Array::addNull(void) {
+bool ejson::Array::addNull() {
 	return add(new ejson::Null());
 }
 
@@ -234,7 +234,7 @@ bool ejson::Array::transfertIn(ejson::Value* _obj) {
 }
 
 // TODO : Manage error ...
-ejson::Value* ejson::Array::duplicate(void) const {
+ejson::Value* ejson::Array::duplicate() const {
 	ejson::Array* output = new ejson::Array();
 	if (NULL == output) {
 		JSON_ERROR("Allocation error ...");

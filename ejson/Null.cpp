@@ -52,7 +52,7 @@ bool ejson::Null::transfertIn(ejson::Value* _obj) {
 	return true;
 }
 
-ejson::Value* ejson::Null::duplicate(void) const {
+ejson::Value* ejson::Null::duplicate() const {
 	ejson::Null* output = new ejson::Null();
 	if (NULL == output) {
 		JSON_ERROR("Allocation error ...");

@@ -68,7 +68,7 @@ bool ejson::Boolean::transfertIn(ejson::Value* _obj) {
 	return true;
 }
 
-ejson::Value* ejson::Boolean::duplicate(void) const {
+ejson::Value* ejson::Boolean::duplicate() const {
 	ejson::Boolean* output = new ejson::Boolean(m_value);
 	if (NULL == output) {
 		JSON_ERROR("Allocation error ...");

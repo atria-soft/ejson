@@ -20,7 +20,7 @@
 #undef __class__
 #define __class__	"Document"
 
-ejson::Document::Document(void) : 
+ejson::Document::Document() : 
     m_writeErrorWhenDetexted(true),
     m_comment(""),
     m_Line(""),
@@ -28,7 +28,7 @@ ejson::Document::Document(void) :
 	
 }
 
-ejson::Document::~Document(void) {
+ejson::Document::~Document() {
 	
 }
 
@@ -111,7 +111,7 @@ bool ejson::Document::store(const std::string& _file) {
 	return true;
 }
 
-void ejson::Document::display(void) {
+void ejson::Document::display() {
 	std::string tmpp;
 	iGenerate(tmpp, 0);
 	JSON_INFO("Generated JSON : \n" << tmpp);
@@ -134,7 +134,7 @@ static std::string createPosPointer(const std::string& _line, size_t _pos) {
 	return out;
 }
 
-void ejson::Document::displayError(void) {
+void ejson::Document::displayError() {
 	if (m_comment.size() == 0) {
 		JSON_ERROR("No error detected ???");
 		return;

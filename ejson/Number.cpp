@@ -65,7 +65,7 @@ bool ejson::Number::transfertIn(ejson::Value* _obj) {
 	return true;
 }
 
-ejson::Value* ejson::Number::duplicate(void) const {
+ejson::Value* ejson::Number::duplicate() const {
 	ejson::Number* output = new ejson::Number(m_value);
 	if (NULL == output) {
 		JSON_ERROR("Allocation error ...");

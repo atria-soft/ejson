@@ -20,11 +20,11 @@ namespace ejson {
 			/**
 			 * @brief basic element of a xml structure
 			 */
-			Object(void) { };
+			Object() { };
 			/**
 			 * @brief destructor
 			 */
-			virtual ~Object(void) { };
+			virtual ~Object() { };
 		protected:
 			std::map<std::string, ejson::Value*> m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
 		public:
@@ -56,7 +56,7 @@ namespace ejson {
 			 * @brief Get all the element name (keys).
 			 * @return a vector of all name (key).
 			 */
-			std::vector<std::string> getKeys(void) const {
+			std::vector<std::string> getKeys() const {
 				std::vector<std::string> keys;
 				for (auto &it : m_value) {
 					keys.push_back(it.first);
@@ -67,7 +67,7 @@ namespace ejson {
 			 * @brief get the number of sub element in the current one
 			 * @return the Number of stored element
 			 */
-			size_t size(void) const {
+			size_t size() const {
 				return m_value.size();
 			};
 			/**
@@ -231,9 +231,9 @@ namespace ejson {
 		public: // herited function :
 			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			virtual bool iGenerate(std::string& _data, size_t _indent) const;
-			virtual void clear(void);
+			virtual void clear();
 			virtual bool transfertIn(ejson::Value* _obj);
-			virtual ejson::Value* duplicate(void) const;
+			virtual ejson::Value* duplicate() const;
 	};
 };
 
