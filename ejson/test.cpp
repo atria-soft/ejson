@@ -462,7 +462,7 @@ void init() {
 }
 
 int main(int argc, const char *argv[]) {
-	debug::setGeneralLevel(etk::logLevelVerbose);
+	etk::log::setLevel(etk::log::logLevelVerbose);
 	init();
 	int32_t countError = 0;
 	int32_t countSeparator = 0;
