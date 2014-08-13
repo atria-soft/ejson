@@ -149,7 +149,7 @@ void ejson::Document::displayError() {
 
 void ejson::Document::createError(const std::string& _data, size_t _pos, const ejson::filePos& _filePos, const std::string& _comment) {
 	m_comment = _comment;
-	m_Line = extract_line(_data, _pos);
+	m_Line = etk::extract_line(_data, _pos);
 	m_filePos = _filePos;
 	if (true == m_writeErrorWhenDetexted) {
 		displayError();
