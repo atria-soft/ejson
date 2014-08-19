@@ -10,7 +10,7 @@
 #define __ETK_JSON_OBJECT_H__
 
 #include <etk/types.h>
-#include <map>
+#include <etk/Hash.h>
 #include <algorithm>
 #include <ejson/Value.h>
 
@@ -26,7 +26,7 @@ namespace ejson {
 			 */
 			virtual ~Object() { };
 		protected:
-			std::map<std::string, ejson::Value*> m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
+			etk::Hash<ejson::Value*> m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
 		public:
 			// TODO : add direct id  access....
 			/**
@@ -57,11 +57,7 @@ namespace ejson {
 			 * @return a vector of all name (key).
 			 */
 			std::vector<std::string> getKeys() const {
-				std::vector<std::string> keys;
-				for (auto &it : m_value) {
-					keys.push_back(it.first);
-				}
-				return keys;
+				return m_value.getKeys();
 			}
 			/**
 			 * @brief get the number of sub element in the current one
@@ -76,33 +72,19 @@ namespace ejson {
 			 * @return NULL if the element does not exist.
 			 */
 			ejson::Value* get(size_t _id) {
-				size_t id = 0;
-				for(auto &it : m_value) {
-					if (id == _id) {
-						return it.second;
-					}
-					id++;
-				}
-				return NULL;
+				return m_value[_id];
 			};
 			//! @previous
 			const ejson::Value* get(size_t _id) const{
-				size_t id = 0;
-				for(auto &it : m_value) {
-					if (id == _id) {
-						return it.second;
-					}
-					id++;
-				}
-				return NULL;
+				return m_value[_id];
 			};
 			//! @previous
 			ejson::Value* operator[] (size_t _id) {
-				return get(_id);
+				return m_value[_id];
 			}
 			//! @previous
 			const ejson::Value* operator[] (size_t _id) const {
-				return get(_id);
+				return m_value[_id];
 			}
 			/**
 			 * @brief Get the element name (key).
@@ -110,13 +92,7 @@ namespace ejson {
 			 * @return The name (key).
 			 */
 			std::string getKey(size_t _id) const {
-				size_t id = 0;
-				for(auto it = m_value.begin(); it != m_value.end(); ++it, ++id) {
-					if (id == _id) {
-						return it->first;
-					}
-				}
-				return NULL;
+				return m_value.getKey(_id);
 			}
 			/**
 			 * @brief get the sub element with his name (Casted as Object if it is possible)

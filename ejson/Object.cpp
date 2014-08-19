@@ -20,12 +20,12 @@
 #define __class__	"Object"
 
 void ejson::Object::clear() {
-	for(auto &it : m_value) {
-		if (it.second == NULL) {
+	for (int32_t iii=0; iii<m_value.size(); ++iii) {
+		if (NULL == m_value[iii]) {
 			continue;
 		}
-		delete(it.second);
-		it.second = NULL;
+		delete(m_value[iii]);
+		m_value[iii] = NULL;
 	}
 	m_value.clear();
 }
@@ -209,8 +209,8 @@ bool ejson::Object::iGenerate(std::string& _data, size_t _indent) const {
 	} else if (_indent<=1) {
 		oneLine=false;
 	} else {
-		for(auto it = m_value.begin(); it != m_value.end(); ++it) {
-			ejson::Value* tmp = it->second;
+		for (int32_t iii=0; iii<m_value.size() ; iii++) {
+			ejson::Value* tmp = m_value[iii];
 			if (tmp == NULL) {
 				continue;
 			}
@@ -224,9 +224,9 @@ bool ejson::Object::iGenerate(std::string& _data, size_t _indent) const {
 			}
 			if (true == tmp->isString()) {
 				ejson::String* tmp2 = tmp->toString();
-				if (tmp2 != NULL) {
+				if (tmp2 != nullptr) {
 					if(    tmp2->get().size()>25
-					    || it->first.size()>25) {
+					    || m_value.getKey(iii).size()>25) {
 						oneLine=false;
 						break;
 					}
@@ -239,17 +239,15 @@ bool ejson::Object::iGenerate(std::string& _data, size_t _indent) const {
 	} else {
 		_data += "{\n";
 	}
-	for(auto it = m_value.begin();
-	    it != m_value.end();
-	    ++it) {
+	for (int32_t iii=0; iii<m_value.size() ; iii++) {
 		if (false == oneLine) {
 			addIndent(_data, _indent);
 		}
 		_data += "\"";
-		_data += it->first;
+		_data += m_value.getKey(iii);
 		_data += "\": ";
-		it->second->iGenerate(_data, _indent+1);
-		if (it != m_value.end()) {
+		m_value.getValue(iii)->iGenerate(_data, _indent+1);
+		if (iii<m_value.size()-1) {
 			_data += ",";
 		}
 		if (true == oneLine) {
@@ -266,111 +264,85 @@ bool ejson::Object::iGenerate(std::string& _data, size_t _indent) const {
 }
 
 bool ejson::Object::exist(const std::string& _name) const {
-	return m_value.find(_name) != m_value.end();
+	return m_value.exist(_name);
 }
 
 ejson::Value* ejson::Object::get(const std::string& _name) {
-	auto it = m_value.find(_name);
-	if (it == m_value.end()) {
+	if (false == m_value.exist(_name)) {
 		return NULL;
 	}
-	return it->second;
+	return m_value[_name];
 }
 
 const ejson::Value* ejson::Object::get(const std::string& _name) const {
-	auto it = m_value.find(_name);
-	if (it == m_value.end()) {
+	if (false == m_value.exist(_name)) {
 		return NULL;
 	}
-	return it->second;
+	return m_value[_name];
 }
 
 ejson::Object* ejson::Object::getObject(const std::string& _name) {
-	auto it = m_value.find(_name);
-	if (it == m_value.end()) {
+	ejson::Value* tmp = get(_name);
+	if (NULL == tmp) {
 		return NULL;
 	}
-	if (NULL == it->second) {
-		return NULL;
-	}
-	return dynamic_cast<ejson::Object*>(it->second);
+	return dynamic_cast<ejson::Object*>(tmp);
 }
 
 const ejson::Object* ejson::Object::getObject(const std::string& _name) const {
-	auto it = m_value.find(_name);
-	if (it == m_value.end()) {
+	const ejson::Value* tmp = get(_name);
+	if (NULL == tmp) {
 		return NULL;
 	}
-	if (NULL == it->second) {
-		return NULL;
-	}
-	return dynamic_cast<const ejson::Object*>(it->second);
+	return dynamic_cast<const ejson::Object*>(tmp);
 }
 
 ejson::Array* ejson::Object::getArray(const std::string& _name) {
-	auto it = m_value.find(_name);
-	if (it == m_value.end()) {
+	ejson::Value* tmp = get(_name);
+	if (NULL == tmp) {
 		return NULL;
 	}
-	if (NULL == it->second) {
-		return NULL;
-	}
-	return dynamic_cast<ejson::Array*>(it->second);
+	return dynamic_cast<ejson::Array*>(tmp);
 }
 
 const ejson::Array* ejson::Object::getArray(const std::string& _name) const {
-	auto it = m_value.find(_name);
-	if (it == m_value.end()) {
+	const ejson::Value* tmp = get(_name);
+	if (NULL == tmp) {
 		return NULL;
 	}
-	if (NULL == it->second) {
-		return NULL;
-	}
-	return dynamic_cast<const ejson::Array*>(it->second);
+	return dynamic_cast<const ejson::Array*>(tmp);
 }
 
 ejson::Null* ejson::Object::getNull(const std::string& _name) {
-	auto it = m_value.find(_name);
-	if (it == m_value.end()) {
+	ejson::Value* tmp = get(_name);
+	if (NULL == tmp) {
 		return NULL;
 	}
-	if (NULL == it->second) {
-		return NULL;
-	}
-	return dynamic_cast<ejson::Null*>(it->second);
+	return dynamic_cast<ejson::Null*>(tmp);
 }
 
 const ejson::Null* ejson::Object::getNull(const std::string& _name) const {
-	auto it = m_value.find(_name);
-	if (it == m_value.end()) {
+	const ejson::Value* tmp = get(_name);
+	if (NULL == tmp) {
 		return NULL;
 	}
-	if (NULL == it->second) {
-		return NULL;
-	}
-	return dynamic_cast<const ejson::Null*>(it->second);
+	return dynamic_cast<const ejson::Null*>(tmp);
 }
 
 ejson::String* ejson::Object::getString(const std::string& _name) {
-	auto it = m_value.find(_name);
-	if (it == m_value.end()) {
+	ejson::Value* tmp = get(_name);
+	if (NULL == tmp) {
 		return NULL;
 	}
-	if (NULL == it->second) {
-		return NULL;
-	}
-	return dynamic_cast<ejson::String*>(it->second);
+	return dynamic_cast<ejson::String*>(tmp);
 }
 
 const ejson::String* ejson::Object::getString(const std::string& _name) const {
-	auto it = m_value.find(_name);
-	if (it == m_value.end()) {
+	const ejson::Value* tmp = get(_name);
+	if (NULL == tmp) {
 		return NULL;
 	}
-	if (NULL == it->second) {
-		return NULL;
-	}
-	return dynamic_cast<const ejson::String*>(it->second);
+	return dynamic_cast<const ejson::String*>(tmp);
 }
 
 const std::string& ejson::Object::getStringValue(const std::string& _name) const {
@@ -446,13 +418,13 @@ bool ejson::Object::add(const std::string& _name, ejson::Value* _value) {
 	if (_name.size() == 0) {
 		return false;
 	}
-	auto it = m_value.find(_name);
-	if (it != m_value.end()) {
-		delete(it->second);
-		it->second = _value;
+	if (m_value.exist(_name)) {
+		ejson::Value* tmp = m_value[_name];
+		delete(tmp);
+		m_value[_name] = _value;
 		return true;
 	}
-	m_value.insert(std::pair<std::string, ejson::Value*>(_name, _value));
+	m_value.add(_name, _value);
 	return true;
 }
 
@@ -498,11 +470,13 @@ ejson::Value* ejson::Object::duplicate() const {
 		JSON_ERROR("Allocation error ...");
 		return NULL;
 	}
-	for(auto it = m_value.begin(); it != m_value.end(); ++it) {
-		if (it->second == NULL) {
+	for (int32_t iii=0; iii<m_value.size(); ++iii) {
+		ejson::Value* val = m_value.getValue(iii);
+		std::string key = m_value.getKey(iii);
+		if (NULL == val) {
 			continue;
 		}
-		output->add(it->first, it->second->duplicate());
+		output->add(key, val->duplicate());
 	}
 	return output;
 }
