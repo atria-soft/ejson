@@ -58,6 +58,14 @@ bool ejson::Object::iParse(const std::string& _data, size_t& _pos, ejson::filePo
 		    || _data[iii] == '\n'
 		    || _data[iii] == '\r') {
 			// white space  == > nothing to do ...
+		} else if(_data[iii] == '#') {
+			// comment Line ...
+			for (iii++; iii<_data.size(); iii++) {
+				if(    _data[iii] == '\n'
+				    || _data[iii] == '\r') {
+					break;
+				}
+			}
 		} else if(_data[iii] == '}') {
 			// find end of value:
 			_pos=iii; //  == > return the end element type ==> usefull to check end and check if adding element is needed

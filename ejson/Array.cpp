@@ -44,6 +44,14 @@ bool ejson::Array::iParse(const std::string& _data, size_t& _pos, ejson::filePos
 		    || _data[iii] == '\n'
 		    || _data[iii] == '\r') {
 			// white space  == > nothing to do ...
+		} else if(_data[iii] == '#') {
+			// comment Line ...
+			for (iii++; iii<_data.size(); iii++) {
+				if(    _data[iii] == '\n'
+				    || _data[iii] == '\r') {
+					break;
+				}
+			}
 		} else if(_data[iii] == ']') {
 			// find end of value:
 			_pos=iii; //  == > return the end element type ==> usefull to check end and check if adding element is needed
@@ -120,7 +128,7 @@ bool ejson::Array::iParse(const std::string& _data, size_t& _pos, ejson::filePos
 			// TODO : check if element are separated with ','
 		} else {
 			// find an error ....
-			EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Find '>' with no element in the element...");
+			EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Find '?' with no element in the element...");
 			// move the curent index
 			_pos = iii+1;
 			return false;
