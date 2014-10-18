@@ -17,6 +17,11 @@
 	</li>
 </ul>
 			</div>
+<h3>Tutorials:</h3><div id="menu">
+<ul class="niveau1"><li><a href="tutorial_000_Build.html">Build</a></li>
+</ul><ul class="niveau1"><li><a href="tutorial_001_Read.html">Read</a></li>
+</ul><ul class="niveau1"><li><a href="tutorial_002_Write.html">Write</a></li>
+</ul></div>
 <br/><h3>Associate libraries:</h3><div id="menu">
 <ul class="niveau1"><li><a href="../ewol/index.html">ewol</a></li>
 </ul><ul class="niveau1"><li><a href="../egami/index.html">egami</a></li>
@@ -34,100 +39,97 @@
 		</div>
 	</div>
 	<div class="container" id="content">
-<h1>class: ejson::filePos</h1><hr/><h2>Description:</h2>
-
-<br/><br/>
-<h2>Associated Namespace:</h2><ul>
+<h1>class: ejson::filePos</h1><hr/><h2>Associated Namespace:</h2><ul>
 <a href="class_ejson__filePos.html">filePos</a></ul>
 <h2>Constructor and Destructor:</h2>
 <pre>
-+                 <a class="code-function" href="#5829">filePos</a>     (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+                 <a class="code-function" href="#5831">filePos</a>     (size_t <span class="code-argument">_line</span>,<br/>                               size_t <span class="code-argument">_col</span>);<br/>+                 <a class="code-function" href="#5834">~filePos</a>    (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
++                 <a class="code-function" href="#3868">filePos</a>     ();<br/>+                 <a class="code-function" href="#3869">filePos</a>     (size_t <span class="code-argument">_line</span>,<br/>                               size_t <span class="code-argument">_col</span>);<br/>+                 <a class="code-function" href="#3872">~filePos</a>    ();<br/></pre>
 <br/>
 <h2>Synopsis:</h2>
 <pre>
-+ filePos &       <a class="code-function" href="#5836">operator ++</a> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ filePos &       <a class="code-function" href="#5838">operator --</a> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-storage-keyword">const</span> filePos & <a class="code-function" href="#5840">operator +=</a> (<span class="code-storage-keyword">const</span> filePos & <span class="code-argument">_obj</span>);<br/>+ <span class="code-storage-keyword">const</span> filePos & <a class="code-function" href="#5842">operator +=</a> (size_t <span class="code-argument">_col</span>);<br/>+ <span class="code-storage-keyword">const</span> filePos & <a class="code-function" href="#5844">operator =</a>  (<span class="code-storage-keyword">const</span> filePos & <span class="code-argument">_obj</span>);<br/>+ <span class="code-type" >void</span>            <a class="code-function" href="#5846">newLine</a>     (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-type" >bool</span>            <a class="code-function" href="#5848">check</a>       (<span class="code-type" >char32_t</span> <span class="code-argument">_val</span>);<br/>+ <span class="code-type" >void</span>            <a class="code-function" href="#5850">set</a>         (size_t <span class="code-argument">_line</span>,<br/>                               size_t <span class="code-argument">_col</span>);<br/>+ <span class="code-type" >void</span>            <a class="code-function" href="#5853">clear</a>       (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-type" >int32_t</span>         <a class="code-function" href="#5855">getCol</a>      (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-type" >int32_t</span>         <a class="code-function" href="#5857">getLine</a>     (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
++ filePos &       <a class="code-function" href="#3873">operator ++</a> ();<br/>+ filePos &       <a class="code-function" href="#3874">operator --</a> ();<br/>+ <span class="code-storage-keyword">const</span> filePos & <a class="code-function" href="#3875">operator +=</a> (<span class="code-storage-keyword">const</span> filePos & <span class="code-argument">_obj</span>);<br/>+ <span class="code-storage-keyword">const</span> filePos & <a class="code-function" href="#3877">operator +=</a> (size_t <span class="code-argument">_col</span>);<br/>+ <span class="code-storage-keyword">const</span> filePos & <a class="code-function" href="#3879">operator =</a>  (<span class="code-storage-keyword">const</span> filePos & <span class="code-argument">_obj</span>);<br/>+ <span class="code-type" >void</span>            <a class="code-function" href="#3881">newLine</a>     ();<br/>+ <span class="code-type" >bool</span>            <a class="code-function" href="#3882">check</a>       (<span class="code-type" >char32_t</span> <span class="code-argument">_val</span>);<br/>+ <span class="code-type" >void</span>            <a class="code-function" href="#3884">set</a>         (size_t <span class="code-argument">_line</span>,<br/>                               size_t <span class="code-argument">_col</span>);<br/>+ <span class="code-type" >void</span>            <a class="code-function" href="#3887">clear</a>       ();<br/>+ <span class="code-type" >int32_t</span>         <a class="code-function" href="#3888">getCol</a>      () <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-type" >int32_t</span>         <a class="code-function" href="#3889">getLine</a>     () <span class="code-storage-keyword">const</span>;<br/></pre>
 <br/>
 <h2>Detail:</h2>
-<a id="5829"/><a id="5831"/><h3>filePos</h3><pre>
-+  <span class="code-function">filePos</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="3868"/><a id="3869"/><h3>filePos</h3><pre>
++  <span class="code-function">filePos</span> ();<br/></pre>
 
 <br/>
 <br/>
 <hr/>
-<a id="5834"/><h3>filePos</h3><pre>
+<a id="3872"/><h3>filePos</h3><pre>
 +  <span class="code-function">filePos</span> (size_t <span class="code-argument">_line</span>,<br/>            size_t <span class="code-argument">_col</span>);<br/></pre>
 
 <br/>
 <br/>
 <hr/>
-<a id="5836"/><h3>~filePos</h3><pre>
-+  <span class="code-function">~filePos</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="3873"/><h3>~filePos</h3><pre>
++  <span class="code-function">~filePos</span> ();<br/></pre>
 
 <br/>
 <br/>
 <hr/>
-<a id="5838"/><h3>operator ++</h3><pre>
-+ filePos & <span class="code-function">operator ++</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="3874"/><h3>operator ++</h3><pre>
++ filePos & <span class="code-function">operator ++</span> ();<br/></pre>
 
 <br/>
 <br/>
 <hr/>
-<a id="5840"/><h3>operator --</h3><pre>
-+ filePos & <span class="code-function">operator --</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="3875"/><h3>operator --</h3><pre>
++ filePos & <span class="code-function">operator --</span> ();<br/></pre>
 
 <br/>
 <br/>
 <hr/>
-<a id="5842"/><h3>operator +=</h3><pre>
+<a id="3877"/><h3>operator +=</h3><pre>
 + <span class="code-storage-keyword">const</span> filePos & <span class="code-function">operator +=</span> (<span class="code-storage-keyword">const</span> filePos & <span class="code-argument">_obj</span>);<br/></pre>
 
 <br/>
 <br/>
 <hr/>
-<a id="5844"/><h3>operator +=</h3><pre>
+<a id="3879"/><h3>operator +=</h3><pre>
 + <span class="code-storage-keyword">const</span> filePos & <span class="code-function">operator +=</span> (size_t <span class="code-argument">_col</span>);<br/></pre>
 
 <br/>
 <br/>
 <hr/>
-<a id="5846"/><h3>operator =</h3><pre>
+<a id="3881"/><h3>operator =</h3><pre>
 + <span class="code-storage-keyword">const</span> filePos & <span class="code-function">operator =</span> (<span class="code-storage-keyword">const</span> filePos & <span class="code-argument">_obj</span>);<br/></pre>
 
 <br/>
 <br/>
 <hr/>
-<a id="5848"/><h3>newLine</h3><pre>
-+ <span class="code-type" >void</span> <span class="code-function">newLine</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="3882"/><h3>newLine</h3><pre>
++ <span class="code-type" >void</span> <span class="code-function">newLine</span> ();<br/></pre>
 
 <br/>
 <br/>
 <hr/>
-<a id="5850"/><h3>check</h3><pre>
+<a id="3884"/><h3>check</h3><pre>
 + <span class="code-type" >bool</span> <span class="code-function">check</span> (<span class="code-type" >char32_t</span> <span class="code-argument">_val</span>);<br/></pre>
 
 <br/>
 <br/>
 <hr/>
-<a id="5853"/><h3>set</h3><pre>
+<a id="3887"/><h3>set</h3><pre>
 + <span class="code-type" >void</span> <span class="code-function">set</span> (size_t <span class="code-argument">_line</span>,<br/>            size_t <span class="code-argument">_col</span>);<br/></pre>
 
 <br/>
 <br/>
 <hr/>
-<a id="5855"/><h3>clear</h3><pre>
-+ <span class="code-type" >void</span> <span class="code-function">clear</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="3888"/><h3>clear</h3><pre>
++ <span class="code-type" >void</span> <span class="code-function">clear</span> ();<br/></pre>
 
 <br/>
 <br/>
 <hr/>
-<a id="5857"/><h3>getCol</h3><pre>
-+ <span class="code-type" >int32_t</span> <span class="code-function">getCol</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+<a id="3889"/><h3>getCol</h3><pre>
++ <span class="code-type" >int32_t</span> <span class="code-function">getCol</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 
 <br/>
 <br/>
 <hr/>
 <h3>getLine</h3><pre>
-+ <span class="code-type" >int32_t</span> <span class="code-function">getLine</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
++ <span class="code-type" >int32_t</span> <span class="code-function">getLine</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 
 <br/>
 <br/>

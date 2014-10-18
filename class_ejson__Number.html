@@ -17,6 +17,11 @@
 	</li>
 </ul>
 			</div>
+<h3>Tutorials:</h3><div id="menu">
+<ul class="niveau1"><li><a href="tutorial_000_Build.html">Build</a></li>
+</ul><ul class="niveau1"><li><a href="tutorial_001_Read.html">Read</a></li>
+</ul><ul class="niveau1"><li><a href="tutorial_002_Write.html">Write</a></li>
+</ul></div>
 <br/><h3>Associate libraries:</h3><div id="menu">
 <ul class="niveau1"><li><a href="../ewol/index.html">ewol</a></li>
 </ul><ul class="niveau1"><li><a href="../egami/index.html">egami</a></li>
@@ -39,33 +44,33 @@
 <br/><br/>
 <h2>Constructor and Destructor:</h2>
 <pre>
-+                              <a class="code-function" href="#6074">Number</a>      (<span class="code-type" >double</span> <span class="code-argument">_value</span>);<br/>+ <span class="code-storage-keyword">virtual</span>                      <a class="code-function" href="#6076">~Number</a>     (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
++                       <a class="code-function" href="#4079">Number</a>      (<span class="code-type" >double</span> <span class="code-argument">_value</span>);<br/>+ <span class="code-storage-keyword">virtual</span>               <a class="code-function" href="#4081">~Number</a>     ();<br/></pre>
 <br/>
 <h2>Synopsis:</h2>
 <pre>
-#         <span class="code-type" >double</span>               <a class="code-member" href="#6078">m_value</a>;<br/>+         <span class="code-type" >void</span>                 <a class="code-function" href="#6079">set</a>         (<span class="code-type" >double</span> <span class="code-argument">_value</span>);<br/>+         <span class="code-type" >double</span>               <a class="code-function" href="#6081">get</a>         (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >int32_t</span>              <a class="code-function" href="#6083">getInt32</a>    (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >int64_t</span>              <a class="code-function" href="#6085">getInt64</a>    (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>                 <a class="code-function" href="#6087">iParse</a>      (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                                            size_t & <span class="code-argument">_pos</span>,<br/>                                            <a class="code-type" href="class_ejson__filePos.html">ejson::filePos</a> & <span class="code-argument">_filePos</span>,<br/>                                            <a class="code-type" href="class_ejson__Document.html">ejson::Document</a> & <span class="code-argument">_doc</span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>                 <a class="code-function" href="#6092">iGenerate</a>   (<a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                                            size_t <span class="code-argument">_indent</span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">enum</span> nodeType        <a class="code-function" href="#6095">getType</a>     (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>*       <a class="code-function" href="#6097">toNumber</a>    (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>* <a class="code-function" href="#6099">toNumber</a>    (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>                 <a class="code-function" href="#6101">transfertIn</a> (<a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-argument">_obj</span>);<br/>+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>*        <a class="code-function" href="#6103">duplicate</a>   (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+#         <span class="code-type" >double</span>        <a class="code-member" href="#4082">m_value</a>;<br/>+         <span class="code-type" >void</span>          <a class="code-function" href="#4083">set</a>         (<span class="code-type" >double</span> <span class="code-argument">_value</span>);<br/>+         <span class="code-type" >double</span>        <a class="code-function" href="#4085">get</a>         () <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >int32_t</span>       <a class="code-function" href="#4086">getInt32</a>    () <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >int64_t</span>       <a class="code-function" href="#4087">getInt64</a>    () <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>          <a class="code-function" href="#4088">iParse</a>      (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                                     size_t & <span class="code-argument">_pos</span>,<br/>                                     <a class="code-type" href="class_ejson__filePos.html">ejson::filePos</a> & <span class="code-argument">_filePos</span>,<br/>                                     <a class="code-type" href="class_ejson__Document.html">ejson::Document</a> & <span class="code-argument">_doc</span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>          <a class="code-function" href="#4093">iGenerate</a>   (<a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                                     size_t <span class="code-argument">_indent</span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>          <a class="code-function" href="#4096">transfertIn</a> (<a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-argument">_obj</span>);<br/>+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <a class="code-function" href="#4098">duplicate</a>   () <span class="code-storage-keyword">const</span>;<br/></pre>
 <br/>
 <h2>Object Hierarchy:<h2>
 <pre>
 +<a href="class_ejson__Value.html">ejson::Value</a><br/>  +--> ejson::Number<br/></pre>
 <h2>Detail:</h2>
-<a id="6074"/><a id="6076"/><h3>Number</h3><pre>
+<a id="4079"/><a id="4081"/><h3>Number</h3><pre>
 +  <span class="code-function">Number</span> (<span class="code-type" >double</span> <span class="code-argument">_value</span>);<br/></pre>
 basic element of a xml structure<br/>
 <br/>
 <hr/>
-<a id="6078"/><h3>~Number</h3><pre>
-+ <span class="code-storage-keyword">virtual</span>  <span class="code-function">~Number</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="4082"/><h3>~Number</h3><pre>
++ <span class="code-storage-keyword">virtual</span>  <span class="code-function">~Number</span> ();<br/></pre>
 destructor<br/>
 <br/>
 <hr/>
-<a id="6079"/><h3>m_value</h3><pre>
+<a id="4083"/><h3>m_value</h3><pre>
 # <span class="code-type" >double</span> <span class="code-member">m_value</span>;<br/></pre>
 
 value of the node<br/>
 <br/>
 <hr/>
-<a id="6081"/><h3>set</h3><pre>
+<a id="4085"/><h3>set</h3><pre>
 + <span class="code-type" >void</span> <span class="code-function">set</span> (<span class="code-type" >double</span> <span class="code-argument">_value</span>);<br/></pre>
 set the value of the node.<br/><ul>
 <table class="parameter-list">
@@ -75,8 +80,8 @@ set the value of the node.<br/><ul>
 
 <br/>
 <hr/>
-<a id="6083"/><h3>get</h3><pre>
-+ <span class="code-type" >double</span> <span class="code-function">get</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+<a id="4086"/><h3>get</h3><pre>
++ <span class="code-type" >double</span> <span class="code-function">get</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 Get the current element Value.<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>The double number registered</td></tr></table>
@@ -84,8 +89,8 @@ Get the current element Value.<br/><ul>
 
 <br/>
 <hr/>
-<a id="6085"/><h3>getInt32</h3><pre>
-+ <span class="code-type" >int32_t</span> <span class="code-function">getInt32</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+<a id="4087"/><h3>getInt32</h3><pre>
++ <span class="code-type" >int32_t</span> <span class="code-function">getInt32</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 Get the current element Value.<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>The 32 bit integer number registered</td></tr></table>
@@ -93,8 +98,8 @@ Get the current element Value.<br/><ul>
 
 <br/>
 <hr/>
-<a id="6087"/><h3>getInt64</h3><pre>
-+ <span class="code-type" >int64_t</span> <span class="code-function">getInt64</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+<a id="4088"/><h3>getInt64</h3><pre>
++ <span class="code-type" >int64_t</span> <span class="code-function">getInt64</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 Get the current element Value.<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>The 64 bit integer number registered</td></tr></table>
@@ -102,7 +107,7 @@ Get the current element Value.<br/><ul>
 
 <br/>
 <hr/>
-<a id="6092"/><h3>iParse</h3><pre>
+<a id="4093"/><h3>iParse</h3><pre>
 + <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span> <span class="code-function">iParse</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                       size_t & <span class="code-argument">_pos</span>,<br/>                       <a class="code-type" href="class_ejson__filePos.html">ejson::filePos</a> & <span class="code-argument">_filePos</span>,<br/>                       <a class="code-type" href="class_ejson__Document.html">ejson::Document</a> & <span class="code-argument">_doc</span>);<br/></pre>
 parse the Current node [pure VIRUAL]<br/><ul>
 <table class="parameter-list">
@@ -115,7 +120,7 @@ parse the Current node [pure VIRUAL]<br/><ul>
 
 <br/>
 <hr/>
-<a id="6095"/><h3>iGenerate</h3><pre>
+<a id="4096"/><h3>iGenerate</h3><pre>
 + <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span> <span class="code-function">iGenerate</span> (<a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                          size_t <span class="code-argument">_indent</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
 generate a string with the tree of the xml<br/><ul>
 <table class="parameter-list">
@@ -126,34 +131,7 @@ generate a string with the tree of the xml<br/><ul>
 
 <br/>
 <hr/>
-<a id="6097"/><h3>getType</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">enum</span> nodeType <span class="code-function">getType</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
-get the node type.<br/><ul>
-<table class="parameter-list">
-<tr><td><b>Return: </b></td><td></td><td>the type of the Node.</td></tr></table>
-</ul>
-
-<br/>
-<hr/>
-<a id="6099"/><h3>toNumber</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>* <span class="code-function">toNumber</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
-Cast the element in a Number if it is possible.<br/><ul>
-<table class="parameter-list">
-<tr><td><b>Return: </b></td><td></td><td>pointer on the class or NULL.</td></tr></table>
-</ul>
-
-<br/>
-<hr/>
-<a id="6101"/><h3>toNumber</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>* <span class="code-function">toNumber</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
-Cast the element in a Number if it is possible.<br/><ul>
-<table class="parameter-list">
-<tr><td><b>Return: </b></td><td></td><td>pointer on the class or NULL.</td></tr></table>
-</ul>
-
-<br/>
-<hr/>
-<a id="6103"/><h3>transfertIn</h3><pre>
+<a id="4098"/><h3>transfertIn</h3><pre>
 + <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span> <span class="code-function">transfertIn</span> (<a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-argument">_obj</span>);<br/></pre>
 Tranfert all element in the element set in parameter<br/><b>Note:</b> all element is remove from the curent element.<br/> <ul>
 <table class="parameter-list">
@@ -164,7 +142,7 @@ Tranfert all element in the element set in parameter<br/><b>Note:</b> all elemen
 <br/>
 <hr/>
 <h3>duplicate</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-function">duplicate</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
++ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-function">duplicate</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 Copy the curent node and all the child in the curent one.<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>NULL in an error occured, the pointer on the element otherwise</td></tr></table>

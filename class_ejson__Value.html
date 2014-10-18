@@ -17,6 +17,11 @@
 	</li>
 </ul>
 			</div>
+<h3>Tutorials:</h3><div id="menu">
+<ul class="niveau1"><li><a href="tutorial_000_Build.html">Build</a></li>
+</ul><ul class="niveau1"><li><a href="tutorial_001_Read.html">Read</a></li>
+</ul><ul class="niveau1"><li><a href="tutorial_002_Write.html">Write</a></li>
+</ul></div>
 <br/><h3>Associate libraries:</h3><div id="menu">
 <ul class="niveau1"><li><a href="../ewol/index.html">ewol</a></li>
 </ul><ul class="niveau1"><li><a href="../egami/index.html">egami</a></li>
@@ -39,27 +44,27 @@
 <br/><br/>
 <h2>Constructor and Destructor:</h2>
 <pre>
-+                                <a class="code-function" href="#5863">Value</a>             (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-storage-keyword">virtual</span>                        <a class="code-function" href="#5865">~Value</a>            (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
++                                <a class="code-function" href="#3894">Value</a>             ();<br/>+ <span class="code-storage-keyword">virtual</span>                        <a class="code-function" href="#3895">~Value</a>            ();<br/></pre>
 <br/>
 <h2>Synopsis:</h2>
 <pre>
-+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>                   <a class="code-function" href="#5867">iParse</a>            (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                                                    size_t & <span class="code-argument">_pos</span>,<br/>                                                    <a class="code-type" href="class_ejson__filePos.html">ejson::filePos</a> & <span class="code-argument">_filePos</span>,<br/>                                                    <a class="code-type" href="class_ejson__Document.html">ejson::Document</a> & <span class="code-argument">_doc</span>) = 0;<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>                   <a class="code-function" href="#5872">iGenerate</a>         (<a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                                                    size_t <span class="code-argument">_indent</span>) = 0 <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">enum</span> nodeType          <a class="code-function" href="#5875">getType</a>           (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>#         <span class="code-type" >void</span>                   <a class="code-function" href="#5877">addIndent</a>         (<a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                                                    size_t <span class="code-argument">_indent</span>) <span class="code-storage-keyword">const</span>;<br/>#         <span class="code-type" >void</span>                   <a class="code-function" href="#5880">drawElementParsed</a> (<span class="code-type" >char32_t</span> <span class="code-argument">_val</span>,<br/>                                                    <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__filePos.html">ejson::filePos</a> & <span class="code-argument">_filePos</span>) <span class="code-storage-keyword">const</span>;<br/>#         <span class="code-type" >bool</span>                   <a class="code-function" href="#5883">checkString</a>       (<span class="code-type" >char32_t</span> <span class="code-argument">_val</span>) <span class="code-storage-keyword">const</span>;<br/>#         <span class="code-type" >bool</span>                   <a class="code-function" href="#5885">checkNumber</a>       (<span class="code-type" >char32_t</span> <span class="code-argument">_val</span>) <span class="code-storage-keyword">const</span>;<br/>#         <span class="code-type" >int32_t</span>                <a class="code-function" href="#5887">countWhiteChar</a>    (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                                                    size_t <span class="code-argument">_pos</span>,<br/>                                                    <a class="code-type" href="class_ejson__filePos.html">ejson::filePos</a> & <span class="code-argument">_filePos</span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>*          <a class="code-function" href="#5891">toValue</a>           (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>*    <a class="code-function" href="#5893">toValue</a>           (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Document.html">ejson::Document</a>*       <a class="code-function" href="#5895">toDocument</a>        (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Document.html">ejson::Document</a>* <a class="code-function" href="#5897">toDocument</a>        (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>*          <a class="code-function" href="#5899">toArray</a>           (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>*    <a class="code-function" href="#5901">toArray</a>           (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>*         <a class="code-function" href="#5903">toObject</a>          (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>*   <a class="code-function" href="#5905">toObject</a>          (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__String.html">ejson::String</a>*         <a class="code-function" href="#5907">toString</a>          (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__String.html">ejson::String</a>*   <a class="code-function" href="#5909">toString</a>          (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>*         <a class="code-function" href="#5911">toNumber</a>          (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>*   <a class="code-function" href="#5913">toNumber</a>          (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Boolean.html">ejson::Boolean</a>*        <a class="code-function" href="#5915">toBoolean</a>         (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Boolean.html">ejson::Boolean</a>*  <a class="code-function" href="#5917">toBoolean</a>         (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Null.html">ejson::Null</a>*           <a class="code-function" href="#5919">toNull</a>            (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Null.html">ejson::Null</a>*     <a class="code-function" href="#5921">toNull</a>            (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >bool</span>                   <a class="code-function" href="#5923">isDocument</a>        (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >bool</span>                   <a class="code-function" href="#5925">isArray</a>           (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >bool</span>                   <a class="code-function" href="#5927">isObject</a>          (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >bool</span>                   <a class="code-function" href="#5929">isString</a>          (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >bool</span>                   <a class="code-function" href="#5931">isNumber</a>          (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >bool</span>                   <a class="code-function" href="#5933">isBoolean</a>         (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >bool</span>                   <a class="code-function" href="#5935">isNull</a>            (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >void</span>                   <a class="code-function" href="#5937">clear</a>             (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>                   <a class="code-function" href="#5939">transfertIn</a>       (<a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-argument">_obj</span>);<br/>+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>*          <a class="code-function" href="#5941">duplicate</a>         (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>#         <span class="code-type" >bool</span>                   <a class="code-function" href="#5943">isWhiteChar</a>       (<span class="code-type" >char32_t</span> <span class="code-argument">_val</span>);<br/></pre>
++ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>                   <a class="code-function" href="#3896">iParse</a>            (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                                                    size_t & <span class="code-argument">_pos</span>,<br/>                                                    <a class="code-type" href="class_ejson__filePos.html">ejson::filePos</a> & <span class="code-argument">_filePos</span>,<br/>                                                    <a class="code-type" href="class_ejson__Document.html">ejson::Document</a> & <span class="code-argument">_doc</span>) = 0;<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>                   <a class="code-function" href="#3901">iGenerate</a>         (<a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                                                    size_t <span class="code-argument">_indent</span>) = 0 <span class="code-storage-keyword">const</span>;<br/>#         <span class="code-type" >void</span>                   <a class="code-function" href="#3904">addIndent</a>         (<a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                                                    size_t <span class="code-argument">_indent</span>) <span class="code-storage-keyword">const</span>;<br/>#         <span class="code-type" >void</span>                   <a class="code-function" href="#3907">drawElementParsed</a> (<span class="code-type" >char32_t</span> <span class="code-argument">_val</span>,<br/>                                                    <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__filePos.html">ejson::filePos</a> & <span class="code-argument">_filePos</span>) <span class="code-storage-keyword">const</span>;<br/>#         <span class="code-type" >bool</span>                   <a class="code-function" href="#3910">checkString</a>       (<span class="code-type" >char32_t</span> <span class="code-argument">_val</span>) <span class="code-storage-keyword">const</span>;<br/>#         <span class="code-type" >bool</span>                   <a class="code-function" href="#3912">checkNumber</a>       (<span class="code-type" >char32_t</span> <span class="code-argument">_val</span>) <span class="code-storage-keyword">const</span>;<br/>#         <span class="code-type" >int32_t</span>                <a class="code-function" href="#3914">countWhiteChar</a>    (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                                                    size_t <span class="code-argument">_pos</span>,<br/>                                                    <a class="code-type" href="class_ejson__filePos.html">ejson::filePos</a> & <span class="code-argument">_filePos</span>) <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>*          <a class="code-function" href="#3918">toValue</a>           ();<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>*    <a class="code-function" href="#3919">toValue</a>           () <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Document.html">ejson::Document</a>*       <a class="code-function" href="#3920">toDocument</a>        ();<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Document.html">ejson::Document</a>* <a class="code-function" href="#3921">toDocument</a>        () <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>*          <a class="code-function" href="#3922">toArray</a>           ();<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>*    <a class="code-function" href="#3923">toArray</a>           () <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>*         <a class="code-function" href="#3924">toObject</a>          ();<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>*   <a class="code-function" href="#3925">toObject</a>          () <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__String.html">ejson::String</a>*         <a class="code-function" href="#3926">toString</a>          ();<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__String.html">ejson::String</a>*   <a class="code-function" href="#3927">toString</a>          () <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>*         <a class="code-function" href="#3928">toNumber</a>          ();<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>*   <a class="code-function" href="#3929">toNumber</a>          () <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Boolean.html">ejson::Boolean</a>*        <a class="code-function" href="#3930">toBoolean</a>         ();<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Boolean.html">ejson::Boolean</a>*  <a class="code-function" href="#3931">toBoolean</a>         () <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Null.html">ejson::Null</a>*           <a class="code-function" href="#3932">toNull</a>            ();<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Null.html">ejson::Null</a>*     <a class="code-function" href="#3933">toNull</a>            () <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >bool</span>                   <a class="code-function" href="#3934">isDocument</a>        () <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >bool</span>                   <a class="code-function" href="#3935">isArray</a>           () <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >bool</span>                   <a class="code-function" href="#3936">isObject</a>          () <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >bool</span>                   <a class="code-function" href="#3937">isString</a>          () <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >bool</span>                   <a class="code-function" href="#3938">isNumber</a>          () <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >bool</span>                   <a class="code-function" href="#3939">isBoolean</a>         () <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >bool</span>                   <a class="code-function" href="#3940">isNull</a>            () <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >void</span>                   <a class="code-function" href="#3941">clear</a>             ();<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>                   <a class="code-function" href="#3942">transfertIn</a>       (<a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-argument">_obj</span>);<br/>+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>*          <a class="code-function" href="#3944">duplicate</a>         () <span class="code-storage-keyword">const</span>;<br/>#         <span class="code-type" >bool</span>                   <a class="code-function" href="#3945">isWhiteChar</a>       (<span class="code-type" >char32_t</span> <span class="code-argument">_val</span>);<br/></pre>
 <br/>
 <h2>Object Hierarchy:<h2>
 <pre>
 ejson::Value<br/>  +--> <a href="class_ejson__String.html">ejson::String</a><br/>  +--> <a href="class_ejson__Null.html">ejson::Null</a><br/>  +--> <a href="class_ejson__Object.html">ejson::Object</a><br/>  +--> <a href="class_ejson__Boolean.html">ejson::Boolean</a><br/>  +--> <a href="class_ejson__Number.html">ejson::Number</a><br/>  +--> <a href="class_ejson__Array.html">ejson::Array</a><br/></pre>
 <h2>Detail:</h2>
-<a id="5863"/><a id="5865"/><h3>Value</h3><pre>
-+  <span class="code-function">Value</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="3894"/><a id="3895"/><h3>Value</h3><pre>
++  <span class="code-function">Value</span> ();<br/></pre>
 basic element of a xml structure<br/>
 <br/>
 <hr/>
-<a id="5867"/><h3>~Value</h3><pre>
-+ <span class="code-storage-keyword">virtual</span>  <span class="code-function">~Value</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="3896"/><h3>~Value</h3><pre>
++ <span class="code-storage-keyword">virtual</span>  <span class="code-function">~Value</span> ();<br/></pre>
 destructor<br/>
 <br/>
 <hr/>
-<a id="5872"/><h3>iParse</h3><pre>
+<a id="3901"/><h3>iParse</h3><pre>
 + <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span> <span class="code-function">iParse</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                       size_t & <span class="code-argument">_pos</span>,<br/>                       <a class="code-type" href="class_ejson__filePos.html">ejson::filePos</a> & <span class="code-argument">_filePos</span>,<br/>                       <a class="code-type" href="class_ejson__Document.html">ejson::Document</a> & <span class="code-argument">_doc</span>) = 0;<br/></pre>
 parse the Current node [pure VIRUAL]<br/><ul>
 <table class="parameter-list">
@@ -72,7 +77,7 @@ parse the Current node [pure VIRUAL]<br/><ul>
 
 <br/>
 <hr/>
-<a id="5875"/><h3>iGenerate</h3><pre>
+<a id="3904"/><h3>iGenerate</h3><pre>
 + <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span> <span class="code-function">iGenerate</span> (<a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                          size_t <span class="code-argument">_indent</span>) = 0 <span class="code-storage-keyword">const</span>;<br/></pre>
 generate a string with the tree of the xml<br/><ul>
 <table class="parameter-list">
@@ -83,16 +88,7 @@ generate a string with the tree of the xml<br/><ul>
 
 <br/>
 <hr/>
-<a id="5877"/><h3>getType</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">enum</span> nodeType <span class="code-function">getType</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
-get the node type.<br/><ul>
-<table class="parameter-list">
-<tr><td><b>Return: </b></td><td></td><td>the type of the Node.</td></tr></table>
-</ul>
-
-<br/>
-<hr/>
-<a id="5880"/><h3>addIndent</h3><pre>
+<a id="3907"/><h3>addIndent</h3><pre>
 # <span class="code-type" >void</span> <span class="code-function">addIndent</span> (<a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                  size_t <span class="code-argument">_indent</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
 add indentation of the string input.<br/><ul>
 <table class="parameter-list">
@@ -103,7 +99,7 @@ add indentation of the string input.<br/><ul>
 
 <br/>
 <hr/>
-<a id="5883"/><h3>drawElementParsed</h3><pre>
+<a id="3910"/><h3>drawElementParsed</h3><pre>
 # <span class="code-type" >void</span> <span class="code-function">drawElementParsed</span> (<span class="code-type" >char32_t</span> <span class="code-argument">_val</span>,<br/>                          <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__filePos.html">ejson::filePos</a> & <span class="code-argument">_filePos</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
 Display the cuurent element that is curently parse.<br/><ul>
 <table class="parameter-list">
@@ -114,7 +110,7 @@ Display the cuurent element that is curently parse.<br/><ul>
 
 <br/>
 <hr/>
-<a id="5885"/><h3>checkString</h3><pre>
+<a id="3912"/><h3>checkString</h3><pre>
 # <span class="code-type" >bool</span> <span class="code-function">checkString</span> (<span class="code-type" >char32_t</span> <span class="code-argument">_val</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
 check if an name (for object named) (not : !"#$%&'()+,/;&lt;=&gt;?@[\]^`{|}~ \n\t\r).<br/><ul>
 <table class="parameter-list">
@@ -124,7 +120,7 @@ check if an name (for object named) (not : !"#$%&'()+,/;&lt;=&gt;?@[\]^`{|}~ \n\
 
 <br/>
 <hr/>
-<a id="5887"/><h3>checkNumber</h3><pre>
+<a id="3914"/><h3>checkNumber</h3><pre>
 # <span class="code-type" >bool</span> <span class="code-function">checkNumber</span> (<span class="code-type" >char32_t</span> <span class="code-argument">_val</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
 check if an number -+.0123456789e).<br/><ul>
 <table class="parameter-list">
@@ -134,7 +130,7 @@ check if an number -+.0123456789e).<br/><ul>
 
 <br/>
 <hr/>
-<a id="5891"/><h3>countWhiteChar</h3><pre>
+<a id="3918"/><h3>countWhiteChar</h3><pre>
 # <span class="code-type" >int32_t</span> <span class="code-function">countWhiteChar</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                          size_t <span class="code-argument">_pos</span>,<br/>                          <a class="code-type" href="class_ejson__filePos.html">ejson::filePos</a> & <span class="code-argument">_filePos</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
 count the number of white char in the string from the specify position (stop at the first element that is not a white char)<br/><ul>
 <table class="parameter-list">
@@ -146,8 +142,8 @@ count the number of white char in the string from the specify position (stop at 
 
 <br/>
 <hr/>
-<a id="5893"/><h3>toValue</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-function">toValue</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="3919"/><a id="3920"/><h3>toValue</h3><pre>
++ <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-function">toValue</span> ();<br/>+ <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-function">toValue</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 Cast the element in a Value if it is possible.<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>pointer on the class or NULL.</td></tr></table>
@@ -155,14 +151,8 @@ Cast the element in a Value if it is possible.<br/><ul>
 
 <br/>
 <hr/>
-<a id="5895"/><h3>toValue</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-function">toValue</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
-
-<br/>
-<br/>
-<hr/>
-<a id="5897"/><h3>toDocument</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Document.html">ejson::Document</a>* <span class="code-function">toDocument</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="3921"/><a id="3922"/><h3>toDocument</h3><pre>
++ <a class="code-type" href="class_ejson__Document.html">ejson::Document</a>* <span class="code-function">toDocument</span> ();<br/>+ <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Document.html">ejson::Document</a>* <span class="code-function">toDocument</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 Cast the element in a Document if it is possible.<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>pointer on the class or NULL.</td></tr></table>
@@ -170,14 +160,8 @@ Cast the element in a Document if it is possible.<br/><ul>
 
 <br/>
 <hr/>
-<a id="5899"/><h3>toDocument</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Document.html">ejson::Document</a>* <span class="code-function">toDocument</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
-
-<br/>
-<br/>
-<hr/>
-<a id="5901"/><h3>toArray</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>* <span class="code-function">toArray</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="3923"/><a id="3924"/><h3>toArray</h3><pre>
++ <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>* <span class="code-function">toArray</span> ();<br/>+ <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>* <span class="code-function">toArray</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 Cast the element in a Array if it is possible.<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>pointer on the class or NULL.</td></tr></table>
@@ -185,14 +169,8 @@ Cast the element in a Array if it is possible.<br/><ul>
 
 <br/>
 <hr/>
-<a id="5903"/><h3>toArray</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>* <span class="code-function">toArray</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
-
-<br/>
-<br/>
-<hr/>
-<a id="5905"/><h3>toObject</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>* <span class="code-function">toObject</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="3925"/><a id="3926"/><h3>toObject</h3><pre>
++ <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>* <span class="code-function">toObject</span> ();<br/>+ <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>* <span class="code-function">toObject</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 Cast the element in a Object if it is possible.<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>pointer on the class or NULL.</td></tr></table>
@@ -200,14 +178,8 @@ Cast the element in a Object if it is possible.<br/><ul>
 
 <br/>
 <hr/>
-<a id="5907"/><h3>toObject</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>* <span class="code-function">toObject</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
-
-<br/>
-<br/>
-<hr/>
-<a id="5909"/><h3>toString</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__String.html">ejson::String</a>* <span class="code-function">toString</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="3927"/><a id="3928"/><h3>toString</h3><pre>
++ <a class="code-type" href="class_ejson__String.html">ejson::String</a>* <span class="code-function">toString</span> ();<br/>+ <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__String.html">ejson::String</a>* <span class="code-function">toString</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 Cast the element in a String if it is possible.<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>pointer on the class or NULL.</td></tr></table>
@@ -215,14 +187,8 @@ Cast the element in a String if it is possible.<br/><ul>
 
 <br/>
 <hr/>
-<a id="5911"/><h3>toString</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__String.html">ejson::String</a>* <span class="code-function">toString</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
-
-<br/>
-<br/>
-<hr/>
-<a id="5913"/><h3>toNumber</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>* <span class="code-function">toNumber</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="3929"/><a id="3930"/><h3>toNumber</h3><pre>
++ <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>* <span class="code-function">toNumber</span> ();<br/>+ <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>* <span class="code-function">toNumber</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 Cast the element in a Number if it is possible.<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>pointer on the class or NULL.</td></tr></table>
@@ -230,14 +196,8 @@ Cast the element in a Number if it is possible.<br/><ul>
 
 <br/>
 <hr/>
-<a id="5915"/><h3>toNumber</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>* <span class="code-function">toNumber</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
-
-<br/>
-<br/>
-<hr/>
-<a id="5917"/><h3>toBoolean</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Boolean.html">ejson::Boolean</a>* <span class="code-function">toBoolean</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="3931"/><a id="3932"/><h3>toBoolean</h3><pre>
++ <a class="code-type" href="class_ejson__Boolean.html">ejson::Boolean</a>* <span class="code-function">toBoolean</span> ();<br/>+ <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Boolean.html">ejson::Boolean</a>* <span class="code-function">toBoolean</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 Cast the element in a Boolean if it is possible.<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>pointer on the class or NULL.</td></tr></table>
@@ -245,14 +205,8 @@ Cast the element in a Boolean if it is possible.<br/><ul>
 
 <br/>
 <hr/>
-<a id="5919"/><h3>toBoolean</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Boolean.html">ejson::Boolean</a>* <span class="code-function">toBoolean</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
-
-<br/>
-<br/>
-<hr/>
-<a id="5921"/><h3>toNull</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Null.html">ejson::Null</a>* <span class="code-function">toNull</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="3933"/><a id="3934"/><h3>toNull</h3><pre>
++ <a class="code-type" href="class_ejson__Null.html">ejson::Null</a>* <span class="code-function">toNull</span> ();<br/>+ <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Null.html">ejson::Null</a>* <span class="code-function">toNull</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 Cast the element in a Null if it is possible.<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>pointer on the class or NULL.</td></tr></table>
@@ -260,14 +214,8 @@ Cast the element in a Null if it is possible.<br/><ul>
 
 <br/>
 <hr/>
-<a id="5923"/><h3>toNull</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Null.html">ejson::Null</a>* <span class="code-function">toNull</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
-
-<br/>
-<br/>
-<hr/>
-<a id="5925"/><h3>isDocument</h3><pre>
-+ <span class="code-type" >bool</span> <span class="code-function">isDocument</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+<a id="3935"/><h3>isDocument</h3><pre>
++ <span class="code-type" >bool</span> <span class="code-function">isDocument</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 check if the node is a ejson::Document<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>true if the node is a ejson::Document</td></tr></table>
@@ -275,8 +223,8 @@ check if the node is a ejson::Document<br/><ul>
 
 <br/>
 <hr/>
-<a id="5927"/><h3>isArray</h3><pre>
-+ <span class="code-type" >bool</span> <span class="code-function">isArray</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+<a id="3936"/><h3>isArray</h3><pre>
++ <span class="code-type" >bool</span> <span class="code-function">isArray</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 check if the node is a ejson::Array<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>true if the node is a ejson::Array</td></tr></table>
@@ -284,8 +232,8 @@ check if the node is a ejson::Array<br/><ul>
 
 <br/>
 <hr/>
-<a id="5929"/><h3>isObject</h3><pre>
-+ <span class="code-type" >bool</span> <span class="code-function">isObject</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+<a id="3937"/><h3>isObject</h3><pre>
++ <span class="code-type" >bool</span> <span class="code-function">isObject</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 check if the node is a ejson::Object<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>true if the node is a ejson::Object</td></tr></table>
@@ -293,8 +241,8 @@ check if the node is a ejson::Object<br/><ul>
 
 <br/>
 <hr/>
-<a id="5931"/><h3>isString</h3><pre>
-+ <span class="code-type" >bool</span> <span class="code-function">isString</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+<a id="3938"/><h3>isString</h3><pre>
++ <span class="code-type" >bool</span> <span class="code-function">isString</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 check if the node is a ejson::String<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>true if the node is a ejson::String</td></tr></table>
@@ -302,8 +250,8 @@ check if the node is a ejson::String<br/><ul>
 
 <br/>
 <hr/>
-<a id="5933"/><h3>isNumber</h3><pre>
-+ <span class="code-type" >bool</span> <span class="code-function">isNumber</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+<a id="3939"/><h3>isNumber</h3><pre>
++ <span class="code-type" >bool</span> <span class="code-function">isNumber</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 check if the node is a ejson::Number<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>true if the node is a ejson::Number</td></tr></table>
@@ -311,8 +259,8 @@ check if the node is a ejson::Number<br/><ul>
 
 <br/>
 <hr/>
-<a id="5935"/><h3>isBoolean</h3><pre>
-+ <span class="code-type" >bool</span> <span class="code-function">isBoolean</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+<a id="3940"/><h3>isBoolean</h3><pre>
++ <span class="code-type" >bool</span> <span class="code-function">isBoolean</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 check if the node is a ejson::Boolean<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>true if the node is a ejson::Boolean</td></tr></table>
@@ -320,8 +268,8 @@ check if the node is a ejson::Boolean<br/><ul>
 
 <br/>
 <hr/>
-<a id="5937"/><h3>isNull</h3><pre>
-+ <span class="code-type" >bool</span> <span class="code-function">isNull</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+<a id="3941"/><h3>isNull</h3><pre>
++ <span class="code-type" >bool</span> <span class="code-function">isNull</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 check if the node is a ejson::Null<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>true if the node is a ejson::Null</td></tr></table>
@@ -329,12 +277,12 @@ check if the node is a ejson::Null<br/><ul>
 
 <br/>
 <hr/>
-<a id="5939"/><h3>clear</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >void</span> <span class="code-function">clear</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="3942"/><h3>clear</h3><pre>
++ <span class="code-storage-keyword">virtual</span> <span class="code-type" >void</span> <span class="code-function">clear</span> ();<br/></pre>
 clear the Node<br/>
 <br/>
 <hr/>
-<a id="5941"/><h3>transfertIn</h3><pre>
+<a id="3944"/><h3>transfertIn</h3><pre>
 + <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span> <span class="code-function">transfertIn</span> (<a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-argument">_obj</span>);<br/></pre>
 Tranfert all element in the element set in parameter<br/><b>Note:</b> all element is remove from the curent element.<br/> <ul>
 <table class="parameter-list">
@@ -344,8 +292,8 @@ Tranfert all element in the element set in parameter<br/><b>Note:</b> all elemen
 
 <br/>
 <hr/>
-<a id="5943"/><h3>duplicate</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-function">duplicate</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+<a id="3945"/><h3>duplicate</h3><pre>
++ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-function">duplicate</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 Copy the curent node and all the child in the curent one.<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>NULL in an error occured, the pointer on the element otherwise</td></tr></table>

@@ -17,6 +17,11 @@
 	</li>
 </ul>
 			</div>
+<h3>Tutorials:</h3><div id="menu">
+<ul class="niveau1"><li><a href="tutorial_000_Build.html">Build</a></li>
+</ul><ul class="niveau1"><li><a href="tutorial_001_Read.html">Read</a></li>
+</ul><ul class="niveau1"><li><a href="tutorial_002_Write.html">Write</a></li>
+</ul></div>
 <br/><h3>Associate libraries:</h3><div id="menu">
 <ul class="niveau1"><li><a href="../ewol/index.html">ewol</a></li>
 </ul><ul class="niveau1"><li><a href="../egami/index.html">egami</a></li>
@@ -39,28 +44,28 @@
 <br/><br/>
 <h2>Constructor and Destructor:</h2>
 <pre>
-+                                    <a class="code-function" href="#6108">Array</a>           (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-storage-keyword">virtual</span>                            <a class="code-function" href="#6110">~Array</a>          (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
++                                    <a class="code-function" href="#4102">Array</a>           ();<br/>+ <span class="code-storage-keyword">virtual</span>                            <a class="code-function" href="#4103">~Array</a>          ();<br/></pre>
 <br/>
 <h2>Synopsis:</h2>
 <pre>
-+         size_t                     <a class="code-function" href="#6113">size</a>            (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>*        <a class="code-function" href="#6115">get</a>             (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>*              <a class="code-function" href="#6117">get</a>             (size_t <span class="code-argument">_id</span>);<br/>+         <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>*             <a class="code-function" href="#6119">getObject</a>       (size_t <span class="code-argument">_id</span>);<br/>+         <a class="code-type" href="class_ejson__String.html">ejson::String</a>*             <a class="code-function" href="#6121">getString</a>       (size_t <span class="code-argument">_id</span>);<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> &        <a class="code-function" href="#6123">getStringValue</a>  (size_t <span class="code-argument">_id</span>);<br/>+         <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a>                <a class="code-function" href="#6125">getStringValue</a>  (size_t <span class="code-argument">_id</span>,<br/>                                                      <span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_errorValue</span>);<br/>+         <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>*              <a class="code-function" href="#6128">getArray</a>        (size_t <span class="code-argument">_id</span>);<br/>+         <a class="code-type" href="class_ejson__Null.html">ejson::Null</a>*               <a class="code-function" href="#6130">getNull</a>         (size_t <span class="code-argument">_id</span>);<br/>+         <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>*             <a class="code-function" href="#6132">getNumber</a>       (size_t <span class="code-argument">_id</span>);<br/>+         <span class="code-type" >double</span>                     <a class="code-function" href="#6134">getNumberValue</a>  (size_t <span class="code-argument">_id</span>,<br/>                                                      <span class="code-type" >double</span> <span class="code-argument">_errorValue</span>);<br/>+         <a class="code-type" href="class_ejson__Boolean.html">ejson::Boolean</a>*            <a class="code-function" href="#6137">getBoolean</a>      (size_t <span class="code-argument">_id</span>);<br/>+         <span class="code-type" >bool</span>                       <a class="code-function" href="#6139">getBooleanValue</a> (size_t <span class="code-argument">_id</span>,<br/>                                                      <span class="code-type" >bool</span> <span class="code-argument">_errorValue</span>);<br/>+         <span class="code-type" >bool</span>                       <a class="code-function" href="#6142">add</a>             (<a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-argument">_element</span>);<br/>+         <span class="code-type" >bool</span>                       <a class="code-function" href="#6144">addString</a>       (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_value</span>);<br/>+         <span class="code-type" >bool</span>                       <a class="code-function" href="#6146">addNull</a>         (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+         <span class="code-type" >bool</span>                       <a class="code-function" href="#6148">addBoolean</a>      (<span class="code-type" >bool</span> <span class="code-argument">_value</span>);<br/>+         <span class="code-type" >bool</span>                       <a class="code-function" href="#6150">addNumber</a>       (<span class="code-type" >double</span> <span class="code-argument">_value</span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>                       <a class="code-function" href="#6152">iParse</a>          (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                                                      size_t & <span class="code-argument">_pos</span>,<br/>                                                      <a class="code-type" href="class_ejson__filePos.html">ejson::filePos</a> & <span class="code-argument">_filePos</span>,<br/>                                                      <a class="code-type" href="class_ejson__Document.html">ejson::Document</a> & <span class="code-argument">_doc</span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>                       <a class="code-function" href="#6157">iGenerate</a>       (<a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                                                      size_t <span class="code-argument">_indent</span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">enum</span> nodeType              <a class="code-function" href="#6160">getType</a>         (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>*              <a class="code-function" href="#6162">toArray</a>         (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>*        <a class="code-function" href="#6164">toArray</a>         (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >void</span>                       <a class="code-function" href="#6166">clear</a>           (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>                       <a class="code-function" href="#6168">transfertIn</a>     (<a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-argument">_obj</span>);<br/>+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>*              <a class="code-function" href="#6170">duplicate</a>       (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
++         size_t                     <a class="code-function" href="#4105">size</a>            () <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>*              <a class="code-function" href="#4106">get</a>             (size_t <span class="code-argument">_id</span>);<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>*        <a class="code-function" href="#4108">get</a>             (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>*              <a class="code-function" href="#4110">operator [ ]</a>    (size_t <span class="code-argument">_id</span>);<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>*        <a class="code-function" href="#4112">operator [ ]</a>    (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>*             <a class="code-function" href="#4114">getObject</a>       (size_t <span class="code-argument">_id</span>);<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>*       <a class="code-function" href="#4116">getObject</a>       (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__String.html">ejson::String</a>*             <a class="code-function" href="#4118">getString</a>       (size_t <span class="code-argument">_id</span>);<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__String.html">ejson::String</a>*       <a class="code-function" href="#4120">getString</a>       (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a>                <a class="code-function" href="#4122">getStringValue</a>  (size_t <span class="code-argument">_id</span>);<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> &        <a class="code-function" href="#4124">getStringValue</a>  (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a>                <a class="code-function" href="#4126">getStringValue</a>  (size_t <span class="code-argument">_id</span>,<br/>                                                      <span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_errorValue</span>) <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>*              <a class="code-function" href="#4129">getArray</a>        (size_t <span class="code-argument">_id</span>);<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>*        <a class="code-function" href="#4131">getArray</a>        (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Null.html">ejson::Null</a>*               <a class="code-function" href="#4133">getNull</a>         (size_t <span class="code-argument">_id</span>);<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Null.html">ejson::Null</a>*         <a class="code-function" href="#4135">getNull</a>         (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>*             <a class="code-function" href="#4137">getNumber</a>       (size_t <span class="code-argument">_id</span>);<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>*       <a class="code-function" href="#4139">getNumber</a>       (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >double</span>                     <a class="code-function" href="#4141">getNumberValue</a>  (size_t <span class="code-argument">_id</span>,<br/>                                                      <span class="code-type" >double</span> <span class="code-argument">_errorValue</span>) <span class="code-storage-keyword">const</span>;<br/>+         <a class="code-type" href="class_ejson__Boolean.html">ejson::Boolean</a>*            <a class="code-function" href="#4144">getBoolean</a>      (size_t <span class="code-argument">_id</span>);<br/>+         <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Boolean.html">ejson::Boolean</a>*      <a class="code-function" href="#4146">getBoolean</a>      (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >bool</span>                       <a class="code-function" href="#4148">getBooleanValue</a> (size_t <span class="code-argument">_id</span>,<br/>                                                      <span class="code-type" >bool</span> <span class="code-argument">_errorValue</span>) <span class="code-storage-keyword">const</span>;<br/>+         <span class="code-type" >bool</span>                       <a class="code-function" href="#4151">add</a>             (<a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-argument">_element</span>);<br/>+         <span class="code-type" >bool</span>                       <a class="code-function" href="#4153">addString</a>       (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_value</span>);<br/>+         <span class="code-type" >bool</span>                       <a class="code-function" href="#4155">addNull</a>         ();<br/>+         <span class="code-type" >bool</span>                       <a class="code-function" href="#4156">addBoolean</a>      (<span class="code-type" >bool</span> <span class="code-argument">_value</span>);<br/>+         <span class="code-type" >bool</span>                       <a class="code-function" href="#4158">addNumber</a>       (<span class="code-type" >double</span> <span class="code-argument">_value</span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>                       <a class="code-function" href="#4160">iParse</a>          (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                                                      size_t & <span class="code-argument">_pos</span>,<br/>                                                      <a class="code-type" href="class_ejson__filePos.html">ejson::filePos</a> & <span class="code-argument">_filePos</span>,<br/>                                                      <a class="code-type" href="class_ejson__Document.html">ejson::Document</a> & <span class="code-argument">_doc</span>);<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>                       <a class="code-function" href="#4165">iGenerate</a>       (<a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                                                      size_t <span class="code-argument">_indent</span>) <span class="code-storage-keyword">const</span>;<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >void</span>                       <a class="code-function" href="#4168">clear</a>           ();<br/>+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span>                       <a class="code-function" href="#4169">transfertIn</a>     (<a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-argument">_obj</span>);<br/>+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>*              <a class="code-function" href="#4171">duplicate</a>       () <span class="code-storage-keyword">const</span>;<br/></pre>
 <br/>
 <h2>Object Hierarchy:<h2>
 <pre>
 +<a href="class_ejson__Value.html">ejson::Value</a><br/>  +--> ejson::Array<br/></pre>
 <h2>Detail:</h2>
-<a id="6108"/><a id="6110"/><h3>Array</h3><pre>
-+  <span class="code-function">Array</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="4102"/><a id="4103"/><h3>Array</h3><pre>
++  <span class="code-function">Array</span> ();<br/></pre>
 basic element of a xml structure<br/>
 <br/>
 <hr/>
-<a id="6113"/><h3>~Array</h3><pre>
-+ <span class="code-storage-keyword">virtual</span>  <span class="code-function">~Array</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="4105"/><h3>~Array</h3><pre>
++ <span class="code-storage-keyword">virtual</span>  <span class="code-function">~Array</span> ();<br/></pre>
 destructor<br/>
 <br/>
 <hr/>
-<a id="6115"/><h3>size</h3><pre>
-+ size_t <span class="code-function">size</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+<a id="4106"/><h3>size</h3><pre>
++ size_t <span class="code-function">size</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 get the number of sub element in the current one<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>the Number of stored element</td></tr></table>
@@ -68,8 +73,8 @@ get the number of sub element in the current one<br/><ul>
 
 <br/>
 <hr/>
-<a id="6117"/><h3>get</h3><pre>
-+ <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-function">get</span> (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
+<a id="4108"/><a id="4110"/><a id="4112"/><a id="4114"/><h3>get</h3><pre>
++ <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-function">get</span> (size_t <span class="code-argument">_id</span>);<br/>+ <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-function">get</span> (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/>+ <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-function">operator [ ]</span> (size_t <span class="code-argument">_id</span>);<br/>+ <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-function">operator [ ]</span> (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
 get the pointer on an element reference with his ID.<br/><ul>
 <table class="parameter-list">
 <td><b>Parameter [input]:</b></td><td><span class="code-argument">_id</span> </td><td> Id of the element.</td></tr>
@@ -78,14 +83,8 @@ get the pointer on an element reference with his ID.<br/><ul>
 
 <br/>
 <hr/>
-<a id="6119"/><h3>get</h3><pre>
-+ <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-function">get</span> (size_t <span class="code-argument">_id</span>);<br/></pre>
-
-<br/>
-<br/>
-<hr/>
-<a id="6121"/><h3>getObject</h3><pre>
-+ <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>* <span class="code-function">getObject</span> (size_t <span class="code-argument">_id</span>);<br/></pre>
+<a id="4116"/><a id="4118"/><h3>getObject</h3><pre>
++ <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>* <span class="code-function">getObject</span> (size_t <span class="code-argument">_id</span>);<br/>+ <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Object.html">ejson::Object</a>* <span class="code-function">getObject</span> (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
 get the pointer on an element reference with his ID (casted in Object if it is an object).<br/><ul>
 <table class="parameter-list">
 <td><b>Parameter [input]:</b></td><td><span class="code-argument">_id</span> </td><td> Id of the element.</td></tr>
@@ -94,8 +93,8 @@ get the pointer on an element reference with his ID (casted in Object if it is a
 
 <br/>
 <hr/>
-<a id="6123"/><h3>getString</h3><pre>
-+ <a class="code-type" href="class_ejson__String.html">ejson::String</a>* <span class="code-function">getString</span> (size_t <span class="code-argument">_id</span>);<br/></pre>
+<a id="4120"/><a id="4122"/><h3>getString</h3><pre>
++ <a class="code-type" href="class_ejson__String.html">ejson::String</a>* <span class="code-function">getString</span> (size_t <span class="code-argument">_id</span>);<br/>+ <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__String.html">ejson::String</a>* <span class="code-function">getString</span> (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
 get the pointer on an element reference with his ID (casted in String if it is an String).<br/><ul>
 <table class="parameter-list">
 <td><b>Parameter [input]:</b></td><td><span class="code-argument">_id</span> </td><td> Id of the element.</td></tr>
@@ -104,8 +103,8 @@ get the pointer on an element reference with his ID (casted in String if it is a
 
 <br/>
 <hr/>
-<a id="6125"/><h3>getStringValue</h3><pre>
-+ <span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-function">getStringValue</span> (size_t <span class="code-argument">_id</span>);<br/></pre>
+<a id="4124"/><a id="4126"/><h3>getStringValue</h3><pre>
++ <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> <span class="code-function">getStringValue</span> (size_t <span class="code-argument">_id</span>);<br/>+ <span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-function">getStringValue</span> (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
 get the value of the string element (if not a string return "")<br/><ul>
 <table class="parameter-list">
 <td><b>Parameter [input]:</b></td><td><span class="code-argument">_id</span> </td><td> Id of the element.</td></tr>
@@ -114,8 +113,8 @@ get the value of the string element (if not a string return "")<br/><ul>
 
 <br/>
 <hr/>
-<a id="6128"/><h3>getStringValue</h3><pre>
-+ <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> <span class="code-function">getStringValue</span> (size_t <span class="code-argument">_id</span>,<br/>                              <span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_errorValue</span>);<br/></pre>
+<a id="4129"/><h3>getStringValue</h3><pre>
++ <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> <span class="code-function">getStringValue</span> (size_t <span class="code-argument">_id</span>,<br/>                              <span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_errorValue</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
 get the value of the string element<br/><ul>
 <table class="parameter-list">
 <td><b>Parameter [input]:</b></td><td><span class="code-argument">_id</span> </td><td> Id of the element.</td></tr>
@@ -125,8 +124,8 @@ get the value of the string element<br/><ul>
 
 <br/>
 <hr/>
-<a id="6130"/><h3>getArray</h3><pre>
-+ <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>* <span class="code-function">getArray</span> (size_t <span class="code-argument">_id</span>);<br/></pre>
+<a id="4131"/><a id="4133"/><h3>getArray</h3><pre>
++ <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>* <span class="code-function">getArray</span> (size_t <span class="code-argument">_id</span>);<br/>+ <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>* <span class="code-function">getArray</span> (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
 get the pointer on an element reference with his ID (casted in Array if it is an Array).<br/><ul>
 <table class="parameter-list">
 <td><b>Parameter [input]:</b></td><td><span class="code-argument">_id</span> </td><td> Id of the element.</td></tr>
@@ -135,8 +134,8 @@ get the pointer on an element reference with his ID (casted in Array if it is an
 
 <br/>
 <hr/>
-<a id="6132"/><h3>getNull</h3><pre>
-+ <a class="code-type" href="class_ejson__Null.html">ejson::Null</a>* <span class="code-function">getNull</span> (size_t <span class="code-argument">_id</span>);<br/></pre>
+<a id="4135"/><a id="4137"/><h3>getNull</h3><pre>
++ <a class="code-type" href="class_ejson__Null.html">ejson::Null</a>* <span class="code-function">getNull</span> (size_t <span class="code-argument">_id</span>);<br/>+ <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Null.html">ejson::Null</a>* <span class="code-function">getNull</span> (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
 get the pointer on an element reference with his ID (casted in Null if it is an Null).<br/><ul>
 <table class="parameter-list">
 <td><b>Parameter [input]:</b></td><td><span class="code-argument">_id</span> </td><td> Id of the element.</td></tr>
@@ -145,8 +144,8 @@ get the pointer on an element reference with his ID (casted in Null if it is an 
 
 <br/>
 <hr/>
-<a id="6134"/><h3>getNumber</h3><pre>
-+ <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>* <span class="code-function">getNumber</span> (size_t <span class="code-argument">_id</span>);<br/></pre>
+<a id="4139"/><a id="4141"/><h3>getNumber</h3><pre>
++ <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>* <span class="code-function">getNumber</span> (size_t <span class="code-argument">_id</span>);<br/>+ <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Number.html">ejson::Number</a>* <span class="code-function">getNumber</span> (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
 get the pointer on an element reference with his ID (casted in Number if it is an Number).<br/><ul>
 <table class="parameter-list">
 <td><b>Parameter [input]:</b></td><td><span class="code-argument">_id</span> </td><td> Id of the element.</td></tr>
@@ -155,8 +154,8 @@ get the pointer on an element reference with his ID (casted in Number if it is a
 
 <br/>
 <hr/>
-<a id="6137"/><h3>getNumberValue</h3><pre>
-+ <span class="code-type" >double</span> <span class="code-function">getNumberValue</span> (size_t <span class="code-argument">_id</span>,<br/>                         <span class="code-type" >double</span> <span class="code-argument">_errorValue</span>);<br/></pre>
+<a id="4144"/><h3>getNumberValue</h3><pre>
++ <span class="code-type" >double</span> <span class="code-function">getNumberValue</span> (size_t <span class="code-argument">_id</span>,<br/>                         <span class="code-type" >double</span> <span class="code-argument">_errorValue</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
 get the value of the Number element<br/><ul>
 <table class="parameter-list">
 <td><b>Parameter [input]:</b></td><td><span class="code-argument">_id</span> </td><td> Id of the element.</td></tr>
@@ -166,8 +165,8 @@ get the value of the Number element<br/><ul>
 
 <br/>
 <hr/>
-<a id="6139"/><h3>getBoolean</h3><pre>
-+ <a class="code-type" href="class_ejson__Boolean.html">ejson::Boolean</a>* <span class="code-function">getBoolean</span> (size_t <span class="code-argument">_id</span>);<br/></pre>
+<a id="4146"/><a id="4148"/><h3>getBoolean</h3><pre>
++ <a class="code-type" href="class_ejson__Boolean.html">ejson::Boolean</a>* <span class="code-function">getBoolean</span> (size_t <span class="code-argument">_id</span>);<br/>+ <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Boolean.html">ejson::Boolean</a>* <span class="code-function">getBoolean</span> (size_t <span class="code-argument">_id</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
 get the pointer on an element reference with his ID (casted in Boolean if it is an Boolean).<br/><ul>
 <table class="parameter-list">
 <td><b>Parameter [input]:</b></td><td><span class="code-argument">_id</span> </td><td> Id of the element.</td></tr>
@@ -176,8 +175,8 @@ get the pointer on an element reference with his ID (casted in Boolean if it is 
 
 <br/>
 <hr/>
-<a id="6142"/><h3>getBooleanValue</h3><pre>
-+ <span class="code-type" >bool</span> <span class="code-function">getBooleanValue</span> (size_t <span class="code-argument">_id</span>,<br/>                        <span class="code-type" >bool</span> <span class="code-argument">_errorValue</span>);<br/></pre>
+<a id="4151"/><h3>getBooleanValue</h3><pre>
++ <span class="code-type" >bool</span> <span class="code-function">getBooleanValue</span> (size_t <span class="code-argument">_id</span>,<br/>                        <span class="code-type" >bool</span> <span class="code-argument">_errorValue</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
 get the value of the Boolean element<br/><ul>
 <table class="parameter-list">
 <td><b>Parameter [input]:</b></td><td><span class="code-argument">_id</span> </td><td> Id of the element.</td></tr>
@@ -187,7 +186,7 @@ get the value of the Boolean element<br/><ul>
 
 <br/>
 <hr/>
-<a id="6144"/><h3>add</h3><pre>
+<a id="4153"/><h3>add</h3><pre>
 + <span class="code-type" >bool</span> <span class="code-function">add</span> (<a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-argument">_element</span>);<br/></pre>
 add an element on the array.<br/><ul>
 <table class="parameter-list">
@@ -197,7 +196,7 @@ add an element on the array.<br/><ul>
 
 <br/>
 <hr/>
-<a id="6146"/><h3>addString</h3><pre>
+<a id="4155"/><h3>addString</h3><pre>
 + <span class="code-type" >bool</span> <span class="code-function">addString</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_value</span>);<br/></pre>
 add a string element in the Object (automatic creation)<br/><ul>
 <table class="parameter-list">
@@ -207,8 +206,8 @@ add a string element in the Object (automatic creation)<br/><ul>
 
 <br/>
 <hr/>
-<a id="6148"/><h3>addNull</h3><pre>
-+ <span class="code-type" >bool</span> <span class="code-function">addNull</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="4156"/><h3>addNull</h3><pre>
++ <span class="code-type" >bool</span> <span class="code-function">addNull</span> ();<br/></pre>
 add a "null" element in the Object (automatic creation)<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>false if an error occured</td></tr></table>
@@ -216,7 +215,7 @@ add a "null" element in the Object (automatic creation)<br/><ul>
 
 <br/>
 <hr/>
-<a id="6150"/><h3>addBoolean</h3><pre>
+<a id="4158"/><h3>addBoolean</h3><pre>
 + <span class="code-type" >bool</span> <span class="code-function">addBoolean</span> (<span class="code-type" >bool</span> <span class="code-argument">_value</span>);<br/></pre>
 add a boolean element in the Object (automatic creation)<br/><ul>
 <table class="parameter-list">
@@ -226,7 +225,7 @@ add a boolean element in the Object (automatic creation)<br/><ul>
 
 <br/>
 <hr/>
-<a id="6152"/><h3>addNumber</h3><pre>
+<a id="4160"/><h3>addNumber</h3><pre>
 + <span class="code-type" >bool</span> <span class="code-function">addNumber</span> (<span class="code-type" >double</span> <span class="code-argument">_value</span>);<br/></pre>
 add a double element in the Object (automatic creation)<br/><ul>
 <table class="parameter-list">
@@ -236,7 +235,7 @@ add a double element in the Object (automatic creation)<br/><ul>
 
 <br/>
 <hr/>
-<a id="6157"/><h3>iParse</h3><pre>
+<a id="4165"/><h3>iParse</h3><pre>
 + <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span> <span class="code-function">iParse</span> (<span class="code-storage-keyword">const</span> <a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                       size_t & <span class="code-argument">_pos</span>,<br/>                       <a class="code-type" href="class_ejson__filePos.html">ejson::filePos</a> & <span class="code-argument">_filePos</span>,<br/>                       <a class="code-type" href="class_ejson__Document.html">ejson::Document</a> & <span class="code-argument">_doc</span>);<br/></pre>
 parse the Current node [pure VIRUAL]<br/><ul>
 <table class="parameter-list">
@@ -249,7 +248,7 @@ parse the Current node [pure VIRUAL]<br/><ul>
 
 <br/>
 <hr/>
-<a id="6160"/><h3>iGenerate</h3><pre>
+<a id="4168"/><h3>iGenerate</h3><pre>
 + <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span> <span class="code-function">iGenerate</span> (<a class="code-type" href="http://www.cplusplus.com/reference/string/string/">std::string</a> & <span class="code-argument">_data</span>,<br/>                          size_t <span class="code-argument">_indent</span>) <span class="code-storage-keyword">const</span>;<br/></pre>
 generate a string with the tree of the xml<br/><ul>
 <table class="parameter-list">
@@ -260,39 +259,12 @@ generate a string with the tree of the xml<br/><ul>
 
 <br/>
 <hr/>
-<a id="6162"/><h3>getType</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">enum</span> nodeType <span class="code-function">getType</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
-get the node type.<br/><ul>
-<table class="parameter-list">
-<tr><td><b>Return: </b></td><td></td><td>the type of the Node.</td></tr></table>
-</ul>
-
-<br/>
-<hr/>
-<a id="6164"/><h3>toArray</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>* <span class="code-function">toArray</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
-Cast the element in a Array if it is possible.<br/><ul>
-<table class="parameter-list">
-<tr><td><b>Return: </b></td><td></td><td>pointer on the class or NULL.</td></tr></table>
-</ul>
-
-<br/>
-<hr/>
-<a id="6166"/><h3>toArray</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <span class="code-storage-keyword">const</span> <a class="code-type" href="class_ejson__Array.html">ejson::Array</a>* <span class="code-function">toArray</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
-Cast the element in a Array if it is possible.<br/><ul>
-<table class="parameter-list">
-<tr><td><b>Return: </b></td><td></td><td>pointer on the class or NULL.</td></tr></table>
-</ul>
-
-<br/>
-<hr/>
-<a id="6168"/><h3>clear</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <span class="code-type" >void</span> <span class="code-function">clear</span> (<span class="code-type" >void</span> <span class="code-argument"></span>);<br/></pre>
+<a id="4169"/><h3>clear</h3><pre>
++ <span class="code-storage-keyword">virtual</span> <span class="code-type" >void</span> <span class="code-function">clear</span> ();<br/></pre>
 clear the Node<br/>
 <br/>
 <hr/>
-<a id="6170"/><h3>transfertIn</h3><pre>
+<a id="4171"/><h3>transfertIn</h3><pre>
 + <span class="code-storage-keyword">virtual</span> <span class="code-type" >bool</span> <span class="code-function">transfertIn</span> (<a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-argument">_obj</span>);<br/></pre>
 Tranfert all element in the element set in parameter<br/><b>Note:</b> all element is remove from the curent element.<br/> <ul>
 <table class="parameter-list">
@@ -303,7 +275,7 @@ Tranfert all element in the element set in parameter<br/><b>Note:</b> all elemen
 <br/>
 <hr/>
 <h3>duplicate</h3><pre>
-+ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-function">duplicate</span> (<span class="code-type" >void</span> <span class="code-argument"></span>) <span class="code-storage-keyword">const</span>;<br/></pre>
++ <span class="code-storage-keyword">virtual</span> <a class="code-type" href="class_ejson__Value.html">ejson::Value</a>* <span class="code-function">duplicate</span> () <span class="code-storage-keyword">const</span>;<br/></pre>
 Copy the curent node and all the child in the curent one.<br/><ul>
 <table class="parameter-list">
 <tr><td><b>Return: </b></td><td></td><td>NULL in an error occured, the pointer on the element otherwise</td></tr></table>
