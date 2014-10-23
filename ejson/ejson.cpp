@@ -84,7 +84,7 @@ bool ejson::Document::load(const std::string& _file) {
 	
 	std::string tmpDataUnicode(fileBuffer);
 	// remove temporary buffer:
-	delete(fileBuffer);
+	delete[] fileBuffer;
 	// parse the data :
 	bool ret = parse(tmpDataUnicode);
 	//Display();
