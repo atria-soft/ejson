@@ -20,6 +20,7 @@
 
 bool ejson::String::iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'String' ");
+	char end = _data[_pos];
 	for (size_t iii=_pos+1; iii<_data.size(); iii++) {
 		_filePos.check(_data[iii]);
 		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
@@ -27,7 +28,7 @@ bool ejson::String::iParse(const std::string& _data, size_t& _pos, ejson::filePo
 		#endif
 		ejson::filePos tmpPos;
 		// TODO : manage \x
-		if(    _data[iii]!= '\"') {
+		if(_data[iii] != end) {
 			m_value += _data[iii];
 		} else {
 			_pos = iii;

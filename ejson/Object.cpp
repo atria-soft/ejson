@@ -73,14 +73,16 @@ bool ejson::Object::iParse(const std::string& _data, size_t& _pos, ejson::filePo
 		} else {
 			if (mode == parseName) {
 				JSON_PARSE_ELEMENT("name START " << '"');
-				if (_data[iii] == '"') {
+				if (    _data[iii] == '"'
+				     || _data[iii] == '\'') {
+					char startValue=_data[iii];
 					currentName = "";
 					for (iii++; iii<_data.size(); iii++) {
 						_filePos.check(_data[iii]);
 						#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
-						 drawElementParsed(_data[iii], _filePos);
+							drawElementParsed(_data[iii], _filePos);
 						#endif
-						if (_data[iii] == '\"') {
+						if (_data[iii] == startValue) {
 							mode = parseMiddle;
 							break;
 						} else {
@@ -92,7 +94,7 @@ bool ejson::Object::iParse(const std::string& _data, size_t& _pos, ejson::filePo
 					for (iii++; iii<_data.size(); iii++) {
 						_filePos.check(_data[iii]);
 						#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
-						 drawElementParsed(_data[iii], _filePos);
+							drawElementParsed(_data[iii], _filePos);
 						#endif
 						if (false == checkString(_data[iii])) {
 							mode = parseMiddle;
@@ -129,7 +131,8 @@ bool ejson::Object::iParse(const std::string& _data, size_t& _pos, ejson::filePo
 					tmpElement->iParse(_data, iii, _filePos, _doc);
 					add(currentName, tmpElement);
 					currentName = "";
-				} else if (_data[iii] == '"') {
+				} else if (    _data[iii] == '"'
+				            || _data[iii] == '\'') {
 					// find a string:
 					JSON_PARSE_ELEMENT("find String quoted");
 					ejson::String * tmpElement = new ejson::String();

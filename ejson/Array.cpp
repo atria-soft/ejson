@@ -67,7 +67,8 @@ bool ejson::Array::iParse(const std::string& _data, size_t& _pos, ejson::filePos
 			}
 			tmpElement->iParse(_data, iii, _filePos, _doc);
 			m_value.push_back(tmpElement);
-		} else if (_data[iii] == '"') {
+		} else if (    _data[iii] == '"'
+		            || _data[iii] == '\'') {
 			// find a string:
 			JSON_PARSE_ELEMENT("find String quoted");
 			ejson::String * tmpElement = new ejson::String();
