@@ -13,9 +13,9 @@ def create(target):
 	
 	# add the file to compile:
 	myModule.add_src_file([
-		'ejson/test.cpp'])
+		'test/test.cpp'])
 	
-	myModule.add_module_depend(['ejson'])
+	myModule.add_module_depend(['ejson', 'gtest'])
 	
 	now = datetime.datetime.now()
 	versionID=str(now.year-2012)+"."+str(now.month)+"."+str(now.day)
