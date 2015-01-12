@@ -1,5 +1,7 @@
 # language type:
-language: cpp
+language:
+- cpp
+- Objective-c
 
 # compilator system:
 compiler:
