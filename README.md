@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/HeeroYui/ejson.svg?branch=master)](https://travis-ci.org/HeeroYui/ejson)
+
 ejson
 =====
 

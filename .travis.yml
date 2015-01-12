@@ -1,24 +1,26 @@
 # language type:
-language:
-- cpp
-- Objective-c
+language: cpp
 
 # compilator system:
 compiler:
 - clang
 - gcc
 
-# build branch requested
-branches:
-  only:
-    - master
-    - dev
+os:
+- linux
+- osx
+
+osx_image: xcode61
 
 # previous actions:
 before_script: 
-  - git clone --depth 0 https://github.com/HeeroYui/etk.git
-  - git clone --depth 0 https://github.com/HeeroYui/build.git
-  - git clone --depth 0 https://github.com/HeeroYui/gtest.git
+  - rm -rf *
+  - git clone https://github.com/HeeroYui/ewol.git
+  - cd ewol; git checkout origin/dev -b dev; cd ..
+  - cd ewol; git submodule init; cd ..
+  - cd ewol; git submodule update; cd ..
+  - cd ewol; git submodule foreach git checkout master; cd ..
+  - cd ewol; git submodule foreach git pull; cd ..
 
 #install Gcc to have lisstdc++ 4.8 & gcc 4.8
 install:
@@ -31,8 +33,8 @@ install:
 
 # build sequence with Lutin :
 script: 
-  - if [ "$CXX" == "clang++" ]; then ./build/lutin.py -C -P -cclang -mdebug -p ejson_test; fi
-  - if [ "$CXX" == "g++" ]; then ./build/lutin.py -C -P -cgcc -mdebug -p ejson_test; fi
+  - if [ "$CXX" == "clang++" ]; then ./ewol/build/lutin.py -C -P -cclang -mdebug -p ejson_test; fi
+  - if [ "$CXX" == "g++" ]; then ./ewol/build/lutin.py -C -P -cgcc -mdebug -p ejson_test; fi
 
 after_script:
   - if [ "$CXX" == "clang++" ]; then ./out/Linux_x86_64/debug/staging/clang/ejson_test/usr/bin/ejson_test; fi
@@ -42,3 +44,5 @@ after_script:
 notifications:
   email:
     - yui.heero@gmail.com
+
+
