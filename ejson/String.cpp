@@ -17,6 +17,9 @@
 #define __class__	"String"
 
 
+std::shared_ptr<ejson::String> ejson::String::create(const std::string& _value) {
+	return std::shared_ptr<ejson::String>(new ejson::String(_value));
+}
 
 bool ejson::String::iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'String' ");
@@ -49,13 +52,13 @@ bool ejson::String::iGenerate(std::string& _data, size_t _indent) const {
 }
 
 
-bool ejson::String::transfertIn(ejson::Value* _obj) {
-	if (NULL == _obj) {
-		JSON_ERROR("Request transfer on an NULL pointer");
+bool ejson::String::transfertIn(std::shared_ptr<ejson::Value> _obj) {
+	if (_obj == nullptr) {
+		JSON_ERROR("Request transfer on an nullptr pointer");
 		return false;
 	}
-	ejson::String* other = _obj->toString();
-	if (NULL == other) {
+	std::shared_ptr<ejson::String> other = _obj->toString();
+	if (other == nullptr) {
 		JSON_ERROR("Request transfer on an element that is not an String");
 		return false;
 	}
@@ -64,11 +67,11 @@ bool ejson::String::transfertIn(ejson::Value* _obj) {
 	return true;
 }
 
-ejson::Value* ejson::String::duplicate() const {
-	ejson::String* output = new ejson::String(m_value);
-	if (NULL == output) {
+std::shared_ptr<ejson::Value> ejson::String::duplicate() const {
+	std::shared_ptr<ejson::String> output = ejson::String::create(m_value);
+	if (output == nullptr) {
 		JSON_ERROR("Allocation error ...");
-		return NULL;
+		return nullptr;
 	}
 	return output;
 }

@@ -19,14 +19,13 @@
 #undef __class__
 #define __class__	"Object"
 
+
+
+std::shared_ptr<ejson::Object> ejson::Object::create() {
+	return std::shared_ptr<ejson::Object>(new ejson::Object());
+}
+
 void ejson::Object::clear() {
-	for (int32_t iii=0; iii<m_value.size(); ++iii) {
-		if (NULL == m_value[iii]) {
-			continue;
-		}
-		delete(m_value[iii]);
-		m_value[iii] = NULL;
-	}
 	m_value.clear();
 }
 
@@ -122,8 +121,8 @@ bool ejson::Object::iParse(const std::string& _data, size_t& _pos, ejson::filePo
 				if (_data[iii] == '{') {
 					// find an object:
 					JSON_PARSE_ELEMENT("find Object");
-					ejson::Object * tmpElement = new ejson::Object();
-					if (NULL == tmpElement) {
+					std::shared_ptr<ejson::Object> tmpElement = ejson::Object::create();
+					if (tmpElement == nullptr) {
 						EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in object");
 						_pos=iii;
 						return false;
@@ -135,8 +134,8 @@ bool ejson::Object::iParse(const std::string& _data, size_t& _pos, ejson::filePo
 				            || _data[iii] == '\'') {
 					// find a string:
 					JSON_PARSE_ELEMENT("find String quoted");
-					ejson::String * tmpElement = new ejson::String();
-					if (NULL == tmpElement) {
+					std::shared_ptr<ejson::String> tmpElement = ejson::String::create();
+					if (tmpElement == nullptr) {
 						EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in String");
 						_pos=iii;
 						return false;
@@ -147,8 +146,8 @@ bool ejson::Object::iParse(const std::string& _data, size_t& _pos, ejson::filePo
 				} else if (_data[iii] == '[') {
 					// find a list:
 					JSON_PARSE_ELEMENT("find List");
-					ejson::Array * tmpElement = new ejson::Array();
-					if (NULL == tmpElement) {
+					std::shared_ptr<ejson::Array> tmpElement = ejson::Array::create();
+					if (tmpElement == nullptr) {
 						EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Array");
 						_pos=iii;
 						return false;
@@ -160,8 +159,8 @@ bool ejson::Object::iParse(const std::string& _data, size_t& _pos, ejson::filePo
 				           || _data[iii] == 't' ) {
 					// find boolean:
 					JSON_PARSE_ELEMENT("find Boolean");
-					ejson::Boolean * tmpElement = new ejson::Boolean();
-					if (NULL == tmpElement) {
+					std::shared_ptr<ejson::Boolean> tmpElement = ejson::Boolean::create();
+					if (tmpElement == nullptr) {
 						EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Boolean");
 						_pos=iii;
 						return false;
@@ -172,8 +171,8 @@ bool ejson::Object::iParse(const std::string& _data, size_t& _pos, ejson::filePo
 				} else if( _data[iii] == 'n') {
 					// find null:
 					JSON_PARSE_ELEMENT("find Null");
-					ejson::Null * tmpElement = new ejson::Null();
-					if (NULL == tmpElement) {
+					std::shared_ptr<ejson::Null> tmpElement = ejson::Null::create();
+					if (tmpElement == nullptr) {
 						EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Boolean");
 						_pos=iii;
 						return false;
@@ -184,8 +183,8 @@ bool ejson::Object::iParse(const std::string& _data, size_t& _pos, ejson::filePo
 				} else if(true == checkNumber(_data[iii])) {
 					// find number:
 					JSON_PARSE_ELEMENT("find Number");
-					ejson::Number * tmpElement = new ejson::Number();
-					if (NULL == tmpElement) {
+					std::shared_ptr<ejson::Number> tmpElement = ejson::Number::create();
+					if (tmpElement == nullptr) {
 						EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Boolean");
 						_pos=iii;
 						return false;
@@ -221,20 +220,20 @@ bool ejson::Object::iGenerate(std::string& _data, size_t _indent) const {
 		oneLine=false;
 	} else {
 		for (int32_t iii=0; iii<m_value.size() ; iii++) {
-			ejson::Value* tmp = m_value[iii];
-			if (tmp == NULL) {
+			std::shared_ptr<ejson::Value> tmp = m_value[iii];
+			if (tmp == nullptr) {
 				continue;
 			}
-			if (true == tmp->isObject()) {
+			if (tmp->isObject() == true) {
 				oneLine=false;
 				break;
 			}
-			if (true == tmp->isArray()) {
+			if (tmp->isArray() == true) {
 				oneLine=false;
 				break;
 			}
-			if (true == tmp->isString()) {
-				ejson::String* tmp2 = tmp->toString();
+			if (tmp->isString() == true) {
+				std::shared_ptr<ejson::String> tmp2 = tmp->toString();
 				if (tmp2 != nullptr) {
 					if(    tmp2->get().size()>25
 					    || m_value.getKey(iii).size()>25) {
@@ -278,160 +277,158 @@ bool ejson::Object::exist(const std::string& _name) const {
 	return m_value.exist(_name);
 }
 
-ejson::Value* ejson::Object::get(const std::string& _name) {
+std::shared_ptr<ejson::Value> ejson::Object::get(const std::string& _name) {
 	if (false == m_value.exist(_name)) {
-		return NULL;
+		return nullptr;
 	}
 	return m_value[_name];
 }
 
-const ejson::Value* ejson::Object::get(const std::string& _name) const {
+const std::shared_ptr<const ejson::Value> ejson::Object::get(const std::string& _name) const {
 	if (false == m_value.exist(_name)) {
-		return NULL;
+		return nullptr;
 	}
 	return m_value[_name];
 }
 
-ejson::Object* ejson::Object::getObject(const std::string& _name) {
-	ejson::Value* tmp = get(_name);
-	if (NULL == tmp) {
-		return NULL;
+std::shared_ptr<ejson::Object> ejson::Object::getObject(const std::string& _name) {
+	std::shared_ptr<ejson::Value> tmp = get(_name);
+	if (tmp == nullptr) {
+		return nullptr;
 	}
-	return dynamic_cast<ejson::Object*>(tmp);
+	return std::dynamic_pointer_cast<ejson::Object>(tmp);
 }
 
-const ejson::Object* ejson::Object::getObject(const std::string& _name) const {
-	const ejson::Value* tmp = get(_name);
-	if (NULL == tmp) {
-		return NULL;
+const std::shared_ptr<const ejson::Object> ejson::Object::getObject(const std::string& _name) const {
+	const std::shared_ptr<const ejson::Value> tmp = get(_name);
+	if (tmp == nullptr) {
+		return nullptr;
 	}
-	return dynamic_cast<const ejson::Object*>(tmp);
+	return std::dynamic_pointer_cast<const ejson::Object>(tmp);
 }
 
-ejson::Array* ejson::Object::getArray(const std::string& _name) {
-	ejson::Value* tmp = get(_name);
-	if (NULL == tmp) {
-		return NULL;
+std::shared_ptr<ejson::Array> ejson::Object::getArray(const std::string& _name) {
+	std::shared_ptr<ejson::Value> tmp = get(_name);
+	if (tmp == nullptr) {
+		return nullptr;
 	}
-	return dynamic_cast<ejson::Array*>(tmp);
+	return std::dynamic_pointer_cast<ejson::Array>(tmp);
 }
 
-const ejson::Array* ejson::Object::getArray(const std::string& _name) const {
-	const ejson::Value* tmp = get(_name);
-	if (NULL == tmp) {
-		return NULL;
+const std::shared_ptr<const ejson::Array> ejson::Object::getArray(const std::string& _name) const {
+	const std::shared_ptr<const ejson::Value> tmp = get(_name);
+	if (tmp == nullptr) {
+		return nullptr;
 	}
-	return dynamic_cast<const ejson::Array*>(tmp);
+	return std::dynamic_pointer_cast<const ejson::Array>(tmp);
 }
 
-ejson::Null* ejson::Object::getNull(const std::string& _name) {
-	ejson::Value* tmp = get(_name);
-	if (NULL == tmp) {
-		return NULL;
+std::shared_ptr<ejson::Null> ejson::Object::getNull(const std::string& _name) {
+	std::shared_ptr<ejson::Value> tmp = get(_name);
+	if (tmp == nullptr) {
+		return nullptr;
 	}
-	return dynamic_cast<ejson::Null*>(tmp);
+	return std::dynamic_pointer_cast<ejson::Null>(tmp);
 }
 
-const ejson::Null* ejson::Object::getNull(const std::string& _name) const {
-	const ejson::Value* tmp = get(_name);
-	if (NULL == tmp) {
-		return NULL;
+const std::shared_ptr<const ejson::Null> ejson::Object::getNull(const std::string& _name) const {
+	const std::shared_ptr<const ejson::Value> tmp = get(_name);
+	if (tmp == nullptr) {
+		return nullptr;
 	}
-	return dynamic_cast<const ejson::Null*>(tmp);
+	return std::dynamic_pointer_cast<const ejson::Null>(tmp);
 }
 
-ejson::String* ejson::Object::getString(const std::string& _name) {
-	ejson::Value* tmp = get(_name);
-	if (NULL == tmp) {
-		return NULL;
+std::shared_ptr<ejson::String> ejson::Object::getString(const std::string& _name) {
+	std::shared_ptr<ejson::Value> tmp = get(_name);
+	if (tmp == nullptr) {
+		return nullptr;
 	}
-	return dynamic_cast<ejson::String*>(tmp);
+	return std::dynamic_pointer_cast<ejson::String>(tmp);
 }
 
-const ejson::String* ejson::Object::getString(const std::string& _name) const {
-	const ejson::Value* tmp = get(_name);
-	if (NULL == tmp) {
-		return NULL;
+const std::shared_ptr<const ejson::String> ejson::Object::getString(const std::string& _name) const {
+	const std::shared_ptr<const ejson::Value> tmp = get(_name);
+	if (tmp == nullptr) {
+		return nullptr;
 	}
-	return dynamic_cast<const ejson::String*>(tmp);
+	return std::dynamic_pointer_cast<const ejson::String>(tmp);
 }
 
 const std::string& ejson::Object::getStringValue(const std::string& _name) const {
 	static const std::string errorString("");
-	const ejson::String* tmpp = getString(_name);
-	if (NULL == tmpp) {
+	const std::shared_ptr<const ejson::String> tmpp = getString(_name);
+	if (tmpp == nullptr) {
 		return errorString;
 	}
 	return tmpp->get();
 }
 
 std::string ejson::Object::getStringValue(const std::string& _name, const std::string& _errorValue) const {
-	const ejson::String* tmpp = getString(_name);
-	if (NULL == tmpp) {
+	const std::shared_ptr<const ejson::String> tmpp = getString(_name);
+	if (tmpp == nullptr) {
 		return _errorValue;
 	}
 	return tmpp->get();
 }
 
-ejson::Boolean* ejson::Object::getBoolean(const std::string& _name) {
-	ejson::Value* tmp = get(_name);
-	if (NULL == tmp) {
-		return NULL;
+std::shared_ptr<ejson::Boolean> ejson::Object::getBoolean(const std::string& _name) {
+	std::shared_ptr<ejson::Value> tmp = get(_name);
+	if (tmp == nullptr) {
+		return nullptr;
 	}
 	return tmp->toBoolean();
 }
 
-const ejson::Boolean* ejson::Object::getBoolean(const std::string& _name) const {
-	const ejson::Value* tmp = get(_name);
-	if (NULL == tmp) {
-		return NULL;
+const std::shared_ptr<const ejson::Boolean> ejson::Object::getBoolean(const std::string& _name) const {
+	const std::shared_ptr<const ejson::Value> tmp = get(_name);
+	if (tmp == nullptr) {
+		return nullptr;
 	}
 	return tmp->toBoolean();
 }
 
 bool ejson::Object::getBooleanValue(const std::string& _name, bool _errorValue) const {
-	const ejson::Boolean* tmpp = getBoolean(_name);
-	if (NULL == tmpp) {
+	const std::shared_ptr<const ejson::Boolean> tmpp = getBoolean(_name);
+	if (tmpp == nullptr) {
 		return _errorValue;
 	}
 	return tmpp->get();
 }
 
-ejson::Number* ejson::Object::getNumber(const std::string& _name) {
-	ejson::Value* tmp = get(_name);
-	if (NULL == tmp) {
-		return NULL;
+std::shared_ptr<ejson::Number> ejson::Object::getNumber(const std::string& _name) {
+	std::shared_ptr<ejson::Value> tmp = get(_name);
+	if (tmp == nullptr) {
+		return nullptr;
 	}
 	return tmp->toNumber();
 }
 
-const ejson::Number* ejson::Object::getNumber(const std::string& _name) const {
-	const ejson::Value* tmp = get(_name);
-	if (NULL == tmp) {
-		return NULL;
+const std::shared_ptr<const ejson::Number> ejson::Object::getNumber(const std::string& _name) const {
+	const std::shared_ptr<const ejson::Value> tmp = get(_name);
+	if (tmp == nullptr) {
+		return nullptr;
 	}
 	return tmp->toNumber();
 }
 
 double ejson::Object::getNumberValue(const std::string& _name, double _errorValue) const {
-	const ejson::Number* tmpp = getNumber(_name);
-	if (NULL == tmpp) {
+	const std::shared_ptr<const ejson::Number> tmpp = getNumber(_name);
+	if (tmpp == nullptr) {
 		return _errorValue;
 	}
 	return tmpp->get();
 }
 
 
-bool ejson::Object::add(const std::string& _name, ejson::Value* _value) {
-	if (NULL == _value) {
+bool ejson::Object::add(const std::string& _name, std::shared_ptr<ejson::Value> _value) {
+	if (_value == nullptr) {
 		return false;
 	}
 	if (_name.size() == 0) {
 		return false;
 	}
 	if (m_value.exist(_name)) {
-		ejson::Value* tmp = m_value[_name];
-		delete(tmp);
 		m_value[_name] = _value;
 		return true;
 	}
@@ -440,28 +437,28 @@ bool ejson::Object::add(const std::string& _name, ejson::Value* _value) {
 }
 
 bool ejson::Object::addString(const std::string& _name, const std::string& _value) {
-	return add(_name, new ejson::String(_value));
+	return add(_name, ejson::String::create(_value));
 }
 
 bool ejson::Object::addNull(const std::string& _name) {
-	return add(_name, new ejson::Null());
+	return add(_name, ejson::Null::create());
 }
 
 bool ejson::Object::addBoolean(const std::string& _name, bool _value) {
-	return add(_name, new ejson::Boolean(_value));
+	return add(_name, ejson::Boolean::create(_value));
 }
 
 bool ejson::Object::addNumber(const std::string& _name, double _value) {
-	return add(_name, new ejson::Number(_value));
+	return add(_name, ejson::Number::create(_value));
 }
 
-bool ejson::Object::transfertIn(ejson::Value* _obj) {
-	if (NULL == _obj) {
-		JSON_ERROR("Request transfer on an NULL pointer");
+bool ejson::Object::transfertIn(std::shared_ptr<ejson::Value> _obj) {
+	if (_obj == nullptr) {
+		JSON_ERROR("Request transfer on an nullptr pointer");
 		return false;
 	}
-	ejson::Object* other = _obj->toObject();
-	if (NULL == other) {
+	std::shared_ptr<ejson::Object> other = _obj->toObject();
+	if (other == nullptr) {
 		JSON_ERROR("Request transfer on an element that is not an object");
 		return false;
 	}
@@ -475,16 +472,16 @@ bool ejson::Object::transfertIn(ejson::Value* _obj) {
 }
 
 // TODO : Manage error ...
-ejson::Value* ejson::Object::duplicate() const {
-	ejson::Object* output = new ejson::Object();
-	if (NULL == output) {
+std::shared_ptr<ejson::Value> ejson::Object::duplicate() const {
+	std::shared_ptr<ejson::Object> output = ejson::Object::create();
+	if (output == nullptr) {
 		JSON_ERROR("Allocation error ...");
-		return NULL;
+		return nullptr;
 	}
 	for (int32_t iii=0; iii<m_value.size(); ++iii) {
-		ejson::Value* val = m_value.getValue(iii);
+		std::shared_ptr<ejson::Value> val = m_value.getValue(iii);
 		std::string key = m_value.getKey(iii);
-		if (NULL == val) {
+		if (val == nullptr) {
 			continue;
 		}
 		output->add(key, val->duplicate());

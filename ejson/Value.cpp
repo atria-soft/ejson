@@ -13,8 +13,6 @@
 #undef __class__
 #define __class__	"Value"
 
-
-
 ejson::Value::~Value() {
 	clear();
 }
@@ -124,45 +122,45 @@ bool ejson::Value::checkNumber(char32_t _val) const {
 }
 
 
-ejson::Document* ejson::Value::toDocument() {
-	return dynamic_cast<ejson::Document*>(this);
+std::shared_ptr<ejson::Document> ejson::Value::toDocument() {
+	return std::dynamic_pointer_cast<ejson::Document>(shared_from_this());
 };
-const ejson::Document* ejson::Value::toDocument() const {
-	return dynamic_cast<const ejson::Document*>(this);
+const std::shared_ptr<const ejson::Document> ejson::Value::toDocument() const {
+	return std::dynamic_pointer_cast<const ejson::Document>(shared_from_this());
 };
-ejson::Array* ejson::Value::toArray() {
-	return dynamic_cast<ejson::Array*>(this);
+std::shared_ptr<ejson::Array> ejson::Value::toArray() {
+	return std::dynamic_pointer_cast<ejson::Array>(shared_from_this());
 };
-const ejson::Array* ejson::Value::toArray() const{
-	return dynamic_cast<const ejson::Array*>(this);
+const std::shared_ptr<const ejson::Array> ejson::Value::toArray() const{
+	return std::dynamic_pointer_cast<const ejson::Array>(shared_from_this());
 };
-ejson::Object* ejson::Value::toObject() {
-	return dynamic_cast<ejson::Object*>(this);
+std::shared_ptr<ejson::Object> ejson::Value::toObject() {
+	return std::dynamic_pointer_cast<ejson::Object>(shared_from_this());
 };
-const ejson::Object* ejson::Value::toObject() const{
-	return dynamic_cast<const ejson::Object*>(this);
+const std::shared_ptr<const ejson::Object> ejson::Value::toObject() const{
+	return std::dynamic_pointer_cast<const ejson::Object>(shared_from_this());
 };
-ejson::String* ejson::Value::toString() {
-	return dynamic_cast<ejson::String*>(this);
+std::shared_ptr<ejson::String> ejson::Value::toString() {
+	return std::dynamic_pointer_cast<ejson::String>(shared_from_this());
 };
-const ejson::String* ejson::Value::toString() const{
-	return dynamic_cast<const ejson::String*>(this);
+const std::shared_ptr<const ejson::String> ejson::Value::toString() const{
+	return std::dynamic_pointer_cast<const ejson::String>(shared_from_this());
 };
-ejson::Number* ejson::Value::toNumber() {
-	return dynamic_cast<ejson::Number*>(this);
+std::shared_ptr<ejson::Number> ejson::Value::toNumber() {
+	return std::dynamic_pointer_cast<ejson::Number>(shared_from_this());
 };
-const ejson::Number* ejson::Value::toNumber() const{
-	return dynamic_cast<const ejson::Number*>(this);
+const std::shared_ptr<const ejson::Number> ejson::Value::toNumber() const{
+	return std::dynamic_pointer_cast<const ejson::Number>(shared_from_this());
 };
-ejson::Boolean* ejson::Value::toBoolean() {
-	return dynamic_cast<ejson::Boolean*>(this);
+std::shared_ptr<ejson::Boolean> ejson::Value::toBoolean() {
+	return std::dynamic_pointer_cast<ejson::Boolean>(shared_from_this());
 };
-const ejson::Boolean* ejson::Value::toBoolean() const{
-	return dynamic_cast<const ejson::Boolean*>(this);
+const std::shared_ptr<const ejson::Boolean> ejson::Value::toBoolean() const{
+	return std::dynamic_pointer_cast<const ejson::Boolean>(shared_from_this());
 };
-ejson::Null* ejson::Value::toNull() {
-	return dynamic_cast<ejson::Null*>(this);
+std::shared_ptr<ejson::Null> ejson::Value::toNull() {
+	return std::dynamic_pointer_cast<ejson::Null>(shared_from_this());
 };
-const ejson::Null* ejson::Value::toNull() const{
-	return dynamic_cast<const ejson::Null*>(this);
+const std::shared_ptr<const ejson::Null> ejson::Value::toNull() const{
+	return std::dynamic_pointer_cast<const ejson::Null>(shared_from_this());
 };

@@ -10,6 +10,7 @@
 #define __ETK_JSON_VALUE_H__
 
 #include <etk/types.h>
+#include <memory>
 
 namespace ejson {
 	//#define ENABLE_DISPLAY_PARSED_ELEMENT
@@ -104,8 +105,8 @@ namespace ejson {
 	};
 	std::ostream& operator <<(std::ostream& _os, const filePos& _obj);
 	
-	class Value {
-		public:
+	class Value : public std::enable_shared_from_this<Value> {
+		protected:
 			/**
 			 * @brief basic element of a xml structure
 			 */
@@ -165,113 +166,113 @@ namespace ejson {
 		public:
 			/**
 			 * @brief Cast the element in a Value if it is possible.
-			 * @return pointer on the class or NULL.
+			 * @return pointer on the class or nullptr.
 			 */
-			ejson::Value* toValue() {
-				return this;
+			std::shared_ptr<ejson::Value> toValue() {
+				return shared_from_this();
 			};
 			//! @previous
-			const ejson::Value* toValue() const {
-				return this;
+			const std::shared_ptr<const ejson::Value> toValue() const {
+				return shared_from_this();
 			};
 			/**
 			 * @brief Cast the element in a Document if it is possible.
-			 * @return pointer on the class or NULL.
+			 * @return pointer on the class or nullptr.
 			 */
-			ejson::Document* toDocument();
+			std::shared_ptr<ejson::Document> toDocument();
 			//! @previous
-			const ejson::Document* toDocument() const;
+			const std::shared_ptr<const ejson::Document> toDocument() const;
 			/**
 			 * @brief Cast the element in a Array if it is possible.
-			 * @return pointer on the class or NULL.
+			 * @return pointer on the class or nullptr.
 			 */
-			ejson::Array* toArray();
+			std::shared_ptr<ejson::Array> toArray();
 			//! @previous
-			const ejson::Array* toArray() const;
+			const std::shared_ptr<const ejson::Array> toArray() const;
 			/**
 			 * @brief Cast the element in a Object if it is possible.
-			 * @return pointer on the class or NULL.
+			 * @return pointer on the class or nullptr.
 			 */
-			ejson::Object* toObject();
+			std::shared_ptr<ejson::Object> toObject();
 			//! @previous
-			const ejson::Object* toObject() const;
+			const std::shared_ptr<const ejson::Object> toObject() const;
 			/**
 			 * @brief Cast the element in a String if it is possible.
-			 * @return pointer on the class or NULL.
+			 * @return pointer on the class or nullptr.
 			 */
-			ejson::String* toString();
+			std::shared_ptr<ejson::String> toString();
 			//! @previous
-			const ejson::String* toString() const;
+			const std::shared_ptr<const ejson::String> toString() const;
 			/**
 			 * @brief Cast the element in a Number if it is possible.
-			 * @return pointer on the class or NULL.
+			 * @return pointer on the class or nullptr.
 			 */
-			ejson::Number* toNumber();
+			std::shared_ptr<ejson::Number> toNumber();
 			//! @previous
-			const ejson::Number* toNumber() const;
+			const std::shared_ptr<const ejson::Number> toNumber() const;
 			/**
 			 * @brief Cast the element in a Boolean if it is possible.
-			 * @return pointer on the class or NULL.
+			 * @return pointer on the class or nullptr.
 			 */
-			ejson::Boolean* toBoolean();
+			std::shared_ptr<ejson::Boolean> toBoolean();
 			//! @previous
-			const ejson::Boolean* toBoolean() const;
+			const std::shared_ptr<const ejson::Boolean> toBoolean() const;
 			/**
 			 * @brief Cast the element in a Null if it is possible.
-			 * @return pointer on the class or NULL.
+			 * @return pointer on the class or nullptr.
 			 */
-			ejson::Null* toNull();
+			std::shared_ptr<ejson::Null> toNull();
 			//! @previous
-			const ejson::Null* toNull() const;
+			const std::shared_ptr<const ejson::Null> toNull() const;
 			
 			/**
 			 * @brief check if the node is a ejson::Document
 			 * @return true if the node is a ejson::Document
 			 */
 			bool isDocument() const {
-				return toDocument() != NULL;
+				return toDocument() != nullptr;
 			};
 			/**
 			 * @brief check if the node is a ejson::Array
 			 * @return true if the node is a ejson::Array
 			 */
 			bool isArray() const {
-				return toArray() != NULL;
+				return toArray() != nullptr;
 			};
 			/**
 			 * @brief check if the node is a ejson::Object
 			 * @return true if the node is a ejson::Object
 			 */
 			bool isObject() const {
-				return toObject() != NULL;
+				return toObject() != nullptr;
 			};
 			/**
 			 * @brief check if the node is a ejson::String
 			 * @return true if the node is a ejson::String
 			 */
 			bool isString() const {
-				return toString() != NULL;
+				return toString() != nullptr;
 			};
 			/**
 			 * @brief check if the node is a ejson::Number
 			 * @return true if the node is a ejson::Number
 			 */
 			bool isNumber() const {
-				return toNumber() != NULL;
+				return toNumber() != nullptr;
 			};
 			/**
 			 * @brief check if the node is a ejson::Boolean
 			 * @return true if the node is a ejson::Boolean
 			 */
 			bool isBoolean() const {
-				return toBoolean() != NULL;
+				return toBoolean() != nullptr;
 			};
 			/**
 			 * @brief check if the node is a ejson::Null
 			 * @return true if the node is a ejson::Null
 			 */
 			bool isNull() const {
-				return toNull() != NULL;
+				return toNull() != nullptr;
 			};
 			
 			/**
@@ -284,15 +285,15 @@ namespace ejson {
 			 * @return true if transfer is done corectly
 			 * @note all element is remove from the curent element.
 			 */
-			virtual bool transfertIn(ejson::Value* _obj) {
+			virtual bool transfertIn(std::shared_ptr<ejson::Value> _obj) {
 				return false;
 			};
 			/**
 			 * @brief Copy the curent node and all the child in the curent one.
-			 * @return NULL in an error occured, the pointer on the element otherwise
+			 * @return nullptr in an error occured, the pointer on the element otherwise
 			 */
-			virtual ejson::Value* duplicate() const {
-				return NULL;
+			virtual std::shared_ptr<ejson::Value> duplicate() const {
+				return nullptr;
 			};
 		protected:
 			/**

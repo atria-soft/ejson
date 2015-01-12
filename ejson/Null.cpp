@@ -14,6 +14,11 @@
 #undef __class__
 #define __class__	"Null"
 
+std::shared_ptr<ejson::Null> ejson::Null::create() {
+	return std::shared_ptr<ejson::Null>(new ejson::Null());
+}
+
+
 bool ejson::Null::iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'Null' ");
 	if (_pos+3 >= _data.size()){
@@ -39,24 +44,24 @@ bool ejson::Null::iGenerate(std::string& _data, size_t _indent) const {
 }
 
 
-bool ejson::Null::transfertIn(ejson::Value* _obj) {
-	if (NULL == _obj) {
-		JSON_ERROR("Request transfer on an NULL pointer");
+bool ejson::Null::transfertIn(std::shared_ptr<ejson::Value> _obj) {
+	if (_obj == nullptr) {
+		JSON_ERROR("Request transfer on an nullptr pointer");
 		return false;
 	}
-	ejson::Null* other = _obj->toNull();
-	if (NULL == other) {
+	std::shared_ptr<ejson::Null> other = _obj->toNull();
+	if (other == nullptr) {
 		JSON_ERROR("Request transfer on an element that is not an Null");
 		return false;
 	}
 	return true;
 }
 
-ejson::Value* ejson::Null::duplicate() const {
-	ejson::Null* output = new ejson::Null();
-	if (NULL == output) {
+std::shared_ptr<ejson::Value> ejson::Null::duplicate() const {
+	std::shared_ptr<ejson::Null> output = ejson::Null::create();
+	if (output == nullptr) {
 		JSON_ERROR("Allocation error ...");
-		return NULL;
+		return nullptr;
 	}
 	return output;
 }

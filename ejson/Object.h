@@ -21,14 +21,15 @@ namespace ejson {
 			 * @brief basic element of a xml structure
 			 */
 			Object() { };
+		public:
+			static std::shared_ptr<Object> create();
 			/**
 			 * @brief destructor
 			 */
 			virtual ~Object() { };
 		protected:
-			etk::Hash<ejson::Value*> m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
+			etk::Hash<std::shared_ptr<ejson::Value>> m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
 		public:
-			// TODO : add direct id  access....
 			/**
 			 * @brief check if an element exist.
 			 * @param[in] _name name of the object.
@@ -38,17 +39,17 @@ namespace ejson {
 			/**
 			 * @brief get the sub element with his name (no cast check)
 			 * @param[in] _name name of the object
-			 * @return pointer on the element requested or NULL if it not the corect type or does not existed
+			 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
 			 */
-			ejson::Value* get(const std::string& _name);
+			std::shared_ptr<ejson::Value> get(const std::string& _name);
 			//! @previous
-			const ejson::Value* get(const std::string& _name) const;
+			const std::shared_ptr<const ejson::Value> get(const std::string& _name) const;
 			//! @previous
-			ejson::Value* operator[] (const std::string& _name) {
+			std::shared_ptr<ejson::Value> operator[] (const std::string& _name) {
 				return get(_name);
 			}
 			//! @previous
-			const ejson::Value* operator[] (const std::string& _name) const {
+			const std::shared_ptr<const ejson::Value> operator[] (const std::string& _name) const {
 				return get(_name);
 			}
 		public:
@@ -69,21 +70,21 @@ namespace ejson {
 			/**
 			 * @brief get the pointer on an element reference with his ID.
 			 * @param[in] _id Id of the element.
-			 * @return NULL if the element does not exist.
+			 * @return nullptr if the element does not exist.
 			 */
-			ejson::Value* get(size_t _id) {
+			std::shared_ptr<ejson::Value> get(size_t _id) {
 				return m_value[_id];
 			};
 			//! @previous
-			const ejson::Value* get(size_t _id) const{
+			const std::shared_ptr<const ejson::Value> get(size_t _id) const{
 				return m_value[_id];
 			};
 			//! @previous
-			ejson::Value* operator[] (size_t _id) {
+			std::shared_ptr<ejson::Value> operator[] (size_t _id) {
 				return m_value[_id];
 			}
 			//! @previous
-			const ejson::Value* operator[] (size_t _id) const {
+			const std::shared_ptr<const ejson::Value> operator[] (size_t _id) const {
 				return m_value[_id];
 			}
 			/**
@@ -97,35 +98,35 @@ namespace ejson {
 			/**
 			 * @brief get the sub element with his name (Casted as Object if it is possible)
 			 * @param[in] _name name of the object
-			 * @return pointer on the element requested or NULL if it not the corect type or does not existed
+			 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
 			 */
-			ejson::Object* getObject(const std::string& _name);
+			std::shared_ptr<ejson::Object> getObject(const std::string& _name);
 			//! @previous
-			const ejson::Object* getObject(const std::string& _name) const;
+			const std::shared_ptr<const ejson::Object> getObject(const std::string& _name) const;
 			/**
 			 * @brief get the sub element with his name (Casted as Array if it is possible)
 			 * @param[in] _name name of the object
-			 * @return pointer on the element requested or NULL if it not the corect type or does not existed
+			 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
 			 */
-			ejson::Array* getArray(const std::string& _name);
+			std::shared_ptr<ejson::Array> getArray(const std::string& _name);
 			//! @previous
-			const ejson::Array* getArray(const std::string& _name) const;
+			const std::shared_ptr<const ejson::Array> getArray(const std::string& _name) const;
 			/**
 			 * @brief get the sub element with his name (Casted as Null if it is possible)
 			 * @param[in] _name name of the object
-			 * @return pointer on the element requested or NULL if it not the corect type or does not existed
+			 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
 			 */
-			ejson::Null* getNull(const std::string& _name);
+			std::shared_ptr<ejson::Null> getNull(const std::string& _name);
 			//! @previous
-			const ejson::Null* getNull(const std::string& _name) const;
+			const std::shared_ptr<const ejson::Null> getNull(const std::string& _name) const;
 			/**
 			 * @brief get the sub element with his name (Casted as String if it is possible)
 			 * @param[in] _name name of the object
-			 * @return pointer on the element requested or NULL if it not the corect type or does not existed
+			 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
 			 */
-			ejson::String* getString(const std::string& _name);
+			std::shared_ptr<ejson::String> getString(const std::string& _name);
 			//! @previous
-			const ejson::String* getString(const std::string& _name) const;
+			const std::shared_ptr<const ejson::String> getString(const std::string& _name) const;
 			/**
 			 * @brief get the sub string value of the requested element
 			 * @param[in] _name name of the object
@@ -142,11 +143,11 @@ namespace ejson {
 			/**
 			 * @brief get the sub element with his name (Casted as Boolean if it is possible)
 			 * @param[in] _name name of the object
-			 * @return pointer on the element requested or NULL if it not the corect type or does not existed
+			 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
 			 */
-			ejson::Boolean* getBoolean(const std::string& _name);
+			std::shared_ptr<ejson::Boolean> getBoolean(const std::string& _name);
 			//! @previous
-			const ejson::Boolean* getBoolean(const std::string& _name) const;
+			const std::shared_ptr<const ejson::Boolean> getBoolean(const std::string& _name) const;
 			/**
 			 * @brief get the sub boolean value of the requested element.
 			 * @param[in] _name name of the object.
@@ -157,11 +158,11 @@ namespace ejson {
 			/**
 			 * @brief get the sub element with his name (Casted as Number if it is possible)
 			 * @param[in] _name name of the object
-			 * @return pointer on the element requested or NULL if it not the corect type or does not existed
+			 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
 			 */
-			ejson::Number* getNumber(const std::string& _name);
+			std::shared_ptr<ejson::Number> getNumber(const std::string& _name);
 			//! @previous
-			const ejson::Number* getNumber(const std::string& _name) const;
+			const std::shared_ptr<const ejson::Number> getNumber(const std::string& _name) const;
 			/**
 			 * @brief get the sub Number value of the requested element.
 			 * @param[in] _name name of the object.
@@ -176,7 +177,7 @@ namespace ejson {
 			 * @param[in] _value Element to add
 			 * @return false if an error occured
 			 */
-			bool add(const std::string& _name, ejson::Value* _value);
+			bool add(const std::string& _name, std::shared_ptr<ejson::Value> _value);
 			/**
 			 * @brief add a string element in the Object (automatic creation)
 			 * @param[in] _name name of the object
@@ -208,8 +209,8 @@ namespace ejson {
 			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			virtual bool iGenerate(std::string& _data, size_t _indent) const;
 			virtual void clear();
-			virtual bool transfertIn(ejson::Value* _obj);
-			virtual ejson::Value* duplicate() const;
+			virtual bool transfertIn(std::shared_ptr<ejson::Value> _obj);
+			virtual std::shared_ptr<ejson::Value> duplicate() const;
 	};
 };
 

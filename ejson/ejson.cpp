@@ -20,6 +20,11 @@
 #undef __class__
 #define __class__	"Document"
 
+
+std::shared_ptr<ejson::Document> ejson::Document::create() {
+	return std::shared_ptr<ejson::Document>(new ejson::Document());
+}
+
 ejson::Document::Document() : 
     m_writeErrorWhenDetexted(true),
     m_comment(""),
@@ -70,21 +75,14 @@ bool ejson::Document::load(const std::string& _file) {
 		return false;
 	}
 	// allocate data
-	char * fileBuffer = new char[fileSize+5];
-	if (NULL == fileBuffer) {
-		JSON_ERROR("Error Memory allocation size=" << fileSize);
-		return false;
-	}
-	// TODO :  change this ... get the charset from the Declaration element ...
-	memset(fileBuffer, 0, (fileSize+5)*sizeof(char));
+	std::vector<char> fileBuffer;
+	fileBuffer.resize(fileSize+5, 0);
 	// load data from the file :
-	tmpFile.fileRead(fileBuffer, 1, fileSize);
+	tmpFile.fileRead(&fileBuffer[0], 1, fileSize);
 	// close the file:
 	tmpFile.fileClose();
 	
-	std::string tmpDataUnicode(fileBuffer);
-	// remove temporary buffer:
-	delete[] fileBuffer;
+	std::string tmpDataUnicode(&fileBuffer[0]);
 	// parse the data :
 	bool ret = parse(tmpDataUnicode);
 	//Display();
