@@ -240,7 +240,7 @@ bool ejson::Array::transfertIn(std::shared_ptr<ejson::Value> _obj) {
 }
 
 // TODO : Manage error ...
-std::shared_ptr<ejson::Value> ejson::Array::duplicate() const {
+std::shared_ptr<ejson::Value> ejson::Array::clone() const {
 	std::shared_ptr<ejson::Array> output = ejson::Array::create();
 	if (output == nullptr) {
 		JSON_ERROR("Allocation error ...");
@@ -251,7 +251,7 @@ std::shared_ptr<ejson::Value> ejson::Array::duplicate() const {
 		if (val == nullptr) {
 			continue;
 		}
-		output->add(val->duplicate());
+		output->add(val->clone());
 	}
 	return output;
 }

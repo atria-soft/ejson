@@ -472,7 +472,7 @@ bool ejson::Object::transfertIn(std::shared_ptr<ejson::Value> _obj) {
 }
 
 // TODO : Manage error ...
-std::shared_ptr<ejson::Value> ejson::Object::duplicate() const {
+std::shared_ptr<ejson::Value> ejson::Object::clone() const {
 	std::shared_ptr<ejson::Object> output = ejson::Object::create();
 	if (output == nullptr) {
 		JSON_ERROR("Allocation error ...");
@@ -484,7 +484,7 @@ std::shared_ptr<ejson::Value> ejson::Object::duplicate() const {
 		if (val == nullptr) {
 			continue;
 		}
-		output->add(key, val->duplicate());
+		output->add(key, val->clone());
 	}
 	return output;
 }

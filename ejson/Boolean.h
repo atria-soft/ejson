@@ -51,7 +51,7 @@ namespace ejson {
 			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			virtual bool iGenerate(std::string& _data, size_t _indent) const;
 			virtual bool transfertIn(std::shared_ptr<ejson::Value> _obj);
-			virtual std::shared_ptr<ejson::Value> duplicate() const;
+			virtual std::shared_ptr<ejson::Value> clone() const;
 	};
 };
 

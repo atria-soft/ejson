@@ -73,7 +73,7 @@ bool ejson::Boolean::transfertIn(std::shared_ptr<ejson::Value> _obj) {
 	return true;
 }
 
-std::shared_ptr<ejson::Value> ejson::Boolean::duplicate() const {
+std::shared_ptr<ejson::Value> ejson::Boolean::clone() const {
 	std::shared_ptr<ejson::Boolean> output = ejson::Boolean::create(m_value);
 	if (output == nullptr) {
 		JSON_ERROR("Allocation error ...");

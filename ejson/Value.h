@@ -292,7 +292,7 @@ namespace ejson {
 			 * @brief Copy the curent node and all the child in the curent one.
 			 * @return nullptr in an error occured, the pointer on the element otherwise
 			 */
-			virtual std::shared_ptr<ejson::Value> duplicate() const {
+			virtual std::shared_ptr<ejson::Value> clone() const {
 				return nullptr;
 			};
 		protected:
