@@ -1,7 +1,7 @@
 /**
  * @author Edouard DUPIN
  * 
- * @copyright 2011, Edouard DUPIN, all right reserved
+ * @copyright 2014, Edouard DUPIN, all right reserved
  * 
  * @license APACHE v2.0 (see license file)
  */
@@ -45,6 +45,19 @@ int main(int argc, const char *argv[]) {
 			etk::log::setLevel(etk::log::logLevelDebug);
 		} else if (data == "-l6") {
 			etk::log::setLevel(etk::log::logLevelVerbose);
+		} else if (    data == "-h"
+		            || data == "--help") {
+			std::cout << "Help : " <<std::endl;
+			std::cout << "    ./xxx [options]" <<std::endl;
+			std::cout << "        -l0: debug None" <<std::endl;
+			std::cout << "        -l1: debug Critical" <<std::endl;
+			std::cout << "        -l2: debug Error" <<std::endl;
+			std::cout << "        -l3: debug Warning" <<std::endl;
+			std::cout << "        -l4: debug Info" <<std::endl;
+			std::cout << "        -l5: debug Debug" <<std::endl;
+			std::cout << "        -l6: debug Verbose" <<std::endl;
+			std::cout << "        -h/--help: this help" <<std::endl;
+			exit(0);
 		}
 	}
 	etk::setArgZero(argv[0]);
