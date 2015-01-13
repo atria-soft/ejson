@@ -134,9 +134,9 @@ The classical way to read a json file is to parse it like a xml:
 ==== Object ====
 We are now reading all node in an object:
 [code style=c++]
-	ejson::Object* obj = doc.getObject("exampleObject");
+	std::shared_ptr<ejson::Object> obj = doc.getObject("exampleObject");
 	// note that the obj is NULL if it not an "Object"
-	if (obj == NULL) {
+	if (obj == nullptr) {
 		APPL_ERROR("Can not get the object 'exampleObject' in the json file");
 		return -1;
 	}
@@ -147,34 +147,34 @@ Note at this point we can parse an object in 2 way:
 [code style=c++]
 	for (size_t iii=0; iii < obj->size(); ++iii) {
 		std::string key = obj->getKey(iii);
-		ejson::Value* val = obj[iii];
+		std::shared_ptr<ejson::Value> val = obj[iii];
 		// note that error can appear, then check result...
-		if (val == NULL) {
+		if (val == nullptr) {
 			APPL_ERROR("Can not read the object id=" << iii);
 			continue;
 		}
 		switch(val->getType()) {
 			case typeArray: {
-				ejson::Array* myArray = val->toArray();
+				std::shared_ptr<ejson::Array> myArray = val->toArray();
 				APPL_INFO("Find an Array @" << key);
 				} break;
 			case typeString: {
-				ejson::String* myString = val->toString();
+				std::shared_ptr<ejson::String> myString = val->toString();
 				APPL_INFO("Find a String @" << key << " value='" << myString->get() << "'");
 				} break;
 			case typeNumber: {
-				ejson::Number* myNumber = val->toNumber();
+				std::shared_ptr<ejson::Number> myNumber = val->toNumber();
 				APPL_INFO("Find a Number @" << key << " value='" << myNumber->get() << "'");
 				} break;
 			case typeBoolean: {
-				ejson::Boolean* myBoolean = val->toBoolean();
+				std::shared_ptr<ejson::Boolean> myBoolean = val->toBoolean();
 				APPL_INFO("Find a Boolean @" << key << " value='" << myBoolean->get() << "'");
 				} break;
 			case typeNull:
 				APPL_INFO("Find a null @" << key);
 				break;
 			case typeObject: {
-				ejson::Object* myObject = val->toObject();
+				std::shared_ptr<ejson::Object> myObject = val->toObject();
 				APPL_INFO("Find an Object @" << key);
 				} break;
 		}
@@ -185,34 +185,34 @@ Note at this point we can parse an object in 2 way:
 [code style=c++]
 	stk::vector<std::string> keys = obj->getKeys();
 	for (auto key in keys) {
-		ejson::Value* val = obj[key];
+		std::shared_ptr<ejson::Value> val = obj[key];
 		// note that error can appear, then check result...
-		if (val == NULL) {
+		if (val == nullptr) {
 			APPL_ERROR("Can not read the object key=" << key);
 			continue;
 		}
 		switch(val->getType()) {
 			case typeArray: {
-				ejson::Array* myArray = val->toArray();
+				std::shared_ptr<ejson::Array> myArray = val->toArray();
 				APPL_INFO("Find an Array @" << key);
 				} break;
 			case typeString: {
-				ejson::String* myString = val->toString();
+				std::shared_ptr<ejson::String> myString = val->toString();
 				APPL_INFO("Find a String @" << key << " value='" << myString->get() << "'");
 				} break;
 			case typeNumber: {
-				ejson::Number* myNumber = val->toNumber();
+				std::shared_ptr<ejson::Number> myNumber = val->toNumber();
 				APPL_INFO("Find a Number @" << key << " value='" << myNumber->get() << "'");
 				} break;
 			case typeBoolean: {
-				ejson::Boolean* myBoolean = val->toBoolean();
+				std::shared_ptr<ejson::Boolean> myBoolean = val->toBoolean();
 				APPL_INFO("Find a Boolean @" << key << " value='" << myBoolean->get() << "'");
 				} break;
 			case typeNull:
 				APPL_INFO("Find a null @" << key);
 				break;
 			case typeObject: {
-				ejson::Object* myObject = val->toObject();
+				std::shared_ptr<ejson::Object> myObject = val->toObject();
 				APPL_INFO("Find an Object @" << key);
 				} break;
 		}
@@ -223,9 +223,9 @@ Note at this point we can parse an object in 2 way:
 
 We are now reading all node in an Array:
 [code style=c++]
-	ejson::Array* obj = doc.getArray("exampleArray");
-	// note that the obj is NULL if it not an "Array"
-	if (obj == NULL) {
+	std::shared_ptr<ejson::Array> obj = doc.getArray("exampleArray");
+	// note that the obj is nullptr if it not an "Array"
+	if (obj == nullptr) {
 		APPL_ERROR("Can not get the array 'exampleArray' in the json file");
 		return -1;
 	}
@@ -235,35 +235,35 @@ Note for an array we have only one methode to parse the data :
 
 [code style=c++]
 	for (size_t iii=0; iii < obj->size(); ++iii) {
-		ejson::Value* val = obj[iii];
-		// or ejson::Value* val = obj->get(iii);
+		std::shared_ptr<ejson::Value> val = obj[iii];
+		// or std::shared_ptr<ejson::Value> val = obj->get(iii);
 		// note that error can appear, then check result...
-		if (val == NULL) {
+		if (val == nullptr) {
 			APPL_ERROR("Can not read the object id=" << iii);
 			continue;
 		}
 		switch(val->getType()) {
 			case typeArray: {
-				ejson::Array* myArray = val->toArray();
+				std::shared_ptr<ejson::Array> myArray = val->toArray();
 				APPL_INFO("Find an Array @" << key);
 				} break;
 			case typeString: {
-				ejson::String* myString = val->toString();
+				std::shared_ptr<ejson::String> myString = val->toString();
 				APPL_INFO("Find a String @" << key << " value='" << myString->get() << "'");
 				} break;
 			case typeNumber: {
-				ejson::Number* myNumber = val->toNumber();
+				std::shared_ptr<ejson::Number> myNumber = val->toNumber();
 				APPL_INFO("Find a Number @" << key << " value='" << myNumber->get() << "'");
 				} break;
 			case typeBoolean: {
-				ejson::Boolean* myBoolean = val->toBoolean();
+				std::shared_ptr<ejson::Boolean> myBoolean = val->toBoolean();
 				APPL_INFO("Find a Boolean @" << key << " value='" << myBoolean->get() << "'");
 				} break;
 			case typeNull:
 				APPL_INFO("Find a null @" << key);
 				break;
 			case typeObject: {
-				ejson::Object* myObject = val->toObject();
+				std::shared_ptr<ejson::Object> myObject = val->toObject();
 				APPL_INFO("Find an Object @" << key);
 				} break;
 		}
@@ -278,5 +278,5 @@ It is important to note that many time the user know what type will appear in a 
 :** [methode[ejson::Array::getObject]]
 :** [methode[ejson::Array::getBoolean]]
 :** [methode[ejson::Array::getstring]]
-These fuction automatly cast the resut in the good form (if it is the real one)
+These fuction automatly cast the result in the good form (if it is the real one)
 
