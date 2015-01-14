@@ -16,7 +16,7 @@
 
 namespace ejson {
 	class Object : public ejson::Value {
-		public:
+		protected:
 			/**
 			 * @brief basic element of a xml structure
 			 */

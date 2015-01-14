@@ -21,11 +21,13 @@ before_script:
   - cd ewol; git submodule update; cd ..
   - cd ewol; git submodule foreach git checkout master; cd ..
   - cd ewol; git submodule foreach git pull; cd ..
+  - if [ "$CXX" == "clang++" ]; then BUILDER=clang; else BUILDER=gcc; fi
 
 #install Gcc to have lisstdc++ 4.8 & gcc 4.8
 install:
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
   - sudo apt-get update -qq
+  - sudo apt-get install -qq libstdc++-4.9-dev
   - sudo apt-get install -qq g++-4.8
   - sudo rm /usr/bin/gcc /usr/bin/g++
   - sudo ln -s /usr/bin/gcc-4.8 /usr/bin/gcc
@@ -33,12 +35,8 @@ install:
 
 # build sequence with Lutin :
 script: 
-  - if [ "$CXX" == "clang++" ]; then ./ewol/build/lutin.py -C -P -cclang -mdebug -p ejson_test; fi
-  - if [ "$CXX" == "g++" ]; then ./ewol/build/lutin.py -C -P -cgcc -mdebug -p ejson_test; fi
-
-after_script:
-  - if [ "$CXX" == "clang++" ]; then ./out/Linux_x86_64/debug/staging/clang/ejson_test/usr/bin/ejson_test; fi
-  - if [ "$CXX" == "g++" ]; then ./out/Linux_x86_64/debug/staging/gcc/ejson_test/usr/bin/ejson_test; fi
+  - ./ewol/build/lutin.py -C -P -c$BUILDER -mdebug -p ejson_test
+  - ./out/Linux_x86_64/debug/staging/$BUILDER/ejson_test/usr/bin/ejson_test
 
 #send e-mail on compilation result:
 notifications:
