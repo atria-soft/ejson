@@ -164,3 +164,10 @@ std::shared_ptr<ejson::Null> ejson::Value::toNull() {
 const std::shared_ptr<const ejson::Null> ejson::Value::toNull() const{
 	return std::dynamic_pointer_cast<const ejson::Null>(shared_from_this());
 };
+
+void ejson::Value::display() const {
+	std::string tmpp;
+	iGenerate(tmpp, 0);
+	JSON_INFO("Generated JSON : \n" << tmpp);
+}
+

@@ -132,6 +132,10 @@ namespace ejson {
 			 * @return false if an error occured.
 			 */
 			virtual bool iGenerate(std::string& _data, size_t _indent) const = 0;
+			/**
+			 * @brief Display the Document on console
+			 */
+			void display() const;
 		protected:
 			/**
 			 * @brief add indentation of the string input.

@@ -57,10 +57,6 @@ namespace ejson {
 			 * @return true : Parsing is OK
 			 */
 			bool store(const std::string& _file);
-			/**
-			 * @brief Display the Document on console
-			 */
-			void display();
 		private:
 			bool m_writeErrorWhenDetexted;
 			std::string m_comment;

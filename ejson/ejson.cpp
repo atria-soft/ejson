@@ -109,11 +109,6 @@ bool ejson::Document::store(const std::string& _file) {
 	return true;
 }
 
-void ejson::Document::display() {
-	std::string tmpp;
-	iGenerate(tmpp, 0);
-	JSON_INFO("Generated JSON : \n" << tmpp);
-}
 
 static std::string createPosPointer(const std::string& _line, size_t _pos) {
 	std::string out;

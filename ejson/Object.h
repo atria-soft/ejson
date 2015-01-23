@@ -210,7 +210,9 @@ namespace ejson {
 			virtual bool iGenerate(std::string& _data, size_t _indent) const;
 			virtual void clear();
 			virtual bool transfertIn(std::shared_ptr<ejson::Value> _obj);
+			virtual bool cloneIn(const std::shared_ptr<ejson::Object>& _obj) const;
 			virtual std::shared_ptr<ejson::Value> clone() const;
+			virtual std::shared_ptr<ejson::Object> cloneObj() const;
 	};
 };
 
