@@ -169,7 +169,7 @@ namespace ejson {
 			 * @param[in] _errorValue The return value if the element does not exist.
 			 * @return Value of the Number or the _errorValue;
 			 */
-			double getNumberValue(const std::string& _name, double _errorValue=false) const;
+			double getNumberValue(const std::string& _name, double _errorValue=0.0) const;
 		public:
 			/**
 			 * @brief add an element in the Object
