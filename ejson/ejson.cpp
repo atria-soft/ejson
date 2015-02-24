@@ -21,8 +21,8 @@
 #define __class__	"Document"
 
 
-std::shared_ptr<ejson::Document> ejson::Document::create() {
-	return std::shared_ptr<ejson::Document>(new ejson::Document());
+std11::shared_ptr<ejson::Document> ejson::Document::create() {
+	return std11::shared_ptr<ejson::Document>(new ejson::Document());
 }
 
 ejson::Document::Document() : 

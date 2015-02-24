@@ -10,7 +10,12 @@
 #define __ETK_JSON_VALUE_H__
 
 #include <etk/types.h>
-#include <memory>
+#if __cplusplus >= 201103L
+	#include <memory>
+#else
+	#include <etk/memory.h>
+#endif
+
 
 namespace ejson {
 	//#define ENABLE_DISPLAY_PARSED_ELEMENT
@@ -105,7 +110,7 @@ namespace ejson {
 	};
 	std::ostream& operator <<(std::ostream& _os, const filePos& _obj);
 	
-	class Value : public std::enable_shared_from_this<Value> {
+	class Value : public std11::enable_shared_from_this<Value> {
 		protected:
 			/**
 			 * @brief basic element of a xml structure
@@ -172,62 +177,58 @@ namespace ejson {
 			 * @brief Cast the element in a Value if it is possible.
 			 * @return pointer on the class or nullptr.
 			 */
-			std::shared_ptr<ejson::Value> toValue() {
-				return shared_from_this();
-			};
+			std11::shared_ptr<ejson::Value> toValue();
 			//! @previous
-			const std::shared_ptr<const ejson::Value> toValue() const {
-				return shared_from_this();
-			};
+			const std11::shared_ptr<const ejson::Value> toValue() const;
 			/**
 			 * @brief Cast the element in a Document if it is possible.
 			 * @return pointer on the class or nullptr.
 			 */
-			std::shared_ptr<ejson::Document> toDocument();
+			std11::shared_ptr<ejson::Document> toDocument();
 			//! @previous
-			const std::shared_ptr<const ejson::Document> toDocument() const;
+			const std11::shared_ptr<const ejson::Document> toDocument() const;
 			/**
 			 * @brief Cast the element in a Array if it is possible.
 			 * @return pointer on the class or nullptr.
 			 */
-			std::shared_ptr<ejson::Array> toArray();
+			std11::shared_ptr<ejson::Array> toArray();
 			//! @previous
-			const std::shared_ptr<const ejson::Array> toArray() const;
+			const std11::shared_ptr<const ejson::Array> toArray() const;
 			/**
 			 * @brief Cast the element in a Object if it is possible.
 			 * @return pointer on the class or nullptr.
 			 */
-			std::shared_ptr<ejson::Object> toObject();
+			std11::shared_ptr<ejson::Object> toObject();
 			//! @previous
-			const std::shared_ptr<const ejson::Object> toObject() const;
+			const std11::shared_ptr<const ejson::Object> toObject() const;
 			/**
 			 * @brief Cast the element in a String if it is possible.
 			 * @return pointer on the class or nullptr.
 			 */
-			std::shared_ptr<ejson::String> toString();
+			std11::shared_ptr<ejson::String> toString();
 			//! @previous
-			const std::shared_ptr<const ejson::String> toString() const;
+			const std11::shared_ptr<const ejson::String> toString() const;
 			/**
 			 * @brief Cast the element in a Number if it is possible.
 			 * @return pointer on the class or nullptr.
 			 */
-			std::shared_ptr<ejson::Number> toNumber();
+			std11::shared_ptr<ejson::Number> toNumber();
 			//! @previous
-			const std::shared_ptr<const ejson::Number> toNumber() const;
+			const std11::shared_ptr<const ejson::Number> toNumber() const;
 			/**
 			 * @brief Cast the element in a Boolean if it is possible.
 			 * @return pointer on the class or nullptr.
 			 */
-			std::shared_ptr<ejson::Boolean> toBoolean();
+			std11::shared_ptr<ejson::Boolean> toBoolean();
 			//! @previous
-			const std::shared_ptr<const ejson::Boolean> toBoolean() const;
+			const std11::shared_ptr<const ejson::Boolean> toBoolean() const;
 			/**
 			 * @brief Cast the element in a Null if it is possible.
 			 * @return pointer on the class or nullptr.
 			 */
-			std::shared_ptr<ejson::Null> toNull();
+			std11::shared_ptr<ejson::Null> toNull();
 			//! @previous
-			const std::shared_ptr<const ejson::Null> toNull() const;
+			const std11::shared_ptr<const ejson::Null> toNull() const;
 			
 			/**
 			 * @brief check if the node is a ejson::Document
@@ -289,15 +290,15 @@ namespace ejson {
 			 * @return true if transfer is done corectly
 			 * @note all element is remove from the curent element.
 			 */
-			virtual bool transfertIn(std::shared_ptr<ejson::Value> _obj) {
+			virtual bool transfertIn(std11::shared_ptr<ejson::Value> _obj) {
 				return false;
 			};
 			/**
 			 * @brief Copy the curent node and all the child in the curent one.
 			 * @return nullptr in an error occured, the pointer on the element otherwise
 			 */
-			virtual std::shared_ptr<ejson::Value> clone() const {
-				return nullptr;
+			virtual std11::shared_ptr<ejson::Value> clone() const {
+				return std11::shared_ptr<ejson::Value>();
 			};
 		protected:
 			/**

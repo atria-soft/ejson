@@ -14,8 +14,8 @@
 #undef __class__
 #define __class__	"Number"
 
-std::shared_ptr<ejson::Number> ejson::Number::create(double _value) {
-	return std::shared_ptr<ejson::Number>(new ejson::Number(_value));
+std11::shared_ptr<ejson::Number> ejson::Number::create(double _value) {
+	return std11::shared_ptr<ejson::Number>(new ejson::Number(_value));
 }
 
 bool ejson::Number::iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
@@ -53,12 +53,12 @@ bool ejson::Number::iGenerate(std::string& _data, size_t _indent) const {
 }
 
 
-bool ejson::Number::transfertIn(std::shared_ptr<ejson::Value> _obj) {
+bool ejson::Number::transfertIn(std11::shared_ptr<ejson::Value> _obj) {
 	if (_obj == nullptr) {
 		JSON_ERROR("Request transfer on an nullptr pointer");
 		return false;
 	}
-	std::shared_ptr<ejson::Number> other = _obj->toNumber();
+	std11::shared_ptr<ejson::Number> other = _obj->toNumber();
 	if (other == nullptr) {
 		JSON_ERROR("Request transfer on an element that is not an Number");
 		return false;
@@ -69,11 +69,11 @@ bool ejson::Number::transfertIn(std::shared_ptr<ejson::Value> _obj) {
 	return true;
 }
 
-std::shared_ptr<ejson::Value> ejson::Number::clone() const {
-	std::shared_ptr<ejson::Number> output = ejson::Number::create(m_value);
+std11::shared_ptr<ejson::Value> ejson::Number::clone() const {
+	std11::shared_ptr<ejson::Number> output = ejson::Number::create(m_value);
 	if (output == nullptr) {
 		JSON_ERROR("Allocation error ...");
-		return nullptr;
+		return std11::shared_ptr<ejson::Value>();
 	}
 	return output;
 }

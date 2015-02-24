@@ -20,13 +20,13 @@ namespace ejson {
 			 */
 			Array() { };
 		public:
-			static std::shared_ptr<Array> create();
+			static std11::shared_ptr<Array> create();
 			/**
 			 * @brief destructor
 			 */
 			virtual ~Array() { };
 		private:
-			std::vector<std::shared_ptr<ejson::Value>> m_value; //!< vector of sub elements
+			std::vector<std11::shared_ptr<ejson::Value> > m_value; //!< vector of sub elements
 		public:
 			/**
 			 * @brief get the number of sub element in the current one
@@ -40,19 +40,19 @@ namespace ejson {
 			 * @param[in] _id Id of the element.
 			 * @return nullptr if the element does not exist.
 			 */
-			std::shared_ptr<ejson::Value> get(size_t _id) {
+			std11::shared_ptr<ejson::Value> get(size_t _id) {
 				return m_value[_id];
 			};
 			//! @previous
-			const std::shared_ptr<const ejson::Value> get(size_t _id) const{
+			const std11::shared_ptr<const ejson::Value> get(size_t _id) const{
 				return m_value[_id];
 			};
 			//! @previous
-			std::shared_ptr<ejson::Value> operator[] (size_t _id) {
+			std11::shared_ptr<ejson::Value> operator[] (size_t _id) {
 				return m_value[_id];
 			}
 			//! @previous
-			const std::shared_ptr<const ejson::Value> operator[] (size_t _id) const {
+			const std11::shared_ptr<const ejson::Value> operator[] (size_t _id) const {
 				return m_value[_id];
 			}
 			/**
@@ -60,17 +60,17 @@ namespace ejson {
 			 * @param[in] _id Id of the element.
 			 * @return nullptr if the element does not exist.
 			 */
-			std::shared_ptr<ejson::Object> getObject(size_t _id);
+			std11::shared_ptr<ejson::Object> getObject(size_t _id);
 			//! @previous
-			const std::shared_ptr<const ejson::Object> getObject(size_t _id) const;
+			const std11::shared_ptr<const ejson::Object> getObject(size_t _id) const;
 			/**
 			 * @brief get the pointer on an element reference with his ID (casted in String if it is an String).
 			 * @param[in] _id Id of the element.
 			 * @return nullptr if the element does not exist.
 			 */
-			std::shared_ptr<ejson::String> getString(size_t _id);
+			std11::shared_ptr<ejson::String> getString(size_t _id);
 			//! @previous
-			const std::shared_ptr<const ejson::String> getString(size_t _id) const;
+			const std11::shared_ptr<const ejson::String> getString(size_t _id) const;
 			/**
 			 * @brief get the value of the string element (if not a string return "")
 			 * @param[in] _id Id of the element.
@@ -91,25 +91,25 @@ namespace ejson {
 			 * @param[in] _id Id of the element.
 			 * @return nullptr if the element does not exist.
 			 */
-			std::shared_ptr<ejson::Array> getArray(size_t _id);
+			std11::shared_ptr<ejson::Array> getArray(size_t _id);
 			//! @previous
-			const std::shared_ptr<const ejson::Array> getArray(size_t _id) const;
+			const std11::shared_ptr<const ejson::Array> getArray(size_t _id) const;
 			/**
 			 * @brief get the pointer on an element reference with his ID (casted in Null if it is an Null).
 			 * @param[in] _id Id of the element.
 			 * @return nullptr if the element does not exist.
 			 */
-			std::shared_ptr<ejson::Null> getNull(size_t _id);
+			std11::shared_ptr<ejson::Null> getNull(size_t _id);
 			//! @previous
-			const std::shared_ptr<const ejson::Null> getNull(size_t _id) const;
+			const std11::shared_ptr<const ejson::Null> getNull(size_t _id) const;
 			/**
 			 * @brief get the pointer on an element reference with his ID (casted in Number if it is an Number).
 			 * @param[in] _id Id of the element.
 			 * @return nullptr if the element does not exist.
 			 */
-			std::shared_ptr<ejson::Number> getNumber(size_t _id);
+			std11::shared_ptr<ejson::Number> getNumber(size_t _id);
 			//! @previous
-			const std::shared_ptr<const ejson::Number> getNumber(size_t _id) const;
+			const std11::shared_ptr<const ejson::Number> getNumber(size_t _id) const;
 			/**
 			 * @brief get the value of the Number element
 			 * @param[in] _id Id of the element.
@@ -122,9 +122,9 @@ namespace ejson {
 			 * @param[in] _id Id of the element.
 			 * @return nullptr if the element does not exist.
 			 */
-			std::shared_ptr<ejson::Boolean> getBoolean(size_t _id);
+			std11::shared_ptr<ejson::Boolean> getBoolean(size_t _id);
 			//! @previous
-			const std::shared_ptr<const ejson::Boolean> getBoolean(size_t _id) const;
+			const std11::shared_ptr<const ejson::Boolean> getBoolean(size_t _id) const;
 			/**
 			 * @brief get the value of the Boolean element
 			 * @param[in] _id Id of the element.
@@ -137,7 +137,7 @@ namespace ejson {
 			 * @param[in] _element element to add.
 			 * @return false if an error occured.
 			 */
-			bool add(std::shared_ptr<ejson::Value> _element);
+			bool add(std11::shared_ptr<ejson::Value> _element);
 			/**
 			 * @brief add a string element in the Object (automatic creation)
 			 * @param[in] _value string value to add
@@ -166,8 +166,8 @@ namespace ejson {
 			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			virtual bool iGenerate(std::string& _data, size_t _indent) const;
 			virtual void clear();
-			virtual bool transfertIn(std::shared_ptr<ejson::Value> _obj);
-			virtual std::shared_ptr<ejson::Value> clone() const;
+			virtual bool transfertIn(std11::shared_ptr<ejson::Value> _obj);
+			virtual std11::shared_ptr<ejson::Value> clone() const;
 	};
 };
 

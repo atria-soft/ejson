@@ -23,7 +23,7 @@ namespace ejson {
 				
 			};
 		public:
-			static std::shared_ptr<String> create(const std::string& _value="");
+			static std11::shared_ptr<String> create(const std::string& _value="");
 			/**
 			 * @brief destructor
 			 */
@@ -48,8 +48,8 @@ namespace ejson {
 		public: // herited function :
 			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
 			virtual bool iGenerate(std::string& _data, size_t _indent) const;
-			virtual bool transfertIn(std::shared_ptr<ejson::Value> _obj);
-			virtual std::shared_ptr<ejson::Value> clone() const;
+			virtual bool transfertIn(std11::shared_ptr<ejson::Value> _obj);
+			virtual std11::shared_ptr<ejson::Value> clone() const;
 	};
 };
 
