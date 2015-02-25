@@ -10,11 +10,7 @@
 #define __ETK_JSON_VALUE_H__
 
 #include <etk/types.h>
-#if __cplusplus >= 201103L
-	#include <memory>
-#else
-	#include <etk/memory.h>
-#endif
+#include <etk/memory.h>
 
 
 namespace ejson {
