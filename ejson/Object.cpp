@@ -24,6 +24,12 @@
 std11::shared_ptr<ejson::Object> ejson::Object::create() {
 	return std11::shared_ptr<ejson::Object>(new ejson::Object());
 }
+std11::shared_ptr<ejson::Object> ejson::Object::create(const std::string& _data) {
+	ejson::Document doc;
+	doc.parse(_data);
+	return doc.cloneObj();
+}
+
 
 void ejson::Object::clear() {
 	m_value.clear();

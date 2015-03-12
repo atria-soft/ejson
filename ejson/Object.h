@@ -23,6 +23,7 @@ namespace ejson {
 			Object() { };
 		public:
 			static std11::shared_ptr<Object> create();
+			static std11::shared_ptr<Object> create(const std::string& _data);
 			/**
 			 * @brief destructor
 			 */
