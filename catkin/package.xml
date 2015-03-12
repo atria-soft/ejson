@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>
+  <name>ejson</name>
+  <version>0.3.0</version>
+  <description>Ewol Json file reader</description>
+  <maintainer email="yui.heero@gmail.com">Edouard DUPIN</maintainer>
+  <license>Apache-2.0</license>
+  <build_depend>etk</build_depend>
+  <buildtool_depend>catkin</buildtool_depend>
+  <run_depend>etk</run_depend>
+</package>

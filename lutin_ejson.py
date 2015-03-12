@@ -3,7 +3,7 @@ import lutinModule as module
 import lutinTools as tools
 
 def get_desc():
-	return "e-json Json parser and genrator"
+	return "e-json Json parser and generator"
 
 
 def create(target):
