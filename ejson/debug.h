@@ -14,16 +14,7 @@
 namespace ejson {
 	int32_t getLogId();
 };
-// TODO : Review this problem of multiple intanciation of "std::stringbuf sb"
-#define JSON_BASE(info,data) \
-	do { \
-		if (info <= etk::log::getLevel(ejson::getLogId())) { \
-			std::stringbuf sb; \
-			std::ostream tmpStream(&sb); \
-			tmpStream << data; \
-			etk::log::logStream(ejson::getLogId(), info, __LINE__, __class__, __func__, tmpStream); \
-		} \
-	} while(0)
+#define JSON_BASE(info,data)  TK_LOG_BASE(ejson::getLogId(),info,data)
 
 #define JSON_CRITICAL(data)      JSON_BASE(1, data)
 #define JSON_ERROR(data)         JSON_BASE(2, data)
