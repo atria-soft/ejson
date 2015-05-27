@@ -1,29 +1,18 @@
-# language type:
 language: cpp
 
-# compilator system:
 compiler:
 - clang
 - gcc
 
 os:
 - linux
-- osx
 
-osx_image: xcode61
-
-# previous actions:
-before_script: 
-  - rm -rf *
-  - git clone https://github.com/HeeroYui/ewol.git
-  - cd ewol; git checkout origin/dev -b dev; cd ..
-  - cd ewol; git submodule init; cd ..
-  - cd ewol; git submodule update; cd ..
-  - cd ewol; git submodule foreach git checkout master; cd ..
-  - cd ewol; git submodule foreach git pull; cd ..
+before_script:
+  - cd ..
+  - git clone https://github.com/HeeroYui/etk.git
+  - git clone https://github.com/HeeroYui/gtest.git
   - if [ "$CXX" == "clang++" ]; then BUILDER=clang; else BUILDER=gcc; fi
 
-#install Gcc to have lisstdc++ 4.8 & gcc 4.8
 install:
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
   - sudo apt-get update -qq
@@ -32,15 +21,12 @@ install:
   - sudo rm /usr/bin/gcc /usr/bin/g++
   - sudo ln -s /usr/bin/gcc-4.9 /usr/bin/gcc
   - sudo ln -s /usr/bin/g++-4.9 /usr/bin/g++
+  - sudo pip install lutin
 
-# build sequence with Lutin :
 script: 
-  - ./ewol/build/lutin.py -C -P -c$BUILDER -mdebug -p ejson_test
+  - lutin -C -P -c$BUILDER -mdebug -p ejson_test
   - ./out/Linux_x86_64/debug/staging/$BUILDER/ejson_test/usr/bin/ejson_test
 
-#send e-mail on compilation result:
 notifications:
   email:
     - yui.heero@gmail.com
-
-
