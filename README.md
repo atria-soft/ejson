@@ -1,9 +1,9 @@
-[![Build Status](https://travis-ci.org/HeeroYui/ejson.svg?branch=master)](https://travis-ci.org/HeeroYui/ejson)
-
 ejson
 =====
 
 `ejson` is a simple json stream reader and writer
+
+[![Build Status](https://travis-ci.org/atria-soft/ejson.svg?branch=master)](https://travis-ci.org/atria-soft/ejson)
 
 Instructions
 ============

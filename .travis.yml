@@ -9,8 +9,10 @@ os:
 
 before_script:
   - cd ..
-  - git clone https://github.com/HeeroYui/etk.git
-  - git clone https://github.com/HeeroYui/gtest.git
+  - git clone https://github.com/atria-soft/etk.git
+  - git clone https://github.com/generic-library/gtest-lutin.git --recursive
+  - pwd
+  - ls -l
   - if [ "$CXX" == "clang++" ]; then BUILDER=clang; else BUILDER=gcc; fi
 
 install:
@@ -24,8 +26,8 @@ install:
   - sudo pip install lutin
 
 script: 
-  - lutin -C -P -c$BUILDER -mdebug -p ejson_test
-  - ./out/Linux_x86_64/debug/staging/$BUILDER/ejson_test/usr/bin/ejson_test
+  - lutin -C -P -c$BUILDER -mdebug -p ejson-test
+  - ./out/Linux_x86_64/debug/staging/$BUILDER/ejson-test/usr/bin/ejson-test
 
 notifications:
   email:
