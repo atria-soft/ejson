@@ -1,11 +1,30 @@
-language: cpp
+language:
+  - cpp
+
+sudo: false
 
 compiler:
-- clang
-- gcc
+  - clang
+  - gcc
 
 os:
-- linux
+  - linux
+  - osx
+
+branches:
+  only:
+    - master
+    - dev
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.9
+
+install:
+  - pip install --user lutin
 
 before_script:
   - cd ..
@@ -14,19 +33,10 @@ before_script:
   - pwd
   - ls -l
   - if [ "$CXX" == "clang++" ]; then BUILDER=clang; else BUILDER=gcc; fi
-
-install:
-  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq libstdc++-4.9-dev
-  - sudo apt-get install -qq g++-4.9
-  - sudo rm /usr/bin/gcc /usr/bin/g++
-  - sudo ln -s /usr/bin/gcc-4.9 /usr/bin/gcc
-  - sudo ln -s /usr/bin/g++-4.9 /usr/bin/g++
-  - sudo pip install lutin
+  - if [ "$CXX" == "g++" ]; then COMPILATOR_OPTION="--compilator-version=4.9"; else COMPILATOR_OPTION=""; fi
 
 script: 
-  - lutin -C -P -c$BUILDER -mdebug -p ejson-test
+  - lutin -C -P -c$BUILDER $COMPILATOR_OPTION -mdebug -p ejson-test
   - ./out/Linux_x86_64/debug/staging/$BUILDER/ejson-test/usr/bin/ejson-test
 
 notifications:
