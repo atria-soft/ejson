@@ -5,6 +5,12 @@ ejson
 
 [![Build Status](https://travis-ci.org/atria-soft/ejson.svg?branch=master)](https://travis-ci.org/atria-soft/ejson)
 
+[![Coverage Status](http://atria-soft.com/ci/coverage/atria-soft/ejson.svg?branch=master)](http://atria-soft.com/ci/atria-soft/ejson)
+
+[![Test Status](http://atria-soft.com/ci/test/atria-soft/ejson.svg?branch=master)](http://atria-soft.com/ci/atria-soft/ejson)
+
+[![Warning Status](http://atria-soft.com/ci/warning/atria-soft/ejson.svg?branch=master)](http://atria-soft.com/ci/atria-soft/ejson)
+
 Instructions
 ============
 
