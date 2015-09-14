@@ -10,7 +10,7 @@
 #define __ETK_JSON_VALUE_H__
 
 #include <etk/types.h>
-#include <etk/memory.h>
+#include <memory>
 
 
 namespace ejson {

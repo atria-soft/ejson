@@ -22,9 +22,21 @@ def create(target):
 		'ejson/Number.cpp',
 		'ejson/String.cpp',
 		'ejson/Object.cpp',
-		'ejson/Value.cpp'])
+		'ejson/Value.cpp'
+		])
 	
-	myModule.add_export_path(tools.get_current_path(__file__))
+	myModule.add_header_file([
+		'ejson/ejson.h',
+		'ejson/Array.h',
+		'ejson/Boolean.h',
+		'ejson/Null.h',
+		'ejson/Number.h',
+		'ejson/String.h',
+		'ejson/Object.h',
+		'ejson/Value.h'
+		])
+	
+	myModule.add_path(tools.get_current_path(__file__))
 	
 	# add the currrent module at the 
 	return myModule
