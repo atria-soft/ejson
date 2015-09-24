@@ -7,13 +7,13 @@ def get_desc():
 
 
 def create(target):
-	myModule = module.Module(__file__, 'ejson', 'LIBRARY')
+	my_module = module.Module(__file__, 'ejson', 'LIBRARY')
 	
-	myModule.add_module_depend(['etk'])
+	my_module.add_module_depend(['etk'])
 	
 	# add extra compilation flags :
-	myModule.add_extra_compile_flags()
-	myModule.add_src_file([
+	my_module.add_extra_compile_flags()
+	my_module.add_src_file([
 		'ejson/debug.cpp',
 		'ejson/ejson.cpp',
 		'ejson/Array.cpp',
@@ -25,7 +25,7 @@ def create(target):
 		'ejson/Value.cpp'
 		])
 	
-	myModule.add_header_file([
+	my_module.add_header_file([
 		'ejson/ejson.h',
 		'ejson/Array.h',
 		'ejson/Boolean.h',
@@ -36,9 +36,9 @@ def create(target):
 		'ejson/Value.h'
 		])
 	
-	myModule.add_path(tools.get_current_path(__file__))
+	my_module.add_path(tools.get_current_path(__file__))
 	
 	# add the currrent module at the 
-	return myModule
+	return my_module
 
 
