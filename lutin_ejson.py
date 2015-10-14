@@ -2,16 +2,31 @@
 import lutin.module as module
 import lutin.tools as tools
 
+
+def get_type():
+	return "LIBRARY"
+
 def get_desc():
-	return "e-json Json parser and generator"
+	return "Json parser and generator"
 
+def get_licence():
+	return "APACHE-2"
 
-def create(target):
-	my_module = module.Module(__file__, 'ejson', 'LIBRARY')
-	
+def get_compagny_type():
+	return "com"
+
+def get_compagny_name():
+	return "atria-soft"
+
+def get_maintainer():
+	return ["Mr DUPIN Edouard <yui.heero@gmail.com>"]
+
+def get_version():
+	return [0,0,0]
+
+def create(target, module_name):
+	my_module = module.Module(__file__, module_name, get_type())
 	my_module.add_module_depend(['etk'])
-	
-	# add extra compilation flags :
 	my_module.add_extra_compile_flags()
 	my_module.add_src_file([
 		'ejson/debug.cpp',
@@ -24,7 +39,6 @@ def create(target):
 		'ejson/Object.cpp',
 		'ejson/Value.cpp'
 		])
-	
 	my_module.add_header_file([
 		'ejson/ejson.h',
 		'ejson/Array.h',
@@ -35,10 +49,7 @@ def create(target):
 		'ejson/Object.h',
 		'ejson/Value.h'
 		])
-	
 	my_module.add_path(tools.get_current_path(__file__))
-	
-	# add the currrent module at the 
 	return my_module
 
 

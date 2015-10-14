@@ -11,7 +11,7 @@
 #define __EJSON_TEST_COMMON_H__
 
 #include <etk/types.h>
-#include <ejson/debug.h>
+#include <test-debug/debug.h>
 #include <ejson/ejson.h>
 
 // _errorPos : -1 : no error , 1 : parsing error, 2 generation error, 3 comparaison error ????
@@ -45,11 +45,11 @@ static void localTest(const std::string& _ref, const std::string& _input, int32_
 		//JSON_ERROR("reference : \n" << l_list[iii].m_ref);
 		for (int32_t jjj=0; jjj<tmpout.size() || jjj<tmpref.size(); ++jjj) {
 			if (jjj<tmpref.size()) {
-				JSON_INFO("[" << jjj << "] " << tmpref[jjj] );
+				TEST_INFO("[" << jjj << "] " << tmpref[jjj] );
 			}
 			if (jjj<tmpout.size()) {
 				if (jjj>=tmpref.size() || tmpref[jjj] != tmpout[jjj]) {
-					JSON_ERROR("[" << jjj << "] " << tmpout[jjj] );
+					TEST_ERROR("[" << jjj << "] " << tmpout[jjj] );
 				}
 			}
 		}

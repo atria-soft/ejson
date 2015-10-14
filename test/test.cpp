@@ -10,7 +10,7 @@
 #include <etk/etk.h>
 #include <etk/types.h>
 #include <etk/archive/Archive.h>
-#include <ejson/debug.h>
+#include <test-debug/debug.h>
 #include <ejson/ejson.h>
 #include <gtest/gtest.h>
 #include <etk/os/FSNode.h>
