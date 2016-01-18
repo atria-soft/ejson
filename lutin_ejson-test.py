@@ -34,11 +34,5 @@ def create(target, module_name):
 		'test/test.cpp'
 		])
 	my_module.add_module_depend(['ejson', 'gtest', 'test-debug'])
-	now = datetime.datetime.now()
-	versionID=str(now.year-2012)+"."+str(now.month)+"."+str(now.day)
-	# set the package properties :
-	my_module.pkg_set("VERSION", versionID)
-	my_module.pkg_set("SECTION", ["Development"])
-	my_module.pkg_set("PRIORITY", "optional")
 	return my_module
 
