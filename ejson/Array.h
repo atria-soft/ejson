@@ -5,9 +5,7 @@
  * 
  * @license APACHE v2.0 (see license file)
  */
-
-#ifndef __ETK_JSON_ARRAY_H__
-#define __ETK_JSON_ARRAY_H__
+#pragma once
 
 #include <etk/types.h>
 #include <ejson/Value.h>
@@ -169,7 +167,5 @@ namespace ejson {
 			virtual bool transfertIn(std11::shared_ptr<ejson::Value> _obj);
 			virtual std11::shared_ptr<ejson::Value> clone() const;
 	};
-};
-
-#endif
+}
 

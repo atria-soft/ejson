@@ -5,10 +5,7 @@
  * 
  * @license APACHE v2.0 (see license file)
  */
-
-
-#ifndef __EJSON_TEST_COMMON_H__
-#define __EJSON_TEST_COMMON_H__
+#pragma once
 
 #include <etk/types.h>
 #include <test-debug/debug.h>
@@ -57,4 +54,3 @@ static void localTest(const std::string& _ref, const std::string& _input, int32_
 	}
 }
 
-#endif

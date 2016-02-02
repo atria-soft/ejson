@@ -5,9 +5,7 @@
  * 
  * @license APACHE v2.0 (see license file)
  */
-
-#ifndef __ETK_JSON_VALUE_H__
-#define __ETK_JSON_VALUE_H__
+#pragma once
 
 #include <etk/types.h>
 #include <memory>
@@ -311,6 +309,4 @@ namespace ejson {
 #include <ejson/Number.h>
 #include <ejson/Object.h>
 #include <ejson/String.h>
-
-#endif
 

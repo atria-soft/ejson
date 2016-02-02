@@ -5,9 +5,7 @@
  * 
  * @license APACHE v2.0 (see license file)
  */
-
-#ifndef __EJSON_DEBUG_H__
-#define __EJSON_DEBUG_H__
+#pragma once
 
 #include <etk/log.h>
 
@@ -39,4 +37,3 @@ namespace ejson {
 		} \
 	} while (0)
 
-#endif

@@ -5,10 +5,7 @@
  * 
  * @license APACHE v2.0 (see license file)
  */
-
-
-#ifndef __EJSON_TEST_NULL_H__
-#define __EJSON_TEST_NULL_H__
+#pragma once
 
 #include "testCommon.h"
 #include <gtest/gtest.h>
@@ -27,4 +24,3 @@ TEST(TestNull, testTabbedNullElementNoPThese) {
 	localTest(refOutputNull, "tmpElement:null\n", -1);
 }
 
-#endif

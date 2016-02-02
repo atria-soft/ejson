@@ -5,10 +5,7 @@
  * 
  * @license APACHE v2.0 (see license file)
  */
-
-
-#ifndef __EJSON_TEST_NUMBER_H__
-#define __EJSON_TEST_NUMBER_H__
+#pragma once
 
 #include "testCommon.h"
 #include <gtest/gtest.h>
@@ -30,4 +27,3 @@ TEST(TestNumber, testFloat) {
 	localTest("{\n\t\"tmpElement\": -956.256000\n}\n", "{tmpElement : -956.256}\n", -1);
 }
 
-#endif

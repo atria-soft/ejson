@@ -5,9 +5,7 @@
  * 
  * @license APACHE v2.0 (see license file)
  */
-
-#ifndef __ETK_JSON_H__
-#define __ETK_JSON_H__
+#pragma once
 
 #include <ejson/Value.h>
 #include <vector>
@@ -86,6 +84,5 @@ namespace ejson {
 
 //__LINE__, __class__, __func__
 
-#endif
 
 

@@ -5,10 +5,7 @@
  * 
  * @license APACHE v2.0 (see license file)
  */
-
-
-#ifndef __EJSON_TEST_BOOLEAN_H__
-#define __EJSON_TEST_BOOLEAN_H__
+#pragma once
 
 #include "testCommon.h"
 #include <gtest/gtest.h>
@@ -49,4 +46,3 @@ TEST(TestBoolean, testBaseFalse2) {
 	localTest(refOutputBoolean2, "{ tmpElement:False }\n", 1);
 }
 
-#endif
