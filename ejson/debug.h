@@ -7,12 +7,12 @@
  */
 #pragma once
 
-#include <etk/log.h>
+#include <elog/log.h>
 
 namespace ejson {
 	int32_t getLogId();
 };
-#define JSON_BASE(info,data)  TK_LOG_BASE(ejson::getLogId(),info,data)
+#define JSON_BASE(info,data)  ELOG_BASE(ejson::getLogId(),info,data)
 
 #define JSON_CRITICAL(data)      JSON_BASE(1, data)
 #define JSON_ERROR(data)         JSON_BASE(2, data)

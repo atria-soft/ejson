@@ -13,8 +13,8 @@
 #undef __class__
 #define __class__	"Boolean"
 
-std11::shared_ptr<ejson::Boolean> ejson::Boolean::create(bool _value) {
-	return std11::shared_ptr<ejson::Boolean>(new ejson::Boolean(_value));
+std::shared_ptr<ejson::Boolean> ejson::Boolean::create(bool _value) {
+	return std::shared_ptr<ejson::Boolean>(new ejson::Boolean(_value));
 }
 
 
@@ -57,12 +57,12 @@ bool ejson::Boolean::iGenerate(std::string& _data, size_t _indent) const {
 }
 
 
-bool ejson::Boolean::transfertIn(std11::shared_ptr<ejson::Value> _obj) {
+bool ejson::Boolean::transfertIn(std::shared_ptr<ejson::Value> _obj) {
 	if (_obj == nullptr) {
 		JSON_ERROR("Request transfer on an NULL pointer");
 		return false;
 	}
-	std11::shared_ptr<ejson::Boolean> other = _obj->toBoolean();
+	std::shared_ptr<ejson::Boolean> other = _obj->toBoolean();
 	if (other == nullptr) {
 		JSON_ERROR("Request transfer on an element that is not an Boolean");
 		return false;
@@ -73,11 +73,11 @@ bool ejson::Boolean::transfertIn(std11::shared_ptr<ejson::Value> _obj) {
 	return true;
 }
 
-std11::shared_ptr<ejson::Value> ejson::Boolean::clone() const {
-	std11::shared_ptr<ejson::Boolean> output = ejson::Boolean::create(m_value);
+std::shared_ptr<ejson::Value> ejson::Boolean::clone() const {
+	std::shared_ptr<ejson::Boolean> output = ejson::Boolean::create(m_value);
 	if (output == nullptr) {
 		JSON_ERROR("Allocation error ...");
-		return std11::shared_ptr<ejson::Value>();
+		return std::shared_ptr<ejson::Value>();
 	}
 	return output;
 }

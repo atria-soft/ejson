@@ -17,8 +17,8 @@
 #define __class__	"String"
 
 
-std11::shared_ptr<ejson::String> ejson::String::create(const std::string& _value) {
-	return std11::shared_ptr<ejson::String>(new ejson::String(_value));
+std::shared_ptr<ejson::String> ejson::String::create(const std::string& _value) {
+	return std::shared_ptr<ejson::String>(new ejson::String(_value));
 }
 
 bool ejson::String::iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
@@ -52,12 +52,12 @@ bool ejson::String::iGenerate(std::string& _data, size_t _indent) const {
 }
 
 
-bool ejson::String::transfertIn(std11::shared_ptr<ejson::Value> _obj) {
+bool ejson::String::transfertIn(std::shared_ptr<ejson::Value> _obj) {
 	if (_obj == nullptr) {
 		JSON_ERROR("Request transfer on an nullptr pointer");
 		return false;
 	}
-	std11::shared_ptr<ejson::String> other = _obj->toString();
+	std::shared_ptr<ejson::String> other = _obj->toString();
 	if (other == nullptr) {
 		JSON_ERROR("Request transfer on an element that is not an String");
 		return false;
@@ -67,11 +67,11 @@ bool ejson::String::transfertIn(std11::shared_ptr<ejson::Value> _obj) {
 	return true;
 }
 
-std11::shared_ptr<ejson::Value> ejson::String::clone() const {
-	std11::shared_ptr<ejson::String> output = ejson::String::create(m_value);
+std::shared_ptr<ejson::Value> ejson::String::clone() const {
+	std::shared_ptr<ejson::String> output = ejson::String::create(m_value);
 	if (output == nullptr) {
 		JSON_ERROR("Allocation error ...");
-		return std11::shared_ptr<ejson::Value>();
+		return std::shared_ptr<ejson::Value>();
 	}
 	return output;
 }

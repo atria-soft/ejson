@@ -9,7 +9,7 @@
 #include <ejson/debug.h>
 
 int32_t ejson::getLogId() {
-	static int32_t g_val = etk::log::registerInstance("ejson");
+	static int32_t g_val = elog::registerInstance("ejson");
 	return g_val;
 }
 

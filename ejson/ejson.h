@@ -21,7 +21,7 @@ namespace ejson {
 			 * @brief Constructor
 			 */
 			Document();
-			static std11::shared_ptr<Document> create();
+			static std::shared_ptr<Document> create();
 			/**
 			 * @brief Destructor
 			 */
