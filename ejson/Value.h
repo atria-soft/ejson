@@ -30,7 +30,7 @@ namespace ejson {
 	class Null;
 	class Number;
 	class String;
-	//! @not-in-doc
+	//! @not_in_doc
 	class filePos {
 		private:
 			size_t m_col;
