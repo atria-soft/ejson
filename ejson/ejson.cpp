@@ -17,12 +17,8 @@
 #include <ejson/Number.h>
 #include <ejson/Boolean.h>
 
-#undef __class__
-#define __class__	"Document"
-
-
-std::shared_ptr<ejson::Document> ejson::Document::create() {
-	return std::shared_ptr<ejson::Document>(new ejson::Document());
+ememory::SharedPtr<ejson::Document> ejson::Document::create() {
+	return ememory::SharedPtr<ejson::Document>(new ejson::Document());
 }
 
 ejson::Document::Document() : 
@@ -46,7 +42,7 @@ bool ejson::Document::iGenerate(std::string& _data, size_t _indent) const {
 bool ejson::Document::parse(const std::string& _data) {
 	JSON_VERBOSE("Start parsing document (type: string) size=" << _data.size());
 	clear();
-	ejson::filePos filePos(1,0);
+	ejson::FilePos filePos(1,0);
 	size_t parsePos = 0;
 	return iParse(_data, parsePos, filePos, *this);
 }
@@ -140,7 +136,7 @@ void ejson::Document::displayError() {
 	#endif
 }
 
-void ejson::Document::createError(const std::string& _data, size_t _pos, const ejson::filePos& _filePos, const std::string& _comment) {
+void ejson::Document::createError(const std::string& _data, size_t _pos, const ejson::FilePos& _filePos, const std::string& _comment) {
 	m_comment = _comment;
 	m_Line = etk::extract_line(_data, _pos);
 	m_filePos = _filePos;
@@ -149,7 +145,7 @@ void ejson::Document::createError(const std::string& _data, size_t _pos, const e
 	}
 }
 
-bool ejson::Document::iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
+bool ejson::Document::iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'Document' ");
 	bool haveMainNode=false;
 	bool nodeParsed=false;
@@ -158,7 +154,7 @@ bool ejson::Document::iParse(const std::string& _data, size_t& _pos, ejson::file
 		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
 			drawElementParsed(_data[iii], _filePos);
 		#endif
-		ejson::filePos tmpPos;
+		ejson::FilePos tmpPos;
 		if(    _data[iii] == ' '
 		    || _data[iii] == '\t'
 		    || _data[iii] == '\n'

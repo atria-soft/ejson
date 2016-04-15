@@ -18,16 +18,16 @@ namespace ejson {
 			 */
 			Null() { };
 		public:
-			static std::shared_ptr<Null> create();
+			static ememory::SharedPtr<Null> create();
 			/**
 			 * @brief destructor
 			 */
 			virtual ~Null() { };
 		public: // herited function :
-			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
+			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::Document& _doc);
 			virtual bool iGenerate(std::string& _data, size_t _indent) const;
-			virtual bool transfertIn(std::shared_ptr<ejson::Value> _obj);
-			virtual std::shared_ptr<ejson::Value> clone() const;
+			virtual bool transfertIn(ememory::SharedPtr<ejson::Value> _obj);
+			virtual ememory::SharedPtr<ejson::Value> clone() const;
 	};
 }
 

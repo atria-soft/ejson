@@ -21,7 +21,7 @@ namespace ejson {
 			 * @brief Constructor
 			 */
 			Document();
-			static std::shared_ptr<Document> create();
+			static ememory::SharedPtr<Document> create();
 			/**
 			 * @brief Destructor
 			 */
@@ -59,7 +59,7 @@ namespace ejson {
 			bool m_writeErrorWhenDetexted;
 			std::string m_comment;
 			std::string m_Line;
-			ejson::filePos m_filePos;
+			ejson::FilePos m_filePos;
 		public:
 			void displayErrorWhenDetected() {
 				m_writeErrorWhenDetexted=true;
@@ -68,10 +68,10 @@ namespace ejson {
 				m_writeErrorWhenDetexted=false;
 			};
 			
-			void createError(const std::string& _data, size_t _pos, const ejson::filePos& _filePos, const std::string& _comment);
+			void createError(const std::string& _data, size_t _pos, const ejson::FilePos& _filePos, const std::string& _comment);
 			void displayError();
 		public: // herited function:
-			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc);
+			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::Document& _doc);
 			virtual bool iGenerate(std::string& _data, size_t _indent) const;
 	};
 };

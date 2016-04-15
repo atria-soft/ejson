@@ -10,15 +10,12 @@
 #include <ejson/debug.h>
 #include <ejson/ejson.h>
 
-#undef __class__
-#define __class__	"Boolean"
-
-std::shared_ptr<ejson::Boolean> ejson::Boolean::create(bool _value) {
-	return std::shared_ptr<ejson::Boolean>(new ejson::Boolean(_value));
+ememory::SharedPtr<ejson::Boolean> ejson::Boolean::create(bool _value) {
+	return ememory::SharedPtr<ejson::Boolean>(new ejson::Boolean(_value));
 }
 
 
-bool ejson::Boolean::iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
+bool ejson::Boolean::iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'Boolean' ");
 	m_value=false;
 	if(    _data[_pos] == 't'
@@ -57,12 +54,12 @@ bool ejson::Boolean::iGenerate(std::string& _data, size_t _indent) const {
 }
 
 
-bool ejson::Boolean::transfertIn(std::shared_ptr<ejson::Value> _obj) {
+bool ejson::Boolean::transfertIn(ememory::SharedPtr<ejson::Value> _obj) {
 	if (_obj == nullptr) {
 		JSON_ERROR("Request transfer on an NULL pointer");
 		return false;
 	}
-	std::shared_ptr<ejson::Boolean> other = _obj->toBoolean();
+	ememory::SharedPtr<ejson::Boolean> other = _obj->toBoolean();
 	if (other == nullptr) {
 		JSON_ERROR("Request transfer on an element that is not an Boolean");
 		return false;
@@ -73,11 +70,11 @@ bool ejson::Boolean::transfertIn(std::shared_ptr<ejson::Value> _obj) {
 	return true;
 }
 
-std::shared_ptr<ejson::Value> ejson::Boolean::clone() const {
-	std::shared_ptr<ejson::Boolean> output = ejson::Boolean::create(m_value);
+ememory::SharedPtr<ejson::Value> ejson::Boolean::clone() const {
+	ememory::SharedPtr<ejson::Boolean> output = ejson::Boolean::create(m_value);
 	if (output == nullptr) {
 		JSON_ERROR("Allocation error ...");
-		return std::shared_ptr<ejson::Value>();
+		return ememory::SharedPtr<ejson::Value>();
 	}
 	return output;
 }

@@ -6,20 +6,16 @@
  * @license APACHE v2.0 (see license file)
  */
 
-
 #include <ejson/Null.h>
 #include <ejson/debug.h>
 #include <ejson/ejson.h>
 
-#undef __class__
-#define __class__	"Null"
-
-std::shared_ptr<ejson::Null> ejson::Null::create() {
-	return std::shared_ptr<ejson::Null>(new ejson::Null());
+ememory::SharedPtr<ejson::Null> ejson::Null::create() {
+	return ememory::SharedPtr<ejson::Null>(new ejson::Null());
 }
 
 
-bool ejson::Null::iParse(const std::string& _data, size_t& _pos, ejson::filePos& _filePos, ejson::Document& _doc) {
+bool ejson::Null::iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::Document& _doc) {
 	JSON_PARSE_ELEMENT("start parse : 'Null' ");
 	if (_pos+3 >= _data.size()){
 		EJSON_CREATE_ERROR(_doc, _data, _pos, _filePos, "can not parse null !!! ");
@@ -44,12 +40,12 @@ bool ejson::Null::iGenerate(std::string& _data, size_t _indent) const {
 }
 
 
-bool ejson::Null::transfertIn(std::shared_ptr<ejson::Value> _obj) {
+bool ejson::Null::transfertIn(ememory::SharedPtr<ejson::Value> _obj) {
 	if (_obj == nullptr) {
 		JSON_ERROR("Request transfer on an nullptr pointer");
 		return false;
 	}
-	std::shared_ptr<ejson::Null> other = _obj->toNull();
+	ememory::SharedPtr<ejson::Null> other = _obj->toNull();
 	if (other == nullptr) {
 		JSON_ERROR("Request transfer on an element that is not an Null");
 		return false;
@@ -57,11 +53,11 @@ bool ejson::Null::transfertIn(std::shared_ptr<ejson::Value> _obj) {
 	return true;
 }
 
-std::shared_ptr<ejson::Value> ejson::Null::clone() const {
-	std::shared_ptr<ejson::Null> output = ejson::Null::create();
+ememory::SharedPtr<ejson::Value> ejson::Null::clone() const {
+	ememory::SharedPtr<ejson::Null> output = ejson::Null::create();
 	if (output == nullptr) {
 		JSON_ERROR("Allocation error ...");
-		return std::shared_ptr<ejson::Value>();
+		return ememory::SharedPtr<ejson::Value>();
 	}
 	return output;
 }

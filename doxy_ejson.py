@@ -12,9 +12,12 @@ def create(target, module_name):
 	my_module.set_website_sources("http://github.com/atria-soft/" + module_name)
 	my_module.add_path([
 	    module_name,
+	    "doc"
 	    ])
 	my_module.add_module_depend([
+	    'elog',
 	    'etk',
+	    'ememory'
 	    ])
 	my_module.add_exclude_symbols([
 	    '*operator<<*',
