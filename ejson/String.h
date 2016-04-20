@@ -12,42 +12,38 @@
 
 namespace ejson {
 	class String : public ejson::Value {
-		protected:
-			/**
-			 * @brief basic element of a xml structure
-			 */
-			String(const std::string& _value="") :
-			  m_value(_value) {
-				
-			};
 		public:
-			static ememory::SharedPtr<String> create(const std::string& _value="");
 			/**
-			 * @brief destructor
+			 * @brief Constructor
+			 * @param[in] _internalValue Internal Value to set data
 			 */
-			virtual ~String() { };
-		protected:
-			std::string m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
+			String(ememory::SharedPtr<ejson::internal::Value> _internalValue);
+			/**
+			 * @brief Copy constructor
+			 * @param[in] _obj Object to copy
+			 */
+			String(const ejson::String& _obj);
+			/**
+			 * @brief Constructor
+			 * @param[in] _value String value to set
+			 */
+			String(const std::string& _value="");
+			/**
+			 * @brief Copy constructor
+			 * @param[in] _obj Object to copy
+			 */
+			ejson::String& operator= (const ejson::String& _obj);
 		public:
 			/**
 			 * @brief set the value of the node.
 			 * @param[in] _value New value of the node.
 			 */
-			void set(const std::string& _value) {
-				m_value = _value;
-			};
+			void set(const std::string& _value);
 			/**
 			 * @brief get the current element Value.
 			 * @return the reference of the string value.
 			 */
-			const std::string& get() const {
-				return m_value;
-			};
-		public: // herited function :
-			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::Document& _doc);
-			virtual bool iGenerate(std::string& _data, size_t _indent) const;
-			virtual bool transfertIn(ememory::SharedPtr<ejson::Value> _obj);
-			virtual ememory::SharedPtr<ejson::Value> clone() const;
+			const std::string& get() const;
 	};
 }
 

@@ -6,68 +6,68 @@
  * @license APACHE v2.0 (see license file)
  */
 
-#include <ejson/ejson.h>
+#include <ejson/internal/Document.h>
 #include <ejson/debug.h>
 #include <etk/os/FSNode.h>
 
-#include <ejson/Object.h>
-#include <ejson/Array.h>
-#include <ejson/String.h>
-#include <ejson/Null.h>
-#include <ejson/Number.h>
-#include <ejson/Boolean.h>
+#include <ejson/internal/Object.h>
+#include <ejson/internal/Array.h>
+#include <ejson/internal/String.h>
+#include <ejson/internal/Null.h>
+#include <ejson/internal/Number.h>
+#include <ejson/internal/Boolean.h>
 
-ememory::SharedPtr<ejson::Document> ejson::Document::create() {
-	return ememory::SharedPtr<ejson::Document>(new ejson::Document());
+ememory::SharedPtr<ejson::internal::Document> ejson::internal::Document::create() {
+	return ememory::SharedPtr<ejson::internal::Document>(new ejson::internal::Document());
 }
 
-ejson::Document::Document() : 
-    m_writeErrorWhenDetexted(true),
-    m_comment(""),
-    m_Line(""),
-    m_filePos(0,0) {
+ejson::internal::Document::Document() :
+  m_writeErrorWhenDetexted(true),
+  m_comment(""),
+  m_Line(""),
+  m_filePos(0,0) {
+	m_type = ejson::valueType::document;
+}
+
+ejson::internal::Document::~Document() {
 	
 }
 
-ejson::Document::~Document() {
-	
-}
-
-bool ejson::Document::iGenerate(std::string& _data, size_t _indent) const {
-	ejson::Object::iGenerate(_data, _indent+1);
+bool ejson::internal::Document::iGenerate(std::string& _data, size_t _indent) const {
+	ejson::internal::Object::iGenerate(_data, _indent+1);
 	_data += "\n";
 	return true;
 }
 
-bool ejson::Document::parse(const std::string& _data) {
-	JSON_VERBOSE("Start parsing document (type: string) size=" << _data.size());
+bool ejson::internal::Document::parse(const std::string& _data) {
+	EJSON_VERBOSE("Start parsing document (type: string) size=" << _data.size());
 	clear();
 	ejson::FilePos filePos(1,0);
 	size_t parsePos = 0;
 	return iParse(_data, parsePos, filePos, *this);
 }
 
-bool ejson::Document::generate(std::string& _data) {
+bool ejson::internal::Document::generate(std::string& _data) {
 	_data = "";
 	return iGenerate(_data,0);
 }
 
-bool ejson::Document::load(const std::string& _file) {
+bool ejson::internal::Document::load(const std::string& _file) {
 	// Start loading the XML : 
-	JSON_VERBOSE("open file (xml) \"" << _file << "\"");
+	EJSON_VERBOSE("open file (xml) \"" << _file << "\"");
 	clear();
 	etk::FSNode tmpFile(_file);
 	if (false == tmpFile.exist()) {
-		JSON_ERROR("File Does not exist : " << _file);
+		EJSON_ERROR("File Does not exist : " << _file);
 		return false;
 	}
 	int64_t fileSize = tmpFile.fileSize();
 	if (0 == fileSize) {
-		JSON_ERROR("This file is empty : " << _file);
+		EJSON_ERROR("This file is empty : " << _file);
 		return false;
 	}
 	if (false == tmpFile.fileOpenRead()) {
-		JSON_ERROR("Can not open (r) the file : " << _file);
+		EJSON_ERROR("Can not open (r) the file : " << _file);
 		return false;
 	}
 	// allocate data
@@ -85,19 +85,19 @@ bool ejson::Document::load(const std::string& _file) {
 	return ret;
 }
 
-bool ejson::Document::store(const std::string& _file) {
+bool ejson::internal::Document::store(const std::string& _file) {
 	std::string createData;
 	if (false == generate(createData)) {
-		JSON_ERROR("Error while creating the XML : " << _file);
+		EJSON_ERROR("Error while creating the XML : " << _file);
 		return false;
 	}
 	etk::FSNode tmpFile(_file);
 	if (false == tmpFile.fileOpenWrite()) {
-		JSON_ERROR("Can not open (w) the file : " << _file);
+		EJSON_ERROR("Can not open (w) the file : " << _file);
 		return false;
 	}
 	if (tmpFile.fileWrite((char*)createData.c_str(), sizeof(char), createData.size()) != (int32_t)createData.size()) {
-		JSON_ERROR("Error while writing output XML file : " << _file);
+		EJSON_ERROR("Error while writing output XML file : " << _file);
 		tmpFile.fileClose();
 		return false;
 	}
@@ -123,20 +123,20 @@ static std::string createPosPointer(const std::string& _line, size_t _pos) {
 	return out;
 }
 
-void ejson::Document::displayError() {
+void ejson::internal::Document::displayError() {
 	if (m_comment.size() == 0) {
-		JSON_ERROR("No error detected ???");
+		EJSON_ERROR("No error detected ???");
 		return;
 	}
-	JSON_ERROR(m_filePos << " " << m_comment << "\n"
+	EJSON_ERROR(m_filePos << " " << m_comment << "\n"
 	           << m_Line << "\n"
 	           << createPosPointer(m_Line, m_filePos.getCol()) );
 	#ifdef ENABLE_CRITICAL_WHEN_ERROR
-		JSON_CRITICAL("detect error");
+		EJSON_CRITICAL("detect error");
 	#endif
 }
 
-void ejson::Document::createError(const std::string& _data, size_t _pos, const ejson::FilePos& _filePos, const std::string& _comment) {
+void ejson::internal::Document::createError(const std::string& _data, size_t _pos, const ejson::FilePos& _filePos, const std::string& _comment) {
 	m_comment = _comment;
 	m_Line = etk::extract_line(_data, _pos);
 	m_filePos = _filePos;
@@ -145,8 +145,8 @@ void ejson::Document::createError(const std::string& _data, size_t _pos, const e
 	}
 }
 
-bool ejson::Document::iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::Document& _doc) {
-	JSON_PARSE_ELEMENT("start parse : 'Document' ");
+bool ejson::internal::Document::iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
+	EJSON_PARSE_ELEMENT("start parse : 'Document' ");
 	bool haveMainNode=false;
 	bool nodeParsed=false;
 	for (size_t iii=_pos; iii<_data.size(); iii++) {
@@ -170,7 +170,7 @@ bool ejson::Document::iParse(const std::string& _data, size_t& _pos, ejson::File
 			iii++;
 			haveMainNode=true;
 			nodeParsed=true;
-			ejson::Object::iParse(_data, iii, _filePos, _doc);
+			ejson::internal::Object::iParse(_data, iii, _filePos, _doc);
 		} else if(_data[iii] == '}') {
 			_pos=iii; //  == > return the end element type ==> usefull to check end and check if adding element is needed
 			if (haveMainNode == true) {
@@ -188,7 +188,7 @@ bool ejson::Document::iParse(const std::string& _data, size_t& _pos, ejson::File
 			}
 			nodeParsed=true;
 			// this might not have the '{' start element !!!
-			if (false == ejson::Object::iParse(_data, iii, _filePos, _doc)) {
+			if (false == ejson::internal::Object::iParse(_data, iii, _filePos, _doc)) {
 				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Object sub parsing in error");
 				_pos = iii;
 				return false;

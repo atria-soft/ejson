@@ -12,56 +12,55 @@
 
 namespace ejson {
 	class Number : public ejson::Value {
-		protected:
-			/**
-			 * @brief basic element of a xml structure
-			 */
-			Number(double _value=0.0) :
-			  m_value(_value) {
-				
-			};
 		public:
-			static ememory::SharedPtr<Number> create(double _value=0.0);
 			/**
-			 * @brief destructor
+			 * @brief Constructor
+			 * @param[in] _internalValue Internal Value to set data
 			 */
-			virtual ~Number() { };
-		protected:
-			double m_value; //!< value of the node
+			Number(ememory::SharedPtr<ejson::internal::Value> _internalValue);
+			/**
+			 * @brief Copy constructor
+			 * @param[in] _obj Object to copy
+			 */
+			Number(const ejson::Number& _obj);
+			/**
+			 * @brief Constructor
+			 * @param[in] _value number value
+			 */
+			Number(double _value=0.0);
+			/**
+			 * @brief Copy constructor
+			 * @param[in] _obj Object to copy
+			 */
+			ejson::Number& operator= (const ejson::Number& _obj);
+			
 		public:
 			/**
 			 * @brief set the value of the node.
 			 * @param[in] _value New value of the node.
 			 */
-			void set(double _value) {
-				m_value = _value;
-			};
+			void set(double _value);
 			/**
 			 * @brief Get the current element Value.
 			 * @return The double number registered
 			 */
-			double get() const {
-				return m_value;
-			};
+			double get() const;
+			/**
+			 * @brief Get the current element Value.
+			 * @param[in] _errorValue Value return if no value Exist
+			 * @return The double number registered
+			 */
+			double get(double _errorValue) const;
 			/**
 			 * @brief Get the current element Value.
 			 * @return The 32 bit integer number registered
 			 */
-			int32_t getInt32() const {
-				return (int32_t)m_value;
-			};
+			int32_t getInt32() const;
 			/**
 			 * @brief Get the current element Value.
 			 * @return The 64 bit integer number registered
 			 */
-			int64_t getInt64() const {
-				return (int64_t)m_value;
-			};
-		public: // herited function :
-			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::Document& _doc);
-			virtual bool iGenerate(std::string& _data, size_t _indent) const;
-			virtual bool transfertIn(ememory::SharedPtr<ejson::Value> _obj);
-			virtual ememory::SharedPtr<ejson::Value> clone() const;
+			int64_t getInt64() const;
 	};
 }
 

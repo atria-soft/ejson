@@ -12,22 +12,26 @@
 
 namespace ejson {
 	class Null : public ejson::Value {
-		protected:
-			/**
-			 * @brief basic element of a xml structure
-			 */
-			Null() { };
 		public:
-			static ememory::SharedPtr<Null> create();
 			/**
-			 * @brief destructor
+			 * @brief Constructor
+			 * @param[in] _internalValue Internal Value to set data
 			 */
-			virtual ~Null() { };
-		public: // herited function :
-			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::Document& _doc);
-			virtual bool iGenerate(std::string& _data, size_t _indent) const;
-			virtual bool transfertIn(ememory::SharedPtr<ejson::Value> _obj);
-			virtual ememory::SharedPtr<ejson::Value> clone() const;
+			Null(ememory::SharedPtr<ejson::internal::Value> _internalValue);
+			/**
+			 * @brief Copy constructor
+			 * @param[in] _obj Object to copy
+			 */
+			Null(const ejson::Null& _obj);
+			/**
+			 * @brief Constructor
+			 */
+			Null();
+			/**
+			 * @brief Copy constructor
+			 * @param[in] _obj Object to copy
+			 */
+			ejson::Null& operator= (const ejson::Null& _obj);
 	};
 }
 

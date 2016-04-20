@@ -8,75 +8,48 @@
 
 #include <ejson/Boolean.h>
 #include <ejson/debug.h>
-#include <ejson/ejson.h>
+#include <ejson/internal/Boolean.h>
 
-ememory::SharedPtr<ejson::Boolean> ejson::Boolean::create(bool _value) {
-	return ememory::SharedPtr<ejson::Boolean>(new ejson::Boolean(_value));
+
+ejson::Boolean::Boolean(ememory::SharedPtr<ejson::internal::Value> _internalValue) :
+  ejson::Value(_internalValue) {
+	if (m_data == nullptr) {
+		return;
+	}
+	if (m_data->isBoolean() == false) {
+		// try to set wrong type inside ... ==> remove it ...
+		m_data = nullptr;
+	}
 }
 
-
-bool ejson::Boolean::iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::Document& _doc) {
-	JSON_PARSE_ELEMENT("start parse : 'Boolean' ");
-	m_value=false;
-	if(    _data[_pos] == 't'
-	    && _pos+3 < _data.size()
-	    && _data[_pos+1] == 'r'
-	    && _data[_pos+2] == 'u'
-	    && _data[_pos+3] == 'e'){
-		m_value=true;
-		_pos+=3;
-		_filePos+=3;
-		return true;
-	}
-	if(    _data[_pos] == 'f'
-	    && _pos+4 < _data.size()
-	    && _data[_pos+1] == 'a'
-	    && _data[_pos+2] == 'l'
-	    && _data[_pos+3] == 's'
-	    && _data[_pos+4] == 'e'){
-		m_value=false;
-		_pos+=4;
-		_filePos+=4;
-		return true;
-	}
-	EJSON_CREATE_ERROR(_doc, _data, _pos, _filePos, "boolean parsing error ...");
-	return false;
+ejson::Boolean::Boolean(const ejson::Boolean& _obj) :
+  ejson::Value(_obj.m_data) {
+	
 }
 
-
-bool ejson::Boolean::iGenerate(std::string& _data, size_t _indent) const {
-	if (true == m_value) {
-		_data += "true";
-	} else {
-		_data += "false";
-	}
-	return true;
+ejson::Boolean::Boolean(bool _value) :
+  ejson::Value() {
+	m_data = ejson::internal::Boolean::create(_value);
 }
 
+ejson::Boolean& ejson::Boolean::operator= (const ejson::Boolean& _obj) {
+	m_data = _obj.m_data;
+	return *this;
+}
 
-bool ejson::Boolean::transfertIn(ememory::SharedPtr<ejson::Value> _obj) {
-	if (_obj == nullptr) {
-		JSON_ERROR("Request transfer on an NULL pointer");
+void ejson::Boolean::set(bool _value) {
+	if (m_data == nullptr) {
+		EJSON_ERROR("Can not set (nullptr) ...");
+		return;
+	}
+	static_cast<ejson::internal::Boolean*>(m_data.get())->set(_value);
+}
+
+bool ejson::Boolean::get() const {
+	if (m_data == nullptr) {
+		EJSON_ERROR("Can not get (nullptr) ...");
 		return false;
 	}
-	ememory::SharedPtr<ejson::Boolean> other = _obj->toBoolean();
-	if (other == nullptr) {
-		JSON_ERROR("Request transfer on an element that is not an Boolean");
-		return false;
-	}
-	// remove destination elements
-	other->m_value = m_value;
-	m_value = false;
-	return true;
+	return static_cast<ejson::internal::Boolean*>(m_data.get())->get();
 }
-
-ememory::SharedPtr<ejson::Value> ejson::Boolean::clone() const {
-	ememory::SharedPtr<ejson::Boolean> output = ejson::Boolean::create(m_value);
-	if (output == nullptr) {
-		JSON_ERROR("Allocation error ...");
-		return ememory::SharedPtr<ejson::Value>();
-	}
-	return output;
-}
-
 

@@ -5,74 +5,74 @@
  * 
  * @license APACHE v2.0 (see license file)
  */
-
-
 #include <ejson/Number.h>
 #include <ejson/debug.h>
-#include <ejson/ejson.h>
+#include <ejson/internal/Number.h>
 
-ememory::SharedPtr<ejson::Number> ejson::Number::create(double _value) {
-	return ememory::SharedPtr<ejson::Number>(new ejson::Number(_value));
+
+ejson::Number::Number(ememory::SharedPtr<ejson::internal::Value> _internalValue) :
+  ejson::Value(_internalValue) {
+	if (m_data == nullptr) {
+		return;
+	}
+	if (m_data->isNumber() == false) {
+		// try to set wrong type inside ... ==> remove it ...
+		m_data = nullptr;
+	}
 }
 
-bool ejson::Number::iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::Document& _doc) {
-	JSON_PARSE_ELEMENT("start parse : 'Number' ");
-	std::string tmpVal;
-	for (size_t iii=_pos; iii<_data.size(); iii++) {
-		_filePos.check(_data[iii]);
-		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
-			drawElementParsed(_data[iii], _filePos);
-		#endif
-		if(true == checkNumber(_data[iii])) {
-			tmpVal+=_data[iii];
-		} else {
-			_pos = iii-1;
-			m_value = etk::string_to_double(tmpVal);
-			JSON_PARSE_ELEMENT("end parse : 'Number' " << tmpVal << " >> " << m_value);
-			return true;
-		}
-	}
-	_pos=_data.size();
-	EJSON_CREATE_ERROR(_doc, _data, _pos, _filePos, "get end of string whithout fincding end of quote");
-	return false;
+ejson::Number::Number(const ejson::Number& _obj) :
+  ejson::Value(_obj.m_data) {
+	
 }
 
-
-bool ejson::Number::iGenerate(std::string& _data, size_t _indent) const {
-	// special thing to remove .000000 at the end of perfect number ...
-	int64_t tmpVal = m_value;
-	if ((double)tmpVal == m_value) {
-		_data += etk::to_string(tmpVal);
-	} else {
-		_data += etk::to_string(m_value);
-	}
-	return true;
+ejson::Number::Number(double _value) :
+  ejson::Value() {
+	m_data = ejson::internal::Number::create(_value);
 }
 
-
-bool ejson::Number::transfertIn(ememory::SharedPtr<ejson::Value> _obj) {
-	if (_obj == nullptr) {
-		JSON_ERROR("Request transfer on an nullptr pointer");
-		return false;
-	}
-	ememory::SharedPtr<ejson::Number> other = _obj->toNumber();
-	if (other == nullptr) {
-		JSON_ERROR("Request transfer on an element that is not an Number");
-		return false;
-	}
-	// remove destination elements
-	other->m_value = m_value;
-	m_value = 0;
-	return true;
+ejson::Number& ejson::Number::operator= (const ejson::Number& _obj) {
+	m_data = _obj.m_data;
+	return *this;
 }
 
-ememory::SharedPtr<ejson::Value> ejson::Number::clone() const {
-	ememory::SharedPtr<ejson::Number> output = ejson::Number::create(m_value);
-	if (output == nullptr) {
-		JSON_ERROR("Allocation error ...");
-		return ememory::SharedPtr<ejson::Value>();
+void ejson::Number::set(double _value) {
+	if (m_data == nullptr) {
+		EJSON_ERROR("Can not set (nullptr) ...");
+		return;
 	}
-	return output;
+	static_cast<ejson::internal::Number*>(m_data.get())->set(_value);
 }
 
+double ejson::Number::get() const {
+	if (m_data == nullptr) {
+		EJSON_ERROR("Can not parse (nullptr) ...");
+		return 0.0;
+	}
+	return static_cast<ejson::internal::Number*>(m_data.get())->get();
+}
+
+double ejson::Number::get(double _errorValue) const {
+	if (m_data == nullptr) {
+		EJSON_ERROR("Can not parse (nullptr) ...");
+		return _errorValue;
+	}
+	return static_cast<ejson::internal::Number*>(m_data.get())->get();
+}
+
+int32_t ejson::Number::getInt32() const {
+	if (m_data == nullptr) {
+		EJSON_ERROR("Can not getInt32 (nullptr) ...");
+		return 0;
+	}
+	return static_cast<ejson::internal::Number*>(m_data.get())->getInt32();
+}
+
+int64_t ejson::Number::getInt64() const {
+	if (m_data == nullptr) {
+		EJSON_ERROR("Can not getInt64 (nullptr) ...");
+		return 0;
+	}
+	return static_cast<ejson::internal::Number*>(m_data.get())->getInt64();
+}
 

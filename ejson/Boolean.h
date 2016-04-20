@@ -12,44 +12,38 @@
 
 namespace ejson {
 	class Boolean : public ejson::Value {
-		protected:
-			/**
-			 * @brief basic element of a xml structure
-			 */
-			Boolean(bool _value=false) :
-			  m_value(_value) {
-				
-			};
 		public:
-			static ememory::SharedPtr<Boolean> create(bool _value=false);
 			/**
-			 * @brief destructor
+			 * @brief Constructor
+			 * @param[in] _internalValue Internal Value to set data
 			 */
-			virtual ~Boolean() {
-				
-			};
-		protected:
-			bool m_value; //!< value of the node
+			Boolean(ememory::SharedPtr<ejson::internal::Value> _internalValue);
+			/**
+			 * @brief Copy constructor
+			 * @param[in] _obj Object to copy
+			 */
+			Boolean(const ejson::Boolean& _obj);
+			/**
+			 * @brief Constructor
+			 * @param[in] _value bool value to store
+			 */
+			Boolean(bool _value=false);
+			/**
+			 * @brief Copy constructor
+			 * @param[in] _obj Object to copy
+			 */
+			ejson::Boolean& operator= (const ejson::Boolean& _obj);
 		public:
 			/**
 			 * @brief set the value of the node.
 			 * @param[in] _value New value of the node.
 			 */
-			void set(bool _value) {
-				m_value = _value;
-			};
+			void set(bool _value);
 			/**
 			 * @brief get the current element Value.
 			 * @return the reference of the string value.
 			 */
-			bool get() const {
-				return m_value;
-			};
-		public: // herited function :
-			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::Document& _doc);
-			virtual bool iGenerate(std::string& _data, size_t _indent) const;
-			virtual bool transfertIn(ememory::SharedPtr<ejson::Value> _obj);
-			virtual ememory::SharedPtr<ejson::Value> clone() const;
+			bool get() const;
 	};
 }
 

@@ -11,129 +11,74 @@
 #include <etk/Hash.h>
 #include <algorithm>
 #include <ejson/Value.h>
+#include <ejson/iterator.h>
 
 namespace ejson {
 	class Object : public ejson::Value {
-		protected:
-			/**
-			 * @brief basic element of a xml structure
-			 */
-			Object() { };
 		public:
-			static ememory::SharedPtr<Object> create();
-			static ememory::SharedPtr<Object> create(const std::string& _data);
 			/**
-			 * @brief destructor
+			 * @brief Constructor
+			 * @param[in] _internalValue Internal Value to set data
 			 */
-			virtual ~Object() { };
-		protected:
-			etk::Hash<ememory::SharedPtr<ejson::Value> > m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
+			Object(ememory::SharedPtr<ejson::internal::Value> _internalValue);
+			/**
+			 * @brief Copy constructor
+			 * @param[in] _obj Object to copy
+			 */
+			Object(const ejson::Object& _obj);
+			/**
+			 * @brief Constructor
+			 */
+			Object();
+			/**
+			 * @brief Constructor
+			 * @param[in] _data string data to parse
+			 */
+			Object(const std::string& _data);
+			/**
+			 * @brief Copy constructor
+			 * @param[in] _obj Object to copy
+			 */
+			ejson::Object& operator= (const ejson::Object& _obj);
+			
 		public:
 			/**
 			 * @brief check if an element exist.
 			 * @param[in] _name name of the object.
 			 * @return The existance of the element.
 			 */
-			bool exist(const std::string& _name) const;
+			bool valueExist(const std::string& _name) const;
 			/**
 			 * @brief get the sub element with his name (no cast check)
 			 * @param[in] _name name of the object
 			 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
 			 */
-			ememory::SharedPtr<ejson::Value> get(const std::string& _name);
-			//! @previous
-			const ememory::SharedPtr<const ejson::Value> get(const std::string& _name) const;
-			//! @previous
-			ememory::SharedPtr<ejson::Value> operator[] (const std::string& _name) {
-				return get(_name);
-			}
-			//! @previous
-			const ememory::SharedPtr<const ejson::Value> operator[] (const std::string& _name) const {
-				return get(_name);
-			}
+			ejson::Value operator[] (const std::string& _name);
+			const ejson::Value operator[] (const std::string& _name) const;
 		public:
 			/**
 			 * @brief Get all the element name (keys).
 			 * @return a vector of all name (key).
 			 */
-			std::vector<std::string> getKeys() const {
-				return m_value.getKeys();
-			}
+			std::vector<std::string> getKeys() const;
 			/**
 			 * @brief get the number of sub element in the current one
 			 * @return the Number of stored element
 			 */
-			size_t size() const {
-				return m_value.size();
-			};
+			size_t size() const;
 			/**
 			 * @brief get the pointer on an element reference with his ID.
 			 * @param[in] _id Id of the element.
 			 * @return nullptr if the element does not exist.
 			 */
-			ememory::SharedPtr<ejson::Value> get(size_t _id) {
-				return m_value[_id];
-			};
-			//! @previous
-			const ememory::SharedPtr<const ejson::Value> get(size_t _id) const{
-				return m_value[_id];
-			};
-			//! @previous
-			ememory::SharedPtr<ejson::Value> operator[] (size_t _id) {
-				return m_value[_id];
-			}
-			//! @previous
-			const ememory::SharedPtr<const ejson::Value> operator[] (size_t _id) const {
-				return m_value[_id];
-			}
+			ejson::Value operator[] (size_t _id);
+			const ejson::Value operator[] (size_t _id) const;
 			/**
 			 * @brief Get the element name (key).
 			 * @param[in] _id Id of the element.
 			 * @return The name (key).
 			 */
-			std::string getKey(size_t _id) const {
-				return m_value.getKey(_id);
-			}
-			/**
-			 * @brief get the sub element with his name (Casted as Object if it is possible)
-			 * @param[in] _name name of the object
-			 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
-			 */
-			ememory::SharedPtr<ejson::Object> getObject(const std::string& _name);
-			/**
-			 * @brief get the sub element with his name (Casted as Object if it is possible)
-			 * @param[in] _name name of the object
-			 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
-			 */
-			const ememory::SharedPtr<const ejson::Object> getObject(const std::string& _name) const;
-			/**
-			 * @brief get the sub element with his name (Casted as Array if it is possible)
-			 * @param[in] _name name of the object
-			 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
-			 */
-			ememory::SharedPtr<ejson::Array> getArray(const std::string& _name);
-			/**
-			 * @brief get the sub element with his name (Casted as Array if it is possible)
-			 * @param[in] _name name of the object
-			 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
-			 */
-			const ememory::SharedPtr<const ejson::Array> getArray(const std::string& _name) const;
-			/**
-			 * @brief get the sub element with his name (Casted as Null if it is possible)
-			 * @param[in] _name name of the object
-			 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
-			 */
-			ememory::SharedPtr<ejson::Null> getNull(const std::string& _name);
-			//! @previous
-			const ememory::SharedPtr<const ejson::Null> getNull(const std::string& _name) const;
-			/**
-			 * @brief get the sub element with his name (Casted as String if it is possible)
-			 * @param[in] _name name of the object
-			 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
-			 */
-			ememory::SharedPtr<ejson::String> getString(const std::string& _name);
-			//! @previous
-			const ememory::SharedPtr<const ejson::String> getString(const std::string& _name) const;
+			std::string getKey(size_t _id) const;
 			/**
 			 * @brief get the sub string value of the requested element
 			 * @param[in] _name name of the object
@@ -148,28 +93,12 @@ namespace ejson {
 			 */
 			std::string getStringValue(const std::string& _name, const std::string& _errorValue) const;
 			/**
-			 * @brief get the sub element with his name (Casted as Boolean if it is possible)
-			 * @param[in] _name name of the object
-			 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
-			 */
-			ememory::SharedPtr<ejson::Boolean> getBoolean(const std::string& _name);
-			//! @previous
-			const ememory::SharedPtr<const ejson::Boolean> getBoolean(const std::string& _name) const;
-			/**
 			 * @brief get the sub boolean value of the requested element.
 			 * @param[in] _name name of the object.
 			 * @param[in] _errorValue The return value if the element does not exist.
 			 * @return Value of the Boolean or the _errorValue;
 			 */
 			bool getBooleanValue(const std::string& _name, bool _errorValue=false) const;
-			/**
-			 * @brief get the sub element with his name (Casted as Number if it is possible)
-			 * @param[in] _name name of the object
-			 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
-			 */
-			ememory::SharedPtr<ejson::Number> getNumber(const std::string& _name);
-			//! @previous
-			const ememory::SharedPtr<const ejson::Number> getNumber(const std::string& _name) const;
 			/**
 			 * @brief get the sub Number value of the requested element.
 			 * @param[in] _name name of the object.
@@ -184,7 +113,7 @@ namespace ejson {
 			 * @param[in] _value Element to add
 			 * @return false if an error occured
 			 */
-			bool add(const std::string& _name, ememory::SharedPtr<ejson::Value> _value);
+			bool add(const std::string& _name, const ejson::Value& _value);
 			/**
 			 * @brief add a string element in the Object (automatic creation)
 			 * @param[in] _name name of the object
@@ -212,14 +141,12 @@ namespace ejson {
 			 * @return false if an error occured
 			 */
 			bool addNumber(const std::string& _name, double _value);
-		public: // herited function :
-			virtual bool iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::Document& _doc);
-			virtual bool iGenerate(std::string& _data, size_t _indent) const;
-			virtual void clear();
-			virtual bool transfertIn(ememory::SharedPtr<ejson::Value> _obj);
-			virtual bool cloneIn(const ememory::SharedPtr<ejson::Object>& _obj) const;
-			virtual ememory::SharedPtr<ejson::Value> clone() const;
-			virtual ememory::SharedPtr<ejson::Object> cloneObj() const;
+		public:
+			using iterator = ejson::iterator<ejson::Object>;
+			iterator begin();
+			iterator end();
+			const iterator begin() const;
+			const iterator end() const;
 	};
 }
 
