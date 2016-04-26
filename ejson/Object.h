@@ -142,10 +142,26 @@ namespace ejson {
 			 */
 			bool addNumber(const std::string& _name, double _value);
 		public:
-			using iterator = ejson::iterator<ejson::Object>;
+			using iterator = ejson::iterator<ejson::Object>; //!< Specify iterator of the Object methode
+			/**
+			 * @brief Get iterator of the first Value
+			 * @return iterator on the begin position of the Value
+			 */
 			iterator begin();
+			/**
+			 * @brief Get iterator of the next of the last Value
+			 * @return iterator on the next of the last position of the Value
+			 */
 			iterator end();
+			/**
+			 * @brief Get const iterator of the first Value
+			 * @return const iterator on the begin position of the Value
+			 */
 			const iterator begin() const;
+			/**
+			 * @brief Get const iterator of the next of the last Value
+			 * @return const iterator on the next of the last position of the Value
+			 */
 			const iterator end() const;
 	};
 }

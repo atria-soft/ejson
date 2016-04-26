@@ -200,3 +200,8 @@ const ejson::Object::iterator ejson::Object::end() const {
 
 template class ejson::iterator<ejson::Object>;
 
+template<>
+std::string ejson::iterator<ejson::Object>::getKey() {
+	return m_data.getKey(m_id);
+}
+

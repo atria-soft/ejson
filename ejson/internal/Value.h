@@ -247,7 +247,7 @@ namespace ejson {
 				virtual ememory::SharedPtr<ejson::internal::Value> clone() const;
 			protected:
 				/**
-				 * @brief check if the current element is white or not : '\t' '\n' '\r' ' '
+				 * @brief check if the current element is white or not : '\\t' '\\n' '\\r' ' '
 				 * @return tue if it is white char
 				 */
 				static bool isWhiteChar(char32_t _val);

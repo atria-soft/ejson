@@ -28,8 +28,8 @@ bool ejson::internal::Null::iParse(const std::string& _data, size_t& _pos, ejson
 		EJSON_CREATE_ERROR(_doc, _data, _pos, _filePos, "Not a corect 'null' element");
 		return false;
 	}
-	_pos+=4;
-	_filePos+=4;
+	_pos+=3;
+	_filePos+=3;
 	return true;
 }
 

@@ -46,3 +46,6 @@ TEST(TestBoolean, testBaseFalse2) {
 	localTest(refOutputBoolean2, "{ tmpElement:False }\n", 1);
 }
 
+TEST(TestBoolean, multipleValue) {
+	localTest("{\n\t\"tmpElement\": false,\n\t\"tmpElement2\": true\n}\n", "{ tmpElement:false, tmpElement2:true }\n", -1);
+}

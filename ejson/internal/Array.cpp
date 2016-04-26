@@ -32,12 +32,12 @@ bool ejson::internal::Array::iParse(const std::string& _data, size_t& _pos, ejso
 		 drawElementParsed(_data[iii], _filePos);
 		#endif
 		ejson::FilePos tmpPos;
-		if(    _data[iii] == ' '
-		    || _data[iii] == '\t'
-		    || _data[iii] == '\n'
-		    || _data[iii] == '\r') {
+		if (    _data[iii] == ' '
+		     || _data[iii] == '\t'
+		     || _data[iii] == '\n'
+		     || _data[iii] == '\r') {
 			// white space  == > nothing to do ...
-		} else if(_data[iii] == '#') {
+		} else if (_data[iii] == '#') {
 			// comment Line ...
 			for (iii++; iii<_data.size(); iii++) {
 				if(    _data[iii] == '\n'
@@ -45,7 +45,7 @@ bool ejson::internal::Array::iParse(const std::string& _data, size_t& _pos, ejso
 					break;
 				}
 			}
-		} else if(_data[iii] == ']') {
+		} else if (_data[iii] == ']') {
 			// find end of value:
 			_pos=iii; //  == > return the end element type ==> usefull to check end and check if adding element is needed
 			return true;
@@ -83,8 +83,17 @@ bool ejson::internal::Array::iParse(const std::string& _data, size_t& _pos, ejso
 			}
 			tmpElement->iParse(_data, iii, _filePos, _doc);
 			m_value.push_back(tmpElement);
-		} else if(    _data[iii] == 'f'
-		           || _data[iii] == 't' ) {
+		} else if (    (    _data[iii] == 'f'
+		                 && iii+4 < _data.size()
+		                 && _data[iii+1] == 'a'
+		                 && _data[iii+2] == 'l'
+		                 && _data[iii+3] == 's'
+		                 && _data[iii+4] == 'e')
+		            || (    _data[iii] == 't'
+		                 && iii+3 < _data.size()
+		                 && _data[iii+1] == 'r'
+		                 && _data[iii+2] == 'u'
+		                 && _data[iii+3] == 'e') ) {
 			// find boolean:
 			EJSON_PARSE_ELEMENT("find Boolean");
 			ememory::SharedPtr<ejson::internal::Boolean> tmpElement = ejson::internal::Boolean::create();
@@ -95,18 +104,22 @@ bool ejson::internal::Array::iParse(const std::string& _data, size_t& _pos, ejso
 			}
 			tmpElement->iParse(_data, iii, _filePos, _doc);
 			m_value.push_back(tmpElement);
-		} else if( _data[iii] == 'n') {
+		} else if (    _data[iii] == 'n'
+		            && iii+3 < _data.size()
+		            && _data[iii+1] == 'u'
+		            && _data[iii+2] == 'l'
+		            && _data[iii+3] == 'l') {
 			// find null:
 			EJSON_PARSE_ELEMENT("find Null");
 			ememory::SharedPtr<ejson::internal::Null> tmpElement = ejson::internal::Null::create();
 			if (tmpElement == nullptr) {
 				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Boolean");
-				_pos=iii;
+				_pos = iii;
 				return false;
 			}
 			tmpElement->iParse(_data, iii, _filePos, _doc);
 			m_value.push_back(tmpElement);
-		} else if(true == checkNumber(_data[iii])) {
+		} else if (checkNumber(_data[iii]) == true) {
 			// find number:
 			EJSON_PARSE_ELEMENT("find Number");
 			ememory::SharedPtr<ejson::internal::Number> tmpElement = ejson::internal::Number::create();
@@ -117,12 +130,18 @@ bool ejson::internal::Array::iParse(const std::string& _data, size_t& _pos, ejso
 			}
 			tmpElement->iParse(_data, iii, _filePos, _doc);
 			m_value.push_back(tmpElement);
-		} else if(_data[iii] == ',') {
+		} else if (_data[iii] == ',') {
 			// find Separator : Restart cycle ...
 			// TODO : check if element are separated with ','
+		} else if (_data[iii] == '}') {
+			// find an error ....
+			EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Find '}' with no element in the element... Check if is not a ']' element (to stop array)");
+			// move the curent index
+			_pos = iii+1;
+			return false;
 		} else {
 			// find an error ....
-			EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Find '?' with no element in the element...");
+			EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, std::string("Find '") + _data[iii] + "' with no element in the element...");
 			// move the curent index
 			_pos = iii+1;
 			return false;

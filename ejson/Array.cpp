@@ -160,4 +160,10 @@ const ejson::Array::iterator ejson::Array::end() const {
 #include <ejson/details/iterator.hxx>
 
 template class ejson::iterator<ejson::Array>;
-
+// Not implemented ==> force link error ...
+/*
+template<>
+std::string ejson::iterator<ejson::Array>::getKey() {
+	return m_data.getKey(m_id);
+}
+*/

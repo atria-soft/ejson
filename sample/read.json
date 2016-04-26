@@ -1,0 +1,13 @@
+{
+	"object A": "bonjour",
+	"object B": null,
+	"object C": true,
+	"object D": 123854,
+	"object E": [
+		1,2,3,54,false
+	],
+	"object F": {
+		"a": 1,
+		"b": 2
+	}
+}

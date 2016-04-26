@@ -14,6 +14,9 @@ def create(target, module_name):
 	    module_name,
 	    "doc"
 	    ])
+	my_module.add_sample_path([
+	    "sample"
+	    ])
 	my_module.add_module_depend([
 	    'elog',
 	    'etk',

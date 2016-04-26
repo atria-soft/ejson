@@ -105,10 +105,26 @@ namespace ejson {
 			 */
 			bool addNumber(double _value);
 		public:
-			using iterator = ejson::iterator<ejson::Array>;
+			using iterator = ejson::iterator<ejson::Array>; //!< Specify iterator of the Array methode
+			/**
+			 * @brief Get iterator of the first Value
+			 * @return iterator on the begin position of the Value
+			 */
 			iterator begin();
+			/**
+			 * @brief Get iterator of the next of the last Value
+			 * @return iterator on the next of the last position of the Value
+			 */
 			iterator end();
+			/**
+			 * @brief Get const iterator of the first Value
+			 * @return const iterator on the begin position of the Value
+			 */
 			const iterator begin() const;
+			/**
+			 * @brief Get const iterator of the next of the last Value
+			 * @return const iterator on the next of the last position of the Value
+			 */
 			const iterator end() const;
 	};
 }
