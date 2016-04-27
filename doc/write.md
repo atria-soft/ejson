@@ -28,31 +28,42 @@ Writing a stream is done like this:
 Operation on Tree                                  {#ejson_tutorial_write_operation}
 =================
 
-Add Node/Declaration:
-@snippet write.cpp ejson_sample_write_add_declaration
+Add String:
+@snippet write.cpp ejson_sample_write_add_string_1
+@snippet write.cpp ejson_sample_write_add_string_2
 
-Add an Node/Element:
-@snippet write.cpp ejson_sample_write_add_element
+Add Null:
+@snippet write.cpp ejson_sample_write_add_null_1
+@snippet write.cpp ejson_sample_write_add_null_2
 
-Remove a Node/Element:
-@snippet write.cpp ejson_sample_write_rm_node
+Add Number:
+@snippet write.cpp ejson_sample_write_add_number_1
+@snippet write.cpp ejson_sample_write_add_number_2
 
+Add Boolean:
+@snippet write.cpp ejson_sample_write_add_boolean_1
+@snippet write.cpp ejson_sample_write_add_boolean_1
 
-Add an attribute (simple version):
-@snippet write.cpp ejson_sample_write_add_attribute_simple
+Add Array with values:
+@snippet write.cpp ejson_sample_write_add_array
 
-Add an attribute (complex version):
-@snippet write.cpp ejson_sample_write_add_attribute_complex
+Add Object with values:
+@snippet write.cpp ejson_sample_write_add_object
 
-Remove an attribute:
-@snippet write.cpp ejson_sample_write_rm_attribute
+Remove a Value in an Object:
+@snippet write.cpp ejson_sample_write_rm_object
+
+Remove a Value in an Object:
+@snippet write.cpp ejson_sample_write_rm_array
+
 
 Object concept                                    {#ejson_tutorial_concept}
 ==============
 
-the ejson concept is to abstract the implementation of the internal system. All the element are maped on shared memory.
+The ejson concept is to abstract the implementation of the internal system. All the element are mapped on shared memory.
 Then if you asign an element to an other, it is the same. You need to clone it if you want to have new standalone element.
 
+@snippet write.cpp ejson_sample_read_clone
 
 All example file                                  {#ejson_tutorial_write_all}
 ================

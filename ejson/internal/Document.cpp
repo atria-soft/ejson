@@ -29,10 +29,6 @@ ejson::internal::Document::Document() :
 	m_type = ejson::valueType::document;
 }
 
-ejson::internal::Document::~Document() {
-	
-}
-
 bool ejson::internal::Document::iGenerate(std::string& _data, size_t _indent) const {
 	ejson::internal::Object::iGenerate(_data, _indent+1);
 	_data += "\n";

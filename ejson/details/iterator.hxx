@@ -120,3 +120,8 @@ ejson::Value ejson::iterator<EJSON_BASE_T>::operator *() noexcept {
 	return m_data[m_id];
 }
 
+template<class EJSON_BASE_T>
+size_t ejson::iterator<EJSON_BASE_T>::getId() const noexcept {
+	return m_id;
+}
+

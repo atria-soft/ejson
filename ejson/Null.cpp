@@ -14,7 +14,7 @@ ejson::Null::Null(ememory::SharedPtr<ejson::internal::Value> _internalValue) :
 	if (m_data == nullptr) {
 		return;
 	}
-	if (m_data->isNull() == false) {
+	if (m_data->getType() != ejson::valueType::null) {
 		// try to set wrong type inside ... ==> remove it ...
 		m_data = nullptr;
 	}

@@ -41,9 +41,10 @@ namespace ejson {
 			void set(bool _value);
 			/**
 			 * @brief get the current element Value.
+			 * @param[in] _errorValue Value return if no value Exist
 			 * @return the reference of the string value.
 			 */
-			bool get() const;
+			bool get(bool _errorValue=false) const;
 	};
 }
 

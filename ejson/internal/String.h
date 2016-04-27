@@ -17,16 +17,9 @@ namespace ejson {
 				/**
 				 * @brief basic element of a xml structure
 				 */
-				String(const std::string& _value="") :
-				  m_value(_value) {
-					m_type = ejson::valueType::string;
-				};
+				String(const std::string& _value="");
 			public:
 				static ememory::SharedPtr<String> create(const std::string& _value="");
-				/**
-				 * @brief destructor
-				 */
-				virtual ~String() { };
 			protected:
 				std::string m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
 			public:
@@ -34,21 +27,17 @@ namespace ejson {
 				 * @brief set the value of the node.
 				 * @param[in] _value New value of the node.
 				 */
-				void set(const std::string& _value) {
-					m_value = _value;
-				};
+				void set(const std::string& _value);
 				/**
 				 * @brief get the current element Value.
 				 * @return the reference of the string value.
 				 */
-				const std::string& get() const {
-					return m_value;
-				};
-			public: // herited function :
-				virtual bool iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc);
-				virtual bool iGenerate(std::string& _data, size_t _indent) const;
-				virtual bool transfertIn(ememory::SharedPtr<ejson::internal::Value> _obj);
-				virtual ememory::SharedPtr<ejson::internal::Value> clone() const;
+				const std::string& get() const;
+			public:
+				virtual bool iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) override;
+				virtual bool iGenerate(std::string& _data, size_t _indent) const override;
+				virtual bool transfertIn(ememory::SharedPtr<ejson::internal::Value> _obj) override;
+				virtual ememory::SharedPtr<ejson::internal::Value> clone() const override;
 		};
 	}
 }

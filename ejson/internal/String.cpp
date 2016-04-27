@@ -17,6 +17,19 @@ ememory::SharedPtr<ejson::internal::String> ejson::internal::String::create(cons
 	return ememory::SharedPtr<ejson::internal::String>(new ejson::internal::String(_value));
 }
 
+ejson::internal::String::String(const std::string& _value) :
+  m_value(_value) {
+	m_type = ejson::valueType::string;
+}
+
+void ejson::internal::String::set(const std::string& _value) {
+	m_value = _value;
+}
+
+const std::string& ejson::internal::String::get() const {
+	return m_value;
+}
+
 bool ejson::internal::String::iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
 	EJSON_PARSE_ELEMENT("start parse : 'String' ");
 	char end = _data[_pos];
@@ -53,11 +66,11 @@ bool ejson::internal::String::transfertIn(ememory::SharedPtr<ejson::internal::Va
 		EJSON_ERROR("Request transfer on an nullptr pointer");
 		return false;
 	}
-	ememory::SharedPtr<ejson::internal::String> other = _obj->toString();
-	if (other == nullptr) {
+	if (_obj->getType() != ejson::valueType::string) {
 		EJSON_ERROR("Request transfer on an element that is not an String");
 		return false;
 	}
+	ememory::SharedPtr<ejson::internal::String> other = std::static_pointer_cast<ejson::internal::String>(_obj);
 	other->m_value = m_value;
 	m_value = "";
 	return true;

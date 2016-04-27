@@ -42,25 +42,10 @@ namespace ejson {
 			void set(double _value);
 			/**
 			 * @brief Get the current element Value.
-			 * @return The double number registered
-			 */
-			double get() const;
-			/**
-			 * @brief Get the current element Value.
 			 * @param[in] _errorValue Value return if no value Exist
 			 * @return The double number registered
 			 */
-			double get(double _errorValue) const;
-			/**
-			 * @brief Get the current element Value.
-			 * @return The 32 bit integer number registered
-			 */
-			int32_t getInt32() const;
-			/**
-			 * @brief Get the current element Value.
-			 * @return The 64 bit integer number registered
-			 */
-			int64_t getInt64() const;
+			double get(double _errorValue=0.0) const;
 	};
 }
 

@@ -89,12 +89,12 @@ static void writeAll() {
 	
 	// remove the object named "F"
 	//! [ejson_sample_write_rm_object]
-	//doc.remove("F");
+	doc.remove("F");
 	//! [ejson_sample_write_rm_object]
 	
 	// Remove element 2 in the array
 	//! [ejson_sample_write_rm_array]
-	//array.remove(2);
+	array.remove(2);
 	//! [ejson_sample_write_rm_array]
 	doc.display();
 }

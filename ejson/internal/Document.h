@@ -23,10 +23,6 @@ namespace ejson {
 				 */
 				Document();
 				static ememory::SharedPtr<Document> create();
-				/**
-				 * @brief Destructor
-				 */
-				virtual ~Document();
 			public:
 				/**
 				 * @brief parse a string that contain an XML
@@ -71,9 +67,9 @@ namespace ejson {
 				
 				void createError(const std::string& _data, size_t _pos, const ejson::FilePos& _filePos, const std::string& _comment);
 				void displayError();
-			public: // herited function:
-				virtual bool iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc);
-				virtual bool iGenerate(std::string& _data, size_t _indent) const;
+			public:
+				bool iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) override;
+				bool iGenerate(std::string& _data, size_t _indent) const override;
 		};
 	}
 }

@@ -14,7 +14,7 @@ ejson::String::String(ememory::SharedPtr<ejson::internal::Value> _internalValue)
 	if (m_data == nullptr) {
 		return;
 	}
-	if (m_data->isString() == false) {
+	if (m_data->getType() != ejson::valueType::string) {
 		// try to set wrong type inside ... ==> remove it ...
 		m_data = nullptr;
 	}
@@ -43,11 +43,10 @@ void ejson::String::set(const std::string& _value) {
 	static_cast<ejson::internal::String*>(m_data.get())->set(_value);
 }
 
-const std::string& ejson::String::get() const {
+std::string ejson::String::get(const std::string& _errorValue) const {
 	if (m_data == nullptr) {
-		static const std::string errorValue = "";
 		EJSON_ERROR("Can not get (nullptr) ...");
-		return errorValue;
+		return _errorValue;
 	}
 	return static_cast<ejson::internal::String*>(m_data.get())->get();
 }

@@ -15,6 +15,11 @@ ememory::SharedPtr<ejson::internal::Number> ejson::internal::Number::create(doub
 	return ememory::SharedPtr<ejson::internal::Number>(new ejson::internal::Number(_value));
 }
 
+ejson::internal::Number::Number(double _value) :
+  m_value(_value) {
+	m_type = ejson::valueType::number;
+}
+
 bool ejson::internal::Number::iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
 	EJSON_PARSE_ELEMENT("start parse : 'Number' ");
 	std::string tmpVal;
@@ -55,11 +60,11 @@ bool ejson::internal::Number::transfertIn(ememory::SharedPtr<ejson::internal::Va
 		EJSON_ERROR("Request transfer on an nullptr pointer");
 		return false;
 	}
-	ememory::SharedPtr<ejson::internal::Number> other = _obj->toNumber();
-	if (other == nullptr) {
+	if (_obj->getType() != ejson::valueType::number) {
 		EJSON_ERROR("Request transfer on an element that is not an Number");
 		return false;
 	}
+	ememory::SharedPtr<ejson::internal::Number> other = std::static_pointer_cast<ejson::internal::Number>(_obj);
 	// remove destination elements
 	other->m_value = m_value;
 	m_value = 0;
@@ -75,4 +80,10 @@ ememory::SharedPtr<ejson::internal::Value> ejson::internal::Number::clone() cons
 	return output;
 }
 
+void ejson::internal::Number::set(double _value) {
+	m_value = _value;
+}
 
+double ejson::internal::Number::get() const {
+	return m_value;
+}

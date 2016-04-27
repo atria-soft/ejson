@@ -15,7 +15,7 @@ ejson::Number::Number(ememory::SharedPtr<ejson::internal::Value> _internalValue)
 	if (m_data == nullptr) {
 		return;
 	}
-	if (m_data->isNumber() == false) {
+	if (m_data->getType() != ejson::valueType::number) {
 		// try to set wrong type inside ... ==> remove it ...
 		m_data = nullptr;
 	}
@@ -44,35 +44,10 @@ void ejson::Number::set(double _value) {
 	static_cast<ejson::internal::Number*>(m_data.get())->set(_value);
 }
 
-double ejson::Number::get() const {
-	if (m_data == nullptr) {
-		EJSON_ERROR("Can not parse (nullptr) ...");
-		return 0.0;
-	}
-	return static_cast<ejson::internal::Number*>(m_data.get())->get();
-}
-
 double ejson::Number::get(double _errorValue) const {
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not parse (nullptr) ...");
+		EJSON_ERROR("Can not get (nullptr) ...");
 		return _errorValue;
 	}
 	return static_cast<ejson::internal::Number*>(m_data.get())->get();
 }
-
-int32_t ejson::Number::getInt32() const {
-	if (m_data == nullptr) {
-		EJSON_ERROR("Can not getInt32 (nullptr) ...");
-		return 0;
-	}
-	return static_cast<ejson::internal::Number*>(m_data.get())->getInt32();
-}
-
-int64_t ejson::Number::getInt64() const {
-	if (m_data == nullptr) {
-		EJSON_ERROR("Can not getInt64 (nullptr) ...");
-		return 0;
-	}
-	return static_cast<ejson::internal::Number*>(m_data.get())->getInt64();
-}
-

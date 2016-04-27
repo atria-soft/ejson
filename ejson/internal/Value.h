@@ -64,18 +64,22 @@ namespace ejson {
 				 * @brief parse the Current node [pure VIRUAL]
 				 * @param[in] _data data string to parse.
 				 * @param[in,out] _pos position in the string to start parse, return the position end of parsing.
-				 * @param[in] _caseSensitive Request a parsion of element that is not case sensitive (all element is in low case)
-				 * @param[in,out] file parsing position (line x col x)
+				 * @param[in,out] _filePos Position in the file (in X/Y)
+				 * @param[in,out] _doc Reference on the main document
 				 * @return false if an error occured.
 				 */
-				virtual bool iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) = 0;
+				virtual bool iParse(const std::string& _data,
+				                    size_t& _pos,
+				                    ejson::FilePos& _filePos,
+				                    ejson::internal::Document& _doc) = 0;
 				/**
 				 * @brief generate a string with the tree of the xml
 				 * @param[in,out] _data string where to add the elements
-				 * @param[in] current indentation of the file
+				 * @param[in] _indent current indentation of the file
 				 * @return false if an error occured.
 				 */
-				virtual bool iGenerate(std::string& _data, size_t _indent) const = 0;
+				virtual bool iGenerate(std::string& _data,
+				                       size_t _indent) const = 0;
 				/**
 				 * @brief Display the Document on console
 				 */
@@ -94,13 +98,17 @@ namespace ejson {
 				 */
 				void drawElementParsed(char32_t _val, const ejson::FilePos& _filePos) const;
 				/**
-				 * @brief check if an name (for object named) (not : !"#$%&'()*+,/;<=>?@[\]^`{|}~ \n\t\r).
+				 * @brief check if an name (for object named) (not : !"#$%&'()*+,/;<=>?@[\]^`{|}~ \\n\\t\\r).
 				 * @param[in] _val Value to check the conformity.
+				 * @return true The element char is considerable as a string
+				 * @return false The element char is NOT considerable as a string
 				 */
 				bool checkString(char32_t _val) const;
 				/**
 				 * @brief check if an number -+.0123456789e).
 				 * @param[in] _val Value to check the conformity.
+				 * @return true The element char is considerable as a number
+				 * @return false The element char is NOT considerable as a number
 				 */
 				bool checkNumber(char32_t _val) const;
 				/**
@@ -112,123 +120,6 @@ namespace ejson {
 				 */
 				int32_t countWhiteChar(const std::string& _data, size_t _pos, ejson::FilePos& _filePos) const;
 			public:
-				/**
-				 * @brief Cast the element in a Value if it is possible.
-				 * @return pointer on the class or nullptr.
-				 */
-				ememory::SharedPtr<ejson::internal::Value> toValue();
-				/**
-				 * @brief Cast the element in a Value if it is possible.
-				 * @return CONST pointer on the class or nullptr.
-				 */
-				const ememory::SharedPtr<const ejson::internal::Value> toValue() const;
-				/**
-				 * @brief Cast the element in a Document if it is possible.
-				 * @return pointer on the class or nullptr.
-				 */
-				ememory::SharedPtr<ejson::internal::Document> toDocument();
-				/**
-				 * @brief Cast the element in a Document if it is possible.
-				 * @return CONST pointer on the class or nullptr.
-				 */
-				const ememory::SharedPtr<const ejson::internal::Document> toDocument() const;
-				/**
-				 * @brief Cast the element in a Array if it is possible.
-				 * @return pointer on the class or nullptr.
-				 */
-				ememory::SharedPtr<ejson::internal::Array> toArray();
-				/**
-				 * @brief Cast the element in a Array if it is possible.
-				 * @return CONST pointer on the class or nullptr.
-				 */
-				const ememory::SharedPtr<const ejson::internal::Array> toArray() const;
-				/**
-				 * @brief Cast the element in a Object if it is possible.
-				 * @return pointer on the class or nullptr.
-				 */
-				ememory::SharedPtr<ejson::internal::Object> toObject();
-				/**
-				 * @brief Cast the element in a Object if it is possible.
-				 * @return CONST pointer on the class or nullptr.
-				 */
-				const ememory::SharedPtr<const ejson::internal::Object> toObject() const;
-				/**
-				 * @brief Cast the element in a String if it is possible.
-				 * @return pointer on the class or nullptr.
-				 */
-				ememory::SharedPtr<ejson::internal::String> toString();
-				/**
-				 * @brief Cast the element in a String if it is possible.
-				 * @return CONST pointer on the class or nullptr.
-				 */
-				const ememory::SharedPtr<const ejson::internal::String> toString() const;
-				/**
-				 * @brief Cast the element in a Number if it is possible.
-				 * @return pointer on the class or nullptr.
-				 */
-				ememory::SharedPtr<ejson::internal::Number> toNumber();
-				/**
-				 * @brief Cast the element in a Number if it is possible.
-				 * @return CONST pointer on the class or nullptr.
-				 */
-				const ememory::SharedPtr<const ejson::internal::Number> toNumber() const;
-				/**
-				 * @brief Cast the element in a Boolean if it is possible.
-				 * @return pointer on the class or nullptr.
-				 */
-				ememory::SharedPtr<ejson::internal::Boolean> toBoolean();
-				/**
-				 * @brief Cast the element in a Boolean if it is possible.
-				 * @return CONST pointer on the class or nullptr.
-				 */
-				const ememory::SharedPtr<const ejson::internal::Boolean> toBoolean() const;
-				/**
-				 * @brief Cast the element in a Null if it is possible.
-				 * @return pointer on the class or nullptr.
-				 */
-				ememory::SharedPtr<ejson::internal::Null> toNull();
-				/**
-				 * @brief Cast the element in a Null if it is possible.
-				 * @return CONST pointer on the class or nullptr.
-				 */
-				const ememory::SharedPtr<const ejson::internal::Null> toNull() const;
-				
-				/**
-				 * @brief check if the node is a ejson::internal::Document
-				 * @return true if the node is a ejson::internal::Document
-				 */
-				bool isDocument() const;
-				/**
-				 * @brief check if the node is a ejson::internal::Array
-				 * @return true if the node is a ejson::internal::Array
-				 */
-				bool isArray() const;
-				/**
-				 * @brief check if the node is a ejson::internal::Object
-				 * @return true if the node is a ejson::internal::Object
-				 */
-				bool isObject() const;
-				/**
-				 * @brief check if the node is a ejson::internal::String
-				 * @return true if the node is a ejson::internal::String
-				 */
-				bool isString() const;
-				/**
-				 * @brief check if the node is a ejson::internal::Number
-				 * @return true if the node is a ejson::internal::Number
-				 */
-				bool isNumber() const;
-				/**
-				 * @brief check if the node is a ejson::internal::Boolean
-				 * @return true if the node is a ejson::internal::Boolean
-				 */
-				bool isBoolean() const;
-				/**
-				 * @brief check if the node is a ejson::internal::Null
-				 * @return true if the node is a ejson::internal::Null
-				 */
-				bool isNull() const;
-				
 				/**
 				 * @brief clear the Node
 				 */
@@ -248,6 +139,7 @@ namespace ejson {
 			protected:
 				/**
 				 * @brief check if the current element is white or not : '\\t' '\\n' '\\r' ' '
+				 * @param[in] _val Char value to check
 				 * @return tue if it is white char
 				 */
 				static bool isWhiteChar(char32_t _val);

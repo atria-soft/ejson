@@ -8,13 +8,17 @@
 #include <ejson/Array.h>
 #include <ejson/debug.h>
 #include <ejson/internal/Array.h>
+#include <ejson/Boolean.h>
+#include <ejson/String.h>
+#include <ejson/Null.h>
+#include <ejson/Number.h>
 
 ejson::Array::Array(ememory::SharedPtr<ejson::internal::Value> _internalValue) :
   ejson::Value(_internalValue) {
 	if (m_data == nullptr) {
 		return;
 	}
-	if (m_data->isArray() == false) {
+	if (m_data->getType() != ejson::valueType::array) {
 		// try to set wrong type inside ... ==> remove it ...
 		m_data = nullptr;
 	}
@@ -59,45 +63,16 @@ const ejson::Value ejson::Array::operator[] (size_t _id) const {
 	return ejson::Value(static_cast<ejson::internal::Array*>(m_data.get())->get(_id));
 }
 
-std::string ejson::Array::getStringValue(size_t _id) {
-	if (m_data == nullptr) {
-		EJSON_ERROR("Can not parse (nullptr) ...");
-		return "";
-	}
-	return static_cast<ejson::internal::Array*>(m_data.get())->getStringValue(_id);
-}
-
-const std::string& ejson::Array::getStringValue(size_t _id) const {
-	if (m_data == nullptr) {
-		static const std::string errorValue = "";
-		EJSON_ERROR("Can not getStringValue (nullptr) ...");
-		return errorValue;
-	}
-	return static_cast<const ejson::internal::Array*>(m_data.get())->getStringValue(_id);
-}
-
 std::string ejson::Array::getStringValue(size_t _id, const std::string& _errorValue) const {
-	if (m_data == nullptr) {
-		EJSON_ERROR("Can not getStringValue (nullptr) ...");
-		return _errorValue;
-	}
-	return static_cast<const ejson::internal::Array*>(m_data.get())->getStringValue(_id, _errorValue);
+	return (*this)[_id].toString().get(_errorValue);
 }
 
 double ejson::Array::getNumberValue(size_t _id, double _errorValue) const {
-	if (m_data == nullptr) {
-		EJSON_ERROR("Can not getNumberValue (nullptr) ...");
-		return _errorValue;
-	}
-	return static_cast<const ejson::internal::Array*>(m_data.get())->getNumberValue(_id, _errorValue);
+	return (*this)[_id].toNumber().get(_errorValue);
 }
 
 bool ejson::Array::getBooleanValue(size_t _id, bool _errorValue) const {
-	if (m_data == nullptr) {
-		EJSON_ERROR("Can not getBooleanValue (nullptr) ...");
-		return _errorValue;
-	}
-	return static_cast<const ejson::internal::Array*>(m_data.get())->getBooleanValue(_id, _errorValue);
+	return (*this)[_id].toBoolean().get(_errorValue);
 }
 
 bool ejson::Array::add(const ejson::Value& _element) {
@@ -108,36 +83,39 @@ bool ejson::Array::add(const ejson::Value& _element) {
 	return static_cast<ejson::internal::Array*>(m_data.get())->add(_element.m_data);
 }
 
-bool ejson::Array::addString(const std::string& _value) {
+void ejson::Array::remove(size_t _id) {
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not addString (nullptr) ...");
-		return false;
+		EJSON_ERROR("Can not remove (nullptr) ...");
+		return;
 	}
-	return static_cast<ejson::internal::Array*>(m_data.get())->addString(_value);
+	static_cast<ejson::internal::Array*>(m_data.get())->remove(_id);
+}
+
+ejson::Array::iterator ejson::Array::remove(const ejson::Array::iterator& _it) {
+	if (m_data == nullptr) {
+		EJSON_ERROR("Can not remove (nullptr) ...");
+		return _it;
+	}
+	static_cast<ejson::internal::Array*>(m_data.get())->remove(_it.getId());
+	return ejson::Array::iterator(*this, _it.getId());
+}
+
+
+
+bool ejson::Array::addString(const std::string& _value) {
+	return add(ejson::String(_value));
 }
 
 bool ejson::Array::addNull() {
-	if (m_data == nullptr) {
-		EJSON_ERROR("Can not addNull (nullptr) ...");
-		return false;
-	}
-	return static_cast<ejson::internal::Array*>(m_data.get())->addNull();
+	return add(ejson::Null());
 }
 
 bool ejson::Array::addBoolean(bool _value) {
-	if (m_data == nullptr) {
-		EJSON_ERROR("Can not addBoolean (nullptr) ...");
-		return false;
-	}
-	return static_cast<ejson::internal::Array*>(m_data.get())->addBoolean(_value);
+	return add(ejson::Boolean(_value));
 }
 
 bool ejson::Array::addNumber(double _value) {
-	if (m_data == nullptr) {
-		EJSON_ERROR("Can not addNumber (nullptr) ...");
-		return false;
-	}
-	return static_cast<ejson::internal::Array*>(m_data.get())->addNumber(_value);
+	return add(ejson::Number(_value));
 }
 
 ejson::Array::iterator ejson::Array::begin() {

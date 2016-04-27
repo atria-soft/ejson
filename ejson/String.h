@@ -41,9 +41,10 @@ namespace ejson {
 			void set(const std::string& _value);
 			/**
 			 * @brief get the current element Value.
+			 * @param[in] _errorValue The return value if an error occured.
 			 * @return the reference of the string value.
 			 */
-			const std::string& get() const;
+			std::string get(const std::string& _errorValue="") const;
 	};
 }
 

@@ -63,6 +63,8 @@ namespace ejson {
 			void display() const;
 			/**
 			 * @brief Check if the element exit
+			 * @return true The element exist
+			 * @return False The element does NOT exist
 			 */
 			bool exist() const;
 			/**

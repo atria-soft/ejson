@@ -14,6 +14,18 @@ ememory::SharedPtr<ejson::internal::Boolean> ejson::internal::Boolean::create(bo
 	return ememory::SharedPtr<ejson::internal::Boolean>(new ejson::internal::Boolean(_value));
 }
 
+ejson::internal::Boolean::Boolean(bool _value) :
+  m_value(_value) {
+	m_type = ejson::valueType::boolean;
+}
+
+void ejson::internal::Boolean::set(bool _value) {
+	m_value = _value;
+}
+
+bool ejson::internal::Boolean::get() const {
+	return m_value;
+}
 
 bool ejson::internal::Boolean::iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
 	EJSON_PARSE_ELEMENT("start parse : 'Boolean' ");
@@ -59,11 +71,11 @@ bool ejson::internal::Boolean::transfertIn(ememory::SharedPtr<ejson::internal::V
 		EJSON_ERROR("Request transfer on an NULL pointer");
 		return false;
 	}
-	ememory::SharedPtr<ejson::internal::Boolean> other = _obj->toBoolean();
-	if (other == nullptr) {
+	if (_obj->getType() != ejson::valueType::boolean) {
 		EJSON_ERROR("Request transfer on an element that is not an Boolean");
 		return false;
 	}
+	ememory::SharedPtr<ejson::internal::Boolean> other = std::static_pointer_cast<ejson::internal::Boolean>(_obj);
 	// remove destination elements
 	other->m_value = m_value;
 	m_value = false;

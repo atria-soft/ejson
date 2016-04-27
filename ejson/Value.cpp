@@ -125,49 +125,50 @@ bool ejson::Value::isDocument() const {
 	if (m_data == nullptr) {
 		return false;
 	}
-	return m_data->isDocument();
+	enum ejson::valueType type = m_data->getType();
+	return type == ejson::valueType::document;
 }
 
 bool ejson::Value::isArray() const {
 	if (m_data == nullptr) {
 		return false;
 	}
-	return m_data->isArray();
+	return m_data->getType() == ejson::valueType::array;
 }
 
 bool ejson::Value::isObject() const {
 	if (m_data == nullptr) {
 		return false;
 	}
-	return m_data->isObject();
+	return m_data->getType() == ejson::valueType::object;
 }
 
 bool ejson::Value::isString() const {
 	if (m_data == nullptr) {
 		return false;
 	}
-	return m_data->isString();
+	return m_data->getType() == ejson::valueType::string;
 }
 
 bool ejson::Value::isNumber() const {
 	if (m_data == nullptr) {
 		return false;
 	}
-	return m_data->isNumber();
+	return m_data->getType() == ejson::valueType::number;
 }
 
 bool ejson::Value::isBoolean() const {
 	if (m_data == nullptr) {
 		return false;
 	}
-	return m_data->isBoolean();
+	return m_data->getType() == ejson::valueType::boolean;
 }
 
 bool ejson::Value::isNull() const {
 	if (m_data == nullptr) {
 		return false;
 	}
-	return m_data->isNull();
+	return m_data->getType() == ejson::valueType::null;
 }
 
 

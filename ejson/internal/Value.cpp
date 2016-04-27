@@ -111,90 +111,11 @@ bool ejson::internal::Value::checkNumber(char32_t _val) const {
 	return false;
 }
 
-ememory::SharedPtr<ejson::internal::Value> ejson::internal::Value::toValue() {
-	return shared_from_this();
-};
-const ememory::SharedPtr<const ejson::internal::Value> ejson::internal::Value::toValue() const {
-	return shared_from_this();
-};
-ememory::SharedPtr<ejson::internal::Document> ejson::internal::Value::toDocument() {
-	return std::dynamic_pointer_cast<ejson::internal::Document>(shared_from_this());
-};
-const ememory::SharedPtr<const ejson::internal::Document> ejson::internal::Value::toDocument() const {
-	return std::dynamic_pointer_cast<const ejson::internal::Document>(shared_from_this());
-};
-ememory::SharedPtr<ejson::internal::Array> ejson::internal::Value::toArray() {
-	return std::dynamic_pointer_cast<ejson::internal::Array>(shared_from_this());
-};
-const ememory::SharedPtr<const ejson::internal::Array> ejson::internal::Value::toArray() const{
-	return std::dynamic_pointer_cast<const ejson::internal::Array>(shared_from_this());
-};
-ememory::SharedPtr<ejson::internal::Object> ejson::internal::Value::toObject() {
-	return std::dynamic_pointer_cast<ejson::internal::Object>(shared_from_this());
-};
-const ememory::SharedPtr<const ejson::internal::Object> ejson::internal::Value::toObject() const{
-	return std::dynamic_pointer_cast<const ejson::internal::Object>(shared_from_this());
-};
-ememory::SharedPtr<ejson::internal::String> ejson::internal::Value::toString() {
-	return std::dynamic_pointer_cast<ejson::internal::String>(shared_from_this());
-};
-const ememory::SharedPtr<const ejson::internal::String> ejson::internal::Value::toString() const{
-	return std::dynamic_pointer_cast<const ejson::internal::String>(shared_from_this());
-};
-ememory::SharedPtr<ejson::internal::Number> ejson::internal::Value::toNumber() {
-	return std::dynamic_pointer_cast<ejson::internal::Number>(shared_from_this());
-};
-const ememory::SharedPtr<const ejson::internal::Number> ejson::internal::Value::toNumber() const{
-	return std::dynamic_pointer_cast<const ejson::internal::Number>(shared_from_this());
-};
-ememory::SharedPtr<ejson::internal::Boolean> ejson::internal::Value::toBoolean() {
-	return std::dynamic_pointer_cast<ejson::internal::Boolean>(shared_from_this());
-};
-const ememory::SharedPtr<const ejson::internal::Boolean> ejson::internal::Value::toBoolean() const{
-	return std::dynamic_pointer_cast<const ejson::internal::Boolean>(shared_from_this());
-};
-ememory::SharedPtr<ejson::internal::Null> ejson::internal::Value::toNull() {
-	return std::dynamic_pointer_cast<ejson::internal::Null>(shared_from_this());
-};
-const ememory::SharedPtr<const ejson::internal::Null> ejson::internal::Value::toNull() const{
-	return std::dynamic_pointer_cast<const ejson::internal::Null>(shared_from_this());
-};
-
 void ejson::internal::Value::display() const {
 	std::string tmpp;
 	iGenerate(tmpp, 0);
 	EJSON_INFO("Generated JSON : \n" << tmpp);
 }
-
-
-bool ejson::internal::Value::isDocument() const {
-	return toDocument() != nullptr;
-}
-
-bool ejson::internal::Value::isArray() const {
-	return toArray() != nullptr;
-}
-
-bool ejson::internal::Value::isObject() const {
-	return toObject() != nullptr;
-}
-
-bool ejson::internal::Value::isString() const {
-	return toString() != nullptr;
-}
-
-bool ejson::internal::Value::isNumber() const {
-	return toNumber() != nullptr;
-}
-
-bool ejson::internal::Value::isBoolean() const {
-	return toBoolean() != nullptr;
-}
-
-bool ejson::internal::Value::isNull() const {
-	return toNull() != nullptr;
-}
-
 
 void ejson::internal::Value::clear() {
 	

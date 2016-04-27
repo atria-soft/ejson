@@ -162,21 +162,20 @@ bool ejson::internal::Array::iGenerate(std::string& _data, size_t _indent) const
 			if (tmp == nullptr) {
 				continue;
 			}
-			if (true == tmp->isObject()) {
+			if (    tmp->getType() == ejson::valueType::object
+			     || tmp->getType() == ejson::valueType::document) {
 				oneLine=false;
 				break;
 			}
-			if (true == tmp->isArray()) {
+			if (tmp->getType() == ejson::valueType::array) {
 				oneLine=false;
 				break;
 			}
-			if (true == tmp->isString()) {
-				ememory::SharedPtr<const ejson::internal::String> tmp2 = tmp->toString();
-				if (tmp2 != nullptr) {
-					if(tmp2->get().size()>40) {
-						oneLine=false;
-						break;
-					}
+			if (tmp->getType() == ejson::valueType::string) {
+				ememory::SharedPtr<const ejson::internal::String> tmp2 = std::static_pointer_cast<const ejson::internal::String>(tmp);
+				if(tmp2->get().size()>40) {
+					oneLine=false;
+					break;
 				}
 			}
 		}
@@ -218,20 +217,11 @@ bool ejson::internal::Array::add(ememory::SharedPtr<ejson::internal::Value> _ele
 	return true;
 }
 
-bool ejson::internal::Array::addString(const std::string& _value) {
-	return add(ejson::internal::String::create(_value));
-}
-
-bool ejson::internal::Array::addNull() {
-	return add(ejson::internal::Null::create());
-}
-
-bool ejson::internal::Array::addBoolean(bool _value) {
-	return add(ejson::internal::Boolean::create(_value));
-}
-
-bool ejson::internal::Array::addNumber(double _value) {
-	return add(ejson::internal::Number::create(_value));
+void ejson::internal::Array::remove(size_t _id) {
+	if (_id > m_value.size()) {
+		EJSON_ERROR("try remove out of bound element");
+	}
+	m_value.erase(m_value.begin() + _id);
 }
 
 
@@ -240,11 +230,11 @@ bool ejson::internal::Array::transfertIn(ememory::SharedPtr<ejson::internal::Val
 		EJSON_ERROR("Request transfer on an nullptr pointer");
 		return false;
 	}
-	ememory::SharedPtr<ejson::internal::Array> other = _obj->toArray();
-	if (other == nullptr) {
-		EJSON_ERROR("Request transfer on an element that is not an array");
+	if (_obj->getType() != ejson::valueType::array) {
+		EJSON_ERROR("Request transfer on an element that is not an Array");
 		return false;
 	}
+	ememory::SharedPtr<ejson::internal::Array> other = std::static_pointer_cast<ejson::internal::Array>(_obj);
 	// remove destination elements
 	other->clear();
 	// Copy to the destination
@@ -270,141 +260,4 @@ ememory::SharedPtr<ejson::internal::Value> ejson::internal::Array::clone() const
 	}
 	return output;
 }
-
-ememory::SharedPtr<ejson::internal::Object> ejson::internal::Array::getObject(size_t _id) {
-	ememory::SharedPtr<ejson::internal::Value> tmpElement = m_value[_id];
-	if (tmpElement == nullptr) {
-		return ememory::SharedPtr<ejson::internal::Object>();
-	}
-	return tmpElement->toObject();
-}
-const ememory::SharedPtr<const ejson::internal::Object> ejson::internal::Array::getObject(size_t _id) const {
-	const ememory::SharedPtr<const ejson::internal::Value> tmpElement = m_value[_id];
-	if (tmpElement == nullptr) {
-		return ememory::SharedPtr<const ejson::internal::Object>();
-	}
-	return tmpElement->toObject();
-}
-
-ememory::SharedPtr<ejson::internal::String> ejson::internal::Array::getString(size_t _id) {
-	ememory::SharedPtr<ejson::internal::Value> tmpElement = m_value[_id];
-	if (tmpElement == nullptr) {
-		return ememory::SharedPtr<ejson::internal::String>();
-	}
-	return tmpElement->toString();
-}
-
-const ememory::SharedPtr<const ejson::internal::String> ejson::internal::Array::getString(size_t _id) const {
-	const ememory::SharedPtr<const ejson::internal::Value> tmpElement = m_value[_id];
-	if (tmpElement == nullptr) {
-		return ememory::SharedPtr<const ejson::internal::String>();
-	}
-	return tmpElement->toString();
-}
-
-ememory::SharedPtr<ejson::internal::Array> ejson::internal::Array::getArray(size_t _id) {
-	ememory::SharedPtr<ejson::internal::Value> tmpElement = m_value[_id];
-	if (tmpElement == nullptr) {
-		return ememory::SharedPtr<ejson::internal::Array>();
-	}
-	return tmpElement->toArray();
-}
-
-const ememory::SharedPtr<const ejson::internal::Array> ejson::internal::Array::getArray(size_t _id) const {
-	const ememory::SharedPtr<const ejson::internal::Value> tmpElement = m_value[_id];
-	if (tmpElement == nullptr) {
-		return ememory::SharedPtr<const ejson::internal::Array>();
-	}
-	return tmpElement->toArray();
-}
-
-ememory::SharedPtr<ejson::internal::Null> ejson::internal::Array::getNull(size_t _id) {
-	ememory::SharedPtr<ejson::internal::Value> tmpElement = m_value[_id];
-	if (tmpElement == nullptr) {
-		return ememory::SharedPtr<ejson::internal::Null>();
-	}
-	return tmpElement->toNull();
-}
-
-const ememory::SharedPtr<const ejson::internal::Null> ejson::internal::Array::getNull(size_t _id) const {
-	const ememory::SharedPtr<const ejson::internal::Value> tmpElement = m_value[_id];
-	if (tmpElement == nullptr) {
-		return ememory::SharedPtr<const ejson::internal::Null>();
-	}
-	return tmpElement->toNull();
-}
-
-ememory::SharedPtr<ejson::internal::Number> ejson::internal::Array::getNumber(size_t _id) {
-	ememory::SharedPtr<ejson::internal::Value> tmpElement = m_value[_id];
-	if (tmpElement == nullptr) {
-		return ememory::SharedPtr<ejson::internal::Number>();
-	}
-	return tmpElement->toNumber();
-}
-
-const ememory::SharedPtr<const ejson::internal::Number> ejson::internal::Array::getNumber(size_t _id) const {
-	const ememory::SharedPtr<const ejson::internal::Value> tmpElement = m_value[_id];
-	if (tmpElement == nullptr) {
-		return ememory::SharedPtr<const ejson::internal::Number>();
-	}
-	return tmpElement->toNumber();
-}
-
-ememory::SharedPtr<ejson::internal::Boolean> ejson::internal::Array::getBoolean(size_t _id) {
-	ememory::SharedPtr<ejson::internal::Value> tmpElement = m_value[_id];
-	if (tmpElement == nullptr) {
-		return ememory::SharedPtr<ejson::internal::Boolean>();
-	}
-	return tmpElement->toBoolean();
-}
-
-const ememory::SharedPtr<const ejson::internal::Boolean> ejson::internal::Array::getBoolean(size_t _id) const {
-	const ememory::SharedPtr<const ejson::internal::Value> tmpElement = m_value[_id];
-	if (tmpElement == nullptr) {
-		return ememory::SharedPtr<const ejson::internal::Boolean>();
-	}
-	return tmpElement->toBoolean();
-}
-
-std::string ejson::internal::Array::getStringValue(size_t _id) {
-	ememory::SharedPtr<ejson::internal::String> tmpElement = getString(_id);
-	if (tmpElement == nullptr) {
-		return "";
-	}
-	return tmpElement->get();
-}
-
-const std::string& ejson::internal::Array::getStringValue(size_t _id) const {
-	static const std::string errorValue("");
-	const ememory::SharedPtr<const ejson::internal::String> tmpElement = getString(_id);
-	if (tmpElement == nullptr) {
-		return errorValue;
-	}
-	return tmpElement->get();
-}
-
-std::string ejson::internal::Array::getStringValue(size_t _id, const std::string& _errorValue) const {
-	const ememory::SharedPtr<const ejson::internal::String> tmpElement = getString(_id);
-	if (tmpElement == nullptr) {
-		return _errorValue;
-	}
-	return tmpElement->get();
-}
-
-double ejson::internal::Array::getNumberValue(size_t _id, double _errorValue) const {
-	const ememory::SharedPtr<const ejson::internal::Number> tmpElement = getNumber(_id);
-	if (tmpElement == nullptr) {
-		return _errorValue;
-	}
-	return tmpElement->get();
-}
-
-bool ejson::internal::Array::getBooleanValue(size_t _id, bool _errorValue) const {
-	const ememory::SharedPtr<const ejson::internal::Boolean> tmpElement = getBoolean(_id);
-	if (tmpElement == nullptr) {
-		return _errorValue;
-	}
-	return tmpElement->get();
-}
-
 

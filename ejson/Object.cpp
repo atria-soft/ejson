@@ -15,7 +15,7 @@ ejson::Object::Object(ememory::SharedPtr<ejson::internal::Value> _internalValue)
 	if (m_data == nullptr) {
 		return;
 	}
-	if (m_data->isObject() == false) {
+	if (m_data->getType() != ejson::valueType::null) {
 		// try to set wrong type inside ... ==> remove it ...
 		m_data = nullptr;
 	}
@@ -106,37 +106,16 @@ std::string ejson::Object::getKey(size_t _id) const {
 	return static_cast<ejson::internal::Object*>(m_data.get())->getKey(_id);
 }
 
-const std::string& ejson::Object::getStringValue(const std::string& _name) const {
-	if (m_data == nullptr) {
-		static const std::string errorString = "";
-		EJSON_ERROR("Can not getStringValue (nullptr) ...");
-		return errorString;
-	}
-	return static_cast<const ejson::internal::Object*>(m_data.get())->getStringValue(_name);
-}
-
 std::string ejson::Object::getStringValue(const std::string& _name, const std::string& _errorValue) const {
-	if (m_data == nullptr) {
-		EJSON_ERROR("Can not getStringValue (nullptr) ...");
-		return "";
-	}
-	return static_cast<const ejson::internal::Object*>(m_data.get())->getStringValue(_name, _errorValue);
+	return (*this)[_name].toString().get(_errorValue);
 }
 
 bool ejson::Object::getBooleanValue(const std::string& _name, bool _errorValue) const {
-	if (m_data == nullptr) {
-		EJSON_ERROR("Can not getBooleanValue (nullptr) ...");
-		return false;
-	}
-	return static_cast<const ejson::internal::Object*>(m_data.get())->getBooleanValue(_name, _errorValue);
+	return (*this)[_name].toBoolean().get(_errorValue);
 }
 
 double ejson::Object::getNumberValue(const std::string& _name, double _errorValue) const {
-	if (m_data == nullptr) {
-		EJSON_ERROR("Can not getNumberValue (nullptr) ...");
-		return 0.0;
-	}
-	return static_cast<const ejson::internal::Object*>(m_data.get())->getNumberValue(_name, _errorValue);
+	return (*this)[_name].toNumber().get(_errorValue);
 }
 
 bool ejson::Object::add(const std::string& _name, const ejson::Value& _value) {
@@ -148,35 +127,44 @@ bool ejson::Object::add(const std::string& _name, const ejson::Value& _value) {
 }
 
 bool ejson::Object::addString(const std::string& _name, const std::string& _value) {
-	if (m_data == nullptr) {
-		EJSON_ERROR("Can not addString (nullptr) ...");
-		return false;
-	}
-	return static_cast<ejson::internal::Object*>(m_data.get())->addString(_name, _value);
+	return add(_name, ejson::String(_value));
 }
 
 bool ejson::Object::addNull(const std::string& _name) {
-	if (m_data == nullptr) {
-		EJSON_ERROR("Can not addNull (nullptr) ...");
-		return false;
-	}
-	return static_cast<ejson::internal::Object*>(m_data.get())->addNull(_name);
+	return add(_name, ejson::Null());
 }
 
 bool ejson::Object::addBoolean(const std::string& _name, bool _value) {
-	if (m_data == nullptr) {
-		EJSON_ERROR("Can not addBoolean (nullptr) ...");
-		return false;
-	}
-	return static_cast<ejson::internal::Object*>(m_data.get())->addBoolean(_name, _value);
+	return add(_name, ejson::Boolean(_value));
 }
 
 bool ejson::Object::addNumber(const std::string& _name, double _value) {
+	return add(_name, ejson::Number(_value));
+}
+
+void ejson::Object::remove(const std::string& _name) {
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not addNumber (nullptr) ...");
-		return false;
+		EJSON_ERROR("Can not remove (nullptr) ...");
+		return;
 	}
-	return static_cast<ejson::internal::Object*>(m_data.get())->addNumber(_name, _value);
+	static_cast<ejson::internal::Object*>(m_data.get())->remove(_name);
+}
+
+void ejson::Object::remove(size_t _id) {
+	if (m_data == nullptr) {
+		EJSON_ERROR("Can not remove (nullptr) ...");
+		return;
+	}
+	static_cast<ejson::internal::Object*>(m_data.get())->remove(_id);
+}
+
+ejson::Object::iterator ejson::Object::remove(const ejson::Object::iterator& _it) {
+	if (m_data == nullptr) {
+		EJSON_ERROR("Can not remove (nullptr) ...");
+		return _it;
+	}
+	static_cast<ejson::internal::Object*>(m_data.get())->remove(_it.getId());
+	return ejson::Object::iterator(*this, _it.getId());
 }
 
 

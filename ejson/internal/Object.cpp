@@ -222,26 +222,25 @@ bool ejson::internal::Object::iGenerate(std::string& _data, size_t _indent) cons
 		oneLine=false;
 	} else {
 		for (int32_t iii=0; iii<m_value.size() ; iii++) {
-			ememory::SharedPtr<ejson::internal::Value> tmp = m_value[iii];
+			ememory::SharedPtr<const ejson::internal::Value> tmp = m_value[iii];
 			if (tmp == nullptr) {
 				continue;
 			}
-			if (tmp->isObject() == true) {
+			if (    tmp->getType() == ejson::valueType::object
+			     || tmp->getType() == ejson::valueType::document) {
 				oneLine=false;
 				break;
 			}
-			if (tmp->isArray() == true) {
+			if (tmp->getType() == ejson::valueType::array) {
 				oneLine=false;
 				break;
 			}
-			if (tmp->isString() == true) {
-				ememory::SharedPtr<ejson::internal::String> tmp2 = tmp->toString();
-				if (tmp2 != nullptr) {
-					if(    tmp2->get().size()>25
-					    || m_value.getKey(iii).size()>25) {
-						oneLine=false;
-						break;
-					}
+			if (tmp->getType() == ejson::valueType::string) {
+				ememory::SharedPtr<const ejson::internal::String> tmp2 = std::static_pointer_cast<const ejson::internal::String>(tmp);
+				if(    tmp2->get().size()>25
+				    || m_value.getKey(iii).size()>25) {
+					oneLine=false;
+					break;
 				}
 			}
 		}
@@ -279,149 +278,39 @@ bool ejson::internal::Object::exist(const std::string& _name) const {
 	return m_value.exist(_name);
 }
 
+std::vector<std::string> ejson::internal::Object::getKeys() const {
+	return m_value.getKeys();
+}
+
+size_t ejson::internal::Object::size() const {
+	return m_value.size();
+}
+
+ememory::SharedPtr<ejson::internal::Value> ejson::internal::Object::get(size_t _id) {
+	return m_value[_id];
+}
+
+const ememory::SharedPtr<const ejson::internal::Value> ejson::internal::Object::get(size_t _id) const{
+	return m_value[_id];
+}
+
 ememory::SharedPtr<ejson::internal::Value> ejson::internal::Object::get(const std::string& _name) {
-	if (false == m_value.exist(_name)) {
+	if (m_value.exist(_name) == false) {
 		return ememory::SharedPtr<ejson::internal::Value>();
 	}
 	return m_value[_name];
 }
 
 const ememory::SharedPtr<const ejson::internal::Value> ejson::internal::Object::get(const std::string& _name) const {
-	if (false == m_value.exist(_name)) {
+	if (m_value.exist(_name) == false) {
 		return ememory::SharedPtr<const ejson::internal::Value>();
 	}
 	return m_value[_name];
 }
 
-ememory::SharedPtr<ejson::internal::Object> ejson::internal::Object::getObject(const std::string& _name) {
-	ememory::SharedPtr<ejson::internal::Value> tmp = get(_name);
-	if (tmp == nullptr) {
-		return ememory::SharedPtr<ejson::internal::Object>();
-	}
-	return std::dynamic_pointer_cast<ejson::internal::Object>(tmp);
+std::string ejson::internal::Object::getKey(size_t _id) const {
+	return m_value.getKey(_id);
 }
-
-const ememory::SharedPtr<const ejson::internal::Object> ejson::internal::Object::getObject(const std::string& _name) const {
-	const ememory::SharedPtr<const ejson::internal::Value> tmp = get(_name);
-	if (tmp == nullptr) {
-		return ememory::SharedPtr<const ejson::internal::Object>();
-	}
-	return std::dynamic_pointer_cast<const ejson::internal::Object>(tmp);
-}
-
-ememory::SharedPtr<ejson::internal::Array> ejson::internal::Object::getArray(const std::string& _name) {
-	ememory::SharedPtr<ejson::internal::Value> tmp = get(_name);
-	if (tmp == nullptr) {
-		return ememory::SharedPtr<ejson::internal::Array>();
-	}
-	return std::dynamic_pointer_cast<ejson::internal::Array>(tmp);
-}
-
-const ememory::SharedPtr<const ejson::internal::Array> ejson::internal::Object::getArray(const std::string& _name) const {
-	const ememory::SharedPtr<const ejson::internal::Value> tmp = get(_name);
-	if (tmp == nullptr) {
-		return ememory::SharedPtr<const ejson::internal::Array>();
-	}
-	return std::dynamic_pointer_cast<const ejson::internal::Array>(tmp);
-}
-
-ememory::SharedPtr<ejson::internal::Null> ejson::internal::Object::getNull(const std::string& _name) {
-	ememory::SharedPtr<ejson::internal::Value> tmp = get(_name);
-	if (tmp == nullptr) {
-		return ememory::SharedPtr<ejson::internal::Null>();
-	}
-	return std::dynamic_pointer_cast<ejson::internal::Null>(tmp);
-}
-
-const ememory::SharedPtr<const ejson::internal::Null> ejson::internal::Object::getNull(const std::string& _name) const {
-	const ememory::SharedPtr<const ejson::internal::Value> tmp = get(_name);
-	if (tmp == nullptr) {
-		return ememory::SharedPtr<const ejson::internal::Null>();
-	}
-	return std::dynamic_pointer_cast<const ejson::internal::Null>(tmp);
-}
-
-ememory::SharedPtr<ejson::internal::String> ejson::internal::Object::getString(const std::string& _name) {
-	ememory::SharedPtr<ejson::internal::Value> tmp = get(_name);
-	if (tmp == nullptr) {
-		return ememory::SharedPtr<ejson::internal::String>();
-	}
-	return std::dynamic_pointer_cast<ejson::internal::String>(tmp);
-}
-
-const ememory::SharedPtr<const ejson::internal::String> ejson::internal::Object::getString(const std::string& _name) const {
-	const ememory::SharedPtr<const ejson::internal::Value> tmp = get(_name);
-	if (tmp == nullptr) {
-		return ememory::SharedPtr<const ejson::internal::String>();
-	}
-	return std::dynamic_pointer_cast<const ejson::internal::String>(tmp);
-}
-
-const std::string& ejson::internal::Object::getStringValue(const std::string& _name) const {
-	static const std::string errorString("");
-	const ememory::SharedPtr<const ejson::internal::String> tmpp = getString(_name);
-	if (tmpp == nullptr) {
-		return errorString;
-	}
-	return tmpp->get();
-}
-
-std::string ejson::internal::Object::getStringValue(const std::string& _name, const std::string& _errorValue) const {
-	const ememory::SharedPtr<const ejson::internal::String> tmpp = getString(_name);
-	if (tmpp == nullptr) {
-		return _errorValue;
-	}
-	return tmpp->get();
-}
-
-ememory::SharedPtr<ejson::internal::Boolean> ejson::internal::Object::getBoolean(const std::string& _name) {
-	ememory::SharedPtr<ejson::internal::Value> tmp = get(_name);
-	if (tmp == nullptr) {
-		return ememory::SharedPtr<ejson::internal::Boolean>();
-	}
-	return tmp->toBoolean();
-}
-
-const ememory::SharedPtr<const ejson::internal::Boolean> ejson::internal::Object::getBoolean(const std::string& _name) const {
-	const ememory::SharedPtr<const ejson::internal::Value> tmp = get(_name);
-	if (tmp == nullptr) {
-		return ememory::SharedPtr<const ejson::internal::Boolean>();
-	}
-	return tmp->toBoolean();
-}
-
-bool ejson::internal::Object::getBooleanValue(const std::string& _name, bool _errorValue) const {
-	const ememory::SharedPtr<const ejson::internal::Boolean> tmpp = getBoolean(_name);
-	if (tmpp == nullptr) {
-		return _errorValue;
-	}
-	return tmpp->get();
-}
-
-ememory::SharedPtr<ejson::internal::Number> ejson::internal::Object::getNumber(const std::string& _name) {
-	ememory::SharedPtr<ejson::internal::Value> tmp = get(_name);
-	if (tmp == nullptr) {
-		return ememory::SharedPtr<ejson::internal::Number>();
-	}
-	return tmp->toNumber();
-}
-
-const ememory::SharedPtr<const ejson::internal::Number> ejson::internal::Object::getNumber(const std::string& _name) const {
-	const ememory::SharedPtr<const ejson::internal::Value> tmp = get(_name);
-	if (tmp == nullptr) {
-		return ememory::SharedPtr<const ejson::internal::Number>();
-	}
-	return tmp->toNumber();
-}
-
-double ejson::internal::Object::getNumberValue(const std::string& _name, double _errorValue) const {
-	const ememory::SharedPtr<const ejson::internal::Number> tmpp = getNumber(_name);
-	if (tmpp == nullptr) {
-		return _errorValue;
-	}
-	return tmpp->get();
-}
-
 
 bool ejson::internal::Object::add(const std::string& _name, ememory::SharedPtr<ejson::internal::Value> _value) {
 	if (_value == nullptr) {
@@ -438,20 +327,12 @@ bool ejson::internal::Object::add(const std::string& _name, ememory::SharedPtr<e
 	return true;
 }
 
-bool ejson::internal::Object::addString(const std::string& _name, const std::string& _value) {
-	return add(_name, ejson::internal::String::create(_value));
+void ejson::internal::Object::remove(const std::string& _name) {
+	m_value.remove(_name);
 }
 
-bool ejson::internal::Object::addNull(const std::string& _name) {
-	return add(_name, ejson::internal::Null::create());
-}
-
-bool ejson::internal::Object::addBoolean(const std::string& _name, bool _value) {
-	return add(_name, ejson::internal::Boolean::create(_value));
-}
-
-bool ejson::internal::Object::addNumber(const std::string& _name, double _value) {
-	return add(_name, ejson::internal::Number::create(_value));
+void ejson::internal::Object::remove(size_t _id) {
+	m_value.remove(getKey(_id));
 }
 
 bool ejson::internal::Object::transfertIn(ememory::SharedPtr<ejson::internal::Value> _obj) {
@@ -459,11 +340,12 @@ bool ejson::internal::Object::transfertIn(ememory::SharedPtr<ejson::internal::Va
 		EJSON_ERROR("Request transfer on an nullptr pointer");
 		return false;
 	}
-	ememory::SharedPtr<ejson::internal::Object> other = _obj->toObject();
-	if (other == nullptr) {
+	if (    _obj->getType() != ejson::valueType::object
+	     && _obj->getType() != ejson::valueType::document) {
 		EJSON_ERROR("Request transfer on an element that is not an object");
 		return false;
 	}
+	ememory::SharedPtr<ejson::internal::Object> other = std::static_pointer_cast<ejson::internal::Object>(_obj);
 	// remove destination elements
 	other->clear();
 	// Copy to the destination

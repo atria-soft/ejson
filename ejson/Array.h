@@ -45,36 +45,33 @@ namespace ejson {
 			 * @return nullptr if the element does not exist.
 			 */
 			ejson::Value operator[] (size_t _id);
-			const ejson::Value operator[] (size_t _id) const;
 			/**
-			 * @brief get the value of the string element (if not a string return "")
+			 * @brief get the pointer on an element reference with his ID.
 			 * @param[in] _id Id of the element.
-			 * @return value of the element.
+			 * @return nullptr if the element does not exist.
 			 */
-			std::string getStringValue(size_t _id);
-			//! @previous
-			const std::string& getStringValue(size_t _id) const;
+			const ejson::Value operator[] (size_t _id) const;
 			/**
 			 * @brief get the value of the string element
 			 * @param[in] _id Id of the element.
 			 * @param[in] _errorValue The return value if an error occured.
 			 * @return value of the element, or the _errorValue.
 			 */
-			std::string getStringValue(size_t _id, const std::string& _errorValue) const;
+			std::string getStringValue(size_t _id, const std::string& _errorValue="") const;
 			/**
 			 * @brief get the value of the Number element
 			 * @param[in] _id Id of the element.
 			 * @param[in] _errorValue The return value if an error occured.
 			 * @return value of the element, or the _errorValue.
 			 */
-			double getNumberValue(size_t _id, double _errorValue) const;
+			double getNumberValue(size_t _id, double _errorValue=0.0) const;
 			/**
 			 * @brief get the value of the Boolean element
 			 * @param[in] _id Id of the element.
 			 * @param[in] _errorValue The return value if an error occured.
 			 * @return value of the element, or the _errorValue.
 			 */
-			bool getBooleanValue(size_t _id, bool _errorValue) const;
+			bool getBooleanValue(size_t _id, bool _errorValue=false) const;
 			/**
 			 * @brief add an element on the array.
 			 * @param[in] _element element to add.
@@ -104,6 +101,11 @@ namespace ejson {
 			 * @return false if an error occured
 			 */
 			bool addNumber(double _value);
+			/**
+			 * @brief Remove Value with his Id
+			 * @param[in] _id Id of the element.
+			 */
+			void remove(size_t _id);
 		public:
 			using iterator = ejson::iterator<ejson::Array>; //!< Specify iterator of the Array methode
 			/**
@@ -126,6 +128,11 @@ namespace ejson {
 			 * @return const iterator on the next of the last position of the Value
 			 */
 			const iterator end() const;
+			/**
+			 * @brief Remove Value with his iterator
+			 * @param[in] _it Iterator on the Value.
+			 */
+			iterator remove(const iterator& _it);
 	};
 }
 

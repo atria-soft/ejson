@@ -44,13 +44,13 @@ namespace ejson {
 		public:
 			/**
 			 * @brief check if an element exist.
-			 * @param[in] _name name of the object.
+			 * @param[in] _name Name of the object.
 			 * @return The existance of the element.
 			 */
 			bool valueExist(const std::string& _name) const;
 			/**
 			 * @brief get the sub element with his name (no cast check)
-			 * @param[in] _name name of the object
+			 * @param[in] _name Name of the object
 			 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
 			 */
 			ejson::Value operator[] (const std::string& _name);
@@ -80,18 +80,12 @@ namespace ejson {
 			 */
 			std::string getKey(size_t _id) const;
 			/**
-			 * @brief get the sub string value of the requested element
-			 * @param[in] _name name of the object
-			 * @return Value of the string or an error string (empty)
-			 */
-			const std::string& getStringValue(const std::string& _name) const;
-			/**
 			 * @brief get the sub string value of the requested element (with error return value)
 			 * @param[in] _name name of the object
 			 * @param[in] _errorValue The return value if the element does not exist.
 			 * @return Value of the string or an error string (empty)
 			 */
-			std::string getStringValue(const std::string& _name, const std::string& _errorValue) const;
+			std::string getStringValue(const std::string& _name, const std::string& _errorValue="") const;
 			/**
 			 * @brief get the sub boolean value of the requested element.
 			 * @param[in] _name name of the object.
@@ -141,6 +135,16 @@ namespace ejson {
 			 * @return false if an error occured
 			 */
 			bool addNumber(const std::string& _name, double _value);
+			/**
+			 * @brief Remove Value with his name
+			 * @param[in] _name Name of the object
+			 */
+			void remove(const std::string& _name);
+			/**
+			 * @brief Remove Value with his id
+			 * @param[in] _id Id of the element.
+			 */
+			void remove(size_t _id);
 		public:
 			using iterator = ejson::iterator<ejson::Object>; //!< Specify iterator of the Object methode
 			/**
@@ -163,6 +167,11 @@ namespace ejson {
 			 * @return const iterator on the next of the last position of the Value
 			 */
 			const iterator end() const;
+			/**
+			 * @brief Remove Value with his iterator
+			 * @param[in] _it Iterator on the Value.
+			 */
+			iterator remove(const iterator& _it);
 	};
 }
 
