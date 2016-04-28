@@ -93,27 +93,6 @@ namespace ejson {
 			 * @return The name (key).
 			 */
 			std::string getKey(size_t _id) const;
-			/**
-			 * @brief get the sub string value of the requested element (with error return value)
-			 * @param[in] _name name of the object
-			 * @param[in] _errorValue The return value if the element does not exist.
-			 * @return Value of the string or an error string (empty)
-			 */
-			std::string getStringValue(const std::string& _name, const std::string& _errorValue="") const;
-			/**
-			 * @brief get the sub boolean value of the requested element.
-			 * @param[in] _name name of the object.
-			 * @param[in] _errorValue The return value if the element does not exist.
-			 * @return Value of the Boolean or the _errorValue;
-			 */
-			bool getBooleanValue(const std::string& _name, bool _errorValue=false) const;
-			/**
-			 * @brief get the sub Number value of the requested element.
-			 * @param[in] _name name of the object.
-			 * @param[in] _errorValue The return value if the element does not exist.
-			 * @return Value of the Number or the _errorValue;
-			 */
-			double getNumberValue(const std::string& _name, double _errorValue=0.0) const;
 		public:
 			/**
 			 * @brief add an element in the Object
@@ -122,33 +101,6 @@ namespace ejson {
 			 * @return false if an error occured
 			 */
 			bool add(const std::string& _name, const ejson::Value& _value);
-			/**
-			 * @brief add a string element in the Object (automatic creation)
-			 * @param[in] _name name of the object
-			 * @param[in] _value string value to add
-			 * @return false if an error occured
-			 */
-			bool addString(const std::string& _name, const std::string& _value);
-			/**
-			 * @brief add a "null" element in the Object (automatic creation)
-			 * @param[in] _name name of the object
-			 * @return false if an error occured
-			 */
-			bool addNull(const std::string& _name);
-			/**
-			 * @brief add a boolean element in the Object (automatic creation)
-			 * @param[in] _name name of the object
-			 * @param[in] _value boolean value to add
-			 * @return false if an error occured
-			 */
-			bool addBoolean(const std::string& _name, bool _value);
-			/**
-			 * @brief add a double element in the Object (automatic creation)
-			 * @param[in] _name name of the object
-			 * @param[in] _value double value to add
-			 * @return false if an error occured
-			 */
-			bool addNumber(const std::string& _name, double _value);
 			/**
 			 * @brief Remove Value with his name
 			 * @param[in] _name Name of the object

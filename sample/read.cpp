@@ -159,7 +159,9 @@ static void readFull() {
 	ejson::Value element = doc["object C"];
 	//! [ejson_sample_read_get_element]
 	//! [ejson_sample_read_check_element]
-	
+	if (element.exist() == false) {
+		TEST_ERROR("The element does not exist");
+	}
 	//! [ejson_sample_read_check_element]
 	
 	TEST_INFO("Read String:");
@@ -167,27 +169,17 @@ static void readFull() {
 		// you can simply change the type of the exml value if you know what it is:
 		//! [ejson_sample_read_convert_string]
 		ejson::String elem = doc["object A"].toString();
-		//! [ejson_sample_read_convert_string]
 		// Get the value:
-		//! [ejson_sample_read_get_string_value]
 		std::string value = elem.get();
-		//! [ejson_sample_read_get_string_value]
+		//! [ejson_sample_read_convert_string]
 		TEST_INFO("    String Value:" << value);
 	}
 	// or simply:
 	{
 		// Get the value:
-		//! [ejson_sample_read_get_string_1]
+		//! [ejson_sample_read_get_string]
 		std::string value = doc["object A"].toString().get();
-		//! [ejson_sample_read_get_string_1]
-		TEST_INFO("    String Value:" << value);
-	}
-	// helper function:
-	{
-		// Get the value:
-		//! [ejson_sample_read_get_string_2]
-		std::string value = doc.getStringValue("object A");
-		//! [ejson_sample_read_get_string_2]
+		//! [ejson_sample_read_get_string]
 		TEST_INFO("    String Value:" << value);
 	}
 	
@@ -196,17 +188,9 @@ static void readFull() {
 	// Get a Boolean value:
 	{
 		// Get the value:
-		//! [ejson_sample_read_get_boolean_1]
+		//! [ejson_sample_read_get_boolean]
 		bool value = doc["object C"].toBoolean().get();
-		//! [ejson_sample_read_get_boolean_1]
-		TEST_INFO("    Boolean Value:" << value);
-	}
-	// helper function:
-	{
-		// Get the value:
-		//! [ejson_sample_read_get_boolean_2]
-		bool value = doc.getBooleanValue("object C");
-		//! [ejson_sample_read_get_boolean_2]
+		//! [ejson_sample_read_get_boolean]
 		TEST_INFO("    Boolean Value:" << value);
 	}
 	
@@ -215,17 +199,9 @@ static void readFull() {
 	// Get a number value:
 	{
 		// Get the value:
-		//! [ejson_sample_read_get_number_1]
+		//! [ejson_sample_read_get_number]
 		double value = doc["object D"].toNumber().get();
-		//! [ejson_sample_read_get_number_1]
-		TEST_INFO("    Number Value:" << value);
-	}
-	// helper function:
-	{
-		// Get the value:
-		//! [ejson_sample_read_get_number_2]
-		double value = doc.getNumberValue("object D");
-		//! [ejson_sample_read_get_number_2]
+		//! [ejson_sample_read_get_number]
 		TEST_INFO("    Number Value:" << value);
 	}
 	

@@ -63,18 +63,6 @@ const ejson::Value ejson::Array::operator[] (size_t _id) const {
 	return ejson::Value(static_cast<ejson::internal::Array*>(m_data.get())->get(_id));
 }
 
-std::string ejson::Array::getStringValue(size_t _id, const std::string& _errorValue) const {
-	return (*this)[_id].toString().get(_errorValue);
-}
-
-double ejson::Array::getNumberValue(size_t _id, double _errorValue) const {
-	return (*this)[_id].toNumber().get(_errorValue);
-}
-
-bool ejson::Array::getBooleanValue(size_t _id, bool _errorValue) const {
-	return (*this)[_id].toBoolean().get(_errorValue);
-}
-
 bool ejson::Array::add(const ejson::Value& _element) {
 	if (m_data == nullptr) {
 		EJSON_ERROR("Can not add (nullptr) ...");
@@ -100,23 +88,6 @@ ejson::Array::iterator ejson::Array::remove(const ejson::Array::iterator& _it) {
 	return ejson::Array::iterator(*this, _it.getId());
 }
 
-
-
-bool ejson::Array::addString(const std::string& _value) {
-	return add(ejson::String(_value));
-}
-
-bool ejson::Array::addNull() {
-	return add(ejson::Null());
-}
-
-bool ejson::Array::addBoolean(bool _value) {
-	return add(ejson::Boolean(_value));
-}
-
-bool ejson::Array::addNumber(double _value) {
-	return add(ejson::Number(_value));
-}
 
 ejson::Array::iterator ejson::Array::begin() {
 	return ejson::Array::iterator(*this, 0);

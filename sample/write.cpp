@@ -43,33 +43,21 @@ static void writeToString() {
 static void writeAll() {
 	ejson::Document doc;
 	
-	//! [ejson_sample_write_add_string_1]
+	//! [ejson_sample_write_add_string]
 	doc.add("A", ejson::String("2.5"));
-	//! [ejson_sample_write_add_string_1]
-	//! [ejson_sample_write_add_string_2]
-	doc.addString("Aa", "lkjlkjlkj");
-	//! [ejson_sample_write_add_string_2]
+	//! [ejson_sample_write_add_string]
 	
-	//! [ejson_sample_write_add_null_1]
+	//! [ejson_sample_write_add_null]
 	doc.add("B", ejson::Null());
-	//! [ejson_sample_write_add_null_1]
-	//! [ejson_sample_write_add_null_2]
-	doc.addNull("Bb");
-	//! [ejson_sample_write_add_null_2]
+	//! [ejson_sample_write_add_null]
 	
-	//! [ejson_sample_write_add_number_1]
+	//! [ejson_sample_write_add_number]
 	doc.add("C", ejson::Number(2010));
-	//! [ejson_sample_write_add_number_1]
-	//! [ejson_sample_write_add_number_2]
-	doc.addNumber("Cc", 5161.2);
-	//! [ejson_sample_write_add_number_2]
+	//! [ejson_sample_write_add_number]
 	
-	//! [ejson_sample_write_add_boolean_1]
+	//! [ejson_sample_write_add_boolean]
 	doc.add("D", ejson::Boolean(false));
-	//! [ejson_sample_write_add_boolean_1]
-	//! [ejson_sample_write_add_boolean_2]
-	doc.addBoolean("Dd", true);
-	//! [ejson_sample_write_add_boolean_2]
+	//! [ejson_sample_write_add_boolean]
 	
 	//! [ejson_sample_write_add_array]
 	ejson::Array array;

@@ -29,20 +29,16 @@ Operation on Tree                                  {#ejson_tutorial_write_operat
 =================
 
 Add String:
-@snippet write.cpp ejson_sample_write_add_string_1
-@snippet write.cpp ejson_sample_write_add_string_2
+@snippet write.cpp ejson_sample_write_add_string
 
 Add Null:
-@snippet write.cpp ejson_sample_write_add_null_1
-@snippet write.cpp ejson_sample_write_add_null_2
+@snippet write.cpp ejson_sample_write_add_null
 
 Add Number:
-@snippet write.cpp ejson_sample_write_add_number_1
-@snippet write.cpp ejson_sample_write_add_number_2
+@snippet write.cpp ejson_sample_write_add_number
 
 Add Boolean:
-@snippet write.cpp ejson_sample_write_add_boolean_1
-@snippet write.cpp ejson_sample_write_add_boolean_1
+@snippet write.cpp ejson_sample_write_add_boolean
 
 Add Array with values:
 @snippet write.cpp ejson_sample_write_add_array

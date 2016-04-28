@@ -48,33 +48,18 @@ Access to a string in an Object:
 The generic Way to access to an element is to convert it in the corect type:
 @snippet read.cpp ejson_sample_read_convert_string
 
-And after Get the Value:
-@snippet read.cpp ejson_sample_read_get_string_value
-
 Commonly you might use like this:
-@snippet read.cpp ejson_sample_read_get_string_1
-
-Helper function:
-@snippet read.cpp ejson_sample_read_get_string_2
-
-
+@snippet read.cpp ejson_sample_read_get_string
 
 Access to a boolean in an Object:
 ---------------------------------
 
-@snippet read.cpp ejson_sample_read_get_boolean_1
-
-Helper function:
-@snippet read.cpp ejson_sample_read_get_boolean_2
-
+@snippet read.cpp ejson_sample_read_get_boolean
 
 Access to a Number in an Object:
 ---------------------------------
 
-@snippet read.cpp ejson_sample_read_get_number_1
-
-Helper function:
-@snippet read.cpp ejson_sample_read_get_number_2
+@snippet read.cpp ejson_sample_read_get_number
 
 
 Access to a Array in an Object:

@@ -56,55 +56,11 @@ namespace ejson {
 			 */
 			const ejson::Value operator[] (size_t _id) const;
 			/**
-			 * @brief get the value of the string element
-			 * @param[in] _id Id of the element.
-			 * @param[in] _errorValue The return value if an error occured.
-			 * @return value of the element, or the _errorValue.
-			 */
-			std::string getStringValue(size_t _id, const std::string& _errorValue="") const;
-			/**
-			 * @brief get the value of the Number element
-			 * @param[in] _id Id of the element.
-			 * @param[in] _errorValue The return value if an error occured.
-			 * @return value of the element, or the _errorValue.
-			 */
-			double getNumberValue(size_t _id, double _errorValue=0.0) const;
-			/**
-			 * @brief get the value of the Boolean element
-			 * @param[in] _id Id of the element.
-			 * @param[in] _errorValue The return value if an error occured.
-			 * @return value of the element, or the _errorValue.
-			 */
-			bool getBooleanValue(size_t _id, bool _errorValue=false) const;
-			/**
 			 * @brief add an element on the array.
 			 * @param[in] _element element to add.
 			 * @return false if an error occured.
 			 */
 			bool add(const ejson::Value& _element);
-			/**
-			 * @brief add a string element in the Object (automatic creation)
-			 * @param[in] _value string value to add
-			 * @return false if an error occured
-			 */
-			bool addString(const std::string& _value);
-			/**
-			 * @brief add a "null" element in the Object (automatic creation)
-			 * @return false if an error occured
-			 */
-			bool addNull();
-			/**
-			 * @brief add a boolean element in the Object (automatic creation)
-			 * @param[in] _value boolean value to add
-			 * @return false if an error occured
-			 */
-			bool addBoolean(bool _value);
-			/**
-			 * @brief add a double element in the Object (automatic creation)
-			 * @param[in] _value double value to add
-			 * @return false if an error occured
-			 */
-			bool addNumber(double _value);
 			/**
 			 * @brief Remove Value with his Id
 			 * @param[in] _id Id of the element.

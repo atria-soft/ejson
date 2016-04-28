@@ -106,40 +106,12 @@ std::string ejson::Object::getKey(size_t _id) const {
 	return static_cast<ejson::internal::Object*>(m_data.get())->getKey(_id);
 }
 
-std::string ejson::Object::getStringValue(const std::string& _name, const std::string& _errorValue) const {
-	return (*this)[_name].toString().get(_errorValue);
-}
-
-bool ejson::Object::getBooleanValue(const std::string& _name, bool _errorValue) const {
-	return (*this)[_name].toBoolean().get(_errorValue);
-}
-
-double ejson::Object::getNumberValue(const std::string& _name, double _errorValue) const {
-	return (*this)[_name].toNumber().get(_errorValue);
-}
-
 bool ejson::Object::add(const std::string& _name, const ejson::Value& _value) {
 	if (m_data == nullptr) {
 		EJSON_ERROR("Can not add (nullptr) ...");
 		return false;
 	}
 	return static_cast<ejson::internal::Object*>(m_data.get())->add(_name, _value.m_data);
-}
-
-bool ejson::Object::addString(const std::string& _name, const std::string& _value) {
-	return add(_name, ejson::String(_value));
-}
-
-bool ejson::Object::addNull(const std::string& _name) {
-	return add(_name, ejson::Null());
-}
-
-bool ejson::Object::addBoolean(const std::string& _name, bool _value) {
-	return add(_name, ejson::Boolean(_value));
-}
-
-bool ejson::Object::addNumber(const std::string& _name, double _value) {
-	return add(_name, ejson::Number(_value));
 }
 
 void ejson::Object::remove(const std::string& _name) {
