@@ -1,8 +1,6 @@
-/**
+/** @file
  * @author Edouard DUPIN
- * 
  * @copyright 2011, Edouard DUPIN, all right reserved
- * 
  * @license APACHE v2.0 (see license file)
  */
 #include <ejson/Object.h>
@@ -15,7 +13,8 @@ ejson::Object::Object(ememory::SharedPtr<ejson::internal::Value> _internalValue)
 	if (m_data == nullptr) {
 		return;
 	}
-	if (m_data->getType() != ejson::valueType::null) {
+	if (    m_data->getType() != ejson::valueType::object
+	     && m_data->getType() != ejson::valueType::document) {
 		// try to set wrong type inside ... ==> remove it ...
 		m_data = nullptr;
 	}
