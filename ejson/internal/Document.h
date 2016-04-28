@@ -69,9 +69,7 @@ namespace ejson {
 				 * @brief Set the display of the error when detected.
 				 * @param[in] _value true: display error, false not display error (get it at end)
 				 */
-				void setDisplayError(bool _value) {
-					m_writeErrorWhenDetexted = _value;
-				};
+				void setDisplayError(bool _value);
 				/**
 				 * @brief Get the display of the error status.
 				 * @return true Display error

@@ -159,9 +159,10 @@ const ejson::Object::iterator ejson::Object::end() const {
 #include <ejson/details/iterator.hxx>
 
 template class ejson::iterator<ejson::Object>;
-
-template<>
-std::string ejson::iterator<ejson::Object>::getKey() {
-	return m_data.getKey(m_id);
+namespace ejson {
+	template<>
+	std::string iterator<ejson::Object>::getKey() const noexcept {
+		return m_data.getKey(m_id);
+	}
 }
 

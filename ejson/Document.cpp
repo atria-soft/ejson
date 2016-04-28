@@ -67,7 +67,7 @@ bool ejson::Document::store(const std::string& _file) {
 	return static_cast<ejson::internal::Document*>(m_data.get())->store(_file);
 }
 
-void setDisplayError(bool _value){
+void ejson::Document::setDisplayError(bool _value){
 	if (m_data == nullptr) {
 		EJSON_ERROR("Can not setDisplayError (nullptr) ...");
 		return;
@@ -75,12 +75,12 @@ void setDisplayError(bool _value){
 	static_cast<ejson::internal::Document*>(m_data.get())->setDisplayError(_value);
 }
 
-bool getDisplayError() {
+bool ejson::Document::getDisplayError() {
 	if (m_data == nullptr) {
 		EJSON_ERROR("Can not getDisplayError (nullptr) ...");
 		return false;
 	}
-	return static_cast<ejson::internal::Document*>(m_data.get())->getDisplayError(_value);
+	return static_cast<ejson::internal::Document*>(m_data.get())->getDisplayError();
 }
 
 void ejson::Document::displayError() {

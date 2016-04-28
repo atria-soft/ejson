@@ -112,7 +112,7 @@ template class ejson::iterator<ejson::Array>;
 // Not implemented ==> force link error ...
 /*
 template<>
-std::string ejson::iterator<ejson::Array>::getKey() {
+std::string ejson::iterator<ejson::Array>::getKey() const noexcept {
 	return m_data.getKey(m_id);
 }
 */
