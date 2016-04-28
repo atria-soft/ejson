@@ -208,6 +208,18 @@ bool ejson::internal::Array::iGenerate(std::string& _data, size_t _indent) const
 	return true;
 }
 
+size_t ejson::internal::Array::size() const {
+	return m_value.size();
+}
+
+ememory::SharedPtr<ejson::internal::Value> ejson::internal::Array::get(size_t _id) {
+	return m_value[_id];
+}
+
+const ememory::SharedPtr<const ejson::internal::Value> ejson::internal::Array::get(size_t _id) const {
+	return m_value[_id];
+}
+
 bool ejson::internal::Array::add(ememory::SharedPtr<ejson::internal::Value> _element) {
 	if (_element == nullptr) {
 		EJSON_ERROR("Request add on an nullptr pointer");

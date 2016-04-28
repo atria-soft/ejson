@@ -12,13 +12,22 @@
 
 namespace ejson {
 	namespace internal {
+		/**
+		 * @brief ejson String internal data implementation.
+		 */
 		class String : public ejson::internal::Value {
 			protected:
 				/**
 				 * @brief basic element of a xml structure
+				 * @param[in] _value Value to set on the ejson::Value
 				 */
 				String(const std::string& _value="");
 			public:
+				/**
+				 * @brief Create factory on the ejson::internal::String
+				 * @param[in] _value Value to set on the ejson::Value
+				 * @return A SharedPtr on the String value
+				 */
 				static ememory::SharedPtr<String> create(const std::string& _value="");
 			protected:
 				std::string m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)

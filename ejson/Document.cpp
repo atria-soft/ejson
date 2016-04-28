@@ -67,20 +67,20 @@ bool ejson::Document::store(const std::string& _file) {
 	return static_cast<ejson::internal::Document*>(m_data.get())->store(_file);
 }
 
-void ejson::Document::displayErrorWhenDetected() {
+void setDisplayError(bool _value){
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not displayErrorWhenDetected (nullptr) ...");
+		EJSON_ERROR("Can not setDisplayError (nullptr) ...");
 		return;
 	}
-	static_cast<ejson::internal::Document*>(m_data.get())->displayErrorWhenDetected();
+	static_cast<ejson::internal::Document*>(m_data.get())->setDisplayError(_value);
 }
 
-void ejson::Document::notDisplayErrorWhenDetected() {
+bool getDisplayError() {
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not notDisplayErrorWhenDetected (nullptr) ...");
-		return;
+		EJSON_ERROR("Can not getDisplayError (nullptr) ...");
+		return false;
 	}
-	static_cast<ejson::internal::Document*>(m_data.get())->notDisplayErrorWhenDetected();
+	return static_cast<ejson::internal::Document*>(m_data.get())->getDisplayError(_value);
 }
 
 void ejson::Document::displayError() {

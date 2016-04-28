@@ -12,13 +12,22 @@
 
 namespace ejson {
 	namespace internal {
+		/**
+		 * @brief ejson Boolean internal data implementation.
+		 */
 		class Boolean : public ejson::internal::Value {
 			protected:
 				/**
 				 * @brief basic element of a xml structure
+				 * @param[in] _value Value to set on the Element
 				 */
 				Boolean(bool _value=false);
 			public:
+				/**
+				 * @brief Create factory on the ejson::internal::Boolean
+				 * @param[in] _value Value to set on the ejson::Value
+				 * @return A SharedPtr on the Boolean value
+				 */
 				static ememory::SharedPtr<Boolean> create(bool _value=false);
 			protected:
 				bool m_value; //!< value of the node

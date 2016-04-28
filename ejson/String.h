@@ -11,6 +11,9 @@
 #include <ejson/Value.h>
 
 namespace ejson {
+	/**
+	 * @brief ejson String interface.
+	 */
 	class String : public ejson::Value {
 		public:
 			/**
@@ -31,6 +34,7 @@ namespace ejson {
 			/**
 			 * @brief Copy constructor
 			 * @param[in] _obj Object to copy
+			 * @return Local reference on this object
 			 */
 			ejson::String& operator= (const ejson::String& _obj);
 		public:

@@ -15,6 +15,9 @@
 #include <ejson/Object.h>
 
 namespace ejson {
+	/**
+	 * @brief ejson Document interface (acces with the file and stream).
+	 */
 	class Document : public ejson::Object {
 		public:
 			/**
@@ -34,9 +37,9 @@ namespace ejson {
 			/**
 			 * @brief Copy constructor
 			 * @param[in] _obj Object to copy
+			 * @return Local reference on this object
 			 */
 			ejson::Document& operator= (const ejson::Document& _obj);
-		public:
 			/**
 			 * @brief parse a string that contain an XML
 			 * @param[in] _data Data to parse
@@ -65,9 +68,20 @@ namespace ejson {
 			 * @return true : Parsing is OK
 			 */
 			bool store(const std::string& _file);
-		public:
-			void displayErrorWhenDetected();
-			void notDisplayErrorWhenDetected();
+			/**
+			 * @brief Set the display of the error when detected.
+			 * @param[in] _value true: display error, false not display error (get it at end)
+			 */
+			void setDisplayError(bool _value);
+			/**
+			 * @brief Get the display of the error status.
+			 * @return true Display error
+			 * @return false Does not display error (get it at end)
+			 */
+			bool getDisplayError();
+			/**
+			 * @brief Display error detected.
+			 */
 			void displayError();
 	};
 }

@@ -63,7 +63,7 @@ Object concept                                    {#ejson_tutorial_concept}
 The ejson concept is to abstract the implementation of the internal system. All the element are mapped on shared memory.
 Then if you asign an element to an other, it is the same. You need to clone it if you want to have new standalone element.
 
-@snippet write.cpp ejson_sample_read_clone
+@snippet read.cpp ejson_sample_read_clone
 
 All example file                                  {#ejson_tutorial_write_all}
 ================

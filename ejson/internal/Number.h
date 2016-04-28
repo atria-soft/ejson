@@ -12,13 +12,22 @@
 
 namespace ejson {
 	namespace internal {
+		/**
+		 * @brief ejson Number internal data implementation.
+		 */
 		class Number : public ejson::internal::Value {
 			protected:
 				/**
 				 * @brief basic element of a xml structure
+				 * @param[in] _value Value to set on the ejson::Value
 				 */
 				Number(double _value=0.0);
 			public:
+				/**
+				 * @brief Create factory on the ejson::internal::Number
+				 * @param[in] _value Value to set on the ejson::Value
+				 * @return A SharedPtr on the Number value
+				 */
 				static ememory::SharedPtr<Number> create(double _value=0.0);
 			protected:
 				double m_value; //!< value of the node

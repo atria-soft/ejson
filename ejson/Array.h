@@ -12,6 +12,9 @@
 #include <ejson/iterator.h>
 
 namespace ejson {
+	/**
+	 * @brief ejson Array interface [ ... ].
+	 */
 	class Array : public ejson::Value {
 		public:
 			/**
@@ -31,6 +34,7 @@ namespace ejson {
 			/**
 			 * @brief Copy constructor
 			 * @param[in] _obj Object to copy
+			 * @return Local reference on this object
 			 */
 			ejson::Array& operator= (const ejson::Array& _obj);
 		public:
@@ -131,6 +135,7 @@ namespace ejson {
 			/**
 			 * @brief Remove Value with his iterator
 			 * @param[in] _it Iterator on the Value.
+			 * @return New valid iterator on the next element or this.end()
 			 */
 			iterator remove(const iterator& _it);
 	};

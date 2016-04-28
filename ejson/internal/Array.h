@@ -12,6 +12,9 @@
 
 namespace ejson {
 	namespace internal {
+		/**
+		 * @brief ejson Array internal data implementation.
+		 */
 		class Array : public ejson::internal::Value {
 			protected:
 				/**
@@ -21,6 +24,10 @@ namespace ejson {
 					m_type = ejson::valueType::array;
 				}
 			public:
+				/**
+				 * @brief Create factory on the ejson::internal::Array
+				 * @return A SharedPtr on the Array value
+				 */
 				static ememory::SharedPtr<Array> create();
 			private:
 				std::vector<ememory::SharedPtr<ejson::internal::Value> > m_value; //!< vector of sub elements
@@ -29,21 +36,19 @@ namespace ejson {
 				 * @brief get the number of sub element in the current one
 				 * @return the Number of stored element
 				 */
-				size_t size() const {
-					return m_value.size();
-				}
+				size_t size() const;
 				/**
 				 * @brief get the pointer on an element reference with his ID.
 				 * @param[in] _id Id of the element.
 				 * @return nullptr if the element does not exist.
 				 */
-				ememory::SharedPtr<ejson::internal::Value> get(size_t _id) {
-					return m_value[_id];
-				}
-				//! @previous
-				const ememory::SharedPtr<const ejson::internal::Value> get(size_t _id) const{
-					return m_value[_id];
-				}
+				ememory::SharedPtr<ejson::internal::Value> get(size_t _id);
+				/**
+				 * @brief get the const pointer on an element reference with his ID.
+				 * @param[in] _id Id of the element.
+				 * @return nullptr if the element does not exist.
+				 */
+				const ememory::SharedPtr<const ejson::internal::Value> get(size_t _id) const;
 				/**
 				 * @brief add an element on the array.
 				 * @param[in] _element element to add.

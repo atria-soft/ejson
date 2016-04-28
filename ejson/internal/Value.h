@@ -27,6 +27,9 @@ namespace ejson {
 	#else
 		#define EJSON_PARSE_ATTRIBUTE EJSON_DEBUG
 	#endif
+	/**
+	 * @brief ejson internal data implementation (not for external user).
+	 */
 	namespace internal {
 		class Document;
 		class Array;
@@ -36,7 +39,7 @@ namespace ejson {
 		class Number;
 		class String;
 		/**
-		 * @brief Basic main object of all json elements.
+		 * @brief Basic main object of all json data.
 		 */
 		class Value : public ememory::EnableSharedFromThis<Value> {
 			protected:

@@ -14,6 +14,9 @@
 
 namespace ejson {
 	namespace internal {
+		/**
+		 * @brief ejson Object internal data implementation.
+		 */
 		class Object : public ejson::internal::Value {
 			protected:
 				/**
@@ -23,7 +26,16 @@ namespace ejson {
 					m_type = ejson::valueType::object;
 				};
 			public:
+				/**
+				 * @brief Create factory on the ejson::internal::Object
+				 * @return A SharedPtr on the Object value
+				 */
 				static ememory::SharedPtr<Object> create();
+				/**
+				 * @brief Create factory on the ejson::internal::Object
+				 * @param[in] _data Json stream to parse and interprete
+				 * @return A SharedPtr on the Object value
+				 */
 				static ememory::SharedPtr<Object> create(const std::string& _data);
 			protected:
 				etk::Hash<ememory::SharedPtr<ejson::internal::Value> > m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
@@ -40,7 +52,11 @@ namespace ejson {
 				 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
 				 */
 				ememory::SharedPtr<ejson::internal::Value> get(const std::string& _name);
-				//! @previous
+				/**
+				 * @brief get the sub element with his name (no cast check)
+				 * @param[in] _name name of the object
+				 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
+				 */
 				const ememory::SharedPtr<const ejson::internal::Value> get(const std::string& _name) const;
 			public:
 				/**
@@ -89,16 +105,23 @@ namespace ejson {
 				 * @param[in] _id Id of the element.
 				 */
 				void remove(size_t _id);
+				/**
+				 * @brief Clone the current object in an other Object
+				 * @param[in] _obj Other object ot overwride
+				 * @return true The clone has been corectly done, false otherwise
+				 */
+				bool cloneIn(const ememory::SharedPtr<ejson::internal::Object>& _obj) const;
+				/**
+				 * @brief Clone the current object
+				 * @return A new object that has been clone
+				 */
+				ememory::SharedPtr<ejson::internal::Object> cloneObj() const;
 			public:
 				bool iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) override;
 				bool iGenerate(std::string& _data, size_t _indent) const override;
 				void clear() override;
 				bool transfertIn(ememory::SharedPtr<ejson::internal::Value> _obj) override;
 				ememory::SharedPtr<ejson::internal::Value> clone() const override;
-				
-				
-				bool cloneIn(const ememory::SharedPtr<ejson::internal::Object>& _obj) const;
-				ememory::SharedPtr<ejson::internal::Object> cloneObj() const;
 		};
 	}
 }

@@ -31,8 +31,8 @@ namespace ejson {
 	 * @brief Basic main object of all json elements.
 	 */
 	class Value {
-		friend ejson::Array;
-		friend ejson::Object;
+		friend class ejson::Array;
+		friend class ejson::Object;
 		protected:
 			ememory::SharedPtr<ejson::internal::Value> m_data; //!< internal reference on a Value
 		public:

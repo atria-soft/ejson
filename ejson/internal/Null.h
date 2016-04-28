@@ -12,6 +12,9 @@
 
 namespace ejson {
 	namespace internal {
+		/**
+		 * @brief ejson Null internal data implementation.
+		 */
 		class Null : public ejson::internal::Value {
 			protected:
 				/**
@@ -19,6 +22,10 @@ namespace ejson {
 				 */
 				Null();
 			public:
+				/**
+				 * @brief Create factory on the ejson::internal::Null
+				 * @return A SharedPtr on the Null value
+				 */
 				static ememory::SharedPtr<Null> create();
 			public:
 				bool iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) override;

@@ -14,6 +14,9 @@
 #include <ejson/iterator.h>
 
 namespace ejson {
+	/**
+	 * @brief ejson Object interface { ... }.
+	 */
 	class Object : public ejson::Value {
 		public:
 			/**
@@ -38,6 +41,7 @@ namespace ejson {
 			/**
 			 * @brief Copy constructor
 			 * @param[in] _obj Object to copy
+			 * @return Local reference on this object
 			 */
 			ejson::Object& operator= (const ejson::Object& _obj);
 			
@@ -49,11 +53,16 @@ namespace ejson {
 			 */
 			bool valueExist(const std::string& _name) const;
 			/**
-			 * @brief get the sub element with his name (no cast check)
+			 * @brief Cet the sub element with his name (no cast check)
 			 * @param[in] _name Name of the object
-			 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
+			 * @return Value on the element requested or a value that does not exist @ref ejson::Value::exist.
 			 */
 			ejson::Value operator[] (const std::string& _name);
+			/**
+			 * @brief Get the const sub element with his name (no cast check)
+			 * @param[in] _name Name of the object
+			 * @return const Value on the element requested or a value that does not exist @ref ejson::Value::exist.
+			 */
 			const ejson::Value operator[] (const std::string& _name) const;
 		public:
 			/**
@@ -67,11 +76,16 @@ namespace ejson {
 			 */
 			size_t size() const;
 			/**
-			 * @brief get the pointer on an element reference with his ID.
+			 * @brief Get the value on an element reference with his ID.
 			 * @param[in] _id Id of the element.
-			 * @return nullptr if the element does not exist.
+			 * @return Value on the element requested or a value that does not exist @ref ejson::Value::exist.
 			 */
 			ejson::Value operator[] (size_t _id);
+			/**
+			 * @brief Get the const value on an element reference with his ID.
+			 * @param[in] _id Id of the element.
+			 * @return const Value on the element requested or a value that does not exist @ref ejson::Value::exist.
+			 */
 			const ejson::Value operator[] (size_t _id) const;
 			/**
 			 * @brief Get the element name (key).
@@ -170,6 +184,7 @@ namespace ejson {
 			/**
 			 * @brief Remove Value with his iterator
 			 * @param[in] _it Iterator on the Value.
+			 * @return New valid iterator on the next element or this.end()
 			 */
 			iterator remove(const iterator& _it);
 	};

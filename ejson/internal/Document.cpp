@@ -119,28 +119,6 @@ static std::string createPosPointer(const std::string& _line, size_t _pos) {
 	return out;
 }
 
-void ejson::internal::Document::displayError() {
-	if (m_comment.size() == 0) {
-		EJSON_ERROR("No error detected ???");
-		return;
-	}
-	EJSON_ERROR(m_filePos << " " << m_comment << "\n"
-	           << m_Line << "\n"
-	           << createPosPointer(m_Line, m_filePos.getCol()) );
-	#ifdef ENABLE_CRITICAL_WHEN_ERROR
-		EJSON_CRITICAL("detect error");
-	#endif
-}
-
-void ejson::internal::Document::createError(const std::string& _data, size_t _pos, const ejson::FilePos& _filePos, const std::string& _comment) {
-	m_comment = _comment;
-	m_Line = etk::extract_line(_data, _pos);
-	m_filePos = _filePos;
-	if (true == m_writeErrorWhenDetexted) {
-		displayError();
-	}
-}
-
 bool ejson::internal::Document::iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
 	EJSON_PARSE_ELEMENT("start parse : 'Document' ");
 	bool haveMainNode=false;
@@ -192,5 +170,39 @@ bool ejson::internal::Document::iParse(const std::string& _data, size_t& _pos, e
 		}
 	}
 	return true;
+}
+
+
+void ejson::internal::Document::setDisplayError(bool _value) {
+	m_writeErrorWhenDetexted = _value;
+}
+
+bool ejson::internal::Document::getDisplayError() {
+	return m_writeErrorWhenDetexted;
+}
+
+void ejson::internal::Document::displayError() {
+	if (m_comment.size() == 0) {
+		EJSON_INFO("No error detected ???");
+		return;
+	}
+	EJSON_ERROR(m_filePos << " " << m_comment << "\n"
+	           << m_Line << "\n"
+	           << createPosPointer(m_Line, m_filePos.getCol()) );
+	#ifdef ENABLE_CRITICAL_WHEN_ERROR
+		EJSON_CRITICAL("detect error");
+	#endif
+}
+
+void ejson::internal::Document::createError(const std::string& _data,
+                                            size_t _pos,
+                                            const ejson::FilePos& _filePos,
+                                            const std::string& _comment) {
+	m_comment = _comment;
+	m_Line = etk::extract_line(_data, _pos);
+	m_filePos = _filePos;
+	if (m_writeErrorWhenDetexted == true) {
+		displayError();
+	}
 }
 
