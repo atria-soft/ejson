@@ -155,6 +155,16 @@ const ejson::Object::iterator ejson::Object::end() const {
 	return ejson::Object::iterator(*this, size());
 }
 
+std::string ejson::Object::generate() const {
+	std::string out;
+	if (m_data == nullptr) {
+		EJSON_ERROR("Can not remove (nullptr) ...");
+		return out;
+	}
+	static_cast<ejson::internal::Object*>(m_data.get())->iGenerate(out, 0);
+	return out;
+}
+
 #include <ejson/details/iterator.hxx>
 
 template class ejson::iterator<ejson::Object>;

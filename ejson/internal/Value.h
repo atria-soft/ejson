@@ -91,7 +91,7 @@ namespace ejson {
 				 * @param[in,out] _data String where the indentation is done.
 				 * @param[in] _indent Number of tab to add at the string.
 				 */
-				void addIndent(std::string& _data, size_t _indent) const;
+				void addIndent(std::string& _data, int32_t _indent) const;
 				/**
 				 * @brief Display the cuurent element that is curently parse.
 				 * @param[in] _val Char that is parsed.

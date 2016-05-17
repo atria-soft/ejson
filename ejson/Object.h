@@ -137,6 +137,12 @@ namespace ejson {
 			 * @return New valid iterator on the next element or this.end()
 			 */
 			iterator remove(const iterator& _it);
+		public:
+			/**
+			 * @brief generate a string that contain the created XML
+			 * @return generated data
+			 */
+			std::string generate() const;
 	};
 }
 

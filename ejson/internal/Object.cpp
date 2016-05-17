@@ -213,11 +213,11 @@ bool ejson::internal::Object::iParse(const std::string& _data, size_t& _pos, ejs
 	return false;
 }
 bool ejson::internal::Object::iGenerate(std::string& _data, size_t _indent) const {
-	bool oneLine=true;
+	bool oneLine = true;
 	if (m_value.size()>3) {
-		oneLine=false;
+		oneLine = false;
 	} else if (_indent<=1) {
-		oneLine=false;
+		oneLine = false;
 	} else {
 		for (int32_t iii=0; iii<m_value.size() ; iii++) {
 			ememory::SharedPtr<const ejson::internal::Value> tmp = m_value[iii];
@@ -243,13 +243,13 @@ bool ejson::internal::Object::iGenerate(std::string& _data, size_t _indent) cons
 			}
 		}
 	}
-	if (true == oneLine) {
+	if (oneLine == true) {
 		_data += "{ ";
 	} else {
 		_data += "{\n";
 	}
-	for (int32_t iii=0; iii<m_value.size() ; iii++) {
-		if (false == oneLine) {
+	for (int32_t iii=0; iii<m_value.size(); ++iii) {
+		if (oneLine == false) {
 			addIndent(_data, _indent);
 		}
 		_data += "\"";
@@ -259,13 +259,13 @@ bool ejson::internal::Object::iGenerate(std::string& _data, size_t _indent) cons
 		if (iii<m_value.size()-1) {
 			_data += ",";
 		}
-		if (true == oneLine) {
+		if (oneLine == true) {
 			_data += " ";
 		} else {
 			_data += "\n";
 		}
 	}
-	if (false == oneLine) {
+	if (oneLine == false) {
 		addIndent(_data, _indent-1);
 	}
 	_data += "}";

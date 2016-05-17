@@ -27,8 +27,11 @@ bool ejson::internal::Value::isWhiteChar(char32_t _val) {
 	return false;
 }
 
-void ejson::internal::Value::addIndent(std::string& _data, size_t _indent) const {
-	for (size_t iii=0; iii<_indent; iii++) {
+void ejson::internal::Value::addIndent(std::string& _data, int32_t _indent) const {
+	if (_indent <= 0) {
+		return;
+	}
+	for (int32_t iii=0; iii<_indent; iii++) {
 		_data+="\t";
 	}
 }
