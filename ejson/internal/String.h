@@ -41,10 +41,11 @@ namespace ejson {
 				 */
 				const std::string& get() const;
 			public:
-				virtual bool iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) override;
-				virtual bool iGenerate(std::string& _data, size_t _indent) const override;
-				virtual bool transfertIn(ememory::SharedPtr<ejson::internal::Value> _obj) override;
-				virtual ememory::SharedPtr<ejson::internal::Value> clone() const override;
+				bool iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) override;
+				bool iGenerate(std::string& _data, size_t _indent) const override;
+				void iMachineGenerate(std::string& _data) const override;
+				bool transfertIn(ememory::SharedPtr<ejson::internal::Value> _obj) override;
+				ememory::SharedPtr<ejson::internal::Value> clone() const override;
 		};
 	}
 }

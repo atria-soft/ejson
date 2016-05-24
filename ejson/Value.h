@@ -187,6 +187,17 @@ namespace ejson {
 			 * @return nullptr in an error occured, the pointer on the element otherwise
 			 */
 			ejson::Value clone() const;
+		public:
+			/**
+			 * @brief generate a string that contain the created JSON
+			 * @return generated data
+			 */
+			std::string generateHumanString() const;
+			/**
+			 * @brief generate a string that contain the created JSON
+			 * @return generated data
+			 */
+			std::string generateMachineString() const;
 	};
 	//! @not_in_doc
 	std::ostream& operator <<(std::ostream& _os, const ejson::Value& _obj);

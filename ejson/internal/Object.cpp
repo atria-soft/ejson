@@ -272,6 +272,22 @@ bool ejson::internal::Object::iGenerate(std::string& _data, size_t _indent) cons
 	return true;
 }
 
+void ejson::internal::Object::iMachineGenerate(std::string& _data) const {
+	_data += "{";
+	bool needComa = false;
+	for (int32_t iii=0; iii<m_value.size(); ++iii) {
+		if (needComa == true) {
+			_data += ",";
+		}
+		needComa = true;
+		_data += "\"";
+		_data += m_value.getKey(iii);
+		_data += "\":";
+		m_value.getValue(iii)->iMachineGenerate(_data);
+	}
+	_data += "}";
+}
+
 bool ejson::internal::Object::exist(const std::string& _name) const {
 	return m_value.exist(_name);
 }

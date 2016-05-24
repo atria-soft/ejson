@@ -12,31 +12,31 @@
 std::ostream& ejson::operator <<(std::ostream& _os, enum ejson::valueType _obj) {
 	switch (_obj) {
 		case ejson::valueType::unknow:
-			_os << "exml::valueType::unknow";
+			_os << "ejson::valueType::unknow";
 			break;
 		case ejson::valueType::value:
-			_os << "exml::valueType::value";
+			_os << "ejson::valueType::value";
 			break;
 		case ejson::valueType::document:
-			_os << "exml::valueType::document";
+			_os << "ejson::valueType::document";
 			break;
 		case ejson::valueType::array:
-			_os << "exml::valueType::array";
+			_os << "ejson::valueType::array";
 			break;
 		case ejson::valueType::object:
-			_os << "exml::valueType::object";
+			_os << "ejson::valueType::object";
 			break;
 		case ejson::valueType::string:
-			_os << "exml::valueType::string";
+			_os << "ejson::valueType::string";
 			break;
 		case ejson::valueType::number:
-			_os << "exml::valueType::number";
+			_os << "ejson::valueType::number";
 			break;
 		case ejson::valueType::null:
-			_os << "exml::valueType::null";
+			_os << "ejson::valueType::null";
 			break;
 		case ejson::valueType::boolean:
-			_os << "exml::valueType::boolean";
+			_os << "ejson::valueType::boolean";
 			break;
 	}
 	return _os;

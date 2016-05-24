@@ -40,6 +40,10 @@ bool ejson::internal::Null::iGenerate(std::string& _data, size_t _indent) const 
 	return true;
 }
 
+void ejson::internal::Null::iMachineGenerate(std::string& _data) const {
+	_data += "null";
+}
+
 
 bool ejson::internal::Null::transfertIn(ememory::SharedPtr<ejson::internal::Value> _obj) {
 	if (_obj == nullptr) {

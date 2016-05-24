@@ -42,6 +42,26 @@ bool ejson::Value::exist() const {
 	return true;
 }
 
+std::string ejson::Value::generateHumanString() const {
+	std::string out;
+	if (m_data == nullptr) {
+		EJSON_ERROR("Can not remove (nullptr) ...");
+		return out;
+	}
+	static_cast<ejson::internal::Value*>(m_data.get())->iGenerate(out, 0);
+	return out;
+}
+
+std::string ejson::Value::generateMachineString() const {
+	std::string out;
+	if (m_data == nullptr) {
+		EJSON_ERROR("Can not remove (nullptr) ...");
+		return out;
+	}
+	static_cast<ejson::internal::Value*>(m_data.get())->iMachineGenerate(out);
+	return out;
+}
+
 /*
 ejson::FilePos ejson::Value::getPos() const {
 	if (m_data == nullptr) {

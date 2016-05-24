@@ -36,6 +36,7 @@ namespace ejson {
 				 */
 				static ememory::SharedPtr<Object> create(const std::string& _data);
 			protected:
+				// TODO : Change this with a generic methode ...
 				etk::Hash<ememory::SharedPtr<ejson::internal::Value> > m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
 			public:
 				/**
@@ -117,6 +118,7 @@ namespace ejson {
 			public:
 				bool iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) override;
 				bool iGenerate(std::string& _data, size_t _indent) const override;
+				void iMachineGenerate(std::string& _data) const override;
 				void clear() override;
 				bool transfertIn(ememory::SharedPtr<ejson::internal::Value> _obj) override;
 				ememory::SharedPtr<ejson::internal::Value> clone() const override;

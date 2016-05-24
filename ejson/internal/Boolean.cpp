@@ -55,12 +55,20 @@ bool ejson::internal::Boolean::iParse(const std::string& _data, size_t& _pos, ej
 
 
 bool ejson::internal::Boolean::iGenerate(std::string& _data, size_t _indent) const {
-	if (true == m_value) {
+	if (m_value == true) {
 		_data += "true";
 	} else {
 		_data += "false";
 	}
 	return true;
+}
+
+void ejson::internal::Boolean::iMachineGenerate(std::string& _data) const {
+	if (m_value == true) {
+		_data += "true";
+	} else {
+		_data += "false";
+	}
 }
 
 

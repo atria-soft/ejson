@@ -53,11 +53,17 @@ bool ejson::internal::String::iParse(const std::string& _data, size_t& _pos, ejs
 
 bool ejson::internal::String::iGenerate(std::string& _data, size_t _indent) const {
 	_data += "\"";;
+	// TODO : Manage the \" elements ....
 	_data += m_value;
 	_data += "\"";;
 	return true;
 }
-
+void ejson::internal::String::iMachineGenerate(std::string& _data) const {
+	_data += "\"";;
+	// TODO : Manage the \" elements ....
+	_data += m_value;
+	_data += "\"";;
+}
 
 bool ejson::internal::String::transfertIn(ememory::SharedPtr<ejson::internal::Value> _obj) {
 	if (_obj == nullptr) {

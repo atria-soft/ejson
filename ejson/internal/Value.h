@@ -74,13 +74,19 @@ namespace ejson {
 				                    ejson::FilePos& _filePos,
 				                    ejson::internal::Document& _doc) = 0;
 				/**
-				 * @brief generate a string with the tree of the xml
+				 * @brief generate a string with the tree of the json
 				 * @param[in,out] _data string where to add the elements
 				 * @param[in] _indent current indentation of the file
 				 * @return false if an error occured.
 				 */
 				virtual bool iGenerate(std::string& _data,
 				                       size_t _indent) const = 0;
+				/**
+				 * @brief generate a string with the tree of the json (not human readable ==> for computer transfer)
+				 * @param[in,out] _data string where to add the elements
+				 * @return false if an error occured.
+				 */
+				virtual void iMachineGenerate(std::string& _data) const = 0;
 				/**
 				 * @brief Display the Document on console
 				 */

@@ -40,8 +40,18 @@ bool ejson::internal::Number::iParse(const std::string& _data, size_t& _pos, ejs
 	return false;
 }
 
-
 bool ejson::internal::Number::iGenerate(std::string& _data, size_t _indent) const {
+	// special thing to remove .000000 at the end of perfect number ...
+	int64_t tmpVal = m_value;
+	if (double(tmpVal) == m_value) {
+		_data += etk::to_string(tmpVal);
+	} else {
+		_data += etk::to_string(m_value);
+	}
+	return true;
+}
+
+void ejson::internal::Number::iMachineGenerate(std::string& _data) const {
 	// special thing to remove .000000 at the end of perfect number ...
 	int64_t tmpVal = m_value;
 	if ((double)tmpVal == m_value) {
@@ -49,7 +59,6 @@ bool ejson::internal::Number::iGenerate(std::string& _data, size_t _indent) cons
 	} else {
 		_data += etk::to_string(m_value);
 	}
-	return true;
 }
 
 

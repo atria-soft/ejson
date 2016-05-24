@@ -206,6 +206,22 @@ bool ejson::internal::Array::iGenerate(std::string& _data, size_t _indent) const
 	return true;
 }
 
+void ejson::internal::Array::iMachineGenerate(std::string& _data) const {
+	_data += "[";
+	bool needComa = false;
+	for (size_t iii=0; iii<m_value.size() ; iii++) {
+		if (m_value[iii] == nullptr) {
+			continue;
+		}
+		if (needComa == true) {
+			_data += ",";
+		}
+		m_value[iii]->iMachineGenerate(_data);
+		needComa = true;
+	}
+	_data += "]";
+}
+
 size_t ejson::internal::Array::size() const {
 	return m_value.size();
 }
