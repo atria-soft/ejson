@@ -6,6 +6,7 @@
 #include <ejson/Document.h>
 #include <ejson/debug.h>
 #include <ejson/internal/Document.h>
+#include <etk/os/FSNode.h>
 
 ejson::Document::Document(ememory::SharedPtr<ejson::internal::Value> _internalValue) :
   ejson::Object(_internalValue) {
@@ -63,6 +64,18 @@ bool ejson::Document::store(const std::string& _file) {
 		return false;
 	}
 	return static_cast<ejson::internal::Document*>(m_data.get())->store(_file);
+}
+
+bool ejson::Document::storeSafe(const std::string& _file) {
+	if (m_data == nullptr) {
+		EJSON_ERROR("Can not store (nullptr) ...");
+		return false;
+	}
+	bool done = static_cast<ejson::internal::Document*>(m_data.get())->store(_file+".tmp");
+	if (done == false) {
+		return false;
+	}
+	return etk::FSNodeMove(_file+".tmp", _file);
 }
 
 void ejson::Document::setDisplayError(bool _value){
