@@ -31,18 +31,34 @@ const std::string& ejson::internal::String::get() const {
 bool ejson::internal::String::iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
 	EJSON_PARSE_ELEMENT("start parse : 'String' ");
 	char end = _data[_pos];
+	bool backslashPrevious = false;
 	for (size_t iii=_pos+1; iii<_data.size(); iii++) {
 		_filePos.check(_data[iii]);
 		#ifdef ENABLE_DISPLAY_PARSED_ELEMENT
 		 drawElementParsed(_data[iii], _filePos);
 		#endif
 		ejson::FilePos tmpPos;
-		// TODO : manage \x
-		if(_data[iii] != end) {
+		if(_data[iii] == '\\') {
+			if (backslashPrevious == true) {
+				m_value += '\\';
+				backslashPrevious = false;
+			} else {
+				backslashPrevious = true;
+			}
+		} else if (_data[iii] != end) {
+			if (backslashPrevious == true) {
+				m_value += '\\';
+				backslashPrevious = false;
+			}
 			m_value += _data[iii];
 		} else {
-			_pos = iii;
-			return true;
+			if (backslashPrevious == true) {
+				m_value += '"';
+				backslashPrevious = false;
+			} else {
+				_pos = iii;
+				return true;
+			}
 		}
 	}
 	_pos=_data.size();
@@ -52,17 +68,27 @@ bool ejson::internal::String::iParse(const std::string& _data, size_t& _pos, ejs
 
 
 bool ejson::internal::String::iGenerate(std::string& _data, size_t _indent) const {
-	_data += "\"";;
-	// TODO : Manage the \" elements ....
-	_data += m_value;
-	_data += "\"";;
+	_data += "\"";
+	for (auto &it: m_value) {
+		if (    it == '\\'
+		     || it == '"') {
+			_data += '\\';
+		}
+		_data += it;
+	}
+	_data += "\"";
 	return true;
 }
 void ejson::internal::String::iMachineGenerate(std::string& _data) const {
-	_data += "\"";;
-	// TODO : Manage the \" elements ....
-	_data += m_value;
-	_data += "\"";;
+	_data += "\"";
+	for (auto &it: m_value) {
+		if (    it == '\\'
+		     || it == '"') {
+			_data += '\\';
+		}
+		_data += it;
+	}
+	_data += "\"";
 }
 
 bool ejson::internal::String::transfertIn(ememory::SharedPtr<ejson::internal::Value> _obj) {
