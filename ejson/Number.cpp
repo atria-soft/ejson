@@ -42,10 +42,42 @@ void ejson::Number::set(double _value) {
 	static_cast<ejson::internal::Number*>(m_data.get())->set(_value);
 }
 
+void ejson::Number::set(uint64_t _value) {
+	if (m_data == nullptr) {
+		EJSON_ERROR("Can not set (nullptr) ...");
+		return;
+	}
+	static_cast<ejson::internal::Number*>(m_data.get())->set(_value);
+}
+
+void ejson::Number::set(int64_t _value) {
+	if (m_data == nullptr) {
+		EJSON_ERROR("Can not set (nullptr) ...");
+		return;
+	}
+	static_cast<ejson::internal::Number*>(m_data.get())->set(_value);
+}
+
 double ejson::Number::get(double _errorValue) const {
 	if (m_data == nullptr) {
 		EJSON_ERROR("Can not get (nullptr) ...");
 		return _errorValue;
 	}
 	return static_cast<ejson::internal::Number*>(m_data.get())->get();
+}
+
+uint64_t ejson::Number::getU64(uint64_t _errorValue) const {
+	if (m_data == nullptr) {
+		EJSON_ERROR("Can not get (nullptr) ...");
+		return _errorValue;
+	}
+	return static_cast<ejson::internal::Number*>(m_data.get())->getU64();
+}
+
+int64_t ejson::Number::getI64(int64_t _errorValue) const {
+	if (m_data == nullptr) {
+		EJSON_ERROR("Can not get (nullptr) ...");
+		return _errorValue;
+	}
+	return static_cast<ejson::internal::Number*>(m_data.get())->getI64();
 }

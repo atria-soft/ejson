@@ -43,11 +43,33 @@ namespace ejson {
 			 */
 			void set(double _value);
 			/**
+			 * @brief set the value of the node.
+			 * @param[in] _value New value of the node (integer mode).
+			 */
+			void set(uint64_t _value);
+			/**
+			 * @brief set the value of the node.
+			 * @param[in] _value New value of the node (integer mode).
+			 */
+			void set(int64_t _value);
+			/**
 			 * @brief Get the current element Value.
 			 * @param[in] _errorValue Value return if no value Exist
 			 * @return The double number registered
 			 */
 			double get(double _errorValue=0.0) const;
+			/**
+			 * @brief Get the current element Value.
+			 * @param[in] _errorValue Value return if no value Exist
+			 * @return The unsigned integer number registered
+			 */
+			uint64_t getU64(uint64_t _errorValue=0) const;
+			/**
+			 * @brief Get the current element Value.
+			 * @param[in] _errorValue Value return if no value Exist
+			 * @return The integer number registered
+			 */
+			int64_t getI64(int64_t _errorValue=0) const;
 	};
 }
 
