@@ -70,6 +70,8 @@ namespace ejson {
 			 * @return The integer number registered
 			 */
 			int64_t getI64(int64_t _errorValue=0) const;
+			
+			ejson::internal::Number::type getType() const;
 	};
 }
 

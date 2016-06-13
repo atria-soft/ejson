@@ -81,3 +81,13 @@ int64_t ejson::Number::getI64(int64_t _errorValue) const {
 	}
 	return static_cast<ejson::internal::Number*>(m_data.get())->getI64();
 }
+
+ejson::internal::Number::type ejson::Number::getType() const {
+	if (m_data == nullptr) {
+		EJSON_ERROR("Can not get (nullptr) ...");
+		return ejson::internal::Number::type::tDouble;
+	}
+	return static_cast<ejson::internal::Number*>(m_data.get())->getType();
+}
+
+

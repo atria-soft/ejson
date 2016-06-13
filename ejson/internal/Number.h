@@ -31,18 +31,23 @@ namespace ejson {
 				static ememory::SharedPtr<Number> create(uint64_t _value=0);
 				static ememory::SharedPtr<Number> create(int64_t _value);
 				static ememory::SharedPtr<Number> create(double _value);
-			protected:
+			public:
 				enum class type {
 					tDouble,
 					tInt,
 					tUint,
 				};
+			protected:
 				type m_typeNumber;
 				union {
 					double m_value; //!< value of the node
 					uint64_t m_valueU64; //!< value of the node
 					int64_t m_valueI64; //!< value of the node
 				};
+			public:
+				ejson::internal::Number::type getType() const {
+					return m_typeNumber;
+				}
 			public:
 				/**
 				 * @brief set the value of the node.
