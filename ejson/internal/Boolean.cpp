@@ -81,7 +81,7 @@ bool ejson::internal::Boolean::transfertIn(ememory::SharedPtr<ejson::internal::V
 		EJSON_ERROR("Request transfer on an element that is not an Boolean");
 		return false;
 	}
-	ememory::SharedPtr<ejson::internal::Boolean> other = std::static_pointer_cast<ejson::internal::Boolean>(_obj);
+	ememory::SharedPtr<ejson::internal::Boolean> other = ememory::staticPointerCast<ejson::internal::Boolean>(_obj);
 	// remove destination elements
 	other->m_value = m_value;
 	m_value = false;

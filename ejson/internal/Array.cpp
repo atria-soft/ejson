@@ -156,7 +156,7 @@ bool ejson::internal::Array::iGenerate(std::string& _data, size_t _indent) const
 		oneLine=false;
 	} else {
 		for (size_t iii=0; iii<m_value.size() ; iii++) {
-			ememory::SharedPtr<const ejson::internal::Value> tmp = m_value[iii];
+			const ememory::SharedPtr<ejson::internal::Value> tmp = m_value[iii];
 			if (tmp == nullptr) {
 				continue;
 			}
@@ -170,7 +170,7 @@ bool ejson::internal::Array::iGenerate(std::string& _data, size_t _indent) const
 				break;
 			}
 			if (tmp->getType() == ejson::valueType::string) {
-				ememory::SharedPtr<const ejson::internal::String> tmp2 = std::static_pointer_cast<const ejson::internal::String>(tmp);
+				const ememory::SharedPtr<ejson::internal::String> tmp2 = ememory::staticPointerCast<ejson::internal::String>(tmp);
 				if(tmp2->get().size()>40) {
 					oneLine=false;
 					break;
@@ -230,7 +230,7 @@ ememory::SharedPtr<ejson::internal::Value> ejson::internal::Array::get(size_t _i
 	return m_value[_id];
 }
 
-const ememory::SharedPtr<const ejson::internal::Value> ejson::internal::Array::get(size_t _id) const {
+const ememory::SharedPtr<ejson::internal::Value> ejson::internal::Array::get(size_t _id) const {
 	return m_value[_id];
 }
 
@@ -260,7 +260,7 @@ bool ejson::internal::Array::transfertIn(ememory::SharedPtr<ejson::internal::Val
 		EJSON_ERROR("Request transfer on an element that is not an Array");
 		return false;
 	}
-	ememory::SharedPtr<ejson::internal::Array> other = std::static_pointer_cast<ejson::internal::Array>(_obj);
+	ememory::SharedPtr<ejson::internal::Array> other = ememory::staticPointerCast<ejson::internal::Array>(_obj);
 	// remove destination elements
 	other->clear();
 	// Copy to the destination

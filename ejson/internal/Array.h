@@ -46,7 +46,7 @@ namespace ejson {
 				 * @param[in] _id Id of the element.
 				 * @return nullptr if the element does not exist.
 				 */
-				const ememory::SharedPtr<const ejson::internal::Value> get(size_t _id) const;
+				const ememory::SharedPtr<ejson::internal::Value> get(size_t _id) const;
 				/**
 				 * @brief add an element on the array.
 				 * @param[in] _element element to add.

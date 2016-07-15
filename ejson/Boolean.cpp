@@ -48,6 +48,6 @@ bool ejson::Boolean::get(bool _errorValue) const {
 		EJSON_ERROR("Can not get (nullptr) ...");
 		return _errorValue;
 	}
-	return static_cast<ejson::internal::Boolean*>(m_data.get())->get();
+	return static_cast<const ejson::internal::Boolean*>(m_data.get())->get();
 }
 

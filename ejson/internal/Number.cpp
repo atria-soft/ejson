@@ -124,7 +124,7 @@ bool ejson::internal::Number::transfertIn(ememory::SharedPtr<ejson::internal::Va
 		EJSON_ERROR("Request transfer on an element that is not an Number");
 		return false;
 	}
-	ememory::SharedPtr<ejson::internal::Number> other = std::static_pointer_cast<ejson::internal::Number>(_obj);
+	ememory::SharedPtr<ejson::internal::Number> other = ememory::staticPointerCast<ejson::internal::Number>(_obj);
 	// remove destination elements
 	other->m_typeNumber = m_typeNumber;
 	m_typeNumber = ejson::internal::Number::type::tUint;

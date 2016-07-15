@@ -56,7 +56,7 @@ namespace ejson {
 				 * @param[in] _name name of the object
 				 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
 				 */
-				const ememory::SharedPtr<const ejson::internal::Value> get(const std::string& _name) const;
+				const ememory::SharedPtr<ejson::internal::Value> get(const std::string& _name) const;
 			public:
 				/**
 				 * @brief Get all the element name (keys).
@@ -79,7 +79,7 @@ namespace ejson {
 				 * @param[in] _id Id of the element.
 				 * @return nullptr if the element does not exist.
 				 */
-				const ememory::SharedPtr<const ejson::internal::Value> get(size_t _id) const;
+				const ememory::SharedPtr<ejson::internal::Value> get(size_t _id) const;
 				/**
 				 * @brief Get the element name (key).
 				 * @param[in] _id Id of the element.
@@ -109,7 +109,7 @@ namespace ejson {
 				 * @param[in] _obj Other object ot overwride
 				 * @return true The clone has been corectly done, false otherwise
 				 */
-				bool cloneIn(const ememory::SharedPtr<ejson::internal::Object>& _obj) const;
+				bool cloneIn(ememory::SharedPtr<ejson::internal::Object>& _obj) const;
 				/**
 				 * @brief Clone the current object
 				 * @return A new object that has been clone

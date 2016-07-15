@@ -48,7 +48,7 @@ std::string ejson::Value::generateHumanString() const {
 		EJSON_ERROR("Can not remove (nullptr) ...");
 		return out;
 	}
-	static_cast<ejson::internal::Value*>(m_data.get())->iGenerate(out, 0);
+	static_cast<const ejson::internal::Value*>(m_data.get())->iGenerate(out, 0);
 	return out;
 }
 
@@ -58,7 +58,7 @@ std::string ejson::Value::generateMachineString() const {
 		EJSON_ERROR("Can not remove (nullptr) ...");
 		return out;
 	}
-	static_cast<ejson::internal::Value*>(m_data.get())->iMachineGenerate(out);
+	static_cast<const ejson::internal::Value*>(m_data.get())->iMachineGenerate(out);
 	return out;
 }
 

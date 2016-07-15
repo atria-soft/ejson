@@ -100,7 +100,7 @@ bool ejson::internal::String::transfertIn(ememory::SharedPtr<ejson::internal::Va
 		EJSON_ERROR("Request transfer on an element that is not an String");
 		return false;
 	}
-	ememory::SharedPtr<ejson::internal::String> other = std::static_pointer_cast<ejson::internal::String>(_obj);
+	ememory::SharedPtr<ejson::internal::String> other = ememory::staticPointerCast<ejson::internal::String>(_obj);
 	other->m_value = m_value;
 	m_value = "";
 	return true;

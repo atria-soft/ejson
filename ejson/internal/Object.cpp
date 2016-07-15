@@ -220,7 +220,7 @@ bool ejson::internal::Object::iGenerate(std::string& _data, size_t _indent) cons
 		oneLine = false;
 	} else {
 		for (int32_t iii=0; iii<m_value.size() ; iii++) {
-			ememory::SharedPtr<const ejson::internal::Value> tmp = m_value[iii];
+			const ememory::SharedPtr<ejson::internal::Value> tmp = m_value[iii];
 			if (tmp == nullptr) {
 				continue;
 			}
@@ -234,7 +234,7 @@ bool ejson::internal::Object::iGenerate(std::string& _data, size_t _indent) cons
 				break;
 			}
 			if (tmp->getType() == ejson::valueType::string) {
-				ememory::SharedPtr<const ejson::internal::String> tmp2 = std::static_pointer_cast<const ejson::internal::String>(tmp);
+				const ememory::SharedPtr<ejson::internal::String> tmp2 = ememory::staticPointerCast<ejson::internal::String>(tmp);
 				if(    tmp2->get().size()>25
 				    || m_value.getKey(iii).size()>25) {
 					oneLine=false;
@@ -304,7 +304,7 @@ ememory::SharedPtr<ejson::internal::Value> ejson::internal::Object::get(size_t _
 	return m_value[_id];
 }
 
-const ememory::SharedPtr<const ejson::internal::Value> ejson::internal::Object::get(size_t _id) const{
+const ememory::SharedPtr<ejson::internal::Value> ejson::internal::Object::get(size_t _id) const{
 	return m_value[_id];
 }
 
@@ -315,9 +315,9 @@ ememory::SharedPtr<ejson::internal::Value> ejson::internal::Object::get(const st
 	return m_value[_name];
 }
 
-const ememory::SharedPtr<const ejson::internal::Value> ejson::internal::Object::get(const std::string& _name) const {
+const ememory::SharedPtr<ejson::internal::Value> ejson::internal::Object::get(const std::string& _name) const {
 	if (m_value.exist(_name) == false) {
-		return ememory::SharedPtr<const ejson::internal::Value>();
+		return ememory::SharedPtr<ejson::internal::Value>();
 	}
 	return m_value[_name];
 }
@@ -359,7 +359,7 @@ bool ejson::internal::Object::transfertIn(ememory::SharedPtr<ejson::internal::Va
 		EJSON_ERROR("Request transfer on an element that is not an object");
 		return false;
 	}
-	ememory::SharedPtr<ejson::internal::Object> other = std::static_pointer_cast<ejson::internal::Object>(_obj);
+	ememory::SharedPtr<ejson::internal::Object> other = ememory::staticPointerCast<ejson::internal::Object>(_obj);
 	// remove destination elements
 	other->clear();
 	// Copy to the destination
@@ -369,7 +369,7 @@ bool ejson::internal::Object::transfertIn(ememory::SharedPtr<ejson::internal::Va
 	return true;
 }
 
-bool ejson::internal::Object::cloneIn(const ememory::SharedPtr<ejson::internal::Object>& _obj) const {
+bool ejson::internal::Object::cloneIn(ememory::SharedPtr<ejson::internal::Object>& _obj) const {
 	if (_obj == nullptr) {
 		return false;
 	}

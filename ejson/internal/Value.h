@@ -56,6 +56,7 @@ namespace ejson {
 				  m_type(ejson::valueType::unknow) {
 					m_type = ejson::valueType::value;
 				};
+			public:
 				/**
 				 * @brief Virtualize destructor
 				 */

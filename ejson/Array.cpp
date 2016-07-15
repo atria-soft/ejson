@@ -42,7 +42,7 @@ size_t ejson::Array::size() const {
 		EJSON_ERROR("Can not size (nullptr) ...");
 		return 0;
 	}
-	return static_cast<ejson::internal::Array*>(m_data.get())->size();
+	return static_cast<const ejson::internal::Array*>(m_data.get())->size();
 }
 
 ejson::Value ejson::Array::operator[] (size_t _id) {
@@ -58,7 +58,7 @@ const ejson::Value ejson::Array::operator[] (size_t _id) const {
 		EJSON_ERROR("Can not get (nullptr) ...");
 		return ejson::Value(nullptr);;
 	}
-	return ejson::Value(static_cast<ejson::internal::Array*>(m_data.get())->get(_id));
+	return ejson::Value(static_cast<const ejson::internal::Array*>(m_data.get())->get(_id));
 }
 
 bool ejson::Array::add(const ejson::Value& _element) {

@@ -63,7 +63,7 @@ double ejson::Number::get(double _errorValue) const {
 		EJSON_ERROR("Can not get (nullptr) ...");
 		return _errorValue;
 	}
-	return static_cast<ejson::internal::Number*>(m_data.get())->get();
+	return static_cast<const ejson::internal::Number*>(m_data.get())->get();
 }
 
 uint64_t ejson::Number::getU64(uint64_t _errorValue) const {
@@ -71,7 +71,7 @@ uint64_t ejson::Number::getU64(uint64_t _errorValue) const {
 		EJSON_ERROR("Can not get (nullptr) ...");
 		return _errorValue;
 	}
-	return static_cast<ejson::internal::Number*>(m_data.get())->getU64();
+	return static_cast<const ejson::internal::Number*>(m_data.get())->getU64();
 }
 
 int64_t ejson::Number::getI64(int64_t _errorValue) const {
@@ -79,7 +79,7 @@ int64_t ejson::Number::getI64(int64_t _errorValue) const {
 		EJSON_ERROR("Can not get (nullptr) ...");
 		return _errorValue;
 	}
-	return static_cast<ejson::internal::Number*>(m_data.get())->getI64();
+	return static_cast<const ejson::internal::Number*>(m_data.get())->getI64();
 }
 
 ejson::internal::Number::type ejson::Number::getType() const {
@@ -87,7 +87,7 @@ ejson::internal::Number::type ejson::Number::getType() const {
 		EJSON_ERROR("Can not get (nullptr) ...");
 		return ejson::internal::Number::type::tDouble;
 	}
-	return static_cast<ejson::internal::Number*>(m_data.get())->getType();
+	return static_cast<const ejson::internal::Number*>(m_data.get())->getType();
 }
 
 

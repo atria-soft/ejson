@@ -62,7 +62,7 @@ const ejson::Value ejson::Object::operator[] (const std::string& _name) const {
 		EJSON_ERROR("Can not operator[] (nullptr) ...");
 		return ejson::Value(nullptr);
 	}
-	return ejson::Value(static_cast<ejson::internal::Object*>(m_data.get())->get(_name));
+	return ejson::Value(static_cast<const ejson::internal::Object*>(m_data.get())->get(_name));
 }
 
 std::vector<std::string> ejson::Object::getKeys() const {
@@ -70,7 +70,7 @@ std::vector<std::string> ejson::Object::getKeys() const {
 		EJSON_ERROR("Can not getKeys (nullptr) ...");
 		return std::vector<std::string>();
 	}
-	return static_cast<ejson::internal::Object*>(m_data.get())->getKeys();
+	return static_cast<const ejson::internal::Object*>(m_data.get())->getKeys();
 }
 
 size_t ejson::Object::size() const {
@@ -94,7 +94,7 @@ const ejson::Value ejson::Object::operator[] (size_t _id) const {
 		EJSON_ERROR("Can not operator[] (nullptr) ...");
 		return ejson::Value(nullptr);
 	}
-	return ejson::Value(static_cast<ejson::internal::Object*>(m_data.get())->get(_id));
+	return ejson::Value(static_cast<const ejson::internal::Object*>(m_data.get())->get(_id));
 }
 
 std::string ejson::Object::getKey(size_t _id) const {
@@ -102,7 +102,7 @@ std::string ejson::Object::getKey(size_t _id) const {
 		EJSON_ERROR("Can not getKey (nullptr) ...");
 		return "";
 	}
-	return static_cast<ejson::internal::Object*>(m_data.get())->getKey(_id);
+	return static_cast<const ejson::internal::Object*>(m_data.get())->getKey(_id);
 }
 
 bool ejson::Object::add(const std::string& _name, const ejson::Value& _value) {
