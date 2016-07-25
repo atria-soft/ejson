@@ -29,7 +29,7 @@ std::ostream& ejson::operator <<(std::ostream& _os, const ejson::Value& _obj) {
 
 enum ejson::valueType ejson::Value::getType() const {
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not get type ...");
+		EJSON_DEBUG("Can not get type ...");
 		return ejson::valueType::unknow;
 	}
 	return m_data->getType();
@@ -45,7 +45,7 @@ bool ejson::Value::exist() const {
 std::string ejson::Value::generateHumanString() const {
 	std::string out;
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not remove (nullptr) ...");
+		EJSON_DEBUG("Can not remove (nullptr) ...");
 		return out;
 	}
 	static_cast<const ejson::internal::Value*>(m_data.get())->iGenerate(out, 0);
@@ -55,7 +55,7 @@ std::string ejson::Value::generateHumanString() const {
 std::string ejson::Value::generateMachineString() const {
 	std::string out;
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not remove (nullptr) ...");
+		EJSON_DEBUG("Can not remove (nullptr) ...");
 		return out;
 	}
 	static_cast<const ejson::internal::Value*>(m_data.get())->iMachineGenerate(out);
@@ -132,7 +132,7 @@ const ejson::Null ejson::Value::toNull() const{
 
 void ejson::Value::display() const {
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not Display (nullptr) ...");
+		EJSON_DEBUG("Can not Display (nullptr) ...");
 		return;
 	}
 	return m_data->display();
@@ -192,7 +192,7 @@ bool ejson::Value::isNull() const {
 
 void ejson::Value::clear() {
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not Clean (nullptr) ...");
+		EJSON_DEBUG("Can not Clear (nullptr) ...");
 		return;
 	}
 	return m_data->clear();
@@ -200,7 +200,7 @@ void ejson::Value::clear() {
 
 bool ejson::Value::transfertIn(ejson::Value& _obj) {
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not transfert In (nullptr) ...");
+		EJSON_DEBUG("Can not transfert In (nullptr) ...");
 		return false;
 	}
 	return m_data->transfertIn(_obj.m_data);
@@ -208,7 +208,7 @@ bool ejson::Value::transfertIn(ejson::Value& _obj) {
 
 ejson::Value ejson::Value::clone() const {
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not transfert In (nullptr) ...");
+		EJSON_DEBUG("Can not transfert In (nullptr) ...");
 		return ejson::Value(m_data);
 	}
 	return ejson::Value(m_data->clone());

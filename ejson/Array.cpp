@@ -39,7 +39,7 @@ ejson::Array& ejson::Array::operator= (const ejson::Array& _obj) {
 
 size_t ejson::Array::size() const {
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not size (nullptr) ...");
+		EJSON_DEBUG("Can not size (nullptr) ...");
 		return 0;
 	}
 	return static_cast<const ejson::internal::Array*>(m_data.get())->size();
@@ -47,7 +47,7 @@ size_t ejson::Array::size() const {
 
 ejson::Value ejson::Array::operator[] (size_t _id) {
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not get (nullptr) ...");
+		EJSON_DEBUG("Can not get (nullptr) ...");
 		return ejson::Value(nullptr);
 	}
 	return ejson::Value(static_cast<ejson::internal::Array*>(m_data.get())->get(_id));
@@ -55,7 +55,7 @@ ejson::Value ejson::Array::operator[] (size_t _id) {
 
 const ejson::Value ejson::Array::operator[] (size_t _id) const {
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not get (nullptr) ...");
+		EJSON_DEBUG("Can not get (nullptr) ...");
 		return ejson::Value(nullptr);;
 	}
 	return ejson::Value(static_cast<const ejson::internal::Array*>(m_data.get())->get(_id));
@@ -63,7 +63,7 @@ const ejson::Value ejson::Array::operator[] (size_t _id) const {
 
 bool ejson::Array::add(const ejson::Value& _element) {
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not add (nullptr) ...");
+		EJSON_DEBUG("Can not add (nullptr) ...");
 		return false;
 	}
 	return static_cast<ejson::internal::Array*>(m_data.get())->add(_element.m_data);
@@ -71,7 +71,7 @@ bool ejson::Array::add(const ejson::Value& _element) {
 
 void ejson::Array::remove(size_t _id) {
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not remove (nullptr) ...");
+		EJSON_DEBUG("Can not remove (nullptr) ...");
 		return;
 	}
 	static_cast<ejson::internal::Array*>(m_data.get())->remove(_id);
@@ -79,7 +79,7 @@ void ejson::Array::remove(size_t _id) {
 
 ejson::Array::iterator ejson::Array::remove(const ejson::Array::iterator& _it) {
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not remove (nullptr) ...");
+		EJSON_DEBUG("Can not remove (nullptr) ...");
 		return _it;
 	}
 	static_cast<ejson::internal::Array*>(m_data.get())->remove(_it.getId());

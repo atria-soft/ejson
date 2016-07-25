@@ -37,7 +37,7 @@ ejson::Boolean& ejson::Boolean::operator= (const ejson::Boolean& _obj) {
 
 void ejson::Boolean::set(bool _value) {
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not set (nullptr) ...");
+		EJSON_DEBUG("Can not set (nullptr) ...");
 		return;
 	}
 	static_cast<ejson::internal::Boolean*>(m_data.get())->set(_value);
@@ -45,7 +45,7 @@ void ejson::Boolean::set(bool _value) {
 
 bool ejson::Boolean::get(bool _errorValue) const {
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not get (nullptr) ...");
+		EJSON_DEBUG("Can not get (nullptr) ...");
 		return _errorValue;
 	}
 	return static_cast<const ejson::internal::Boolean*>(m_data.get())->get();

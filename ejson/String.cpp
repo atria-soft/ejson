@@ -35,7 +35,7 @@ ejson::String& ejson::String::operator= (const ejson::String& _obj) {
 
 void ejson::String::set(const std::string& _value) {
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not set (nullptr) ...");
+		EJSON_DEBUG("Can not set (nullptr) ...");
 		return;
 	}
 	static_cast<ejson::internal::String*>(m_data.get())->set(_value);
@@ -43,7 +43,7 @@ void ejson::String::set(const std::string& _value) {
 
 std::string ejson::String::get(const std::string& _errorValue) const {
 	if (m_data == nullptr) {
-		EJSON_ERROR("Can not get (nullptr) ...");
+		EJSON_DEBUG("Can not get (nullptr) ...");
 		return _errorValue;
 	}
 	return static_cast<const ejson::internal::String*>(m_data.get())->get();
