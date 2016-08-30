@@ -26,8 +26,6 @@ int main(int argc, const char *argv[]) {
 	::testing::InitGoogleTest(&argc, const_cast<char **>(argv));
 	// init etk log system and file interface:
 	etk::init(argc, argv);
-	// TODO : Check this ...
-	etk::initDefaultFolder("ejson_test");
 	// Run all test with gtest
 	return RUN_ALL_TESTS();
 }
