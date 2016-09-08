@@ -26,8 +26,8 @@ def get_version():
 
 def create(target, module_name):
 	my_module = module.Module(__file__, module_name, get_type())
-	my_module.add_module_depend(['elog', 'etk', 'ememory'])
-	my_module.add_extra_compile_flags()
+	my_module.add_depend(['elog', 'etk', 'ememory'])
+	my_module.add_extra_flags()
 	my_module.add_src_file([
 		'ejson/debug.cpp',
 		'ejson/FilePos.cpp',

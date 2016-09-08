@@ -33,6 +33,6 @@ def create(target, module_name):
 	my_module.add_src_file([
 		'test/test.cpp'
 		])
-	my_module.add_module_depend(['ejson', 'gtest', 'test-debug'])
+	my_module.add_depend(['ejson', 'gtest', 'test-debug'])
 	return my_module
 
