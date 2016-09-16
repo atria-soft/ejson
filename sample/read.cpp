@@ -4,7 +4,6 @@
  * @license APACHE v2.0 (see license file)
  */
 
-//! [ejson_sample_read_all]
 #include <test-debug/debug.h>
 //! [ejson_sample_include]
 #include <ejson/ejson.h>
@@ -274,4 +273,3 @@ void appl::read() {
 	readFromString1();
 	readFull();
 }
-//! [ejson_sample_read_all]

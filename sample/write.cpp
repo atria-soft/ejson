@@ -4,7 +4,6 @@
  * @license APACHE v2.0 (see license file)
  */
 
-//! [ejson_sample_write_all]
 #include <test-debug/debug.h>
 #include <ejson/ejson.h>
 #include "write.h"
@@ -93,5 +92,4 @@ void appl::write() {
 	writeToString();
 	writeAll();
 }
-//! [ejson_sample_write_all]
 

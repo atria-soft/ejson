@@ -102,5 +102,5 @@ This is named cloning:
 All example file                                  {#ejson_tutorial_read_all}
 ================
 
-@snippet read.cpp ejson_sample_read_all
+@include read.cpp
 

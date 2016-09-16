@@ -64,5 +64,5 @@ Then if you asign an element to an other, it is the same. You need to clone it i
 All example file                                  {#ejson_tutorial_write_all}
 ================
 
-@snippet write.cpp ejson_sample_write_all
+@include write.cpp
 
