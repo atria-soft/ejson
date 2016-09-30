@@ -5,8 +5,8 @@
  */
 #pragma once
 
-#include <etk/types.h>
-#include <ejson/internal/Value.h>
+#include <etk/types.hpp>
+#include <ejson/internal/Value.hpp>
 
 namespace ejson {
 	namespace internal {

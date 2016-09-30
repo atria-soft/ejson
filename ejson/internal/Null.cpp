@@ -4,9 +4,9 @@
  * @license APACHE v2.0 (see license file)
  */
 
-#include <ejson/internal/Null.h>
-#include <ejson/debug.h>
-#include <ejson/internal/Document.h>
+#include <ejson/internal/Null.hpp>
+#include <ejson/debug.hpp>
+#include <ejson/internal/Document.hpp>
 
 ememory::SharedPtr<ejson::internal::Null> ejson::internal::Null::create() {
 	return ememory::SharedPtr<ejson::internal::Null>(new ejson::internal::Null());

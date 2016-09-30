@@ -5,7 +5,7 @@
  */
 #pragma once
 
-#include <elog/log.h>
+#include <elog/log.hpp>
 
 namespace ejson {
 	int32_t getLogId();

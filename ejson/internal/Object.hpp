@@ -5,10 +5,10 @@
  */
 #pragma once
 
-#include <etk/types.h>
-#include <etk/Hash.h>
+#include <etk/types.hpp>
+#include <etk/Hash.hpp>
 #include <algorithm>
-#include <ejson/internal/Value.h>
+#include <ejson/internal/Value.hpp>
 
 namespace ejson {
 	namespace internal {

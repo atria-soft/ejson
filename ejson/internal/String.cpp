@@ -5,11 +5,11 @@
  */
 
 
-#include <ejson/internal/Document.h>
-#include <ejson/internal/Object.h>
-#include <ejson/internal/Array.h>
-#include <ejson/internal/String.h>
-#include <ejson/debug.h>
+#include <ejson/internal/Document.hpp>
+#include <ejson/internal/Object.hpp>
+#include <ejson/internal/Array.hpp>
+#include <ejson/internal/String.hpp>
+#include <ejson/debug.hpp>
 
 ememory::SharedPtr<ejson::internal::String> ejson::internal::String::create(const std::string& _value) {
 	return ememory::SharedPtr<ejson::internal::String>(new ejson::internal::String(_value));

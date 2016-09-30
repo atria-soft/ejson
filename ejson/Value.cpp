@@ -4,10 +4,10 @@
  * @license APACHE v2.0 (see license file)
  */
 
-#include <ejson/Value.h>
-#include <ejson/debug.h>
-#include <ejson/internal/Value.h>
-#include <ejson/Document.h>
+#include <ejson/Value.hpp>
+#include <ejson/debug.hpp>
+#include <ejson/internal/Value.hpp>
+#include <ejson/Document.hpp>
 
 ejson::Value ejson::empty() {
 	return ejson::Value(ememory::SharedPtr<ejson::internal::Value>(nullptr));

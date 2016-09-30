@@ -5,5 +5,5 @@
  */
 #pragma once
 
-#include <ejson/Document.h>
+#include <ejson/Document.hpp>
 

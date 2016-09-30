@@ -3,9 +3,9 @@
  * @copyright 2011, Edouard DUPIN, all right reserved
  * @license APACHE v2.0 (see license file)
  */
-#include <ejson/String.h>
-#include <ejson/debug.h>
-#include <ejson/internal/String.h>
+#include <ejson/String.hpp>
+#include <ejson/debug.hpp>
+#include <ejson/internal/String.hpp>
 
 ejson::String::String(ememory::SharedPtr<ejson::internal::Value> _internalValue) :
   ejson::Value(_internalValue) {

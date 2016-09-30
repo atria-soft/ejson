@@ -4,7 +4,7 @@
  * @license APACHE v2.0 (see license file)
  */
 
-#include <ejson/debug.h>
+#include <ejson/debug.hpp>
 
 int32_t ejson::getLogId() {
 	static int32_t g_val = elog::registerInstance("ejson");

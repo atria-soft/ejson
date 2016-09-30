@@ -5,9 +5,9 @@
  */
 
 
-#include <ejson/internal/Number.h>
-#include <ejson/debug.h>
-#include <ejson/internal/Document.h>
+#include <ejson/internal/Number.hpp>
+#include <ejson/debug.hpp>
+#include <ejson/internal/Document.hpp>
 
 ememory::SharedPtr<ejson::internal::Number> ejson::internal::Number::create(double _value) {
 	return ememory::SharedPtr<ejson::internal::Number>(new ejson::internal::Number(_value));

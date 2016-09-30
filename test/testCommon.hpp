@@ -7,9 +7,9 @@
  */
 #pragma once
 
-#include <etk/types.h>
-#include <test-debug/debug.h>
-#include <ejson/ejson.h>
+#include <etk/types.hpp>
+#include <test-debug/debug.hpp>
+#include <ejson/ejson.hpp>
 
 // _errorPos : -1 : no error , 1 : parsing error, 2 generation error, 3 comparaison error ????
 static void localTest(const std::string& _ref, const std::string& _input, int32_t _errorPos) {

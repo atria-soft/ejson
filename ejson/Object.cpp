@@ -3,9 +3,9 @@
  * @copyright 2011, Edouard DUPIN, all right reserved
  * @license APACHE v2.0 (see license file)
  */
-#include <ejson/Object.h>
-#include <ejson/debug.h>
-#include <ejson/internal/Object.h>
+#include <ejson/Object.hpp>
+#include <ejson/debug.hpp>
+#include <ejson/internal/Object.hpp>
 
 
 ejson::Object::Object(ememory::SharedPtr<ejson::internal::Value> _internalValue) :

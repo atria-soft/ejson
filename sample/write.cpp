@@ -4,9 +4,9 @@
  * @license APACHE v2.0 (see license file)
  */
 
-#include <test-debug/debug.h>
-#include <ejson/ejson.h>
-#include "write.h"
+#include <test-debug/debug.hpp>
+#include <ejson/ejson.hpp>
+#include "write.hpp"
 
 static void writeToFile() {
 	ejson::Document doc;

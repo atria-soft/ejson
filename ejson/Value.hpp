@@ -5,11 +5,11 @@
  */
 #pragma once
 
-#include <etk/types.h>
-#include <ememory/memory.h>
-#include <ejson/FilePos.h>
-#include <ejson/valueType.h>
-#include <ejson/internal/Value.h>
+#include <etk/types.hpp>
+#include <ememory/memory.hpp>
+#include <ejson/FilePos.hpp>
+#include <ejson/valueType.hpp>
+#include <ejson/internal/Value.hpp>
 
 /**
  * @brief ejson namespace containing all function for JSON interpretor
@@ -208,11 +208,11 @@ namespace ejson {
 	ejson::Value empty();
 }
 
-#include <ejson/Array.h>
-#include <ejson/Boolean.h>
-#include <ejson/Null.h>
-#include <ejson/Number.h>
-#include <ejson/Object.h>
-#include <ejson/String.h>
+#include <ejson/Array.hpp>
+#include <ejson/Boolean.hpp>
+#include <ejson/Null.hpp>
+#include <ejson/Number.hpp>
+#include <ejson/Object.hpp>
+#include <ejson/String.hpp>
 
 

@@ -5,11 +5,11 @@
  */
 #pragma once
 
-#include <etk/types.h>
-#include <etk/Hash.h>
+#include <etk/types.hpp>
+#include <etk/Hash.hpp>
 #include <algorithm>
-#include <ejson/Value.h>
-#include <ejson/iterator.h>
+#include <ejson/Value.hpp>
+#include <ejson/iterator.hpp>
 
 namespace ejson {
 	/**

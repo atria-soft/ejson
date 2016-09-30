@@ -3,10 +3,10 @@
  * @copyright 2011, Edouard DUPIN, all right reserved
  * @license APACHE v2.0 (see license file)
  */
-#include <ejson/Document.h>
-#include <ejson/debug.h>
-#include <ejson/internal/Document.h>
-#include <etk/os/FSNode.h>
+#include <ejson/Document.hpp>
+#include <ejson/debug.hpp>
+#include <ejson/internal/Document.hpp>
+#include <etk/os/FSNode.hpp>
 
 ejson::Document::Document(ememory::SharedPtr<ejson::internal::Value> _internalValue) :
   ejson::Object(_internalValue) {

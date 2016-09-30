@@ -5,48 +5,48 @@
  */
 #pragma once
 
-#include <etk/types.h>
-#include <ejson/Value.h>
+#include <etk/types.hpp>
+#include <ejson/Value.hpp>
 
 namespace ejson {
 	/**
-	 * @brief ejson Boolean interface: true/false.
+	 * @brief ejson String interface.
 	 */
-	class Boolean : public ejson::Value {
+	class String : public ejson::Value {
 		public:
 			/**
 			 * @brief Constructor
 			 * @param[in] _internalValue Internal Value to set data
 			 */
-			Boolean(ememory::SharedPtr<ejson::internal::Value> _internalValue);
+			String(ememory::SharedPtr<ejson::internal::Value> _internalValue);
 			/**
 			 * @brief Copy constructor
 			 * @param[in] _obj Object to copy
 			 */
-			Boolean(const ejson::Boolean& _obj);
+			String(const ejson::String& _obj);
 			/**
 			 * @brief Constructor
-			 * @param[in] _value bool value to store
+			 * @param[in] _value String value to set
 			 */
-			Boolean(bool _value=false);
+			String(const std::string& _value="");
 			/**
 			 * @brief Copy constructor
 			 * @param[in] _obj Object to copy
 			 * @return Local reference on this object
 			 */
-			ejson::Boolean& operator= (const ejson::Boolean& _obj);
+			ejson::String& operator= (const ejson::String& _obj);
 		public:
 			/**
 			 * @brief set the value of the node.
 			 * @param[in] _value New value of the node.
 			 */
-			void set(bool _value);
+			void set(const std::string& _value);
 			/**
 			 * @brief get the current element Value.
-			 * @param[in] _errorValue Value return if no value Exist
+			 * @param[in] _errorValue The return value if an error occured.
 			 * @return the reference of the string value.
 			 */
-			bool get(bool _errorValue=false) const;
+			std::string get(const std::string& _errorValue="") const;
 	};
 }
 

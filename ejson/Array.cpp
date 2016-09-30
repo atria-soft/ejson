@@ -3,13 +3,13 @@
  * @copyright 2011, Edouard DUPIN, all right reserved
  * @license APACHE v2.0 (see license file)
  */
-#include <ejson/Array.h>
-#include <ejson/debug.h>
-#include <ejson/internal/Array.h>
-#include <ejson/Boolean.h>
-#include <ejson/String.h>
-#include <ejson/Null.h>
-#include <ejson/Number.h>
+#include <ejson/Array.hpp>
+#include <ejson/debug.hpp>
+#include <ejson/internal/Array.hpp>
+#include <ejson/Boolean.hpp>
+#include <ejson/String.hpp>
+#include <ejson/Null.hpp>
+#include <ejson/Number.hpp>
 
 ejson::Array::Array(ememory::SharedPtr<ejson::internal::Value> _internalValue) :
   ejson::Value(_internalValue) {

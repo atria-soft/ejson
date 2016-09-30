@@ -4,8 +4,8 @@
  * @license APACHE v2.0 (see license file)
  */
 
-#include <ejson/valueType.h>
-#include <ejson/debug.h>
+#include <ejson/valueType.hpp>
+#include <ejson/debug.hpp>
 
 
 

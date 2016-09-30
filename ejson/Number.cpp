@@ -3,9 +3,9 @@
  * @copyright 2011, Edouard DUPIN, all right reserved
  * @license APACHE v2.0 (see license file)
  */
-#include <ejson/Number.h>
-#include <ejson/debug.h>
-#include <ejson/internal/Number.h>
+#include <ejson/Number.hpp>
+#include <ejson/debug.hpp>
+#include <ejson/internal/Number.hpp>
 
 
 ejson::Number::Number(ememory::SharedPtr<ejson::internal::Value> _internalValue) :

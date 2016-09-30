@@ -4,9 +4,9 @@
  * @license APACHE v2.0 (see license file)
  */
 
-#include <ejson/Boolean.h>
-#include <ejson/debug.h>
-#include <ejson/internal/Boolean.h>
+#include <ejson/Boolean.hpp>
+#include <ejson/debug.hpp>
+#include <ejson/internal/Boolean.hpp>
 
 
 ejson::Boolean::Boolean(ememory::SharedPtr<ejson::internal::Value> _internalValue) :

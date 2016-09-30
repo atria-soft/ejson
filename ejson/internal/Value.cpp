@@ -4,9 +4,9 @@
  * @license APACHE v2.0 (see license file)
  */
 
-#include <ejson/internal/Value.h>
-#include <ejson/debug.h>
-#include <ejson/internal/Document.h>
+#include <ejson/internal/Value.hpp>
+#include <ejson/debug.hpp>
+#include <ejson/internal/Document.hpp>
 
 
 enum ejson::valueType ejson::internal::Value::getType() const {

@@ -4,9 +4,9 @@
  * @license APACHE v2.0 (see license file)
  */
 
-#include <ejson/internal/Boolean.h>
-#include <ejson/debug.h>
-#include <ejson/internal/Document.h>
+#include <ejson/internal/Boolean.hpp>
+#include <ejson/debug.hpp>
+#include <ejson/internal/Document.hpp>
 
 ememory::SharedPtr<ejson::internal::Boolean> ejson::internal::Boolean::create(bool _value) {
 	return ememory::SharedPtr<ejson::internal::Boolean>(new ejson::internal::Boolean(_value));

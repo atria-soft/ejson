@@ -7,7 +7,7 @@
  */
 #pragma once
 
-#include "testCommon.h"
+#include "testCommon.hpp"
 #include <gtest/gtest.h>
 
 static std::string refOutputNumber("{\n\t\"tmpElement\": 956256\n}\n");

@@ -5,14 +5,14 @@
  */
 
 
-#include <ejson/internal/Document.h>
-#include <ejson/internal/Object.h>
-#include <ejson/internal/Array.h>
-#include <ejson/internal/String.h>
-#include <ejson/internal/Null.h>
-#include <ejson/internal/Number.h>
-#include <ejson/internal/Boolean.h>
-#include <ejson/debug.h>
+#include <ejson/internal/Document.hpp>
+#include <ejson/internal/Object.hpp>
+#include <ejson/internal/Array.hpp>
+#include <ejson/internal/String.hpp>
+#include <ejson/internal/Null.hpp>
+#include <ejson/internal/Number.hpp>
+#include <ejson/internal/Boolean.hpp>
+#include <ejson/debug.hpp>
 
 ememory::SharedPtr<ejson::internal::Array> ejson::internal::Array::create() {
 	return ememory::SharedPtr<ejson::internal::Array>(new ejson::internal::Array());

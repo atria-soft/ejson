@@ -5,8 +5,8 @@
  */
 #pragma once
 
-#include <ememory/memory.h>
-#include <etk/types.h>
+#include <ememory/memory.hpp>
+#include <etk/types.hpp>
 
 namespace ejson {
 	/**

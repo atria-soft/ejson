@@ -7,19 +7,19 @@
  */
 
 #include <vector>
-#include <etk/etk.h>
-#include <etk/types.h>
-#include <etk/archive/Archive.h>
-#include <test-debug/debug.h>
-#include <ejson/ejson.h>
+#include <etk/etk.hpp>
+#include <etk/types.hpp>
+#include <etk/archive/Archive.hpp>
+#include <test-debug/debug.hpp>
+#include <ejson/ejson.hpp>
 #include <gtest/gtest.h>
-#include <etk/os/FSNode.h>
+#include <etk/os/FSNode.hpp>
 
-#include "testDocument.h"
-#include "testBoolean.h"
-#include "testNull.h"
-#include "testNumber.h"
-#include "testAll.h"
+#include "testDocument.hpp"
+#include "testBoolean.hpp"
+#include "testNull.hpp"
+#include "testNumber.hpp"
+#include "testAll.hpp"
 
 int main(int argc, const char *argv[]) {
 	// init Google test :

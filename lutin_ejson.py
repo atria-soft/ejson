@@ -50,27 +50,27 @@ def create(target, module_name):
 		'ejson/internal/Value.cpp'
 		])
 	my_module.add_header_file([
-		'ejson/FilePos.h',
-		'ejson/ejson.h',
-		'ejson/valueType.h',
-		'ejson/Document.h',
-		'ejson/Array.h',
-		'ejson/Boolean.h',
-		'ejson/Null.h',
-		'ejson/Number.h',
-		'ejson/String.h',
-		'ejson/Object.h',
-		'ejson/Value.h',
-		'ejson/iterator.h',
+		'ejson/FilePos.hpp',
+		'ejson/ejson.hpp',
+		'ejson/valueType.hpp',
+		'ejson/Document.hpp',
+		'ejson/Array.hpp',
+		'ejson/Boolean.hpp',
+		'ejson/Null.hpp',
+		'ejson/Number.hpp',
+		'ejson/String.hpp',
+		'ejson/Object.hpp',
+		'ejson/Value.hpp',
+		'ejson/iterator.hpp',
 		'ejson/details/iterator.hxx',
-		'ejson/internal/Document.h',
-		'ejson/internal/Array.h',
-		'ejson/internal/Boolean.h',
-		'ejson/internal/Null.h',
-		'ejson/internal/Number.h',
-		'ejson/internal/String.h',
-		'ejson/internal/Object.h',
-		'ejson/internal/Value.h'
+		'ejson/internal/Document.hpp',
+		'ejson/internal/Array.hpp',
+		'ejson/internal/Boolean.hpp',
+		'ejson/internal/Null.hpp',
+		'ejson/internal/Number.hpp',
+		'ejson/internal/String.hpp',
+		'ejson/internal/Object.hpp',
+		'ejson/internal/Value.hpp'
 		])
 	my_module.add_path(tools.get_current_path(__file__))
 	return my_module

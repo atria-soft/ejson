@@ -5,12 +5,12 @@
  */
 #pragma once
 
-#include <ejson/internal/Value.h>
+#include <ejson/internal/Value.hpp>
 #include <vector>
-#include <etk/types.h>
-#include <ejson/internal/String.h>
-#include <ejson/internal/Array.h>
-#include <ejson/internal/Object.h>
+#include <etk/types.hpp>
+#include <ejson/internal/String.hpp>
+#include <ejson/internal/Array.hpp>
+#include <ejson/internal/Object.hpp>
 
 namespace ejson {
 	namespace internal {

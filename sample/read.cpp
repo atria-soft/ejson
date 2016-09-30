@@ -4,11 +4,11 @@
  * @license APACHE v2.0 (see license file)
  */
 
-#include <test-debug/debug.h>
+#include <test-debug/debug.hpp>
 //! [ejson_sample_include]
-#include <ejson/ejson.h>
+#include <ejson/ejson.hpp>
 //! [ejson_sample_include]
-#include "read.h"
+#include "read.hpp"
 
 
 static void readFromFile() {

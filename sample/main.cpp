@@ -4,10 +4,10 @@
  * @license APACHE v2.0 (see license file)
  */
 
-#include <test-debug/debug.h>
-#include <etk/etk.h>
-#include "read.h"
-#include "write.h"
+#include <test-debug/debug.hpp>
+#include <etk/etk.hpp>
+#include "read.hpp"
+#include "write.hpp"
 
 int main(int argc, const char *argv[]) {
 	// the only one init for etk:

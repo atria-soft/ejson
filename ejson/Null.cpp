@@ -3,9 +3,9 @@
  * @copyright 2011, Edouard DUPIN, all right reserved
  * @license APACHE v2.0 (see license file)
  */
-#include <ejson/Null.h>
-#include <ejson/debug.h>
-#include <ejson/internal/Null.h>
+#include <ejson/Null.hpp>
+#include <ejson/debug.hpp>
+#include <ejson/internal/Null.hpp>
 
 ejson::Null::Null(ememory::SharedPtr<ejson::internal::Value> _internalValue) :
   ejson::Value(_internalValue) {

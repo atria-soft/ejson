@@ -7,7 +7,7 @@
  */
 #pragma once
 
-#include "testCommon.h"
+#include "testCommon.hpp"
 #include <gtest/gtest.h>
 
 static std::string refOutputDocument("{\n}\n");

@@ -4,7 +4,7 @@
  * @license APACHE v2.0 (see license file)
  */
 
-#include <ejson/FilePos.h>
+#include <ejson/FilePos.hpp>
 
 ejson::FilePos::FilePos() :
   m_col(0),
