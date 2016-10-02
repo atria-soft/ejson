@@ -3,7 +3,7 @@
  * @copyright 2011, Edouard DUPIN, all right reserved
  * @license APACHE v2.0 (see license file)
  */
-#include <ejson/iterator.h>
+#include <ejson/iterator.hpp>
 
 template<class EJSON_BASE_T>
 ejson::iterator<EJSON_BASE_T>::iterator(EJSON_BASE_T& _obj, size_t _pos) :

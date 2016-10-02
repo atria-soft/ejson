@@ -29,7 +29,7 @@ def create(target, module_name):
 	    'debug.hpp',
 	    ])
 	my_module.add_file_patterns([
-	    '*.h',
+	    '*.hpp',
 	    '*.md',
 	    ])
 	
