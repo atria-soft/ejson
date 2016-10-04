@@ -1,7 +1,6 @@
 #!/usr/bin/python
-import lutin.module as module
+import lutin.debug as debug
 import lutin.tools as tools
-import datetime
 
 def get_type():
 	return "BINARY"
@@ -24,14 +23,16 @@ def get_compagny_name():
 def get_maintainer():
 	return ["Mr DUPIN Edouard <yui.heero@gmail.com>"]
 
-def create(target, module_name):
-	my_module = module.Module(__file__, module_name, get_type())
+def configure(target, my_module):
 	my_module.add_src_file([
-		'sample/main.cpp',
-		'sample/read.cpp',
-		'sample/write.cpp'
-		])
-	my_module.add_depend(['ejson', 'test-debug'])
+	    'sample/main.cpp',
+	    'sample/read.cpp',
+	    'sample/write.cpp'
+	    ])
+	my_module.add_depend([
+	    'ejson',
+	    'test-debug'
+	    ])
 	my_module.copy_path('sample/read.json')
-	return my_module
+	return True
 
