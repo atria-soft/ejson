@@ -1,0 +1,434 @@
+<!-- HTML header for doxygen 1.8.8-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- For Mobile Devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+        <meta name="generator" content="Doxygen 1.8.11"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <title>ejson: Ewol JSON parser: ejson::Boolean Class Reference</title>
+        <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
+        <script type="text/javascript" src="dynsections.js"></script>
+        <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+        <link href="doxygen.css" rel="stylesheet" type="text/css" />
+        <link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="doxy-boot.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand">ejson: Ewol JSON parser 0.8.0</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">Main&nbsp;Page</a></li>
+                        <li><a href="pages.html">Related&nbsp;Pages</a></li>
+                        <li><a href="namespaces.html">Namespaces</a></li>
+                        <li><a href="annotated.html">Classes</a></li>
+                        <li><a href="files.html">Files</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Link-libs<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="http://HeeroYui.github.io/lutin">lutin</a></li>
+                                <li><a href="http://atria-soft.github.io/ewol">ewol</a></li>
+                                <li><a href="http://atria-soft.github.io/etk">etk</a></li>
+                                <li><a href="http://atria-soft.github.io/ejson">ejson</a></li>
+                                <li><a href="http://atria-soft.github.io/exml">exml</a></li>
+                                <li><a href="http://atria-soft.github.io/esvg">esvg</a></li>
+                                <li><a href="http://atria-soft.github.io/egami">egami</a></li>
+                                <li><a href="http://atria-soft.github.io/gale">gale</a></li>
+                                <li><a href="http://atria-soft.github.io/ege">ege</a></li>
+                                <li><a href="http://atria-soft.github.io/elog">elog</a></li>
+                                <li><a href="http://atria-soft.github.io/ememory">ememory</a></li>
+                                <li><a href="http://atria-soft.github.io/enet">enet</a></li>
+                                <li><a href="http://atria-soft.github.io/eproperty">eproperty</a></li>
+                                <li><a href="http://atria-soft.github.io/esignal">esignal</a></li>
+                                <li><a href="http://atria-soft.github.io/zeus">zeus</a></li>
+                                <li><a href="http://atria-soft.github.io/audio-ess">audio-ess</a></li>
+                                <li><a href="http://musicdsp.github.io/audio">audio</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-drain">audio-drain</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-orchestra">audio-orchestra</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-river">audio-river</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div id="search-box" class="input-group">
+                        <div class="input-group-btn">
+                            <button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-search"></span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">All</a></li>
+                                <li><a href="#">Classes</a></li>
+                                <li><a href="#">Namespaces</a></li>
+                                <li><a href="#">Files</a></li>
+                                <li><a href="#">Functions</a></li>
+                                <li><a href="#">Variables</a></li>
+                                <li><a href="#">Typedefs</a></li>
+                                <li><a href="#">Enumerations</a></li>
+                                <li><a href="#">Enumerator</a></li>
+                                <li><a href="#">Friends</a></li>
+                                <li><a href="#">Macros</a></li>
+                                <li><a href="#">Pages</a></li>
+                            </ul>
+                        </div>
+                        <button id="search-close" type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <input id="search-field" class="form-control" accesskey="S" onkeydown="searchBox.OnSearchFieldChange(event);" placeholder="Search ..." type="text">
+                    </div>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+            <div class="content" id="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 panel panel-default" style="padding-bottom: 15px;">
+                            <div style="margin-bottom: 15px;">
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceejson.html">ejson</a></li><li class="navelem"><a class="el" href="classejson_1_1_boolean.html">Boolean</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classejson_1_1_boolean-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ejson::Boolean Class Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_boolean_8hpp_source.html">Boolean.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for ejson::Boolean:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classejson_1_1_boolean.png" usemap="#ejson::Boolean_map" alt=""/>
+  <map id="ejson::Boolean_map" name="ejson::Boolean_map">
+<area href="classejson_1_1_value.html" title="Basic main object of all json elements. " alt="ejson::Value" shape="rect" coords="0,0,94,24"/>
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a58e8f164a9e58444b362e3e174d54e56"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_boolean.html#a58e8f164a9e58444b362e3e174d54e56">Boolean</a> (<a class="elRef" doxygen="/home/heero/dev/perso/out/doc/release/ememory.tag:http://atria-soft.github.io/ememory/" href="http://atria-soft.github.io/ememory/classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; <a class="el" href="classejson_1_1internal_1_1_value.html">ejson::internal::Value</a> &gt; _internalValue)</td></tr>
+<tr class="separator:a58e8f164a9e58444b362e3e174d54e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7672591c1c29e25a18b41cfb5d7dd33b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_boolean.html#a7672591c1c29e25a18b41cfb5d7dd33b">Boolean</a> (const <a class="el" href="classejson_1_1_boolean.html">ejson::Boolean</a> &amp;_obj)</td></tr>
+<tr class="separator:a7672591c1c29e25a18b41cfb5d7dd33b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7bd97c43d0d0ceea89a041162203654"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_boolean.html#aa7bd97c43d0d0ceea89a041162203654">Boolean</a> (bool _value=false)</td></tr>
+<tr class="separator:aa7bd97c43d0d0ceea89a041162203654"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acab1fe05761a092e0f26577a13ca6919"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1_boolean.html">ejson::Boolean</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_boolean.html#acab1fe05761a092e0f26577a13ca6919">operator=</a> (const <a class="el" href="classejson_1_1_boolean.html">ejson::Boolean</a> &amp;_obj)</td></tr>
+<tr class="separator:acab1fe05761a092e0f26577a13ca6919"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab7e29c6cf8553d1b396a8b5251df37d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_boolean.html#aab7e29c6cf8553d1b396a8b5251df37d">set</a> (bool _value)</td></tr>
+<tr class="separator:aab7e29c6cf8553d1b396a8b5251df37d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb5f1edfc9020e63e1044ac7b96ef427"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_boolean.html#aeb5f1edfc9020e63e1044ac7b96ef427">get</a> (bool _errorValue=false) const </td></tr>
+<tr class="separator:aeb5f1edfc9020e63e1044ac7b96ef427"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classejson_1_1_value"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classejson_1_1_value')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classejson_1_1_value.html">ejson::Value</a></td></tr>
+<tr class="memitem:a546ebb6c292a5f765cd1999239eae0be inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="namespaceejson.html#a6a37b3ae20a2b7bc207b268ab1439709">ejson::valueType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a546ebb6c292a5f765cd1999239eae0be">getType</a> () const </td></tr>
+<tr class="separator:a546ebb6c292a5f765cd1999239eae0be inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0510ab7719ab2388f447f7b0c2972ff7 inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a0510ab7719ab2388f447f7b0c2972ff7">Value</a> (const <a class="elRef" doxygen="/home/heero/dev/perso/out/doc/release/ememory.tag:http://atria-soft.github.io/ememory/" href="http://atria-soft.github.io/ememory/classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; <a class="el" href="classejson_1_1internal_1_1_value.html">ejson::internal::Value</a> &gt; &amp;_internalValue)</td></tr>
+<tr class="separator:a0510ab7719ab2388f447f7b0c2972ff7 inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0eee5841f21b81556e93c28915ffbc1 inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#ad0eee5841f21b81556e93c28915ffbc1">Value</a> ()</td></tr>
+<tr class="separator:ad0eee5841f21b81556e93c28915ffbc1 inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60852cacc23fd9b08177da5084ade12e inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a60852cacc23fd9b08177da5084ade12e">~Value</a> ()=default</td></tr>
+<tr class="separator:a60852cacc23fd9b08177da5084ade12e inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f8dcdde2d07e1861572c1e5ef427a1c inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a5f8dcdde2d07e1861572c1e5ef427a1c">display</a> () const </td></tr>
+<tr class="separator:a5f8dcdde2d07e1861572c1e5ef427a1c inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a195446e93590ab64d72e28a2759bd4cf inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a195446e93590ab64d72e28a2759bd4cf">exist</a> () const </td></tr>
+<tr class="separator:a195446e93590ab64d72e28a2759bd4cf inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58ec04b1804d2502c0621c9a4108b6c3 inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1_document.html">ejson::Document</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a58ec04b1804d2502c0621c9a4108b6c3">toDocument</a> ()</td></tr>
+<tr class="separator:a58ec04b1804d2502c0621c9a4108b6c3 inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcb40d74c776f13438f82db58d9dea30 inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classejson_1_1_document.html">ejson::Document</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#afcb40d74c776f13438f82db58d9dea30">toDocument</a> () const </td></tr>
+<tr class="separator:afcb40d74c776f13438f82db58d9dea30 inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf67a6a98c2fb657cff4290cef39b658 inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1_array.html">ejson::Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#abf67a6a98c2fb657cff4290cef39b658">toArray</a> ()</td></tr>
+<tr class="separator:abf67a6a98c2fb657cff4290cef39b658 inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70c05492e4c4325dfe84c04e853b3f1d inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classejson_1_1_array.html">ejson::Array</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a70c05492e4c4325dfe84c04e853b3f1d">toArray</a> () const </td></tr>
+<tr class="separator:a70c05492e4c4325dfe84c04e853b3f1d inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91236630d37cad7a8d1256835a9448c8 inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1_object.html">ejson::Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a91236630d37cad7a8d1256835a9448c8">toObject</a> ()</td></tr>
+<tr class="separator:a91236630d37cad7a8d1256835a9448c8 inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13ec1abbb1d7d9f9755304a0ebed553e inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classejson_1_1_object.html">ejson::Object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a13ec1abbb1d7d9f9755304a0ebed553e">toObject</a> () const </td></tr>
+<tr class="separator:a13ec1abbb1d7d9f9755304a0ebed553e inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43a3bf8ff0d02f92e8751ea8a16fcaa1 inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1_string.html">ejson::String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a43a3bf8ff0d02f92e8751ea8a16fcaa1">toString</a> ()</td></tr>
+<tr class="separator:a43a3bf8ff0d02f92e8751ea8a16fcaa1 inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2629857ac5c5957ba4647e224a0d19bc inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classejson_1_1_string.html">ejson::String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a2629857ac5c5957ba4647e224a0d19bc">toString</a> () const </td></tr>
+<tr class="separator:a2629857ac5c5957ba4647e224a0d19bc inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40e63375796266399a4297b8d2b96f2c inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1_number.html">ejson::Number</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a40e63375796266399a4297b8d2b96f2c">toNumber</a> ()</td></tr>
+<tr class="separator:a40e63375796266399a4297b8d2b96f2c inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e3ca748482aae233397187732fe1fa7 inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classejson_1_1_number.html">ejson::Number</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a2e3ca748482aae233397187732fe1fa7">toNumber</a> () const </td></tr>
+<tr class="separator:a2e3ca748482aae233397187732fe1fa7 inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab759dc22259f15b487a4437df60baf1a inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1_boolean.html">ejson::Boolean</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#ab759dc22259f15b487a4437df60baf1a">toBoolean</a> ()</td></tr>
+<tr class="separator:ab759dc22259f15b487a4437df60baf1a inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad481dc9ed27508f8ac755e99866026ec inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classejson_1_1_boolean.html">ejson::Boolean</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#ad481dc9ed27508f8ac755e99866026ec">toBoolean</a> () const </td></tr>
+<tr class="separator:ad481dc9ed27508f8ac755e99866026ec inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a157597cbc30f00eabc62d8724fccd61f inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1_null.html">ejson::Null</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a157597cbc30f00eabc62d8724fccd61f">toNull</a> ()</td></tr>
+<tr class="separator:a157597cbc30f00eabc62d8724fccd61f inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb9f30c846880a11b489a36afc0b4136 inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classejson_1_1_null.html">ejson::Null</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#adb9f30c846880a11b489a36afc0b4136">toNull</a> () const </td></tr>
+<tr class="separator:adb9f30c846880a11b489a36afc0b4136 inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52c04dcf17035225152cc5f3cc143862 inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a52c04dcf17035225152cc5f3cc143862">isDocument</a> () const </td></tr>
+<tr class="separator:a52c04dcf17035225152cc5f3cc143862 inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d0f3ea4cf180e1c649f83152f1798b9 inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a8d0f3ea4cf180e1c649f83152f1798b9">isArray</a> () const </td></tr>
+<tr class="separator:a8d0f3ea4cf180e1c649f83152f1798b9 inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bd98e40dfdd065d44d4a66f0bf1094b inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a7bd98e40dfdd065d44d4a66f0bf1094b">isObject</a> () const </td></tr>
+<tr class="separator:a7bd98e40dfdd065d44d4a66f0bf1094b inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c595ee692f580009d5211be4c5dc575 inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a3c595ee692f580009d5211be4c5dc575">isString</a> () const </td></tr>
+<tr class="separator:a3c595ee692f580009d5211be4c5dc575 inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae871b62d469782819840f95697b2ef30 inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#ae871b62d469782819840f95697b2ef30">isNumber</a> () const </td></tr>
+<tr class="separator:ae871b62d469782819840f95697b2ef30 inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2f7d685e7f01690b8677f8659af65c0 inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#af2f7d685e7f01690b8677f8659af65c0">isBoolean</a> () const </td></tr>
+<tr class="separator:af2f7d685e7f01690b8677f8659af65c0 inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab781a082d8a9802f0e07516ced5211ec inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#ab781a082d8a9802f0e07516ced5211ec">isNull</a> () const </td></tr>
+<tr class="separator:ab781a082d8a9802f0e07516ced5211ec inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ce2ef5d17d859a51d4146f8ec097fcb inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a3ce2ef5d17d859a51d4146f8ec097fcb">clear</a> ()</td></tr>
+<tr class="separator:a3ce2ef5d17d859a51d4146f8ec097fcb inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03ca08ba192ba578df15b6f90cb96970 inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a03ca08ba192ba578df15b6f90cb96970">transfertIn</a> (<a class="el" href="classejson_1_1_value.html">ejson::Value</a> &amp;_obj)</td></tr>
+<tr class="separator:a03ca08ba192ba578df15b6f90cb96970 inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9532afe4355862dc9cc0cf280665a5ee inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1_value.html">ejson::Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a9532afe4355862dc9cc0cf280665a5ee">clone</a> () const </td></tr>
+<tr class="separator:a9532afe4355862dc9cc0cf280665a5ee inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04bca7f3cc30fb33a83e4393909da75c inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceejson.html#a6a37b3ae20a2b7bc207b268ab1439709ab45cffe084dd3d20d928bee85e7b0f21">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a04bca7f3cc30fb33a83e4393909da75c">generateHumanString</a> () const </td></tr>
+<tr class="separator:a04bca7f3cc30fb33a83e4393909da75c inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad24a7d3b43864114c6fab05609c2e765 inherit pub_methods_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceejson.html#a6a37b3ae20a2b7bc207b268ab1439709ab45cffe084dd3d20d928bee85e7b0f21">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#ad24a7d3b43864114c6fab05609c2e765">generateMachineString</a> () const </td></tr>
+<tr class="separator:ad24a7d3b43864114c6fab05609c2e765 inherit pub_methods_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_attribs_classejson_1_1_value"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classejson_1_1_value')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classejson_1_1_value.html">ejson::Value</a></td></tr>
+<tr class="memitem:a50bd401c6c23aa9a4db2f2412fde277d inherit pro_attribs_classejson_1_1_value"><td class="memItemLeft" align="right" valign="top"><a class="elRef" doxygen="/home/heero/dev/perso/out/doc/release/ememory.tag:http://atria-soft.github.io/ememory/" href="http://atria-soft.github.io/ememory/classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; <a class="el" href="classejson_1_1internal_1_1_value.html">ejson::internal::Value</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_value.html#a50bd401c6c23aa9a4db2f2412fde277d">m_data</a></td></tr>
+<tr class="separator:a50bd401c6c23aa9a4db2f2412fde277d inherit pro_attribs_classejson_1_1_value"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>ejson <a class="el" href="classejson_1_1_boolean.html" title="ejson Boolean interface: true/false. ">Boolean</a> interface: true/false. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a58e8f164a9e58444b362e3e174d54e56"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ejson::Boolean::Boolean </td>
+          <td>(</td>
+          <td class="paramtype"><a class="elRef" doxygen="/home/heero/dev/perso/out/doc/release/ememory.tag:http://atria-soft.github.io/ememory/" href="http://atria-soft.github.io/ememory/classememory_1_1_shared_ptr.html">ememory::SharedPtr</a>&lt; <a class="el" href="classejson_1_1internal_1_1_value.html">ejson::internal::Value</a> &gt;&#160;</td>
+          <td class="paramname"><em>_internalValue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_internalValue</td><td>Internal <a class="el" href="classejson_1_1_value.html" title="Basic main object of all json elements. ">Value</a> to set data </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a7672591c1c29e25a18b41cfb5d7dd33b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ejson::Boolean::Boolean </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classejson_1_1_boolean.html">ejson::Boolean</a> &amp;&#160;</td>
+          <td class="paramname"><em>_obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_obj</td><td><a class="el" href="classejson_1_1_object.html" title="ejson Object interface { ... }. ">Object</a> to copy </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aa7bd97c43d0d0ceea89a041162203654"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ejson::Boolean::Boolean </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>_value</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_value</td><td>bool value to store </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aeb5f1edfc9020e63e1044ac7b96ef427"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ejson::Boolean::get </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>_errorValue</em> = <code>false</code></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get the current element <a class="el" href="classejson_1_1_value.html" title="Basic main object of all json elements. ">Value</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_errorValue</td><td><a class="el" href="classejson_1_1_value.html" title="Basic main object of all json elements. ">Value</a> return if no value Exist </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the reference of the string value. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="acab1fe05761a092e0f26577a13ca6919"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classejson_1_1_boolean.html">ejson::Boolean</a>&amp; ejson::Boolean::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classejson_1_1_boolean.html">ejson::Boolean</a> &amp;&#160;</td>
+          <td class="paramname"><em>_obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_obj</td><td><a class="el" href="classejson_1_1_object.html" title="ejson Object interface { ... }. ">Object</a> to copy </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Local reference on this object </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aab7e29c6cf8553d1b396a8b5251df37d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ejson::Boolean::set </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>_value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>set the value of the node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_value</td><td>New value of the node. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>framework/atria-soft/ejson/ejson/<a class="el" href="_boolean_8hpp_source.html">Boolean.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- HTML footer for doxygen 1.8.8-->
+<!-- start footer part -->
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="footer"/><address class="footer"><small>
+Generated on Sun Oct 23 2016 22:01:40 for ejson: Ewol JSON parser by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>

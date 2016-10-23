@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
         <meta name="generator" content="Doxygen 1.8.11"/>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <title>ejson: Ewol JSON parser: EJSON library</title>
+        <title>ejson: Ewol JSON parser: Class List</title>
         <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
         <script type="text/javascript" src="dynsections.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -108,10 +108,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -131,6 +131,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li class="current"><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+    </ul>
+  </div>
 </div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -148,64 +156,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">EJSON library </div>  </div>
+<div class="title">Class List</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#ejson_mainpage_what">What is EJSON:                               </a><ul><li class="level2"><a href="#ejson_mainpage_what_it_does">What it does:                               </a></li>
-<li class="level2"><a href="#ejson_mainpage_what_it_not_does">What it doesn&#39;t do:                          </a></li>
-<li class="level2"><a href="#ejson_mainpage_extention">Internal extention:                          </a></li>
-</ul>
-</li>
-<li class="level1"><a href="#ejson_mainpage_language">What languages are supported?                    </a></li>
-<li class="level1"><a href="#ejson_mainpage_license_restriction">Are there any licensing restrictions?            </a></li>
-<li class="level1"><a href="#ejson_mainpage_license">License (APACHE-2.0)                             </a></li>
-<li class="level1"><a href="#ejson_mainpage_sub_page">Other pages                              </a></li>
-</ul>
-</div>
-<div class="textblock"><h1><a class="anchor" id="ejson_mainpage_what"></a>
-What is EJSON:                               </h1>
-<p>EJSON, or Ewol JSON interface is a simple, small, efficient, C++ JSON parser/generator that can be easily integrating into other programs.</p>
-<h2><a class="anchor" id="ejson_mainpage_what_it_does"></a>
-What it does:                               </h2>
-<p>EJSON parses an JSON document, and builds from that a Document Object Model (DOM) that can be read, modified, and saved.</p>
-<p>JSON stands for "JavaScript Object Notation". It is a general purpose human and machine readable machine language to describe arbitrary data (base internal system of the JavaScript object). All those random file formats created to store application data can all be replaced with JSON. One parser for everything.</p>
-<p><a href="http://wikipedia.org/wiki/JSON">http://wikipedia.org/wiki/JSON</a></p>
-<p>There are different ways to access and interact with JSON data. EJSON uses a Document Object Model (DOM), meaning the JSON data is parsed into a C++ objects that can be browsed and manipulated, and then written to disk. You can also construct an JSON document from scratch with C++ objects and write this to disk.</p>
-<p>EJSON is designed to be easy and fast to learn.</p>
-<p>EJSON is dependent of the STL (compatible with MacOs stl (CXX))</p>
-<h2><a class="anchor" id="ejson_mainpage_what_it_not_does"></a>
-What it doesn't do:                          </h2>
-<p>I do not know...</p>
-<h2><a class="anchor" id="ejson_mainpage_extention"></a>
-Internal extention:                          </h2>
-<p>I Add some costum feature of JSON:</p><ul>
-<li>Support inline comment starting with **#**</li>
-<li>Support Unquotet name if the name is not separate with space and not start with number</li>
-<li>Support simple quote **'** instead of double quote **"**</li>
-<li>Support removing of the **{}** arround the file (by default present)</li>
-</ul>
-<h1><a class="anchor" id="ejson_mainpage_language"></a>
-What languages are supported?                    </h1>
-<p>EJSON is written in C++.</p>
-<h1><a class="anchor" id="ejson_mainpage_license_restriction"></a>
-Are there any licensing restrictions?            </h1>
-<p>EJSON is <b>FREE software</b> and <em>all sub-library are FREE and staticly linkable !!!</em></p>
-<h1><a class="anchor" id="ejson_mainpage_license"></a>
-License (APACHE-2.0)                             </h1>
-<p>Copyright EJSON Edouard DUPIN</p>
-<p>Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
-<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
-<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-<h1><a class="anchor" id="ejson_mainpage_sub_page"></a>
-Other pages                              </h1>
-<ul>
-<li><a class="el" href="ejson_build.html">Build lib &amp; build sample</a></li>
-<li><a class="el" href="ejson_tutorial_read.html">Read an JSON content</a></li>
-<li><a class="el" href="ejson_tutorial_write.html">Write an JSON content</a></li>
-<li><a href="http://atria-soft.github.io/ewol/ewol_coding_style.html"><b>ewol coding style</b></a> </li>
-</ul>
-</div></div><!-- contents -->
+<div class="textblock">Here are the classes, structs, unions and interfaces with brief descriptions:</div><div class="directory">
+<div class="levels">[detail level <span onclick="javascript:toggleLevel(1);">1</span><span onclick="javascript:toggleLevel(2);">2</span><span onclick="javascript:toggleLevel(3);">3</span>]</div><table class="directory">
+<tr id="row_0_" class="even"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_0_" class="arrow" onclick="toggleFolder('0_')">&#9660;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespaceejson.html" target="_self">ejson</a></td><td class="desc">Ejson namespace containing all function for JSON interpretor </td></tr>
+<tr id="row_0_0_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span id="arr_0_0_" class="arrow" onclick="toggleFolder('0_0_')">&#9660;</span><span class="icona"><span class="icon">N</span></span><a class="el" href="namespaceejson_1_1internal.html" target="_self">internal</a></td><td class="desc">Ejson internal data implementation (not for external user) </td></tr>
+<tr id="row_0_0_0_" class="even"><td class="entry"><span style="width:48px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classejson_1_1internal_1_1_array.html" target="_self">Array</a></td><td class="desc">Ejson <a class="el" href="classejson_1_1internal_1_1_array.html" title="ejson Array internal data implementation. ">Array</a> internal data implementation </td></tr>
+<tr id="row_0_0_1_"><td class="entry"><span style="width:48px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classejson_1_1internal_1_1_boolean.html" target="_self">Boolean</a></td><td class="desc">Ejson <a class="el" href="classejson_1_1internal_1_1_boolean.html" title="ejson Boolean internal data implementation. ">Boolean</a> internal data implementation </td></tr>
+<tr id="row_0_0_2_" class="even"><td class="entry"><span style="width:48px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classejson_1_1internal_1_1_document.html" target="_self">Document</a></td><td class="desc">Ejson <a class="el" href="classejson_1_1internal_1_1_document.html" title="ejson Document internal data implementation. ">Document</a> internal data implementation </td></tr>
+<tr id="row_0_0_3_"><td class="entry"><span style="width:48px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classejson_1_1internal_1_1_null.html" target="_self">Null</a></td><td class="desc">Ejson <a class="el" href="classejson_1_1internal_1_1_null.html" title="ejson Null internal data implementation. ">Null</a> internal data implementation </td></tr>
+<tr id="row_0_0_4_" class="even"><td class="entry"><span style="width:48px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classejson_1_1internal_1_1_number.html" target="_self">Number</a></td><td class="desc">Ejson <a class="el" href="classejson_1_1internal_1_1_number.html" title="ejson Number internal data implementation. ">Number</a> internal data implementation </td></tr>
+<tr id="row_0_0_5_"><td class="entry"><span style="width:48px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classejson_1_1internal_1_1_object.html" target="_self">Object</a></td><td class="desc">Ejson <a class="el" href="classejson_1_1internal_1_1_object.html" title="ejson Object internal data implementation. ">Object</a> internal data implementation </td></tr>
+<tr id="row_0_0_6_" class="even"><td class="entry"><span style="width:48px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classejson_1_1internal_1_1_string.html" target="_self">String</a></td><td class="desc">Ejson <a class="el" href="classejson_1_1internal_1_1_string.html" title="ejson String internal data implementation. ">String</a> internal data implementation </td></tr>
+<tr id="row_0_0_7_"><td class="entry"><span style="width:48px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classejson_1_1internal_1_1_value.html" target="_self">Value</a></td><td class="desc">Basic main object of all json data </td></tr>
+<tr id="row_0_1_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classejson_1_1_array.html" target="_self">Array</a></td><td class="desc">Ejson <a class="el" href="classejson_1_1_array.html" title="ejson Array interface [ ... ]. ">Array</a> interface [ ... ] </td></tr>
+<tr id="row_0_2_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classejson_1_1_boolean.html" target="_self">Boolean</a></td><td class="desc">Ejson <a class="el" href="classejson_1_1_boolean.html" title="ejson Boolean interface: true/false. ">Boolean</a> interface: true/false </td></tr>
+<tr id="row_0_3_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classejson_1_1_document.html" target="_self">Document</a></td><td class="desc">Ejson <a class="el" href="classejson_1_1_document.html" title="ejson Document interface (acces with the file and stream). ">Document</a> interface (acces with the file and stream) </td></tr>
+<tr id="row_0_4_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classejson_1_1_file_pos.html" target="_self">FilePos</a></td><td class="desc">Position in the file of the original data </td></tr>
+<tr id="row_0_5_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classejson_1_1iterator.html" target="_self">iterator</a></td><td class="desc"></td></tr>
+<tr id="row_0_6_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classejson_1_1_null.html" target="_self">Null</a></td><td class="desc">Ejson <a class="el" href="classejson_1_1_null.html" title="ejson Null interface: &#39;null&#39;. ">Null</a> interface: 'null' </td></tr>
+<tr id="row_0_7_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classejson_1_1_number.html" target="_self">Number</a></td><td class="desc">Ejson <a class="el" href="classejson_1_1_number.html" title="ejson Number interface. ">Number</a> interface </td></tr>
+<tr id="row_0_8_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classejson_1_1_object.html" target="_self">Object</a></td><td class="desc">Ejson <a class="el" href="classejson_1_1_object.html" title="ejson Object interface { ... }. ">Object</a> interface { ... } </td></tr>
+<tr id="row_0_9_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classejson_1_1_string.html" target="_self">String</a></td><td class="desc">Ejson <a class="el" href="classejson_1_1_string.html" title="ejson String interface. ">String</a> interface </td></tr>
+<tr id="row_0_10_"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="classejson_1_1_value.html" target="_self">Value</a></td><td class="desc">Basic main object of all json elements </td></tr>
+</table>
+</div><!-- directory -->
+</div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
 </div>

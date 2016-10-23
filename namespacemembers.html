@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
         <meta name="generator" content="Doxygen 1.8.11"/>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <title>ejson: Ewol JSON parser: EJSON library</title>
+        <title>ejson: Ewol JSON parser: Namespace Members</title>
         <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
         <script type="text/javascript" src="dynsections.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -108,9 +108,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -131,6 +131,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="namespaces.html"><span>Namespace&#160;List</span></a></li>
+      <li class="current"><a href="namespacemembers.html"><span>Namespace&#160;Members</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow3" class="tabs2">
+    <ul class="tablist">
+      <li class="current"><a href="namespacemembers.html"><span>All</span></a></li>
+      <li><a href="namespacemembers_func.html"><span>Functions</span></a></li>
+      <li><a href="namespacemembers_enum.html"><span>Enumerations</span></a></li>
+    </ul>
+  </div>
 </div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -146,66 +159,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<div class="header">
-  <div class="headertitle">
-<div class="title">EJSON library </div>  </div>
-</div><!--header-->
 <div class="contents">
-<div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#ejson_mainpage_what">What is EJSON:                               </a><ul><li class="level2"><a href="#ejson_mainpage_what_it_does">What it does:                               </a></li>
-<li class="level2"><a href="#ejson_mainpage_what_it_not_does">What it doesn&#39;t do:                          </a></li>
-<li class="level2"><a href="#ejson_mainpage_extention">Internal extention:                          </a></li>
-</ul>
+<div class="textblock">Here is a list of all documented namespace members with links to the namespaces they belong to:</div><ul>
+<li>empty()
+: <a class="el" href="namespaceejson.html#ab64b51ff08fe0f8b8dd6d83b0a92c9bc">ejson</a>
 </li>
-<li class="level1"><a href="#ejson_mainpage_language">What languages are supported?                    </a></li>
-<li class="level1"><a href="#ejson_mainpage_license_restriction">Are there any licensing restrictions?            </a></li>
-<li class="level1"><a href="#ejson_mainpage_license">License (APACHE-2.0)                             </a></li>
-<li class="level1"><a href="#ejson_mainpage_sub_page">Other pages                              </a></li>
+<li>valueType
+: <a class="el" href="namespaceejson.html#a6a37b3ae20a2b7bc207b268ab1439709">ejson</a>
+</li>
 </ul>
-</div>
-<div class="textblock"><h1><a class="anchor" id="ejson_mainpage_what"></a>
-What is EJSON:                               </h1>
-<p>EJSON, or Ewol JSON interface is a simple, small, efficient, C++ JSON parser/generator that can be easily integrating into other programs.</p>
-<h2><a class="anchor" id="ejson_mainpage_what_it_does"></a>
-What it does:                               </h2>
-<p>EJSON parses an JSON document, and builds from that a Document Object Model (DOM) that can be read, modified, and saved.</p>
-<p>JSON stands for "JavaScript Object Notation". It is a general purpose human and machine readable machine language to describe arbitrary data (base internal system of the JavaScript object). All those random file formats created to store application data can all be replaced with JSON. One parser for everything.</p>
-<p><a href="http://wikipedia.org/wiki/JSON">http://wikipedia.org/wiki/JSON</a></p>
-<p>There are different ways to access and interact with JSON data. EJSON uses a Document Object Model (DOM), meaning the JSON data is parsed into a C++ objects that can be browsed and manipulated, and then written to disk. You can also construct an JSON document from scratch with C++ objects and write this to disk.</p>
-<p>EJSON is designed to be easy and fast to learn.</p>
-<p>EJSON is dependent of the STL (compatible with MacOs stl (CXX))</p>
-<h2><a class="anchor" id="ejson_mainpage_what_it_not_does"></a>
-What it doesn't do:                          </h2>
-<p>I do not know...</p>
-<h2><a class="anchor" id="ejson_mainpage_extention"></a>
-Internal extention:                          </h2>
-<p>I Add some costum feature of JSON:</p><ul>
-<li>Support inline comment starting with **#**</li>
-<li>Support Unquotet name if the name is not separate with space and not start with number</li>
-<li>Support simple quote **'** instead of double quote **"**</li>
-<li>Support removing of the **{}** arround the file (by default present)</li>
-</ul>
-<h1><a class="anchor" id="ejson_mainpage_language"></a>
-What languages are supported?                    </h1>
-<p>EJSON is written in C++.</p>
-<h1><a class="anchor" id="ejson_mainpage_license_restriction"></a>
-Are there any licensing restrictions?            </h1>
-<p>EJSON is <b>FREE software</b> and <em>all sub-library are FREE and staticly linkable !!!</em></p>
-<h1><a class="anchor" id="ejson_mainpage_license"></a>
-License (APACHE-2.0)                             </h1>
-<p>Copyright EJSON Edouard DUPIN</p>
-<p>Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
-<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
-<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-<h1><a class="anchor" id="ejson_mainpage_sub_page"></a>
-Other pages                              </h1>
-<ul>
-<li><a class="el" href="ejson_build.html">Build lib &amp; build sample</a></li>
-<li><a class="el" href="ejson_tutorial_read.html">Read an JSON content</a></li>
-<li><a class="el" href="ejson_tutorial_write.html">Write an JSON content</a></li>
-<li><a href="http://atria-soft.github.io/ewol/ewol_coding_style.html"><b>ewol coding style</b></a> </li>
-</ul>
-</div></div><!-- contents -->
+</div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
 </div>

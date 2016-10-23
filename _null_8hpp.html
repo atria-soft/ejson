@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
         <meta name="generator" content="Doxygen 1.8.11"/>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <title>ejson: Ewol JSON parser: EJSON library</title>
+        <title>ejson: Ewol JSON parser: framework/atria-soft/ejson/ejson/Null.hpp File Reference</title>
         <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
         <script type="text/javascript" src="dynsections.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -108,11 +108,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -131,7 +131,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-</div><!-- top -->
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+    </ul>
+  </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -146,65 +151,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_644e041c3a6521da7b27eba0e4eb2b95.html">framework</a></li><li class="navelem"><a class="el" href="dir_a094892b17be858f66bf3446bbb755c7.html">atria-soft</a></li><li class="navelem"><a class="el" href="dir_144b6a62e2dd6250c7a925b8245b61ea.html">ejson</a></li><li class="navelem"><a class="el" href="dir_715e87801a16358c677dc77a4c05bf37.html">ejson</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
-<div class="title">EJSON library </div>  </div>
+<div class="title">Null.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#ejson_mainpage_what">What is EJSON:                               </a><ul><li class="level2"><a href="#ejson_mainpage_what_it_does">What it does:                               </a></li>
-<li class="level2"><a href="#ejson_mainpage_what_it_not_does">What it doesn&#39;t do:                          </a></li>
-<li class="level2"><a href="#ejson_mainpage_extention">Internal extention:                          </a></li>
-</ul>
-</li>
-<li class="level1"><a href="#ejson_mainpage_language">What languages are supported?                    </a></li>
-<li class="level1"><a href="#ejson_mainpage_license_restriction">Are there any licensing restrictions?            </a></li>
-<li class="level1"><a href="#ejson_mainpage_license">License (APACHE-2.0)                             </a></li>
-<li class="level1"><a href="#ejson_mainpage_sub_page">Other pages                              </a></li>
-</ul>
+<div class="textblock"><code>#include &lt;<a class="elRef" doxygen="/home/heero/dev/perso/out/doc/release/etk.tag:http://atria-soft.github.io/etk/" href="http://atria-soft.github.io/etk/types_8hpp.html">etk/types.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="_value_8hpp_source.html">ejson/Value.hpp</a>&gt;</code><br />
 </div>
-<div class="textblock"><h1><a class="anchor" id="ejson_mainpage_what"></a>
-What is EJSON:                               </h1>
-<p>EJSON, or Ewol JSON interface is a simple, small, efficient, C++ JSON parser/generator that can be easily integrating into other programs.</p>
-<h2><a class="anchor" id="ejson_mainpage_what_it_does"></a>
-What it does:                               </h2>
-<p>EJSON parses an JSON document, and builds from that a Document Object Model (DOM) that can be read, modified, and saved.</p>
-<p>JSON stands for "JavaScript Object Notation". It is a general purpose human and machine readable machine language to describe arbitrary data (base internal system of the JavaScript object). All those random file formats created to store application data can all be replaced with JSON. One parser for everything.</p>
-<p><a href="http://wikipedia.org/wiki/JSON">http://wikipedia.org/wiki/JSON</a></p>
-<p>There are different ways to access and interact with JSON data. EJSON uses a Document Object Model (DOM), meaning the JSON data is parsed into a C++ objects that can be browsed and manipulated, and then written to disk. You can also construct an JSON document from scratch with C++ objects and write this to disk.</p>
-<p>EJSON is designed to be easy and fast to learn.</p>
-<p>EJSON is dependent of the STL (compatible with MacOs stl (CXX))</p>
-<h2><a class="anchor" id="ejson_mainpage_what_it_not_does"></a>
-What it doesn't do:                          </h2>
-<p>I do not know...</p>
-<h2><a class="anchor" id="ejson_mainpage_extention"></a>
-Internal extention:                          </h2>
-<p>I Add some costum feature of JSON:</p><ul>
-<li>Support inline comment starting with **#**</li>
-<li>Support Unquotet name if the name is not separate with space and not start with number</li>
-<li>Support simple quote **'** instead of double quote **"**</li>
-<li>Support removing of the **{}** arround the file (by default present)</li>
-</ul>
-<h1><a class="anchor" id="ejson_mainpage_language"></a>
-What languages are supported?                    </h1>
-<p>EJSON is written in C++.</p>
-<h1><a class="anchor" id="ejson_mainpage_license_restriction"></a>
-Are there any licensing restrictions?            </h1>
-<p>EJSON is <b>FREE software</b> and <em>all sub-library are FREE and staticly linkable !!!</em></p>
-<h1><a class="anchor" id="ejson_mainpage_license"></a>
-License (APACHE-2.0)                             </h1>
-<p>Copyright EJSON Edouard DUPIN</p>
-<p>Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
-<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
-<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-<h1><a class="anchor" id="ejson_mainpage_sub_page"></a>
-Other pages                              </h1>
-<ul>
-<li><a class="el" href="ejson_build.html">Build lib &amp; build sample</a></li>
-<li><a class="el" href="ejson_tutorial_read.html">Read an JSON content</a></li>
-<li><a class="el" href="ejson_tutorial_write.html">Write an JSON content</a></li>
-<li><a href="http://atria-soft.github.io/ewol/ewol_coding_style.html"><b>ewol coding style</b></a> </li>
-</ul>
+<p><a href="_null_8hpp_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1_null.html">ejson::Null</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespaceejson"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceejson.html">ejson</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Edouard DUPIN </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>2011, Edouard DUPIN, all right reserved </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>License: APACHE v2.0 (see license file) </dd></dl>
 </div></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->

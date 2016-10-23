@@ -1,0 +1,722 @@
+<!-- HTML header for doxygen 1.8.8-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- For Mobile Devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+        <meta name="generator" content="Doxygen 1.8.11"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <title>ejson: Ewol JSON parser: ejson::iterator&lt; EJSON_BASE_T &gt; Class Template Reference</title>
+        <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
+        <script type="text/javascript" src="dynsections.js"></script>
+        <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+        <link href="doxygen.css" rel="stylesheet" type="text/css" />
+        <link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="doxy-boot.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand">ejson: Ewol JSON parser 0.8.0</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">Main&nbsp;Page</a></li>
+                        <li><a href="pages.html">Related&nbsp;Pages</a></li>
+                        <li><a href="namespaces.html">Namespaces</a></li>
+                        <li><a href="annotated.html">Classes</a></li>
+                        <li><a href="files.html">Files</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Link-libs<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="http://HeeroYui.github.io/lutin">lutin</a></li>
+                                <li><a href="http://atria-soft.github.io/ewol">ewol</a></li>
+                                <li><a href="http://atria-soft.github.io/etk">etk</a></li>
+                                <li><a href="http://atria-soft.github.io/ejson">ejson</a></li>
+                                <li><a href="http://atria-soft.github.io/exml">exml</a></li>
+                                <li><a href="http://atria-soft.github.io/esvg">esvg</a></li>
+                                <li><a href="http://atria-soft.github.io/egami">egami</a></li>
+                                <li><a href="http://atria-soft.github.io/gale">gale</a></li>
+                                <li><a href="http://atria-soft.github.io/ege">ege</a></li>
+                                <li><a href="http://atria-soft.github.io/elog">elog</a></li>
+                                <li><a href="http://atria-soft.github.io/ememory">ememory</a></li>
+                                <li><a href="http://atria-soft.github.io/enet">enet</a></li>
+                                <li><a href="http://atria-soft.github.io/eproperty">eproperty</a></li>
+                                <li><a href="http://atria-soft.github.io/esignal">esignal</a></li>
+                                <li><a href="http://atria-soft.github.io/zeus">zeus</a></li>
+                                <li><a href="http://atria-soft.github.io/audio-ess">audio-ess</a></li>
+                                <li><a href="http://musicdsp.github.io/audio">audio</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-drain">audio-drain</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-orchestra">audio-orchestra</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-river">audio-river</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div id="search-box" class="input-group">
+                        <div class="input-group-btn">
+                            <button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-search"></span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">All</a></li>
+                                <li><a href="#">Classes</a></li>
+                                <li><a href="#">Namespaces</a></li>
+                                <li><a href="#">Files</a></li>
+                                <li><a href="#">Functions</a></li>
+                                <li><a href="#">Variables</a></li>
+                                <li><a href="#">Typedefs</a></li>
+                                <li><a href="#">Enumerations</a></li>
+                                <li><a href="#">Enumerator</a></li>
+                                <li><a href="#">Friends</a></li>
+                                <li><a href="#">Macros</a></li>
+                                <li><a href="#">Pages</a></li>
+                            </ul>
+                        </div>
+                        <button id="search-close" type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <input id="search-field" class="form-control" accesskey="S" onkeydown="searchBox.OnSearchFieldChange(event);" placeholder="Search ..." type="text">
+                    </div>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+            <div class="content" id="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 panel panel-default" style="padding-bottom: 15px;">
+                            <div style="margin-bottom: 15px;">
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceejson.html">ejson</a></li><li class="navelem"><a class="el" href="classejson_1_1iterator.html">iterator</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classejson_1_1iterator-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">ejson::iterator&lt; EJSON_BASE_T &gt; Class Template Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="iterator_8hpp_source.html">iterator.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a67eda9f172a4402672c4d3e5b77499dc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1iterator.html#a67eda9f172a4402672c4d3e5b77499dc">iterator</a> (EJSON_BASE_T &amp;_obj, size_t _pos)</td></tr>
+<tr class="separator:a67eda9f172a4402672c4d3e5b77499dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9f2e2ac7424683b4df07ce2b2c68ee2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1iterator.html#ab9f2e2ac7424683b4df07ce2b2c68ee2">iterator</a> (const EJSON_BASE_T &amp;_obj, size_t _pos)</td></tr>
+<tr class="separator:ab9f2e2ac7424683b4df07ce2b2c68ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc41c1d4e113d4a4482a9e7c39e86ddb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1iterator.html#adc41c1d4e113d4a4482a9e7c39e86ddb">iterator</a> (const <a class="el" href="classejson_1_1iterator.html">iterator</a> &amp;_obj)</td></tr>
+<tr class="separator:adc41c1d4e113d4a4482a9e7c39e86ddb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bb3a3ee9330cba09031a445eb7fe86f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1iterator.html">iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1iterator.html#a5bb3a3ee9330cba09031a445eb7fe86f">operator=</a> (const <a class="el" href="classejson_1_1iterator.html">iterator</a> &amp;_obj)</td></tr>
+<tr class="separator:a5bb3a3ee9330cba09031a445eb7fe86f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69f5db511218a398421792bc6a76348c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1iterator.html">iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1iterator.html#a69f5db511218a398421792bc6a76348c">operator+=</a> (int32_t _val)</td></tr>
+<tr class="separator:a69f5db511218a398421792bc6a76348c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac58c97d3cb3c9033c82d4b7d95e215e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1iterator.html#aac58c97d3cb3c9033c82d4b7d95e215e">operator+</a> (int32_t _val) const </td></tr>
+<tr class="separator:aac58c97d3cb3c9033c82d4b7d95e215e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b69c83f662f0389ad66380d814a5eb2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1iterator.html">iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1iterator.html#a1b69c83f662f0389ad66380d814a5eb2">operator-=</a> (int32_t _val)</td></tr>
+<tr class="separator:a1b69c83f662f0389ad66380d814a5eb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4871ab8033909a5ff386e10fd6758df6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1iterator.html#a4871ab8033909a5ff386e10fd6758df6">operator-</a> (int32_t _val) const </td></tr>
+<tr class="separator:a4871ab8033909a5ff386e10fd6758df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8b30954ce60aa9a8aeb960322f2733f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1iterator.html">iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1iterator.html#ac8b30954ce60aa9a8aeb960322f2733f">operator++</a> ()</td></tr>
+<tr class="separator:ac8b30954ce60aa9a8aeb960322f2733f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdd8b319472260796feb63f6c6aea73e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1iterator.html#afdd8b319472260796feb63f6c6aea73e">operator++</a> (int)</td></tr>
+<tr class="separator:afdd8b319472260796feb63f6c6aea73e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a855ffd5abcfbe261340a66d21f11424c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1iterator.html">iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1iterator.html#a855ffd5abcfbe261340a66d21f11424c">operator--</a> ()</td></tr>
+<tr class="separator:a855ffd5abcfbe261340a66d21f11424c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea67667bda3ebfff71d700f6d92fb391"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1iterator.html#aea67667bda3ebfff71d700f6d92fb391">operator--</a> (int)</td></tr>
+<tr class="separator:aea67667bda3ebfff71d700f6d92fb391"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a303d1a46f92997d9ad2ca2ba7eca53f3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1iterator.html#a303d1a46f92997d9ad2ca2ba7eca53f3">operator==</a> (const <a class="el" href="classejson_1_1iterator.html">iterator</a> &amp;_obj) const </td></tr>
+<tr class="separator:a303d1a46f92997d9ad2ca2ba7eca53f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1475aa283f1dacf66ac8c806fab318d0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1iterator.html#a1475aa283f1dacf66ac8c806fab318d0">operator!=</a> (const <a class="el" href="classejson_1_1iterator.html">iterator</a> &amp;_obj) const </td></tr>
+<tr class="separator:a1475aa283f1dacf66ac8c806fab318d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb65c6f1a2942fce9acc16ec72e7cf21"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classejson_1_1_value.html">ejson::Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1iterator.html#adb65c6f1a2942fce9acc16ec72e7cf21">operator*</a> () const noexcept</td></tr>
+<tr class="separator:adb65c6f1a2942fce9acc16ec72e7cf21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18221a2524cb44ef72f0134fb76072a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classejson_1_1_value.html">ejson::Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1iterator.html#a18221a2524cb44ef72f0134fb76072a5">operator*</a> () noexcept</td></tr>
+<tr class="separator:a18221a2524cb44ef72f0134fb76072a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a388a51dd8123064f7390fcf9c75969"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1iterator.html#a5a388a51dd8123064f7390fcf9c75969">getId</a> () const noexcept</td></tr>
+<tr class="separator:a5a388a51dd8123064f7390fcf9c75969"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cc474c5f856eb2b67a2a6756767a745"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceejson.html#a6a37b3ae20a2b7bc207b268ab1439709ab45cffe084dd3d20d928bee85e7b0f21">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classejson_1_1iterator.html#a8cc474c5f856eb2b67a2a6756767a745">getKey</a> () const noexcept</td></tr>
+<tr class="separator:a8cc474c5f856eb2b67a2a6756767a745"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;class EJSON_BASE_T&gt;<br />
+class ejson::iterator&lt; EJSON_BASE_T &gt;</h3>
+
+<p>iterator on elements. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a67eda9f172a4402672c4d3e5b77499dc"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class EJSON_BASE_T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classejson_1_1iterator.html">ejson::iterator</a>&lt; EJSON_BASE_T &gt;::<a class="el" href="classejson_1_1iterator.html">iterator</a> </td>
+          <td>(</td>
+          <td class="paramtype">EJSON_BASE_T &amp;&#160;</td>
+          <td class="paramname"><em>_obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>_pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor of the generic object class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_obj</td><td>Reference on the object to go threw </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_pos</td><td>Position in the object </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ab9f2e2ac7424683b4df07ce2b2c68ee2"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class EJSON_BASE_T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classejson_1_1iterator.html">ejson::iterator</a>&lt; EJSON_BASE_T &gt;::<a class="el" href="classejson_1_1iterator.html">iterator</a> </td>
+          <td>(</td>
+          <td class="paramtype">const EJSON_BASE_T &amp;&#160;</td>
+          <td class="paramname"><em>_obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>_pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Const constructor of the generic const object class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_obj</td><td>Reference on the object to go threw </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">_pos</td><td>Position in the object </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="adc41c1d4e113d4a4482a9e7c39e86ddb"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class EJSON_BASE_T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classejson_1_1iterator.html">ejson::iterator</a>&lt; EJSON_BASE_T &gt;::<a class="el" href="classejson_1_1iterator.html">iterator</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classejson_1_1iterator.html">iterator</a>&lt; EJSON_BASE_T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>_obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_obj</td><td>Iterator to copy </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a5a388a51dd8123064f7390fcf9c75969"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class EJSON_BASE_T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="classejson_1_1iterator.html">ejson::iterator</a>&lt; EJSON_BASE_T &gt;::getId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get ID of an element. </p>
+<dl class="section return"><dt>Returns</dt><dd>Position in the Element </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8cc474c5f856eb2b67a2a6756767a745"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class EJSON_BASE_T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceejson.html#a6a37b3ae20a2b7bc207b268ab1439709ab45cffe084dd3d20d928bee85e7b0f21">std::string</a> <a class="el" href="classejson_1_1iterator.html">ejson::iterator</a>&lt; EJSON_BASE_T &gt;::getKey </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get Key of an element. </p>
+<dl class="section return"><dt>Returns</dt><dd>Key of the Element </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1475aa283f1dacf66ac8c806fab318d0"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class EJSON_BASE_T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classejson_1_1iterator.html">ejson::iterator</a>&lt; EJSON_BASE_T &gt;::operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classejson_1_1iterator.html">iterator</a>&lt; EJSON_BASE_T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>_obj</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>In-Equality compare operator with an other iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_obj</td><td>Reference on the comparing iterator </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true The iterators are NOT identical </dd>
+<dd>
+false The iterators are identical </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="adb65c6f1a2942fce9acc16ec72e7cf21"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class EJSON_BASE_T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classejson_1_1_value.html">ejson::Value</a> <a class="el" href="classejson_1_1iterator.html">ejson::iterator</a>&lt; EJSON_BASE_T &gt;::operator* </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the property <a class="el" href="classejson_1_1_value.html" title="Basic main object of all json elements. ">Value</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>Const reference on the value. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a18221a2524cb44ef72f0134fb76072a5"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class EJSON_BASE_T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classejson_1_1_value.html">ejson::Value</a> <a class="el" href="classejson_1_1iterator.html">ejson::iterator</a>&lt; EJSON_BASE_T &gt;::operator* </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the property <a class="el" href="classejson_1_1_value.html" title="Basic main object of all json elements. ">Value</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>Const reference on the value. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aac58c97d3cb3c9033c82d4b7d95e215e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class EJSON_BASE_T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classejson_1_1iterator.html">iterator</a> <a class="el" href="classejson_1_1iterator.html">ejson::iterator</a>&lt; EJSON_BASE_T &gt;::operator+ </td>
+          <td>(</td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>_val</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Operator+ Addition a value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_val</td><td><a class="el" href="classejson_1_1_value.html" title="Basic main object of all json elements. ">Value</a> to addition </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New iterator containing the value </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac8b30954ce60aa9a8aeb960322f2733f"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class EJSON_BASE_T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classejson_1_1iterator.html">iterator</a>&amp; <a class="el" href="classejson_1_1iterator.html">ejson::iterator</a>&lt; EJSON_BASE_T &gt;::operator++ </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Operator++ Pre-incrementation of this iterator. </p>
+<dl class="section return"><dt>Returns</dt><dd>Local reference of the iterator incremented </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="afdd8b319472260796feb63f6c6aea73e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class EJSON_BASE_T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classejson_1_1iterator.html">iterator</a> <a class="el" href="classejson_1_1iterator.html">ejson::iterator</a>&lt; EJSON_BASE_T &gt;::operator++ </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Operator++ Post-incrementation of this iterator. </p>
+<dl class="section return"><dt>Returns</dt><dd>New iterator containing the last value </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a69f5db511218a398421792bc6a76348c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class EJSON_BASE_T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classejson_1_1iterator.html">iterator</a>&amp; <a class="el" href="classejson_1_1iterator.html">ejson::iterator</a>&lt; EJSON_BASE_T &gt;::operator+= </td>
+          <td>(</td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>_val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Operator+= Addition value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_val</td><td><a class="el" href="classejson_1_1_value.html" title="Basic main object of all json elements. ">Value</a> to addition </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Local reference of the iterator additionned </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a4871ab8033909a5ff386e10fd6758df6"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class EJSON_BASE_T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classejson_1_1iterator.html">iterator</a> <a class="el" href="classejson_1_1iterator.html">ejson::iterator</a>&lt; EJSON_BASE_T &gt;::operator- </td>
+          <td>(</td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>_val</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Operator- Decrement a value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_val</td><td><a class="el" href="classejson_1_1_value.html" title="Basic main object of all json elements. ">Value</a> to addition </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New iterator containing the value </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a855ffd5abcfbe261340a66d21f11424c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class EJSON_BASE_T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classejson_1_1iterator.html">iterator</a>&amp; <a class="el" href="classejson_1_1iterator.html">ejson::iterator</a>&lt; EJSON_BASE_T &gt;::operator-- </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Operator++ Pre-decrementation of this iterator. </p>
+<dl class="section return"><dt>Returns</dt><dd>Local reference of the iterator incremented </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aea67667bda3ebfff71d700f6d92fb391"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class EJSON_BASE_T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classejson_1_1iterator.html">iterator</a> <a class="el" href="classejson_1_1iterator.html">ejson::iterator</a>&lt; EJSON_BASE_T &gt;::operator-- </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Operator++ Post-decrementation of this iterator. </p>
+<dl class="section return"><dt>Returns</dt><dd>New iterator containing the last value </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1b69c83f662f0389ad66380d814a5eb2"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class EJSON_BASE_T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classejson_1_1iterator.html">iterator</a>&amp; <a class="el" href="classejson_1_1iterator.html">ejson::iterator</a>&lt; EJSON_BASE_T &gt;::operator-= </td>
+          <td>(</td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>_val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Operator-= Decrement a value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_val</td><td><a class="el" href="classejson_1_1_value.html" title="Basic main object of all json elements. ">Value</a> to addition </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Local reference of the iterator decremented </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a5bb3a3ee9330cba09031a445eb7fe86f"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class EJSON_BASE_T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classejson_1_1iterator.html">iterator</a>&amp; <a class="el" href="classejson_1_1iterator.html">ejson::iterator</a>&lt; EJSON_BASE_T &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classejson_1_1iterator.html">iterator</a>&lt; EJSON_BASE_T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>_obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Operator+= Addition value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_obj</td><td><a class="el" href="classejson_1_1_value.html" title="Basic main object of all json elements. ">Value</a> to addition </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Local reference of the iterator additionned </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a303d1a46f92997d9ad2ca2ba7eca53f3"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class EJSON_BASE_T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classejson_1_1iterator.html">ejson::iterator</a>&lt; EJSON_BASE_T &gt;::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classejson_1_1iterator.html">iterator</a>&lt; EJSON_BASE_T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>_obj</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Equality compare operator with an other iterator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">_obj</td><td>Reference on the comparing iterator </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true The iterators are identical </dd>
+<dd>
+false The iterators are NOT identical </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>framework/atria-soft/ejson/ejson/<a class="el" href="iterator_8hpp_source.html">iterator.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- HTML footer for doxygen 1.8.8-->
+<!-- start footer part -->
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="footer"/><address class="footer"><small>
+Generated on Sun Oct 23 2016 22:01:40 for ejson: Ewol JSON parser by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>

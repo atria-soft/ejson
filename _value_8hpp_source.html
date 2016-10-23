@@ -1,0 +1,228 @@
+<!-- HTML header for doxygen 1.8.8-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- For Mobile Devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+        <meta name="generator" content="Doxygen 1.8.11"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <title>ejson: Ewol JSON parser: framework/atria-soft/ejson/ejson/Value.hpp Source File</title>
+        <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
+        <script type="text/javascript" src="dynsections.js"></script>
+        <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+        <link href="doxygen.css" rel="stylesheet" type="text/css" />
+        <link href="customdoxygen.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="doxy-boot.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand">ejson: Ewol JSON parser 0.8.0</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">Main&nbsp;Page</a></li>
+                        <li><a href="pages.html">Related&nbsp;Pages</a></li>
+                        <li><a href="namespaces.html">Namespaces</a></li>
+                        <li><a href="annotated.html">Classes</a></li>
+                        <li><a href="files.html">Files</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Link-libs<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="http://HeeroYui.github.io/lutin">lutin</a></li>
+                                <li><a href="http://atria-soft.github.io/ewol">ewol</a></li>
+                                <li><a href="http://atria-soft.github.io/etk">etk</a></li>
+                                <li><a href="http://atria-soft.github.io/ejson">ejson</a></li>
+                                <li><a href="http://atria-soft.github.io/exml">exml</a></li>
+                                <li><a href="http://atria-soft.github.io/esvg">esvg</a></li>
+                                <li><a href="http://atria-soft.github.io/egami">egami</a></li>
+                                <li><a href="http://atria-soft.github.io/gale">gale</a></li>
+                                <li><a href="http://atria-soft.github.io/ege">ege</a></li>
+                                <li><a href="http://atria-soft.github.io/elog">elog</a></li>
+                                <li><a href="http://atria-soft.github.io/ememory">ememory</a></li>
+                                <li><a href="http://atria-soft.github.io/enet">enet</a></li>
+                                <li><a href="http://atria-soft.github.io/eproperty">eproperty</a></li>
+                                <li><a href="http://atria-soft.github.io/esignal">esignal</a></li>
+                                <li><a href="http://atria-soft.github.io/zeus">zeus</a></li>
+                                <li><a href="http://atria-soft.github.io/audio-ess">audio-ess</a></li>
+                                <li><a href="http://musicdsp.github.io/audio">audio</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-drain">audio-drain</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-orchestra">audio-orchestra</a></li>
+                                <li><a href="http://musicdsp.github.io/audio-river">audio-river</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div id="search-box" class="input-group">
+                        <div class="input-group-btn">
+                            <button aria-expanded="false" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-search"></span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">All</a></li>
+                                <li><a href="#">Classes</a></li>
+                                <li><a href="#">Namespaces</a></li>
+                                <li><a href="#">Files</a></li>
+                                <li><a href="#">Functions</a></li>
+                                <li><a href="#">Variables</a></li>
+                                <li><a href="#">Typedefs</a></li>
+                                <li><a href="#">Enumerations</a></li>
+                                <li><a href="#">Enumerator</a></li>
+                                <li><a href="#">Friends</a></li>
+                                <li><a href="#">Macros</a></li>
+                                <li><a href="#">Pages</a></li>
+                            </ul>
+                        </div>
+                        <button id="search-close" type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true"></span>
+                        </button>
+                        <input id="search-field" class="form-control" accesskey="S" onkeydown="searchBox.OnSearchFieldChange(event);" placeholder="Search ..." type="text">
+                    </div>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+            <div class="content" id="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 panel panel-default" style="padding-bottom: 15px;">
+                            <div style="margin-bottom: 15px;">
+<!-- end header part -->
+<!-- Generated by Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_644e041c3a6521da7b27eba0e4eb2b95.html">framework</a></li><li class="navelem"><a class="el" href="dir_a094892b17be858f66bf3446bbb755c7.html">atria-soft</a></li><li class="navelem"><a class="el" href="dir_144b6a62e2dd6250c7a925b8245b61ea.html">ejson</a></li><li class="navelem"><a class="el" href="dir_715e87801a16358c677dc77a4c05bf37.html">ejson</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Value.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_value_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" doxygen="/home/heero/dev/perso/out/doc/release/etk.tag:http://atria-soft.github.io/etk/" href="http://atria-soft.github.io/etk/types_8hpp.html">etk/types.hpp</a>&gt;</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" doxygen="/home/heero/dev/perso/out/doc/release/ememory.tag:http://atria-soft.github.io/ememory/" href="http://atria-soft.github.io/ememory/memory_8hpp.html">ememory/memory.hpp</a>&gt;</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_file_pos_8hpp.html">ejson/FilePos.hpp</a>&gt;</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="value_type_8hpp.html">ejson/valueType.hpp</a>&gt;</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="internal_2_value_8hpp.html">ejson/internal/Value.hpp</a>&gt;</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceejson.html">ejson</a> {</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">class </span>Document;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">class </span>Array;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">class </span>Object;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">class </span>Boolean;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">class </span><a class="codeRef" doxygen="/home/heero/dev/perso/out/doc/release/etk.tag:http://atria-soft.github.io/etk/" href="http://atria-soft.github.io/etk/namespaceu32char.html#a5bf343cb9ca744a833c6d0466542fd23">Null</a>;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">class </span>Number;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">class </span>String;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">namespace </span>internal {</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">class </span>Value;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div><div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classejson_1_1_value.html">   31</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classejson_1_1_value.html">Value</a> {</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classejson_1_1_array.html">ejson::Array</a>;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classejson_1_1_object.html">ejson::Object</a>;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">protected</span>:</div><div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classejson_1_1_value.html#a50bd401c6c23aa9a4db2f2412fde277d">   35</a></span>&#160;            <a class="codeRef" doxygen="/home/heero/dev/perso/out/doc/release/ememory.tag:http://atria-soft.github.io/ememory/" href="http://atria-soft.github.io/ememory/classememory_1_1_shared_ptr.html">ememory::SharedPtr&lt;ejson::internal::Value&gt;</a> <a class="code" href="classejson_1_1_value.html#a50bd401c6c23aa9a4db2f2412fde277d">m_data</a>; </div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">public</span>:</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keyword">enum</span> <a class="code" href="namespaceejson.html#a6a37b3ae20a2b7bc207b268ab1439709">ejson::valueType</a> <a class="code" href="classejson_1_1internal_1_1_value.html#ade5fc040cf011291bfbaae4dc9b9bf52">getType</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">public</span>:</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <a class="code" href="classejson_1_1internal_1_1_value.html#a57471d92a92936793f1844e36d3b115a">Value</a>(<span class="keyword">const</span> <a class="codeRef" doxygen="/home/heero/dev/perso/out/doc/release/ememory.tag:http://atria-soft.github.io/ememory/" href="http://atria-soft.github.io/ememory/classememory_1_1_shared_ptr.html">ememory::SharedPtr&lt;ejson::internal::Value&gt;</a>&amp; _internalValue);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <a class="code" href="classejson_1_1internal_1_1_value.html#a57471d92a92936793f1844e36d3b115a">Value</a>();</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keyword">public</span>:</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="classejson_1_1internal_1_1_value.html#aa2e223aeec554cb43556c2ad088d7283">~Value</a>() = <span class="keywordflow">default</span>;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">public</span>:</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classejson_1_1internal_1_1_value.html#aa2dcababae9ca0c4d102b8a9c5b84ffc">display</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classejson_1_1_value.html#a195446e93590ab64d72e28a2759bd4cf">exist</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <a class="code" href="classejson_1_1_document.html">ejson::Document</a> <a class="code" href="classejson_1_1_value.html#a58ec04b1804d2502c0621c9a4108b6c3">toDocument</a>();</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keyword">const</span> <a class="code" href="classejson_1_1_document.html">ejson::Document</a> <a class="code" href="classejson_1_1_value.html#a58ec04b1804d2502c0621c9a4108b6c3">toDocument</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <a class="code" href="classejson_1_1_array.html">ejson::Array</a> <a class="code" href="classejson_1_1_value.html#abf67a6a98c2fb657cff4290cef39b658">toArray</a>();</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keyword">const</span> <a class="code" href="classejson_1_1_array.html">ejson::Array</a> <a class="code" href="classejson_1_1_value.html#abf67a6a98c2fb657cff4290cef39b658">toArray</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <a class="code" href="classejson_1_1_object.html">ejson::Object</a> <a class="code" href="classejson_1_1_value.html#a91236630d37cad7a8d1256835a9448c8">toObject</a>();</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keyword">const</span> <a class="code" href="classejson_1_1_object.html">ejson::Object</a> <a class="code" href="classejson_1_1_value.html#a91236630d37cad7a8d1256835a9448c8">toObject</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <a class="code" href="classejson_1_1_string.html">ejson::String</a> <a class="code" href="classejson_1_1_value.html#a43a3bf8ff0d02f92e8751ea8a16fcaa1">toString</a>();</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keyword">const</span> <a class="code" href="classejson_1_1_string.html">ejson::String</a> <a class="code" href="classejson_1_1_value.html#a43a3bf8ff0d02f92e8751ea8a16fcaa1">toString</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <a class="code" href="classejson_1_1_number.html">ejson::Number</a> <a class="code" href="classejson_1_1_value.html#a40e63375796266399a4297b8d2b96f2c">toNumber</a>();</div><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keyword">const</span> <a class="code" href="classejson_1_1_number.html">ejson::Number</a> <a class="code" href="classejson_1_1_value.html#a40e63375796266399a4297b8d2b96f2c">toNumber</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <a class="code" href="classejson_1_1_boolean.html">ejson::Boolean</a> <a class="code" href="classejson_1_1_value.html#ab759dc22259f15b487a4437df60baf1a">toBoolean</a>();</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keyword">const</span> <a class="code" href="classejson_1_1_boolean.html">ejson::Boolean</a> <a class="code" href="classejson_1_1_value.html#ab759dc22259f15b487a4437df60baf1a">toBoolean</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <a class="code" href="classejson_1_1_null.html">ejson::Null</a> <a class="code" href="classejson_1_1_value.html#a157597cbc30f00eabc62d8724fccd61f">toNull</a>();</div><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keyword">const</span> <a class="code" href="classejson_1_1_null.html">ejson::Null</a> <a class="code" href="classejson_1_1_value.html#a157597cbc30f00eabc62d8724fccd61f">toNull</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            </div><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classejson_1_1_value.html#a52c04dcf17035225152cc5f3cc143862">isDocument</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classejson_1_1_value.html#a8d0f3ea4cf180e1c649f83152f1798b9">isArray</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classejson_1_1_value.html#a7bd98e40dfdd065d44d4a66f0bf1094b">isObject</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classejson_1_1_value.html#a3c595ee692f580009d5211be4c5dc575">isString</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classejson_1_1_value.html#ae871b62d469782819840f95697b2ef30">isNumber</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classejson_1_1_value.html#af2f7d685e7f01690b8677f8659af65c0">isBoolean</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classejson_1_1_value.html#ab781a082d8a9802f0e07516ced5211ec">isNull</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classejson_1_1internal_1_1_value.html#a823694a1d241579fc77fc86f46ae303f">clear</a>();</div><div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classejson_1_1internal_1_1_value.html#ad0d5a680f032ce3d97f87468fdd448df">transfertIn</a>(<a class="code" href="classejson_1_1_value.html">ejson::Value</a>&amp; _obj);</div><div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            <a class="code" href="classejson_1_1_value.html">ejson::Value</a> <a class="code" href="classejson_1_1internal_1_1_value.html#a6b3e120c2ebac4740e0fd8f6be124932">clone</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="keyword">public</span>:</div><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <a class="code" href="namespaceejson.html#a6a37b3ae20a2b7bc207b268ab1439709ab45cffe084dd3d20d928bee85e7b0f21">std::string</a> <a class="code" href="classejson_1_1_value.html#a04bca7f3cc30fb33a83e4393909da75c">generateHumanString</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <a class="code" href="namespaceejson.html#a6a37b3ae20a2b7bc207b268ab1439709ab45cffe084dd3d20d928bee85e7b0f21">std::string</a> <a class="code" href="classejson_1_1_value.html#ad24a7d3b43864114c6fab05609c2e765">generateMachineString</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    };</div><div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    std::ostream&amp; operator &lt;&lt;(std::ostream&amp; _os, <span class="keyword">const</span> <a class="code" href="classejson_1_1_value.html">ejson::Value</a>&amp; _obj);</div><div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <a class="code" href="classejson_1_1_value.html">ejson::Value</a> <a class="code" href="namespaceejson.html#ab64b51ff08fe0f8b8dd6d83b0a92c9bc">empty</a>();</div><div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;}</div><div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div><div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_array_8hpp.html">ejson/Array.hpp</a>&gt;</span></div><div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_boolean_8hpp.html">ejson/Boolean.hpp</a>&gt;</span></div><div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_null_8hpp.html">ejson/Null.hpp</a>&gt;</span></div><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_number_8hpp.html">ejson/Number.hpp</a>&gt;</span></div><div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_object_8hpp.html">ejson/Object.hpp</a>&gt;</span></div><div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_string_8hpp.html">ejson/String.hpp</a>&gt;</span></div><div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div><div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;</div><div class="ttc" id="_object_8hpp_html"><div class="ttname"><a href="_object_8hpp.html">Object.hpp</a></div></div>
+<div class="ttc" id="classejson_1_1_value_html_a50bd401c6c23aa9a4db2f2412fde277d"><div class="ttname"><a href="classejson_1_1_value.html#a50bd401c6c23aa9a4db2f2412fde277d">ejson::Value::m_data</a></div><div class="ttdeci">ememory::SharedPtr&lt; ejson::internal::Value &gt; m_data</div><div class="ttdoc">internal reference on a Value </div><div class="ttdef"><b>Definition:</b> Value.hpp:35</div></div>
+<div class="ttc" id="classejson_1_1_value_html_a3c595ee692f580009d5211be4c5dc575"><div class="ttname"><a href="classejson_1_1_value.html#a3c595ee692f580009d5211be4c5dc575">ejson::Value::isString</a></div><div class="ttdeci">bool isString() const </div><div class="ttdoc">check if the node is a ejson::String </div></div>
+<div class="ttc" id="_string_8hpp_html"><div class="ttname"><a href="_string_8hpp.html">String.hpp</a></div></div>
+<div class="ttc" id="classejson_1_1_value_html_af2f7d685e7f01690b8677f8659af65c0"><div class="ttname"><a href="classejson_1_1_value.html#af2f7d685e7f01690b8677f8659af65c0">ejson::Value::isBoolean</a></div><div class="ttdeci">bool isBoolean() const </div><div class="ttdoc">check if the node is a ejson::Boolean </div></div>
+<div class="ttc" id="classejson_1_1_value_html_a40e63375796266399a4297b8d2b96f2c"><div class="ttname"><a href="classejson_1_1_value.html#a40e63375796266399a4297b8d2b96f2c">ejson::Value::toNumber</a></div><div class="ttdeci">ejson::Number toNumber()</div><div class="ttdoc">Cast the element in a Number if it is possible. </div></div>
+<div class="ttc" id="classejson_1_1internal_1_1_value_html_ade5fc040cf011291bfbaae4dc9b9bf52"><div class="ttname"><a href="classejson_1_1internal_1_1_value.html#ade5fc040cf011291bfbaae4dc9b9bf52">ejson::internal::Value::getType</a></div><div class="ttdeci">enum ejson::valueType getType() const </div><div class="ttdoc">Get Value type. </div></div>
+<div class="ttc" id="classejson_1_1_value_html_a04bca7f3cc30fb33a83e4393909da75c"><div class="ttname"><a href="classejson_1_1_value.html#a04bca7f3cc30fb33a83e4393909da75c">ejson::Value::generateHumanString</a></div><div class="ttdeci">std::string generateHumanString() const </div><div class="ttdoc">generate a string that contain the created JSON </div></div>
+<div class="ttc" id="classejson_1_1_value_html_ad24a7d3b43864114c6fab05609c2e765"><div class="ttname"><a href="classejson_1_1_value.html#ad24a7d3b43864114c6fab05609c2e765">ejson::Value::generateMachineString</a></div><div class="ttdeci">std::string generateMachineString() const </div><div class="ttdoc">generate a string that contain the created JSON </div></div>
+<div class="ttc" id="namespaceejson_html_a6a37b3ae20a2b7bc207b268ab1439709ab45cffe084dd3d20d928bee85e7b0f21"><div class="ttname"><a href="namespaceejson.html#a6a37b3ae20a2b7bc207b268ab1439709ab45cffe084dd3d20d928bee85e7b0f21">ejson::valueType::string</a></div><div class="ttdoc">the element &quot;...&quot; </div></div>
+<div class="ttc" id="classejson_1_1internal_1_1_value_html_a823694a1d241579fc77fc86f46ae303f"><div class="ttname"><a href="classejson_1_1internal_1_1_value.html#a823694a1d241579fc77fc86f46ae303f">ejson::internal::Value::clear</a></div><div class="ttdeci">virtual void clear()</div><div class="ttdoc">clear the Node </div></div>
+<div class="ttc" id="_boolean_8hpp_html"><div class="ttname"><a href="_boolean_8hpp.html">Boolean.hpp</a></div></div>
+<div class="ttc" id="namespaceejson_html"><div class="ttname"><a href="namespaceejson.html">ejson</a></div><div class="ttdoc">ejson namespace containing all function for JSON interpretor </div><div class="ttdef"><b>Definition:</b> Array.hpp:12</div></div>
+<div class="ttc" id="classejson_1_1_boolean_html"><div class="ttname"><a href="classejson_1_1_boolean.html">ejson::Boolean</a></div><div class="ttdoc">ejson Boolean interface: true/false. </div><div class="ttdef"><b>Definition:</b> Boolean.hpp:15</div></div>
+<div class="ttc" id="classejson_1_1_value_html_abf67a6a98c2fb657cff4290cef39b658"><div class="ttname"><a href="classejson_1_1_value.html#abf67a6a98c2fb657cff4290cef39b658">ejson::Value::toArray</a></div><div class="ttdeci">ejson::Array toArray()</div><div class="ttdoc">Cast the element in a Array if it is possible. </div></div>
+<div class="ttc" id="types_8hpp_html"><div class="ttname"><a href="http://atria-soft.github.io/etk/types_8hpp.html">types.hpp</a></div></div>
+<div class="ttc" id="classejson_1_1_string_html"><div class="ttname"><a href="classejson_1_1_string.html">ejson::String</a></div><div class="ttdoc">ejson String interface. </div><div class="ttdef"><b>Definition:</b> String.hpp:15</div></div>
+<div class="ttc" id="classejson_1_1_value_html_a7bd98e40dfdd065d44d4a66f0bf1094b"><div class="ttname"><a href="classejson_1_1_value.html#a7bd98e40dfdd065d44d4a66f0bf1094b">ejson::Value::isObject</a></div><div class="ttdeci">bool isObject() const </div><div class="ttdoc">check if the node is a ejson::Object </div></div>
+<div class="ttc" id="classejson_1_1_object_html"><div class="ttname"><a href="classejson_1_1_object.html">ejson::Object</a></div><div class="ttdoc">ejson Object interface { ... }. </div><div class="ttdef"><b>Definition:</b> Object.hpp:18</div></div>
+<div class="ttc" id="classejson_1_1internal_1_1_value_html_a57471d92a92936793f1844e36d3b115a"><div class="ttname"><a href="classejson_1_1internal_1_1_value.html#a57471d92a92936793f1844e36d3b115a">ejson::internal::Value::Value</a></div><div class="ttdeci">Value()</div><div class="ttdoc">basic element of a xml structure </div><div class="ttdef"><b>Definition:</b> Value.hpp:55</div></div>
+<div class="ttc" id="_number_8hpp_html"><div class="ttname"><a href="_number_8hpp.html">Number.hpp</a></div></div>
+<div class="ttc" id="_array_8hpp_html"><div class="ttname"><a href="_array_8hpp.html">Array.hpp</a></div></div>
+<div class="ttc" id="classejson_1_1_value_html_ae871b62d469782819840f95697b2ef30"><div class="ttname"><a href="classejson_1_1_value.html#ae871b62d469782819840f95697b2ef30">ejson::Value::isNumber</a></div><div class="ttdeci">bool isNumber() const </div><div class="ttdoc">check if the node is a ejson::Number </div></div>
+<div class="ttc" id="classejson_1_1_value_html_ab759dc22259f15b487a4437df60baf1a"><div class="ttname"><a href="classejson_1_1_value.html#ab759dc22259f15b487a4437df60baf1a">ejson::Value::toBoolean</a></div><div class="ttdeci">ejson::Boolean toBoolean()</div><div class="ttdoc">Cast the element in a Boolean if it is possible. </div></div>
+<div class="ttc" id="value_type_8hpp_html"><div class="ttname"><a href="value_type_8hpp.html">valueType.hpp</a></div></div>
+<div class="ttc" id="classejson_1_1_array_html"><div class="ttname"><a href="classejson_1_1_array.html">ejson::Array</a></div><div class="ttdoc">ejson Array interface [ ... ]. </div><div class="ttdef"><b>Definition:</b> Array.hpp:16</div></div>
+<div class="ttc" id="classejson_1_1_number_html"><div class="ttname"><a href="classejson_1_1_number.html">ejson::Number</a></div><div class="ttdoc">ejson Number interface. </div><div class="ttdef"><b>Definition:</b> Number.hpp:15</div></div>
+<div class="ttc" id="classejson_1_1_value_html_a157597cbc30f00eabc62d8724fccd61f"><div class="ttname"><a href="classejson_1_1_value.html#a157597cbc30f00eabc62d8724fccd61f">ejson::Value::toNull</a></div><div class="ttdeci">ejson::Null toNull()</div><div class="ttdoc">Cast the element in a Null if it is possible. </div></div>
+<div class="ttc" id="_file_pos_8hpp_html"><div class="ttname"><a href="_file_pos_8hpp.html">FilePos.hpp</a></div></div>
+<div class="ttc" id="namespaceejson_html_a6a37b3ae20a2b7bc207b268ab1439709"><div class="ttname"><a href="namespaceejson.html#a6a37b3ae20a2b7bc207b268ab1439709">ejson::valueType</a></div><div class="ttdeci">valueType</div><div class="ttdoc">Type of the JSON elements. </div><div class="ttdef"><b>Definition:</b> valueType.hpp:14</div></div>
+<div class="ttc" id="classejson_1_1internal_1_1_value_html_aa2dcababae9ca0c4d102b8a9c5b84ffc"><div class="ttname"><a href="classejson_1_1internal_1_1_value.html#aa2dcababae9ca0c4d102b8a9c5b84ffc">ejson::internal::Value::display</a></div><div class="ttdeci">void display() const </div><div class="ttdoc">Display the Document on console. </div></div>
+<div class="ttc" id="classejson_1_1_value_html_a91236630d37cad7a8d1256835a9448c8"><div class="ttname"><a href="classejson_1_1_value.html#a91236630d37cad7a8d1256835a9448c8">ejson::Value::toObject</a></div><div class="ttdeci">ejson::Object toObject()</div><div class="ttdoc">Cast the element in a Object if it is possible. </div></div>
+<div class="ttc" id="namespaceu32char_html_a5bf343cb9ca744a833c6d0466542fd23"><div class="ttname"><a href="http://atria-soft.github.io/etk/namespaceu32char.html#a5bf343cb9ca744a833c6d0466542fd23">Null</a></div><div class="ttdeci">const char32_t Null</div></div>
+<div class="ttc" id="internal_2_value_8hpp_html"><div class="ttname"><a href="internal_2_value_8hpp.html">Value.hpp</a></div></div>
+<div class="ttc" id="classejson_1_1internal_1_1_value_html_a6b3e120c2ebac4740e0fd8f6be124932"><div class="ttname"><a href="classejson_1_1internal_1_1_value.html#a6b3e120c2ebac4740e0fd8f6be124932">ejson::internal::Value::clone</a></div><div class="ttdeci">virtual ememory::SharedPtr&lt; ejson::internal::Value &gt; clone() const </div><div class="ttdoc">Copy the curent node and all the child in the curent one. </div></div>
+<div class="ttc" id="classejson_1_1_value_html_ab781a082d8a9802f0e07516ced5211ec"><div class="ttname"><a href="classejson_1_1_value.html#ab781a082d8a9802f0e07516ced5211ec">ejson::Value::isNull</a></div><div class="ttdeci">bool isNull() const </div><div class="ttdoc">check if the node is a ejson::Null </div></div>
+<div class="ttc" id="classejson_1_1_value_html"><div class="ttname"><a href="classejson_1_1_value.html">ejson::Value</a></div><div class="ttdoc">Basic main object of all json elements. </div><div class="ttdef"><b>Definition:</b> Value.hpp:31</div></div>
+<div class="ttc" id="classejson_1_1_null_html"><div class="ttname"><a href="classejson_1_1_null.html">ejson::Null</a></div><div class="ttdoc">ejson Null interface: &amp;#39;null&amp;#39;. </div><div class="ttdef"><b>Definition:</b> Null.hpp:15</div></div>
+<div class="ttc" id="classememory_1_1_shared_ptr_html"><div class="ttname"><a href="http://atria-soft.github.io/ememory/classememory_1_1_shared_ptr.html">ememory::SharedPtr</a></div></div>
+<div class="ttc" id="classejson_1_1_value_html_a8d0f3ea4cf180e1c649f83152f1798b9"><div class="ttname"><a href="classejson_1_1_value.html#a8d0f3ea4cf180e1c649f83152f1798b9">ejson::Value::isArray</a></div><div class="ttdeci">bool isArray() const </div><div class="ttdoc">check if the node is a ejson::Array </div></div>
+<div class="ttc" id="classejson_1_1_document_html"><div class="ttname"><a href="classejson_1_1_document.html">ejson::Document</a></div><div class="ttdoc">ejson Document interface (acces with the file and stream). </div><div class="ttdef"><b>Definition:</b> Document.hpp:19</div></div>
+<div class="ttc" id="classejson_1_1_value_html_a52c04dcf17035225152cc5f3cc143862"><div class="ttname"><a href="classejson_1_1_value.html#a52c04dcf17035225152cc5f3cc143862">ejson::Value::isDocument</a></div><div class="ttdeci">bool isDocument() const </div><div class="ttdoc">check if the node is a ejson::Document </div></div>
+<div class="ttc" id="classejson_1_1internal_1_1_value_html_aa2e223aeec554cb43556c2ad088d7283"><div class="ttname"><a href="classejson_1_1internal_1_1_value.html#aa2e223aeec554cb43556c2ad088d7283">ejson::internal::Value::~Value</a></div><div class="ttdeci">virtual ~Value()</div><div class="ttdoc">Virtualize destructor. </div></div>
+<div class="ttc" id="classejson_1_1internal_1_1_value_html_ad0d5a680f032ce3d97f87468fdd448df"><div class="ttname"><a href="classejson_1_1internal_1_1_value.html#ad0d5a680f032ce3d97f87468fdd448df">ejson::internal::Value::transfertIn</a></div><div class="ttdeci">virtual bool transfertIn(ememory::SharedPtr&lt; ejson::internal::Value &gt; _obj)</div><div class="ttdoc">Tranfert all element in the element set in parameter. </div></div>
+<div class="ttc" id="classejson_1_1_value_html_a195446e93590ab64d72e28a2759bd4cf"><div class="ttname"><a href="classejson_1_1_value.html#a195446e93590ab64d72e28a2759bd4cf">ejson::Value::exist</a></div><div class="ttdeci">bool exist() const </div><div class="ttdoc">Check if the element exit. </div></div>
+<div class="ttc" id="classejson_1_1_value_html_a43a3bf8ff0d02f92e8751ea8a16fcaa1"><div class="ttname"><a href="classejson_1_1_value.html#a43a3bf8ff0d02f92e8751ea8a16fcaa1">ejson::Value::toString</a></div><div class="ttdeci">ejson::String toString()</div><div class="ttdoc">Cast the element in a String if it is possible. </div></div>
+<div class="ttc" id="memory_8hpp_html"><div class="ttname"><a href="http://atria-soft.github.io/ememory/memory_8hpp.html">memory.hpp</a></div></div>
+<div class="ttc" id="_null_8hpp_html"><div class="ttname"><a href="_null_8hpp.html">Null.hpp</a></div></div>
+<div class="ttc" id="namespaceejson_html_ab64b51ff08fe0f8b8dd6d83b0a92c9bc"><div class="ttname"><a href="namespaceejson.html#ab64b51ff08fe0f8b8dd6d83b0a92c9bc">ejson::empty</a></div><div class="ttdeci">ejson::Value empty()</div><div class="ttdoc">create an empty Value (that does not exist ... </div></div>
+<div class="ttc" id="classejson_1_1_value_html_a58ec04b1804d2502c0621c9a4108b6c3"><div class="ttname"><a href="classejson_1_1_value.html#a58ec04b1804d2502c0621c9a4108b6c3">ejson::Value::toDocument</a></div><div class="ttdeci">ejson::Document toDocument()</div><div class="ttdoc">Cast the element in a Document if it is possible. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- HTML footer for doxygen 1.8.8-->
+<!-- start footer part -->
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="footer"/><address class="footer"><small>
+Generated on Sun Oct 23 2016 22:01:40 for ejson: Ewol JSON parser by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>

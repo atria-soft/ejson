@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
         <meta name="generator" content="Doxygen 1.8.11"/>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <title>ejson: Ewol JSON parser: EJSON library</title>
+        <title>ejson: Ewol JSON parser: framework/atria-soft/ejson/ejson/Boolean.hpp Source File</title>
         <!--<link href="tabs.css" rel="stylesheet" type="text/css"/>-->
         <script type="text/javascript" src="dynsections.js"></script>
         <link href="search/search.css" rel="stylesheet" type="text/css"/>
@@ -108,11 +108,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -131,7 +131,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-</div><!-- top -->
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+    </ul>
+  </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -146,66 +151,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_644e041c3a6521da7b27eba0e4eb2b95.html">framework</a></li><li class="navelem"><a class="el" href="dir_a094892b17be858f66bf3446bbb755c7.html">atria-soft</a></li><li class="navelem"><a class="el" href="dir_144b6a62e2dd6250c7a925b8245b61ea.html">ejson</a></li><li class="navelem"><a class="el" href="dir_715e87801a16358c677dc77a4c05bf37.html">ejson</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">EJSON library </div>  </div>
+<div class="title">Boolean.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="toc"><h3>Table of Contents</h3>
-<ul><li class="level1"><a href="#ejson_mainpage_what">What is EJSON:                               </a><ul><li class="level2"><a href="#ejson_mainpage_what_it_does">What it does:                               </a></li>
-<li class="level2"><a href="#ejson_mainpage_what_it_not_does">What it doesn&#39;t do:                          </a></li>
-<li class="level2"><a href="#ejson_mainpage_extention">Internal extention:                          </a></li>
-</ul>
-</li>
-<li class="level1"><a href="#ejson_mainpage_language">What languages are supported?                    </a></li>
-<li class="level1"><a href="#ejson_mainpage_license_restriction">Are there any licensing restrictions?            </a></li>
-<li class="level1"><a href="#ejson_mainpage_license">License (APACHE-2.0)                             </a></li>
-<li class="level1"><a href="#ejson_mainpage_sub_page">Other pages                              </a></li>
-</ul>
-</div>
-<div class="textblock"><h1><a class="anchor" id="ejson_mainpage_what"></a>
-What is EJSON:                               </h1>
-<p>EJSON, or Ewol JSON interface is a simple, small, efficient, C++ JSON parser/generator that can be easily integrating into other programs.</p>
-<h2><a class="anchor" id="ejson_mainpage_what_it_does"></a>
-What it does:                               </h2>
-<p>EJSON parses an JSON document, and builds from that a Document Object Model (DOM) that can be read, modified, and saved.</p>
-<p>JSON stands for "JavaScript Object Notation". It is a general purpose human and machine readable machine language to describe arbitrary data (base internal system of the JavaScript object). All those random file formats created to store application data can all be replaced with JSON. One parser for everything.</p>
-<p><a href="http://wikipedia.org/wiki/JSON">http://wikipedia.org/wiki/JSON</a></p>
-<p>There are different ways to access and interact with JSON data. EJSON uses a Document Object Model (DOM), meaning the JSON data is parsed into a C++ objects that can be browsed and manipulated, and then written to disk. You can also construct an JSON document from scratch with C++ objects and write this to disk.</p>
-<p>EJSON is designed to be easy and fast to learn.</p>
-<p>EJSON is dependent of the STL (compatible with MacOs stl (CXX))</p>
-<h2><a class="anchor" id="ejson_mainpage_what_it_not_does"></a>
-What it doesn't do:                          </h2>
-<p>I do not know...</p>
-<h2><a class="anchor" id="ejson_mainpage_extention"></a>
-Internal extention:                          </h2>
-<p>I Add some costum feature of JSON:</p><ul>
-<li>Support inline comment starting with **#**</li>
-<li>Support Unquotet name if the name is not separate with space and not start with number</li>
-<li>Support simple quote **'** instead of double quote **"**</li>
-<li>Support removing of the **{}** arround the file (by default present)</li>
-</ul>
-<h1><a class="anchor" id="ejson_mainpage_language"></a>
-What languages are supported?                    </h1>
-<p>EJSON is written in C++.</p>
-<h1><a class="anchor" id="ejson_mainpage_license_restriction"></a>
-Are there any licensing restrictions?            </h1>
-<p>EJSON is <b>FREE software</b> and <em>all sub-library are FREE and staticly linkable !!!</em></p>
-<h1><a class="anchor" id="ejson_mainpage_license"></a>
-License (APACHE-2.0)                             </h1>
-<p>Copyright EJSON Edouard DUPIN</p>
-<p>Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
-<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
-<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
-<h1><a class="anchor" id="ejson_mainpage_sub_page"></a>
-Other pages                              </h1>
-<ul>
-<li><a class="el" href="ejson_build.html">Build lib &amp; build sample</a></li>
-<li><a class="el" href="ejson_tutorial_read.html">Read an JSON content</a></li>
-<li><a class="el" href="ejson_tutorial_write.html">Write an JSON content</a></li>
-<li><a href="http://atria-soft.github.io/ewol/ewol_coding_style.html"><b>ewol coding style</b></a> </li>
-</ul>
-</div></div><!-- contents -->
+<a href="_boolean_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" doxygen="/home/heero/dev/perso/out/doc/release/etk.tag:http://atria-soft.github.io/etk/" href="http://atria-soft.github.io/etk/types_8hpp.html">etk/types.hpp</a>&gt;</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_value_8hpp.html">ejson/Value.hpp</a>&gt;</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceejson.html">ejson</a> {</div><div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classejson_1_1_boolean.html">   15</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classejson_1_1_boolean.html">Boolean</a> : <span class="keyword">public</span> <a class="code" href="classejson_1_1_value.html">ejson::Value</a> {</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">public</span>:</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <a class="code" href="classejson_1_1_boolean.html#a58e8f164a9e58444b362e3e174d54e56">Boolean</a>(<a class="codeRef" doxygen="/home/heero/dev/perso/out/doc/release/ememory.tag:http://atria-soft.github.io/ememory/" href="http://atria-soft.github.io/ememory/classememory_1_1_shared_ptr.html">ememory::SharedPtr&lt;ejson::internal::Value&gt;</a> _internalValue);</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <a class="code" href="classejson_1_1_boolean.html#a58e8f164a9e58444b362e3e174d54e56">Boolean</a>(<span class="keyword">const</span> <a class="code" href="classejson_1_1_boolean.html">ejson::Boolean</a>&amp; _obj);</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <a class="code" href="classejson_1_1_boolean.html#a58e8f164a9e58444b362e3e174d54e56">Boolean</a>(<span class="keywordtype">bool</span> _value=<span class="keyword">false</span>);</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <a class="code" href="classejson_1_1_boolean.html">ejson::Boolean</a>&amp; <a class="code" href="classejson_1_1_boolean.html#acab1fe05761a092e0f26577a13ca6919">operator= </a>(<span class="keyword">const</span> <a class="code" href="classejson_1_1_boolean.html">ejson::Boolean</a>&amp; _obj);</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">public</span>:</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordtype">void</span> <span class="keyword">set</span>(<span class="keywordtype">bool</span> _value);</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordtype">bool</span> <span class="keyword">get</span>(<span class="keywordtype">bool</span> _errorValue=<span class="keyword">false</span>) <span class="keyword">const</span>;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    };</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div><div class="ttc" id="_value_8hpp_html"><div class="ttname"><a href="_value_8hpp.html">Value.hpp</a></div></div>
+<div class="ttc" id="classejson_1_1_boolean_html_acab1fe05761a092e0f26577a13ca6919"><div class="ttname"><a href="classejson_1_1_boolean.html#acab1fe05761a092e0f26577a13ca6919">ejson::Boolean::operator=</a></div><div class="ttdeci">ejson::Boolean &amp; operator=(const ejson::Boolean &amp;_obj)</div><div class="ttdoc">Copy constructor. </div></div>
+<div class="ttc" id="namespaceejson_html"><div class="ttname"><a href="namespaceejson.html">ejson</a></div><div class="ttdoc">ejson namespace containing all function for JSON interpretor </div><div class="ttdef"><b>Definition:</b> Array.hpp:12</div></div>
+<div class="ttc" id="classejson_1_1_boolean_html"><div class="ttname"><a href="classejson_1_1_boolean.html">ejson::Boolean</a></div><div class="ttdoc">ejson Boolean interface: true/false. </div><div class="ttdef"><b>Definition:</b> Boolean.hpp:15</div></div>
+<div class="ttc" id="types_8hpp_html"><div class="ttname"><a href="http://atria-soft.github.io/etk/types_8hpp.html">types.hpp</a></div></div>
+<div class="ttc" id="classejson_1_1_boolean_html_a58e8f164a9e58444b362e3e174d54e56"><div class="ttname"><a href="classejson_1_1_boolean.html#a58e8f164a9e58444b362e3e174d54e56">ejson::Boolean::Boolean</a></div><div class="ttdeci">Boolean(ememory::SharedPtr&lt; ejson::internal::Value &gt; _internalValue)</div><div class="ttdoc">Constructor. </div></div>
+<div class="ttc" id="classejson_1_1_value_html"><div class="ttname"><a href="classejson_1_1_value.html">ejson::Value</a></div><div class="ttdoc">Basic main object of all json elements. </div><div class="ttdef"><b>Definition:</b> Value.hpp:31</div></div>
+<div class="ttc" id="classememory_1_1_shared_ptr_html"><div class="ttname"><a href="http://atria-soft.github.io/ememory/classememory_1_1_shared_ptr.html">ememory::SharedPtr</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
 <!-- HTML footer for doxygen 1.8.8-->
 <!-- start footer part -->
 </div>
