@@ -22,7 +22,7 @@ var searchData=
   ['filetell',['fileTell',['http://atria-soft.github.io/etk/classetk_1_1_f_s_node.html#a7bb2d304bc95da4a1016d61cd850cc5a',1,'etk::FSNode']]],
   ['filewrite',['fileWrite',['http://atria-soft.github.io/etk/classetk_1_1_f_s_node.html#aa3473eebff7ce59fc5bb5024b035d3e5',1,'etk::FSNode']]],
   ['filewriteall',['fileWriteAll',['http://atria-soft.github.io/etk/classetk_1_1_f_s_node.html#ab7861ffd14859cc39fb0b12ceebbcd10',1,'etk::FSNode::fileWriteAll(const std::vector&lt; T &gt; &amp;_value)'],['http://atria-soft.github.io/etk/classetk_1_1_f_s_node.html#aa89ddb8a015833889bb9c1943647acad',1,'etk::FSNode::fileWriteAll(const std::string &amp;_value)']]],
-  ['fix',['fix',['http://atria-soft.github.io/etk/classetk_1_1_matrix.html#a311a8caed926aaca9a40f299bf615a29',1,'etk::Matrix']]],
+  ['fix',['fix',['http://atria-soft.github.io/etk/classetk_1_1_matrix.html#a2b08925854b289bb5bbbe390a7df2ec5',1,'etk::Matrix']]],
   ['flipx',['flipX',['http://atria-soft.github.io/etk/classetk_1_1_matrix2.html#ab9d9362f988bd8a1098ab7592d88e5de',1,'etk::Matrix2']]],
   ['flipy',['flipY',['http://atria-soft.github.io/etk/classetk_1_1_matrix2.html#a6c61fb68ee69bb448ef1829b98b94dce',1,'etk::Matrix2']]],
   ['foldercount',['folderCount',['http://atria-soft.github.io/etk/classetk_1_1_f_s_node.html#ad1343533b97b6ced90b9319864db0d5a',1,'etk::FSNode']]],
@@ -55,5 +55,5 @@ var searchData=
   ['fsnodetouch',['FSNodeTouch',['http://atria-soft.github.io/etk/namespaceetk.html#af86474607a59dd8492c978ec48c015c5',1,'etk']]],
   ['fsnodewritealldata',['FSNodeWriteAllData',['http://atria-soft.github.io/etk/namespaceetk.html#ac9318ff052b5d458ee66c0aaf4021fc2',1,'etk']]],
   ['fsnodewritealldatatype',['FSNodeWriteAllDataType',['http://atria-soft.github.io/etk/namespaceetk.html#ae6e9afde0376252114884445cab1382e',1,'etk']]],
-  ['furthestaxis',['furthestAxis',['http://atria-soft.github.io/etk/classetk_1_1_vector2_d.html#ae24360f725860692cbdfd7715634513b',1,'etk::Vector2D::furthestAxis()'],['http://atria-soft.github.io/etk/classetk_1_1_vector2_d.html#ae24360f725860692cbdfd7715634513b',1,'Vector2D&lt; int32_t &gt;::furthestAxis()'],['http://atria-soft.github.io/etk/classetk_1_1_vector2_d.html#ae24360f725860692cbdfd7715634513b',1,'Vector2D&lt; uint32_t &gt;::furthestAxis()'],['http://atria-soft.github.io/etk/classetk_1_1_vector3_d.html#aa0bcd6584ff09f52b761700e9c64d187',1,'etk::Vector3D::furthestAxis()']]]
+  ['furthestaxis',['furthestAxis',['http://atria-soft.github.io/etk/classetk_1_1_vector2_d.html#a741170b7eeb26c44c932023ce20e6a32',1,'etk::Vector2D::furthestAxis()'],['http://atria-soft.github.io/etk/classetk_1_1_vector2_d.html#a741170b7eeb26c44c932023ce20e6a32',1,'Vector2D&lt; int32_t &gt;::furthestAxis()'],['http://atria-soft.github.io/etk/classetk_1_1_vector2_d.html#a741170b7eeb26c44c932023ce20e6a32',1,'Vector2D&lt; uint32_t &gt;::furthestAxis()'],['http://atria-soft.github.io/etk/classetk_1_1_vector3_d.html#a22acd16dde9aef7a81555f34f16804d5',1,'etk::Vector3D::furthestAxis()']]]
 ];

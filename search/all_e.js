@@ -18,7 +18,7 @@ var searchData=
   ['pink',['pink',['http://atria-soft.github.io/etk/namespaceetk_1_1color.html#ad2726cdc1f4064f8df7b77b7da3d4291',1,'etk::color']]],
   ['plane',['Plane',['http://atria-soft.github.io/etk/classetk_1_1_plane.html#ac45e649cc99e2a64f93c4efd2f5cd3a0',1,'etk::Plane::Plane()'],['http://atria-soft.github.io/etk/classetk_1_1_plane.html#ad91eb9e5c7637f30869fd585c0b77f80',1,'etk::Plane::Plane(etk::Vector3D&lt; T &gt; _normal, T _intercept=0)'],['http://atria-soft.github.io/etk/classetk_1_1_plane.html#abd201fb9f3ea8d7a31d3590ce4ccbf66',1,'etk::Plane::Plane(const Plane &amp;_obj)']]],
   ['plane',['Plane',['http://atria-soft.github.io/etk/classetk_1_1_plane.html',1,'etk']]],
-  ['plane_2ehpp',['Plane.hpp',['http://atria-soft.github.io/etk/_plane_8hpp.html',1,'']]],
+  ['plane_2ehpp',['Plane.hpp',['http://atria-soft.github.io/etk/__plane__8hpp.html',1,'']]],
   ['plum',['plum',['http://atria-soft.github.io/etk/namespaceetk_1_1color.html#ab4d992f3996f638d234f936153bd7907',1,'etk::color']]],
   ['post',['post',['http://atria-soft.github.io/etk/classetk_1_1_fifo.html#a844b4b22b7e6da8d88e301cb57555043',1,'etk::Fifo::post(MY_TYPE &amp;_data)'],['http://atria-soft.github.io/etk/classetk_1_1_fifo.html#aee87d87fed54bc307ea3cf3ea12250d9',1,'etk::Fifo::post(const MY_TYPE &amp;_data)']]],
   ['powderblue',['powderBlue',['http://atria-soft.github.io/etk/namespaceetk_1_1color.html#afd0e078b144de932065e8a7f01685b6b',1,'etk::color']]],

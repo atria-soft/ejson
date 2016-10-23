@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['b',['b',['http://atria-soft.github.io/etk/classetk_1_1_color.html#a723f8b355c03aa7c1cefa4cdfe34e68d',1,'etk::Color']]],
+  ['b',['b',['http://atria-soft.github.io/etk/classetk_1_1_color.html#ac6be77ac33983d040a2ede58bc631d94',1,'etk::Color']]],
   ['basenoise',['BaseNoise',['http://atria-soft.github.io/etk/classetk_1_1_base_noise.html',1,'etk']]],
   ['basenoise',['BaseNoise',['http://atria-soft.github.io/etk/classetk_1_1_base_noise.html#ad5cbfcc2d967af185c264744de04cf15',1,'etk::BaseNoise']]],
-  ['begin',['begin',['../classejson_1_1_array.html#a9b61949e81e838c6e1123ff26614d20d',1,'ejson::Array::begin()'],['../classejson_1_1_array.html#a5a2d5cb0247c1585b9cc428a53430160',1,'ejson::Array::begin() const '],['../classejson_1_1_object.html#a06584f41d23a3abc88a474da1e037437',1,'ejson::Object::begin()'],['../classejson_1_1_object.html#a42a019ce6963bc5723bcd98539dd2486',1,'ejson::Object::begin() const ']]],
+  ['begin',['begin',['../classejson_1_1_array.html#a9b61949e81e838c6e1123ff26614d20d',1,'ejson::Array::begin()'],['../classejson_1_1_array.html#a36fa8883af25afed6025178f95815927',1,'ejson::Array::begin() const'],['../classejson_1_1_object.html#a06584f41d23a3abc88a474da1e037437',1,'ejson::Object::begin()'],['../classejson_1_1_object.html#a53091d4f1ba52eb463bc51af48597821',1,'ejson::Object::begin() const']]],
   ['beige',['beige',['http://atria-soft.github.io/etk/namespaceetk_1_1color.html#a68244b2fa52245487cec1154155d0e03',1,'etk::color']]],
   ['bisque',['bisque',['http://atria-soft.github.io/etk/namespaceetk_1_1color.html#ad03e04b97263a2c64dedfc405ff983ee',1,'etk::color']]],
   ['black',['black',['http://atria-soft.github.io/etk/namespaceetk_1_1color.html#a4198b330ccb2e9008665733eee338f73',1,'etk::color']]],
