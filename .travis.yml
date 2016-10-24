@@ -1,6 +1,7 @@
 language: cpp
 
-sudo: false
+sudo: required
+dist: trusty
 
 branches:
   only:
@@ -14,9 +15,9 @@ addons:
     packages:
       - g++-4.9
       - expect
-      #- binutils-mingw-w64-x86-64 # 64bit MinGW
-      #- gcc-mingw-w64-x86-64
-      #- g++-mingw-w64-x86-64
+      - binutils-mingw-w64-x86-64 # 64bit MinGW
+      - gcc-mingw-w64-x86-64
+      - g++-mingw-w64-x86-64
 
 matrix:
   include:
@@ -26,12 +27,12 @@ matrix:
     - os: linux
       env: CONF=debug BUILDER=clang TARGET=Linux
       compiler: clang
-    #- os: linux
-    #  env: CONF=release BUILDER=gcc TARGET=Windows TAG=Mingw
-    #  compiler: x86_64-w64-mingw32-gcc
-    #- os: linux
-    #  env: CONF=release BUILDER=gcc TARGET=Android TAG=Android DISABLE_PACKAGE=-p
-    #  compiler: gcc
+    - os: linux
+      env: CONF=release BUILDER=gcc TARGET=Windows TAG=Mingw
+      compiler: x86_64-w64-mingw32-gcc
+    - os: linux
+      env: CONF=release BUILDER=gcc TARGET=Android TAG=Android DISABLE_PACKAGE=-p
+      compiler: gcc
     - os: osx
       env: CONF=release BUILDER=clang TARGET=MacOs TAG=MacOs
       compiler: clang
@@ -52,6 +53,9 @@ install:
 
 before_script:
   - cd ..
+  - git clone https://github.com/atria-soft/elog.git -b $TRAVIS_BRANCH
+  - git clone https://github.com/atria-soft/ememory.git -b $TRAVIS_BRANCH
+  - git clone https://github.com/atria-soft/echrono.git -b $TRAVIS_BRANCH
   - git clone https://github.com/atria-soft/etk.git -b $TRAVIS_BRANCH
   - git clone https://github.com/generic-library/gtest-lutin.git --recursive
   - git clone https://github.com/generic-library/z-lutin.git --recursive
@@ -70,11 +74,10 @@ after_script:
   - if [ "$GCOV" != "" ]; then
         ./ci/warning_send.py --find-path ./out/Linux_x86_64/$CONF/build/$BUILDER/ejson/;
     fi
-  - if [ "$GCOV" == "" ]; then
-        ./out/Linux_x86_64/$CONF/staging/$BUILDER/ejson-test/ejson-test.app/bin/ejson-test --elog-level=3 | tee out_test.txt
-    else
+  - lutin -w -j4 -C -P -t$TARGET -c $BUILDER $COMPILATOR_OPTION $BUS -m $CONF $GCOV $DISABLE_PACKAGE ejson-test?run:--elog-level=3 | tee out_test.txt
+  - if [ "$GCOV" != "" ]; then
         ./ci/test_send.py --file=out_test.txt;
-        lutin -C -P -t $TARGET -c $BUILDER $COMPILATOR_OPTION $BUS -m $CONF -p ejson-*?build?run ejson?gcov;
+        lutin -C -P -t $TARGET -c $BUILDER $COMPILATOR_OPTION $BUS -m $CONF -p ejson?gcov;
         ./ci/coverage_send.py --json=out/Linux_x86_64/$CONF/build/$BUILDER/ejson/ejson_coverage.json;
     fi
 
