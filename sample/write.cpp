@@ -18,6 +18,9 @@ static void writeToFile() {
 	//! [ejson_sample_write_file]
 	bool retGenerate = doc.store("generate.json");
 	//! [ejson_sample_write_file]
+	//! [ejson_sample_write_file_safe_mode]
+	bool retGenerate = doc.storeSafe("generate.json");
+	//! [ejson_sample_write_file_safe_mode]
 	TEST_INFO("parse ret = " << retGenerate);
 	TEST_INFO("Debug display of the tree:");
 	doc.display();

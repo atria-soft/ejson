@@ -18,6 +18,8 @@ Write an JSON file                                  {#ejson_tutorial_write_file}
 Write an json tree is done like:
 @snippet write.cpp ejson_sample_write_file
 
+When you acces on the fileSystem, it is hard to have atoimic access, then the best way to not corupt your previous file (chash when writing the new) is to store the file in a second one and move the file at the corretc position. This is all done in the single commmand:
+@snippet write.cpp ejson_sample_write_file_safe_mode
 
 Write an JSON Stream                                {#ejson_tutorial_write_stream}
 ===================

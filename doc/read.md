@@ -59,8 +59,11 @@ Access to a boolean in an Object:
 Access to a Number in an Object:
 ---------------------------------
 
+By default a number is a double (herited from the js internal property)
 @snippet read.cpp ejson_sample_read_get_number
 
+But it is possible to read large number directly in 64 bits mode (better for entier number, no round generated.)
+@snippet read.cpp ejson_sample_read_get_number_64_bits
 
 Access to a Array in an Object:
 ---------------------------------
