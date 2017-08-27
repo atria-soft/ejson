@@ -34,7 +34,7 @@ namespace ejson {
 				 * @param[in] _data Json stream to parse and interprete
 				 * @return A SharedPtr on the Object value
 				 */
-				static ememory::SharedPtr<Object> create(const std::string& _data);
+				static ememory::SharedPtr<Object> create(const etk::String& _data);
 			protected:
 				// TODO : Change this with a generic methode ...
 				etk::Hash<ememory::SharedPtr<ejson::internal::Value> > m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
@@ -44,25 +44,25 @@ namespace ejson {
 				 * @param[in] _name name of the object.
 				 * @return The existance of the element.
 				 */
-				bool exist(const std::string& _name) const;
+				bool exist(const etk::String& _name) const;
 				/**
 				 * @brief get the sub element with his name (no cast check)
 				 * @param[in] _name name of the object
 				 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
 				 */
-				ememory::SharedPtr<ejson::internal::Value> get(const std::string& _name);
+				ememory::SharedPtr<ejson::internal::Value> get(const etk::String& _name);
 				/**
 				 * @brief get the sub element with his name (no cast check)
 				 * @param[in] _name name of the object
 				 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
 				 */
-				const ememory::SharedPtr<ejson::internal::Value> get(const std::string& _name) const;
+				const ememory::SharedPtr<ejson::internal::Value> get(const etk::String& _name) const;
 			public:
 				/**
 				 * @brief Get all the element name (keys).
 				 * @return a vector of all name (key).
 				 */
-				std::vector<std::string> getKeys() const;
+				etk::Vector<etk::String> getKeys() const;
 				/**
 				 * @brief get the number of sub element in the current one
 				 * @return the Number of stored element
@@ -85,7 +85,7 @@ namespace ejson {
 				 * @param[in] _id Id of the element.
 				 * @return The name (key).
 				 */
-				std::string getKey(size_t _id) const;
+				etk::String getKey(size_t _id) const;
 			public:
 				/**
 				 * @brief add an element in the Object
@@ -93,12 +93,12 @@ namespace ejson {
 				 * @param[in] _value Element to add
 				 * @return false if an error occured
 				 */
-				bool add(const std::string& _name, ememory::SharedPtr<ejson::internal::Value> _value);
+				bool add(const etk::String& _name, ememory::SharedPtr<ejson::internal::Value> _value);
 				/**
 				 * @brief Remove Value with his name
 				 * @param[in] _name Name of the object
 				 */
-				void remove(const std::string& _name);
+				void remove(const etk::String& _name);
 				/**
 				 * @brief Remove Value with his id
 				 * @param[in] _id Id of the element.
@@ -116,9 +116,9 @@ namespace ejson {
 				 */
 				ememory::SharedPtr<ejson::internal::Object> cloneObj() const;
 			public:
-				bool iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) override;
-				bool iGenerate(std::string& _data, size_t _indent) const override;
-				void iMachineGenerate(std::string& _data) const override;
+				bool iParse(const etk::String& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) override;
+				bool iGenerate(etk::String& _data, size_t _indent) const override;
+				void iMachineGenerate(etk::String& _data) const override;
 				void clear() override;
 				bool transfertIn(ememory::SharedPtr<ejson::internal::Value> _obj) override;
 				ememory::SharedPtr<ejson::internal::Value> clone() const override;

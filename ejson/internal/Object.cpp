@@ -18,7 +18,7 @@
 ememory::SharedPtr<ejson::internal::Object> ejson::internal::Object::create() {
 	return ememory::SharedPtr<ejson::internal::Object>(new ejson::internal::Object());
 }
-ememory::SharedPtr<ejson::internal::Object> ejson::internal::Object::create(const std::string& _data) {
+ememory::SharedPtr<ejson::internal::Object> ejson::internal::Object::create(const etk::String& _data) {
 	ejson::internal::Document doc;
 	doc.parse(_data);
 	return doc.cloneObj();
@@ -36,9 +36,9 @@ enum statusParsing {
 	parseValue,
 };
 
-bool ejson::internal::Object::iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
+bool ejson::internal::Object::iParse(const etk::String& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
 	enum statusParsing mode = parseName;
-	std::string currentName;
+	etk::String currentName;
 	EJSON_PARSE_ELEMENT("start parse : 'Object' ");
 	bool standalone = true;
 	size_t startPos = _pos+1;
@@ -198,7 +198,7 @@ bool ejson::internal::Object::iParse(const std::string& _data, size_t& _pos, ejs
 					currentName = "";
 				} else {
 					// find an error ....
-					EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, std::string("Find '") + _data[iii] + "' with no element in the element...");
+					EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, etk::String("Find '") + _data[iii] + "' with no element in the element...");
 					// move the curent index
 					_pos = iii+1;
 					return false;
@@ -212,7 +212,7 @@ bool ejson::internal::Object::iParse(const std::string& _data, size_t& _pos, ejs
 	}
 	return false;
 }
-bool ejson::internal::Object::iGenerate(std::string& _data, size_t _indent) const {
+bool ejson::internal::Object::iGenerate(etk::String& _data, size_t _indent) const {
 	bool oneLine = true;
 	if (m_value.size()>3) {
 		oneLine = false;
@@ -272,7 +272,7 @@ bool ejson::internal::Object::iGenerate(std::string& _data, size_t _indent) cons
 	return true;
 }
 
-void ejson::internal::Object::iMachineGenerate(std::string& _data) const {
+void ejson::internal::Object::iMachineGenerate(etk::String& _data) const {
 	_data += "{";
 	bool needComa = false;
 	for (int32_t iii=0; iii<m_value.size(); ++iii) {
@@ -288,11 +288,11 @@ void ejson::internal::Object::iMachineGenerate(std::string& _data) const {
 	_data += "}";
 }
 
-bool ejson::internal::Object::exist(const std::string& _name) const {
+bool ejson::internal::Object::exist(const etk::String& _name) const {
 	return m_value.exist(_name);
 }
 
-std::vector<std::string> ejson::internal::Object::getKeys() const {
+etk::Vector<etk::String> ejson::internal::Object::getKeys() const {
 	return m_value.getKeys();
 }
 
@@ -308,25 +308,25 @@ const ememory::SharedPtr<ejson::internal::Value> ejson::internal::Object::get(si
 	return m_value[_id];
 }
 
-ememory::SharedPtr<ejson::internal::Value> ejson::internal::Object::get(const std::string& _name) {
+ememory::SharedPtr<ejson::internal::Value> ejson::internal::Object::get(const etk::String& _name) {
 	if (m_value.exist(_name) == false) {
 		return ememory::SharedPtr<ejson::internal::Value>();
 	}
 	return m_value[_name];
 }
 
-const ememory::SharedPtr<ejson::internal::Value> ejson::internal::Object::get(const std::string& _name) const {
+const ememory::SharedPtr<ejson::internal::Value> ejson::internal::Object::get(const etk::String& _name) const {
 	if (m_value.exist(_name) == false) {
 		return ememory::SharedPtr<ejson::internal::Value>();
 	}
 	return m_value[_name];
 }
 
-std::string ejson::internal::Object::getKey(size_t _id) const {
+etk::String ejson::internal::Object::getKey(size_t _id) const {
 	return m_value.getKey(_id);
 }
 
-bool ejson::internal::Object::add(const std::string& _name, ememory::SharedPtr<ejson::internal::Value> _value) {
+bool ejson::internal::Object::add(const etk::String& _name, ememory::SharedPtr<ejson::internal::Value> _value) {
 	if (_value == nullptr) {
 		return false;
 	}
@@ -341,7 +341,7 @@ bool ejson::internal::Object::add(const std::string& _name, ememory::SharedPtr<e
 	return true;
 }
 
-void ejson::internal::Object::remove(const std::string& _name) {
+void ejson::internal::Object::remove(const etk::String& _name) {
 	m_value.remove(_name);
 }
 
@@ -394,7 +394,7 @@ ememory::SharedPtr<ejson::internal::Object> ejson::internal::Object::cloneObj() 
 	}
 	for (int32_t iii=0; iii<m_value.size(); ++iii) {
 		ememory::SharedPtr<ejson::internal::Value> val = m_value.getValue(iii);
-		std::string key = m_value.getKey(iii);
+		etk::String key = m_value.getKey(iii);
 		if (val == nullptr) {
 			continue;
 		}

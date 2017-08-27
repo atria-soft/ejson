@@ -192,15 +192,15 @@ namespace ejson {
 			 * @brief generate a string that contain the created JSON
 			 * @return generated data
 			 */
-			std::string generateHumanString() const;
+			etk::String generateHumanString() const;
 			/**
 			 * @brief generate a string that contain the created JSON
 			 * @return generated data
 			 */
-			std::string generateMachineString() const;
+			etk::String generateMachineString() const;
 	};
 	//! @not_in_doc
-	std::ostream& operator <<(std::ostream& _os, const ejson::Value& _obj);
+	etk::Stream& operator <<(etk::Stream& _os, const ejson::Value& _obj);
 	/**
 	 * @brief create an empty Value (that does not exist ...
 	 * @return empty value (not usable)

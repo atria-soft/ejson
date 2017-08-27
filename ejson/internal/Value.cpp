@@ -27,7 +27,7 @@ bool ejson::internal::Value::isWhiteChar(char32_t _val) {
 	return false;
 }
 
-void ejson::internal::Value::addIndent(std::string& _data, int32_t _indent) const {
+void ejson::internal::Value::addIndent(etk::String& _data, int32_t _indent) const {
 	if (_indent <= 0) {
 		return;
 	}
@@ -46,7 +46,7 @@ void ejson::internal::Value::drawElementParsed(char32_t _val, const ejson::FileP
 	}
 }
 
-int32_t ejson::internal::Value::countWhiteChar(const std::string& _data, size_t _pos, ejson::FilePos& _filePos) const {
+int32_t ejson::internal::Value::countWhiteChar(const etk::String& _data, size_t _pos, ejson::FilePos& _filePos) const {
 	_filePos.clear();
 	size_t white=0;
 	for (size_t iii=_pos; iii<_data.size(); iii++) {
@@ -113,7 +113,7 @@ bool ejson::internal::Value::checkNumber(char32_t _val) const {
 }
 
 void ejson::internal::Value::display() const {
-	std::string tmpp;
+	etk::String tmpp;
 	iGenerate(tmpp, 0);
 	EJSON_INFO("Generated JSON : \n" << tmpp);
 }

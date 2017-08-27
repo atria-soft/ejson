@@ -27,13 +27,13 @@ ejson::internal::Document::Document() :
 	m_type = ejson::valueType::document;
 }
 
-bool ejson::internal::Document::iGenerate(std::string& _data, size_t _indent) const {
+bool ejson::internal::Document::iGenerate(etk::String& _data, size_t _indent) const {
 	ejson::internal::Object::iGenerate(_data, _indent+1);
 	_data += "\n";
 	return true;
 }
 
-bool ejson::internal::Document::parse(const std::string& _data) {
+bool ejson::internal::Document::parse(const etk::String& _data) {
 	EJSON_VERBOSE("Start parsing document (type: string) size=" << _data.size());
 	clear();
 	ejson::FilePos filePos(1,0);
@@ -41,12 +41,12 @@ bool ejson::internal::Document::parse(const std::string& _data) {
 	return iParse(_data, parsePos, filePos, *this);
 }
 
-bool ejson::internal::Document::generate(std::string& _data) {
+bool ejson::internal::Document::generate(etk::String& _data) {
 	_data = "";
 	return iGenerate(_data,0);
 }
 
-bool ejson::internal::Document::load(const std::string& _file) {
+bool ejson::internal::Document::load(const etk::String& _file) {
 	// Start loading the XML : 
 	EJSON_VERBOSE("open file (xml) \"" << _file << "\"");
 	clear();
@@ -65,22 +65,22 @@ bool ejson::internal::Document::load(const std::string& _file) {
 		return false;
 	}
 	// allocate data
-	std::vector<char> fileBuffer;
+	etk::Vector<char> fileBuffer;
 	fileBuffer.resize(fileSize+5, 0);
 	// load data from the file :
 	tmpFile.fileRead(&fileBuffer[0], 1, fileSize);
 	// close the file:
 	tmpFile.fileClose();
 	
-	std::string tmpDataUnicode(&fileBuffer[0]);
+	etk::String tmpDataUnicode(&fileBuffer[0]);
 	// parse the data :
 	bool ret = parse(tmpDataUnicode);
 	//Display();
 	return ret;
 }
 
-bool ejson::internal::Document::store(const std::string& _file) {
-	std::string createData;
+bool ejson::internal::Document::store(const etk::String& _file) {
+	etk::String createData;
 	if (false == generate(createData)) {
 		EJSON_ERROR("Error while creating the XML : " << _file);
 		return false;
@@ -100,8 +100,8 @@ bool ejson::internal::Document::store(const std::string& _file) {
 }
 
 
-static std::string createPosPointer(const std::string& _line, size_t _pos) {
-	std::string out;
+static etk::String createPosPointer(const etk::String& _line, size_t _pos) {
+	etk::String out;
 	size_t iii;
 	for (iii=0; iii<_pos && iii<_line.size(); iii++) {
 		if (_line[iii] == '\t') {
@@ -117,7 +117,7 @@ static std::string createPosPointer(const std::string& _line, size_t _pos) {
 	return out;
 }
 
-bool ejson::internal::Document::iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
+bool ejson::internal::Document::iParse(const etk::String& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
 	EJSON_PARSE_ELEMENT("start parse : 'Document' ");
 	bool haveMainNode=false;
 	bool nodeParsed=false;
@@ -192,10 +192,10 @@ void ejson::internal::Document::displayError() {
 	#endif
 }
 
-void ejson::internal::Document::createError(const std::string& _data,
+void ejson::internal::Document::createError(const etk::String& _data,
                                             size_t _pos,
                                             const ejson::FilePos& _filePos,
-                                            const std::string& _comment) {
+                                            const etk::String& _comment) {
 	m_comment = _comment;
 	m_Line = etk::extract_line(_data, _pos);
 	m_filePos = _filePos;

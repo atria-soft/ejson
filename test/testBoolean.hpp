@@ -11,7 +11,7 @@
 #include <gtest/gtest.h>
 
 
-static std::string refOutputBoolean1("{\n\t\"tmpElement\": true\n}\n");
+static etk::String refOutputBoolean1("{\n\t\"tmpElement\": true\n}\n");
 TEST(TestBoolean, testBaseTrue) {
 	localTest(refOutputBoolean1, "{ tmpElement:true }\n", -1);
 }
@@ -29,7 +29,7 @@ TEST(TestBoolean, testBaseTrue2) {
 }
 
 
-static std::string refOutputBoolean2("{\n\t\"tmpElement\": false\n}\n");
+static etk::String refOutputBoolean2("{\n\t\"tmpElement\": false\n}\n");
 TEST(TestBoolean, testBaseFalse) {
 	localTest(refOutputBoolean2, "{ tmpElement:false }\n", -1);
 }

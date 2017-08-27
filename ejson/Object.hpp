@@ -35,7 +35,7 @@ namespace ejson {
 			 * @brief Constructor
 			 * @param[in] _data string data to parse
 			 */
-			Object(const std::string& _data);
+			Object(const etk::String& _data);
 			/**
 			 * @brief Copy constructor
 			 * @param[in] _obj Object to copy
@@ -49,25 +49,25 @@ namespace ejson {
 			 * @param[in] _name Name of the object.
 			 * @return The existance of the element.
 			 */
-			bool valueExist(const std::string& _name) const;
+			bool valueExist(const etk::String& _name) const;
 			/**
 			 * @brief Cet the sub element with his name (no cast check)
 			 * @param[in] _name Name of the object
 			 * @return Value on the element requested or a value that does not exist @ref ejson::Value::exist.
 			 */
-			ejson::Value operator[] (const std::string& _name);
+			ejson::Value operator[] (const etk::String& _name);
 			/**
 			 * @brief Get the const sub element with his name (no cast check)
 			 * @param[in] _name Name of the object
 			 * @return const Value on the element requested or a value that does not exist @ref ejson::Value::exist.
 			 */
-			const ejson::Value operator[] (const std::string& _name) const;
+			const ejson::Value operator[] (const etk::String& _name) const;
 		public:
 			/**
 			 * @brief Get all the element name (keys).
 			 * @return a vector of all name (key).
 			 */
-			std::vector<std::string> getKeys() const;
+			etk::Vector<etk::String> getKeys() const;
 			/**
 			 * @brief get the number of sub element in the current one
 			 * @return the Number of stored element
@@ -90,7 +90,7 @@ namespace ejson {
 			 * @param[in] _id Id of the element.
 			 * @return The name (key).
 			 */
-			std::string getKey(size_t _id) const;
+			etk::String getKey(size_t _id) const;
 		public:
 			/**
 			 * @brief add an element in the Object
@@ -98,12 +98,12 @@ namespace ejson {
 			 * @param[in] _value Element to add
 			 * @return false if an error occured
 			 */
-			bool add(const std::string& _name, const ejson::Value& _value);
+			bool add(const etk::String& _name, const ejson::Value& _value);
 			/**
 			 * @brief Remove Value with his name
 			 * @param[in] _name Name of the object
 			 */
-			void remove(const std::string& _name);
+			void remove(const etk::String& _name);
 			/**
 			 * @brief Remove Value with his id
 			 * @param[in] _id Id of the element.

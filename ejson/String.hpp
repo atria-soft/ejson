@@ -28,7 +28,7 @@ namespace ejson {
 			 * @brief Constructor
 			 * @param[in] _value String value to set
 			 */
-			String(const std::string& _value="");
+			String(const etk::String& _value="");
 			/**
 			 * @brief Copy constructor
 			 * @param[in] _obj Object to copy
@@ -40,13 +40,13 @@ namespace ejson {
 			 * @brief set the value of the node.
 			 * @param[in] _value New value of the node.
 			 */
-			void set(const std::string& _value);
+			void set(const etk::String& _value);
 			/**
 			 * @brief get the current element Value.
 			 * @param[in] _errorValue The return value if an error occured.
 			 * @return the reference of the string value.
 			 */
-			std::string get(const std::string& _errorValue="") const;
+			etk::String get(const etk::String& _errorValue="") const;
 	};
 }
 

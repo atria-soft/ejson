@@ -13,7 +13,7 @@ int main(int argc, const char *argv[]) {
 	// the only one init for etk:
 	etk::init(argc, argv);
 	for (int32_t iii=0; iii<argc ; ++iii) {
-		std::string data = argv[iii];
+		etk::String data = argv[iii];
 		if (    data == "-h"
 		     || data == "--help") {
 			TEST_PRINT("Help : ");

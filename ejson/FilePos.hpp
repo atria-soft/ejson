@@ -87,7 +87,7 @@ namespace ejson {
 			size_t getLine() const;
 	};
 	//! @not-in-doc
-	std::ostream& operator <<(std::ostream& _os, const FilePos& _obj);
+	etk::Stream& operator <<(etk::Stream& _os, const FilePos& _obj);
 	
 }
 

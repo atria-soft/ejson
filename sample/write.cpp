@@ -34,7 +34,7 @@ static void writeToString() {
 	doc.add("D", ejson::Array());
 	TEST_INFO("generate");
 	//! [ejson_sample_write_stream]
-	std::string streamOut;
+	etk::String streamOut;
 	bool retGenerate = doc.generate(streamOut);
 	//! [ejson_sample_write_stream]
 	TEST_INFO("parse ret = " << retGenerate);

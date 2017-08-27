@@ -12,7 +12,7 @@
 #include <ejson/ejson.hpp>
 
 // _errorPos : -1 : no error , 1 : parsing error, 2 generation error, 3 comparaison error ????
-static void localTest(const std::string& _ref, const std::string& _input, int32_t _errorPos) {
+static void localTest(const etk::String& _ref, const etk::String& _input, int32_t _errorPos) {
 	ejson::Document doc;
 	bool retParse = doc.parse(_input);
 	if (_errorPos == 1) {
@@ -21,7 +21,7 @@ static void localTest(const std::string& _ref, const std::string& _input, int32_
 	} else {
 		EXPECT_EQ(retParse, true);
 	}
-	std::string out("");
+	etk::String out("");
 	bool retGenerate = doc.generate(out);
 	if (_errorPos == 2) {
 		EXPECT_EQ(retGenerate, false);
@@ -36,8 +36,8 @@ static void localTest(const std::string& _ref, const std::string& _input, int32_
 		EXPECT_EQ(_ref, out);
 		/*
 		JSON_ERROR("[TEST] {ERROR } different output");
-		std::vector<std::string> tmpout = etk::split(out, '\n');
-		std::vector<std::string> tmpref = etk::split(_ref, '\n');
+		etk::Vector<etk::String> tmpout = etk::split(out, '\n');
+		etk::Vector<etk::String> tmpref = etk::split(_ref, '\n');
 		//JSON_ERROR("generate : \n" << out);
 		//JSON_ERROR("reference : \n" << l_list[iii].m_ref);
 		for (int32_t jjj=0; jjj<tmpout.size() || jjj<tmpref.size(); ++jjj) {

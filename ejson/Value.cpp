@@ -15,7 +15,7 @@ ejson::Value ejson::empty() {
 
 
 
-std::ostream& ejson::operator <<(std::ostream& _os, const ejson::Value& _obj) {
+etk::Stream& ejson::operator <<(etk::Stream& _os, const ejson::Value& _obj) {
 	_os << "{";
 	_os << "Value JSON: " << _obj.getType();
 	/*
@@ -42,8 +42,8 @@ bool ejson::Value::exist() const {
 	return true;
 }
 
-std::string ejson::Value::generateHumanString() const {
-	std::string out;
+etk::String ejson::Value::generateHumanString() const {
+	etk::String out;
 	if (m_data == nullptr) {
 		EJSON_DEBUG("Can not remove (nullptr) ...");
 		return out;
@@ -52,8 +52,8 @@ std::string ejson::Value::generateHumanString() const {
 	return out;
 }
 
-std::string ejson::Value::generateMachineString() const {
-	std::string out;
+etk::String ejson::Value::generateMachineString() const {
+	etk::String out;
 	if (m_data == nullptr) {
 		EJSON_DEBUG("Can not remove (nullptr) ...");
 		return out;

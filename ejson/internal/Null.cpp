@@ -16,7 +16,7 @@ ejson::internal::Null::Null() {
 	m_type = ejson::valueType::null;
 }
 
-bool ejson::internal::Null::iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
+bool ejson::internal::Null::iParse(const etk::String& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
 	EJSON_PARSE_ELEMENT("start parse : 'Null' ");
 	if (_pos+3 >= _data.size()){
 		EJSON_CREATE_ERROR(_doc, _data, _pos, _filePos, "can not parse null !!! ");
@@ -35,12 +35,12 @@ bool ejson::internal::Null::iParse(const std::string& _data, size_t& _pos, ejson
 }
 
 
-bool ejson::internal::Null::iGenerate(std::string& _data, size_t _indent) const {
+bool ejson::internal::Null::iGenerate(etk::String& _data, size_t _indent) const {
 	_data += "null";
 	return true;
 }
 
-void ejson::internal::Null::iMachineGenerate(std::string& _data) const {
+void ejson::internal::Null::iMachineGenerate(etk::String& _data) const {
 	_data += "null";
 }
 

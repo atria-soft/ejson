@@ -83,7 +83,7 @@ size_t ejson::FilePos::getLine() const {
 	return m_line;
 }
 
-std::ostream& ejson::operator <<(std::ostream& _os, const ejson::FilePos& _obj) {
+etk::Stream& ejson::operator <<(etk::Stream& _os, const ejson::FilePos& _obj) {
 	_os << "(l=";
 	_os << _obj.getLine();
 	_os << ",c=";

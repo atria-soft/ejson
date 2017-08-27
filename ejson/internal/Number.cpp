@@ -37,9 +37,9 @@ ejson::internal::Number::Number(int64_t _value) :
 	m_type = ejson::valueType::number;
 }
 
-bool ejson::internal::Number::iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
+bool ejson::internal::Number::iParse(const etk::String& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
 	EJSON_PARSE_ELEMENT("start parse : 'Number' ");
-	std::string tmpVal;
+	etk::String tmpVal;
 	bool isDouble = false;
 	for (size_t iii=_pos; iii<_data.size(); iii++) {
 		_filePos.check(_data[iii]);
@@ -76,41 +76,41 @@ bool ejson::internal::Number::iParse(const std::string& _data, size_t& _pos, ejs
 	return false;
 }
 
-bool ejson::internal::Number::iGenerate(std::string& _data, size_t _indent) const {
+bool ejson::internal::Number::iGenerate(etk::String& _data, size_t _indent) const {
 	if (m_typeNumber == ejson::internal::Number::type::tDouble) {
 		// special thing to remove .000000 at the end of perfect number ...
 		int64_t tmpVal = m_value;
 		if (double(tmpVal) == m_value) {
-			_data += etk::to_string(tmpVal);
+			_data += etk::toString(tmpVal);
 		} else {
-			_data += etk::to_string(m_value);
+			_data += etk::toString(m_value);
 		}
 		return true;
 	}
 	if (m_typeNumber == ejson::internal::Number::type::tInt) {
-		_data += etk::to_string(m_valueI64);
+		_data += etk::toString(m_valueI64);
 		return true;
 	}
-	_data += etk::to_string(m_valueU64);
+	_data += etk::toString(m_valueU64);
 	return true;
 }
 
-void ejson::internal::Number::iMachineGenerate(std::string& _data) const {
+void ejson::internal::Number::iMachineGenerate(etk::String& _data) const {
 	if (m_typeNumber == ejson::internal::Number::type::tDouble) {
 		// special thing to remove .000000 at the end of perfect number ...
 		int64_t tmpVal = m_value;
 		if (double(tmpVal) == m_value) {
-			_data += etk::to_string(tmpVal);
+			_data += etk::toString(tmpVal);
 		} else {
-			_data += etk::to_string(m_value);
+			_data += etk::toString(m_value);
 		}
 		return;
 	}
 	if (m_typeNumber == ejson::internal::Number::type::tInt) {
-		_data += etk::to_string(m_valueI64);
+		_data += etk::toString(m_valueI64);
 		return;
 	}
-	_data += etk::to_string(m_valueU64);
+	_data += etk::toString(m_valueU64);
 	return;
 }
 

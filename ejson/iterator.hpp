@@ -118,6 +118,6 @@ namespace ejson {
 			 * @brief Get Key of an element
 			 * @return Key of the Element
 			 */
-			std::string getKey() const noexcept;
+			etk::String getKey() const noexcept;
 	};
 }

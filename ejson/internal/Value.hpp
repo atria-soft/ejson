@@ -70,7 +70,7 @@ namespace ejson {
 				 * @param[in,out] _doc Reference on the main document
 				 * @return false if an error occured.
 				 */
-				virtual bool iParse(const std::string& _data,
+				virtual bool iParse(const etk::String& _data,
 				                    size_t& _pos,
 				                    ejson::FilePos& _filePos,
 				                    ejson::internal::Document& _doc) = 0;
@@ -80,14 +80,14 @@ namespace ejson {
 				 * @param[in] _indent current indentation of the file
 				 * @return false if an error occured.
 				 */
-				virtual bool iGenerate(std::string& _data,
+				virtual bool iGenerate(etk::String& _data,
 				                       size_t _indent) const = 0;
 				/**
 				 * @brief generate a string with the tree of the json (not human readable ==> for computer transfer)
 				 * @param[in,out] _data string where to add the elements
 				 * @return false if an error occured.
 				 */
-				virtual void iMachineGenerate(std::string& _data) const = 0;
+				virtual void iMachineGenerate(etk::String& _data) const = 0;
 				/**
 				 * @brief Display the Document on console
 				 */
@@ -98,7 +98,7 @@ namespace ejson {
 				 * @param[in,out] _data String where the indentation is done.
 				 * @param[in] _indent Number of tab to add at the string.
 				 */
-				void addIndent(std::string& _data, int32_t _indent) const;
+				void addIndent(etk::String& _data, int32_t _indent) const;
 				/**
 				 * @brief Display the cuurent element that is curently parse.
 				 * @param[in] _val Char that is parsed.
@@ -126,7 +126,7 @@ namespace ejson {
 				 * @param[out] _filePos new poistion of te file to add.
 				 * @return number of white element.
 				 */
-				int32_t countWhiteChar(const std::string& _data, size_t _pos, ejson::FilePos& _filePos) const;
+				int32_t countWhiteChar(const etk::String& _data, size_t _pos, ejson::FilePos& _filePos) const;
 			public:
 				/**
 				 * @brief clear the Node

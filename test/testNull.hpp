@@ -11,7 +11,7 @@
 #include <gtest/gtest.h>
 
 
-static std::string refOutputNull("{\n\t\"tmpElement\": null\n}\n");
+static etk::String refOutputNull("{\n\t\"tmpElement\": null\n}\n");
 TEST(TestNull, testBasicNullElement) {
 	localTest(refOutputNull, "{ tmpElement:null }\n", -1);
 }

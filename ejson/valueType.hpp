@@ -5,7 +5,7 @@
  */
 #pragma once
 
-#include <ostream>
+#include <etk/Stream.hpp>
 
 namespace ejson {
 	/**
@@ -23,6 +23,6 @@ namespace ejson {
 		boolean, //!< the element true or false
 	};
 	//! @not_in_doc
-	std::ostream& operator <<(std::ostream& _os, enum valueType _obj);
+	etk::Stream& operator <<(etk::Stream& _os, enum valueType _obj);
 }
 

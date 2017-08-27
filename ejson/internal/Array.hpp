@@ -28,7 +28,7 @@ namespace ejson {
 				 */
 				static ememory::SharedPtr<Array> create();
 			private:
-				std::vector<ememory::SharedPtr<ejson::internal::Value> > m_value; //!< vector of sub elements
+				etk::Vector<ememory::SharedPtr<ejson::internal::Value> > m_value; //!< vector of sub elements
 			public:
 				/**
 				 * @brief get the number of sub element in the current one
@@ -59,9 +59,9 @@ namespace ejson {
 				 */
 				void remove(size_t _id);
 			public:
-				bool iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) override;
-				bool iGenerate(std::string& _data, size_t _indent) const override;
-				void iMachineGenerate(std::string& _data) const override;
+				bool iParse(const etk::String& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) override;
+				bool iGenerate(etk::String& _data, size_t _indent) const override;
+				void iMachineGenerate(etk::String& _data) const override;
 				void clear() override;
 				bool transfertIn(ememory::SharedPtr<ejson::internal::Value> _obj) override;
 				ememory::SharedPtr<ejson::internal::Value> clone() const override;

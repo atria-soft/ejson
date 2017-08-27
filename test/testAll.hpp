@@ -11,7 +11,7 @@
 #include <gtest/gtest.h>
 
 TEST(TestAll, testBaseObject) {
-	std::string base = "{\n"
+	etk::String base = "{\n"
 	                   "	\"menu\": {\n"
 	                   "		\"id\": \"file\",\n"
 	                   "		\"value\": \"File\",\n"
@@ -23,7 +23,7 @@ TEST(TestAll, testBaseObject) {
 	localTest(base, base, -1);
 }
 
-static std::string refOutputAll(   "{\n"
+static etk::String refOutputAll(   "{\n"
                                    "	\"menu\": {\n"
                                    "		\"id\": \"file\",\n"
                                    "		\"value\": \"File\",\n"
@@ -105,7 +105,7 @@ TEST(TestAll, testIndentedListWithNoBasicObject) {
 
 
 TEST(TestAll, testGeneric1) {
-	std::string base = "{\n"
+	etk::String base = "{\n"
 	            "	\"glossary\": {\n"
 	            "		\"title\": \"example glossary\",\n"
 	            "		\"GlossDiv\": {\n"
@@ -131,7 +131,7 @@ TEST(TestAll, testGeneric1) {
 }
 
 TEST(TestAll, testGeneric2) {
-	std::string base = "{\n"
+	etk::String base = "{\n"
 	            "	\"menu\": {\n"
 	            "		\"id\": \"file\",\n"
 	            "		\"value\": \"File\",\n"
@@ -147,7 +147,7 @@ TEST(TestAll, testGeneric2) {
 	localTest(base, base, -1);
 }
 TEST(TestAll, testGeneric3) {
-	std::string base = "{\n"
+	etk::String base = "{\n"
 	            "	\"widget\": {\n"
 	            "		\"debug\": \"on\",\n"
 	            "		\"window\": {\n"
@@ -180,7 +180,7 @@ TEST(TestAll, testGeneric3) {
 
 
 TEST(TestAll, testGeneric4) {
-	std::string base = "{\n"
+	etk::String base = "{\n"
 	            "	\"web-app\": {\n"
 	            "		\"servlet\": [\n"
 	            "			{\n"
@@ -276,7 +276,7 @@ TEST(TestAll, testGeneric4) {
 
 
 TEST(TestAll, testGeneric5) {
-	std::string base = "{\n"
+	etk::String base = "{\n"
 	            "	\"menu\": {\n"
 	            "		\"header\": \"SVG Viewer\",\n"
 	            "		\"items\": [\n"

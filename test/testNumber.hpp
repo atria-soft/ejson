@@ -10,7 +10,7 @@
 #include "testCommon.hpp"
 #include <gtest/gtest.h>
 
-static std::string refOutputNumber("{\n\t\"tmpElement\": 956256\n}\n");
+static etk::String refOutputNumber("{\n\t\"tmpElement\": 956256\n}\n");
 TEST(TestNumber, testBase) {
 	localTest(refOutputNumber, "{ tmpElement:956256 }\n", -1);
 }

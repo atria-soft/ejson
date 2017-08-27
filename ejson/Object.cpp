@@ -31,7 +31,7 @@ ejson::Object::Object() :
 	m_data = ejson::internal::Object::create();
 }
 
-ejson::Object::Object(const std::string& _data) :
+ejson::Object::Object(const etk::String& _data) :
   ejson::Value() {
 	m_data = ejson::internal::Object::create(_data);
 }
@@ -41,7 +41,7 @@ ejson::Object& ejson::Object::operator= (const ejson::Object& _obj) {
 	return *this;
 }
 
-bool ejson::Object::valueExist(const std::string& _name) const {
+bool ejson::Object::valueExist(const etk::String& _name) const {
 	if (m_data == nullptr) {
 		EJSON_DEBUG("Can not exist (nullptr) ...");
 		return false;
@@ -49,7 +49,7 @@ bool ejson::Object::valueExist(const std::string& _name) const {
 	return static_cast<const ejson::internal::Object*>(m_data.get())->exist(_name);
 }
 
-ejson::Value ejson::Object::operator[] (const std::string& _name) {
+ejson::Value ejson::Object::operator[] (const etk::String& _name) {
 	if (m_data == nullptr) {
 		EJSON_DEBUG("Can not operator[] (nullptr) ...");
 		return ejson::Value(nullptr);
@@ -57,7 +57,7 @@ ejson::Value ejson::Object::operator[] (const std::string& _name) {
 	return ejson::Value(static_cast<ejson::internal::Object*>(m_data.get())->get(_name));
 }
 
-const ejson::Value ejson::Object::operator[] (const std::string& _name) const {
+const ejson::Value ejson::Object::operator[] (const etk::String& _name) const {
 	if (m_data == nullptr) {
 		EJSON_DEBUG("Can not operator[] (nullptr) ...");
 		return ejson::Value(nullptr);
@@ -65,10 +65,10 @@ const ejson::Value ejson::Object::operator[] (const std::string& _name) const {
 	return ejson::Value(static_cast<const ejson::internal::Object*>(m_data.get())->get(_name));
 }
 
-std::vector<std::string> ejson::Object::getKeys() const {
+etk::Vector<etk::String> ejson::Object::getKeys() const {
 	if (m_data == nullptr) {
 		EJSON_DEBUG("Can not getKeys (nullptr) ...");
-		return std::vector<std::string>();
+		return etk::Vector<etk::String>();
 	}
 	return static_cast<const ejson::internal::Object*>(m_data.get())->getKeys();
 }
@@ -97,7 +97,7 @@ const ejson::Value ejson::Object::operator[] (size_t _id) const {
 	return ejson::Value(static_cast<const ejson::internal::Object*>(m_data.get())->get(_id));
 }
 
-std::string ejson::Object::getKey(size_t _id) const {
+etk::String ejson::Object::getKey(size_t _id) const {
 	if (m_data == nullptr) {
 		EJSON_DEBUG("Can not getKey (nullptr) ...");
 		return "";
@@ -105,7 +105,7 @@ std::string ejson::Object::getKey(size_t _id) const {
 	return static_cast<const ejson::internal::Object*>(m_data.get())->getKey(_id);
 }
 
-bool ejson::Object::add(const std::string& _name, const ejson::Value& _value) {
+bool ejson::Object::add(const etk::String& _name, const ejson::Value& _value) {
 	if (m_data == nullptr) {
 		EJSON_DEBUG("Can not add (nullptr) ...");
 		return false;
@@ -113,7 +113,7 @@ bool ejson::Object::add(const std::string& _name, const ejson::Value& _value) {
 	return static_cast<ejson::internal::Object*>(m_data.get())->add(_name, _value.m_data);
 }
 
-void ejson::Object::remove(const std::string& _name) {
+void ejson::Object::remove(const etk::String& _name) {
 	if (m_data == nullptr) {
 		EJSON_DEBUG("Can not remove (nullptr) ...");
 		return;
@@ -160,7 +160,7 @@ const ejson::Object::iterator ejson::Object::end() const {
 template class ejson::iterator<ejson::Object>;
 namespace ejson {
 	template<>
-	std::string iterator<ejson::Object>::getKey() const noexcept {
+	etk::String iterator<ejson::Object>::getKey() const noexcept {
 		return m_data.getKey(m_id);
 	}
 }

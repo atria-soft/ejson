@@ -22,7 +22,7 @@ void ejson::internal::Array::clear() {
 	m_value.clear();
 }
 
-bool ejson::internal::Array::iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
+bool ejson::internal::Array::iParse(const etk::String& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
 	EJSON_PARSE_ELEMENT("start parse : 'Object' ");
 	for (size_t iii=_pos+1; iii<_data.size(); iii++) {
 		_filePos.check(_data[iii]);
@@ -57,7 +57,7 @@ bool ejson::internal::Array::iParse(const std::string& _data, size_t& _pos, ejso
 				return false;
 			}
 			tmpElement->iParse(_data, iii, _filePos, _doc);
-			m_value.push_back(tmpElement);
+			m_value.pushBack(tmpElement);
 		} else if (    _data[iii] == '"'
 		            || _data[iii] == '\'') {
 			// find a string:
@@ -69,7 +69,7 @@ bool ejson::internal::Array::iParse(const std::string& _data, size_t& _pos, ejso
 				return false;
 			}
 			tmpElement->iParse(_data, iii, _filePos, _doc);
-			m_value.push_back(tmpElement);
+			m_value.pushBack(tmpElement);
 		} else if (_data[iii] == '[') {
 			// find a list:
 			EJSON_PARSE_ELEMENT("find List");
@@ -80,7 +80,7 @@ bool ejson::internal::Array::iParse(const std::string& _data, size_t& _pos, ejso
 				return false;
 			}
 			tmpElement->iParse(_data, iii, _filePos, _doc);
-			m_value.push_back(tmpElement);
+			m_value.pushBack(tmpElement);
 		} else if (    (    _data[iii] == 'f'
 		                 && iii+4 < _data.size()
 		                 && _data[iii+1] == 'a'
@@ -101,7 +101,7 @@ bool ejson::internal::Array::iParse(const std::string& _data, size_t& _pos, ejso
 				return false;
 			}
 			tmpElement->iParse(_data, iii, _filePos, _doc);
-			m_value.push_back(tmpElement);
+			m_value.pushBack(tmpElement);
 		} else if (    _data[iii] == 'n'
 		            && iii+3 < _data.size()
 		            && _data[iii+1] == 'u'
@@ -116,7 +116,7 @@ bool ejson::internal::Array::iParse(const std::string& _data, size_t& _pos, ejso
 				return false;
 			}
 			tmpElement->iParse(_data, iii, _filePos, _doc);
-			m_value.push_back(tmpElement);
+			m_value.pushBack(tmpElement);
 		} else if (checkNumber(_data[iii]) == true) {
 			// find number:
 			EJSON_PARSE_ELEMENT("find Number");
@@ -127,7 +127,7 @@ bool ejson::internal::Array::iParse(const std::string& _data, size_t& _pos, ejso
 				return false;
 			}
 			tmpElement->iParse(_data, iii, _filePos, _doc);
-			m_value.push_back(tmpElement);
+			m_value.pushBack(tmpElement);
 		} else if (_data[iii] == ',') {
 			// find Separator : Restart cycle ...
 			// TODO : check if element are separated with ','
@@ -139,7 +139,7 @@ bool ejson::internal::Array::iParse(const std::string& _data, size_t& _pos, ejso
 			return false;
 		} else {
 			// find an error ....
-			EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, std::string("Find '") + _data[iii] + "' with no element in the element...");
+			EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, etk::String("Find '") + _data[iii] + "' with no element in the element...");
 			// move the curent index
 			_pos = iii+1;
 			return false;
@@ -150,7 +150,7 @@ bool ejson::internal::Array::iParse(const std::string& _data, size_t& _pos, ejso
 }
 
 
-bool ejson::internal::Array::iGenerate(std::string& _data, size_t _indent) const {
+bool ejson::internal::Array::iGenerate(etk::String& _data, size_t _indent) const {
 	bool oneLine=true;
 	if (m_value.size()>3) {
 		oneLine=false;
@@ -206,7 +206,7 @@ bool ejson::internal::Array::iGenerate(std::string& _data, size_t _indent) const
 	return true;
 }
 
-void ejson::internal::Array::iMachineGenerate(std::string& _data) const {
+void ejson::internal::Array::iMachineGenerate(etk::String& _data) const {
 	_data += "[";
 	bool needComa = false;
 	for (size_t iii=0; iii<m_value.size() ; iii++) {
@@ -239,7 +239,7 @@ bool ejson::internal::Array::add(ememory::SharedPtr<ejson::internal::Value> _ele
 		EJSON_ERROR("Request add on an nullptr pointer");
 		return false;
 	}
-	m_value.push_back(_element);
+	m_value.pushBack(_element);
 	return true;
 }
 

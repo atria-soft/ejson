@@ -10,7 +10,7 @@
 #include "testCommon.hpp"
 #include <gtest/gtest.h>
 
-static std::string refOutputDocument("{\n}\n");
+static etk::String refOutputDocument("{\n}\n");
 TEST(TestDocument, testEmptyDoc) {
 	localTest(refOutputDocument, "{}\n", -1);
 }

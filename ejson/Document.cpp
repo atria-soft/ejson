@@ -34,7 +34,7 @@ ejson::Document& ejson::Document::operator= (const ejson::Document& _obj) {
 	return *this;
 }
 
-bool ejson::Document::parse(const std::string& _data) {
+bool ejson::Document::parse(const etk::String& _data) {
 	if (m_data == nullptr) {
 		EJSON_DEBUG("Can not parse (nullptr) ...");
 		return false;
@@ -42,7 +42,7 @@ bool ejson::Document::parse(const std::string& _data) {
 	return static_cast<ejson::internal::Document*>(m_data.get())->parse(_data);
 }
 
-bool ejson::Document::generate(std::string& _data) {
+bool ejson::Document::generate(etk::String& _data) {
 	if (m_data == nullptr) {
 		EJSON_DEBUG("Can not generate (nullptr) ...");
 		return false;
@@ -50,7 +50,7 @@ bool ejson::Document::generate(std::string& _data) {
 	return static_cast<ejson::internal::Document*>(m_data.get())->generate(_data);
 }
 
-bool ejson::Document::load(const std::string& _file) {
+bool ejson::Document::load(const etk::String& _file) {
 	if (m_data == nullptr) {
 		EJSON_DEBUG("Can not load (nullptr) ...");
 		return false;
@@ -58,7 +58,7 @@ bool ejson::Document::load(const std::string& _file) {
 	return static_cast<ejson::internal::Document*>(m_data.get())->load(_file);
 }
 
-bool ejson::Document::store(const std::string& _file) {
+bool ejson::Document::store(const etk::String& _file) {
 	if (m_data == nullptr) {
 		EJSON_DEBUG("Can not store (nullptr) ...");
 		return false;
@@ -66,7 +66,7 @@ bool ejson::Document::store(const std::string& _file) {
 	return static_cast<ejson::internal::Document*>(m_data.get())->store(_file);
 }
 
-bool ejson::Document::storeSafe(const std::string& _file) {
+bool ejson::Document::storeSafe(const etk::String& _file) {
 	if (m_data == nullptr) {
 		EJSON_DEBUG("Can not store (nullptr) ...");
 		return false;

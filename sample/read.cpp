@@ -27,7 +27,7 @@ static void readFromString1() {
 	ejson::Document doc;
 	TEST_INFO("parse");
 	//! [ejson_sample_read_stream1]
-	std::string stream = "{"
+	etk::String stream = "{"
 	                     "	\"object A\":\"bonjour\","
 	                     "	\"object B\":null,"
 	                     "	\"object C\":true,"
@@ -51,7 +51,7 @@ static void readFromString2() {
 	ejson::Document doc;
 	TEST_INFO("parse");
 	//! [ejson_sample_read_stream2]
-	std::string stream = "{"
+	etk::String stream = "{"
 	                     "	objectA:'bonjour',"
 	                     "	objectB:null,"
 	                     "	objectC:true,"
@@ -169,7 +169,7 @@ static void readFull() {
 		//! [ejson_sample_read_convert_string]
 		ejson::String elem = doc["object A"].toString();
 		// Get the value:
-		std::string value = elem.get();
+		etk::String value = elem.get();
 		//! [ejson_sample_read_convert_string]
 		TEST_INFO("    String Value:" << value);
 	}
@@ -177,7 +177,7 @@ static void readFull() {
 	{
 		// Get the value:
 		//! [ejson_sample_read_get_string]
-		std::string value = doc["object A"].toString().get();
+		etk::String value = doc["object A"].toString().get();
 		//! [ejson_sample_read_get_string]
 		TEST_INFO("    String Value:" << value);
 	}

@@ -9,7 +9,7 @@
 
 
 
-std::ostream& ejson::operator <<(std::ostream& _os, enum ejson::valueType _obj) {
+etk::Stream& ejson::operator <<(etk::Stream& _os, enum ejson::valueType _obj) {
 	switch (_obj) {
 		case ejson::valueType::unknow:
 			_os << "ejson::valueType::unknow";

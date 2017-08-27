@@ -11,24 +11,24 @@
 #include <ejson/internal/String.hpp>
 #include <ejson/debug.hpp>
 
-ememory::SharedPtr<ejson::internal::String> ejson::internal::String::create(const std::string& _value) {
+ememory::SharedPtr<ejson::internal::String> ejson::internal::String::create(const etk::String& _value) {
 	return ememory::SharedPtr<ejson::internal::String>(new ejson::internal::String(_value));
 }
 
-ejson::internal::String::String(const std::string& _value) :
+ejson::internal::String::String(const etk::String& _value) :
   m_value(_value) {
 	m_type = ejson::valueType::string;
 }
 
-void ejson::internal::String::set(const std::string& _value) {
+void ejson::internal::String::set(const etk::String& _value) {
 	m_value = _value;
 }
 
-const std::string& ejson::internal::String::get() const {
+const etk::String& ejson::internal::String::get() const {
 	return m_value;
 }
 
-bool ejson::internal::String::iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
+bool ejson::internal::String::iParse(const etk::String& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
 	EJSON_PARSE_ELEMENT("start parse : 'String' ");
 	char end = _data[_pos];
 	bool backslashPrevious = false;
@@ -67,7 +67,7 @@ bool ejson::internal::String::iParse(const std::string& _data, size_t& _pos, ejs
 }
 
 
-bool ejson::internal::String::iGenerate(std::string& _data, size_t _indent) const {
+bool ejson::internal::String::iGenerate(etk::String& _data, size_t _indent) const {
 	_data += "\"";
 	for (auto &it: m_value) {
 		if (    it == '\\'
@@ -79,7 +79,7 @@ bool ejson::internal::String::iGenerate(std::string& _data, size_t _indent) cons
 	_data += "\"";
 	return true;
 }
-void ejson::internal::String::iMachineGenerate(std::string& _data) const {
+void ejson::internal::String::iMachineGenerate(etk::String& _data) const {
 	_data += "\"";
 	for (auto &it: m_value) {
 		if (    it == '\\'

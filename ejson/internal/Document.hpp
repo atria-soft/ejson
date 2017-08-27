@@ -6,7 +6,7 @@
 #pragma once
 
 #include <ejson/internal/Value.hpp>
-#include <vector>
+#include <etk/Vector.hpp>
 #include <etk/types.hpp>
 #include <ejson/internal/String.hpp>
 #include <ejson/internal/Array.hpp>
@@ -35,32 +35,32 @@ namespace ejson {
 				 * @return false : An error occured
 				 * @return true : Parsing is OK
 				 */
-				bool parse(const std::string& _data);
+				bool parse(const etk::String& _data);
 				/**
 				 * @brief generate a string that contain the created XML
 				 * @param[out] _data Data where the xml is stored
 				 * @return false : An error occured
 				 * @return true : Parsing is OK
 				 */
-				bool generate(std::string& _data);
+				bool generate(etk::String& _data);
 				/**
 				 * @brief Load the file that might contain the xml
 				 * @param[in] _file Filename of the xml (compatible with etk FSNode naming)
 				 * @return false : An error occured
 				 * @return true : Parsing is OK
 				 */
-				bool load(const std::string& _file);
+				bool load(const etk::String& _file);
 				/**
 				 * @brief Store the Xml in the file
 				 * @param[in] _file Filename of the xml (compatible with etk FSNode naming)
 				 * @return false : An error occured
 				 * @return true : Parsing is OK
 				 */
-				bool store(const std::string& _file);
+				bool store(const etk::String& _file);
 			private:
 				bool m_writeErrorWhenDetexted; //!< Flag to know if we need to display error when they are detected
-				std::string m_comment; //!< Error comment
-				std::string m_Line; //!< Line with the error
+				etk::String m_comment; //!< Error comment
+				etk::String m_Line; //!< Line with the error
 				ejson::FilePos m_filePos; //!< Position in the file of the error
 			public:
 				/**
@@ -85,16 +85,16 @@ namespace ejson {
 				 * @param[in] _filePos Position in x/y in the file
 				 * @param[in] _comment Help coment
 				 */
-				void createError(const std::string& _data,
+				void createError(const etk::String& _data,
 				                 size_t _pos,
 				                 const ejson::FilePos& _filePos,
-				                 const std::string& _comment);
+				                 const etk::String& _comment);
 			public:
-				bool iParse(const std::string& _data,
+				bool iParse(const etk::String& _data,
 				            size_t& _pos,
 				            ejson::FilePos& _filePos,
 				            ejson::internal::Document& _doc) override;
-				bool iGenerate(std::string& _data, size_t _indent) const override;
+				bool iGenerate(etk::String& _data, size_t _indent) const override;
 		};
 	}
 }

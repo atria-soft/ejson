@@ -25,7 +25,7 @@ bool ejson::internal::Boolean::get() const {
 	return m_value;
 }
 
-bool ejson::internal::Boolean::iParse(const std::string& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
+bool ejson::internal::Boolean::iParse(const etk::String& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
 	EJSON_PARSE_ELEMENT("start parse : 'Boolean' ");
 	m_value=false;
 	if(    _data[_pos] == 't'
@@ -54,7 +54,7 @@ bool ejson::internal::Boolean::iParse(const std::string& _data, size_t& _pos, ej
 }
 
 
-bool ejson::internal::Boolean::iGenerate(std::string& _data, size_t _indent) const {
+bool ejson::internal::Boolean::iGenerate(etk::String& _data, size_t _indent) const {
 	if (m_value == true) {
 		_data += "true";
 	} else {
@@ -63,7 +63,7 @@ bool ejson::internal::Boolean::iGenerate(std::string& _data, size_t _indent) con
 	return true;
 }
 
-void ejson::internal::Boolean::iMachineGenerate(std::string& _data) const {
+void ejson::internal::Boolean::iMachineGenerate(etk::String& _data) const {
 	if (m_value == true) {
 		_data += "true";
 	} else {

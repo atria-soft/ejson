@@ -6,7 +6,7 @@
  * @license MPL v2.0 (see license file)
  */
 
-#include <vector>
+#include <etk/Vector.hpp>
 #include <etk/etk.hpp>
 #include <etk/types.hpp>
 #include <etk/archive/Archive.hpp>

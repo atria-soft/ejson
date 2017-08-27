@@ -6,7 +6,7 @@
 #pragma once
 
 #include <ejson/Value.hpp>
-#include <vector>
+#include <etk/Vector.hpp>
 #include <etk/types.hpp>
 #include <ejson/String.hpp>
 #include <ejson/Array.hpp>
@@ -44,35 +44,35 @@ namespace ejson {
 			 * @return false : An error occured
 			 * @return true : Parsing is OK
 			 */
-			bool parse(const std::string& _data);
+			bool parse(const etk::String& _data);
 			/**
 			 * @brief generate a string that contain the created Json
 			 * @param[out] _data Data where the Json is stored
 			 * @return false : An error occured
 			 * @return true : Parsing is OK
 			 */
-			bool generate(std::string& _data);
+			bool generate(etk::String& _data);
 			/**
 			 * @brief Load the file that might contain the Json
 			 * @param[in] _file Filename of the Json (compatible with etk FSNode naming)
 			 * @return false : An error occured
 			 * @return true : Parsing is OK
 			 */
-			bool load(const std::string& _file);
+			bool load(const etk::String& _file);
 			/**
 			 * @brief Store the Json in the file
 			 * @param[in] _file Filename of the Json (compatible with etk FSNode naming)
 			 * @return false : An error occured
 			 * @return true : Parsing is OK
 			 */
-			bool store(const std::string& _file);
+			bool store(const etk::String& _file);
 			/**
 			 * @brief Store the Json in the file (safe mode mean that the file is store in a second file xxx.tmp and moved in the file xxx (only one mode to be really safe with filesystem ...)
 			 * @param[in] _file Filename of the Json (compatible with etk FSNode naming)
 			 * @return false : An error occured
 			 * @return true : Parsing is OK
 			 */
-			bool storeSafe(const std::string& _file);
+			bool storeSafe(const etk::String& _file);
 			/**
 			 * @brief Set the display of the error when detected.
 			 * @param[in] _value true: display error, false not display error (get it at end)
