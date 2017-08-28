@@ -6,8 +6,7 @@
 #pragma once
 
 #include <etk/types.hpp>
-#include <etk/Hash.hpp>
-#include <algorithm>
+#include <etk/Map.hpp>
 #include <ejson/Value.hpp>
 #include <ejson/iterator.hpp>
 

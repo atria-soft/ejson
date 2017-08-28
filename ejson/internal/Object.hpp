@@ -6,8 +6,7 @@
 #pragma once
 
 #include <etk/types.hpp>
-#include <etk/Hash.hpp>
-#include <algorithm>
+#include <etk/Map.hpp>
 #include <ejson/internal/Value.hpp>
 
 namespace ejson {
@@ -20,7 +19,8 @@ namespace ejson {
 				/**
 				 * @brief basic element of a xml structure
 				 */
-				Object() {
+				Object() :
+				  m_value(0, false) { // Force unorder map
 					m_type = ejson::valueType::object;
 				};
 			public:
@@ -36,8 +36,7 @@ namespace ejson {
 				 */
 				static ememory::SharedPtr<Object> create(const etk::String& _data);
 			protected:
-				// TODO : Change this with a generic methode ...
-				etk::Hash<ememory::SharedPtr<ejson::internal::Value> > m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
+				etk::Map<etk::String, ememory::SharedPtr<ejson::internal::Value>> m_value; //!< value of the node (for element this is the name, for text it is the inside text ...)
 			public:
 				/**
 				 * @brief check if an element exist.

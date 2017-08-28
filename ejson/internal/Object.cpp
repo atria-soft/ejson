@@ -342,11 +342,11 @@ bool ejson::internal::Object::add(const etk::String& _name, ememory::SharedPtr<e
 }
 
 void ejson::internal::Object::remove(const etk::String& _name) {
-	m_value.remove(_name);
+	m_value.erase(_name);
 }
 
 void ejson::internal::Object::remove(size_t _id) {
-	m_value.remove(getKey(_id));
+	m_value.erase(getKey(_id));
 }
 
 bool ejson::internal::Object::transfertIn(ememory::SharedPtr<ejson::internal::Value> _obj) {
