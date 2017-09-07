@@ -8,7 +8,7 @@
 #pragma once
 
 #include "testCommon.hpp"
-#include <gtest/gtest.h>
+#include <etest/etest.hpp>
 
 TEST(TestAll, testBaseObject) {
 	etk::String base = "{\n"

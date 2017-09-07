@@ -8,7 +8,7 @@
 #pragma once
 
 #include "testCommon.hpp"
-#include <gtest/gtest.h>
+#include <etest/etest.hpp>
 
 
 static etk::String refOutputBoolean1("{\n\t\"tmpElement\": true\n}\n");

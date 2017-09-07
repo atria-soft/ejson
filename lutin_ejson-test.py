@@ -33,7 +33,7 @@ def configure(target, my_module):
 	    ])
 	my_module.add_depend([
 	    'ejson',
-	    'gtest',
+	    'etest',
 	    'test-debug'
 	    ])
 	return True

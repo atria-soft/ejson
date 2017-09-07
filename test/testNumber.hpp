@@ -8,7 +8,7 @@
 #pragma once
 
 #include "testCommon.hpp"
-#include <gtest/gtest.h>
+#include <etest/etest.hpp>
 
 static etk::String refOutputNumber("{\n\t\"tmpElement\": 956256\n}\n");
 TEST(TestNumber, testBase) {

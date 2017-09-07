@@ -12,7 +12,7 @@
 #include <etk/archive/Archive.hpp>
 #include <test-debug/debug.hpp>
 #include <ejson/ejson.hpp>
-#include <gtest/gtest.h>
+#include <etest/etest.hpp>
 #include <etk/os/FSNode.hpp>
 
 #include "testDocument.hpp"
@@ -22,11 +22,11 @@
 #include "testAll.hpp"
 
 int main(int argc, const char *argv[]) {
-	// init Google test :
-	::testing::InitGoogleTest(&argc, const_cast<char **>(argv));
+	// init test engine:
+	etest::init(argc, argv);
 	// init etk log system and file interface:
 	etk::init(argc, argv);
-	// Run all test with gtest
+	// Run all test with etest
 	return RUN_ALL_TESTS();
 }
 

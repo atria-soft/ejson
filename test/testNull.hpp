@@ -8,7 +8,7 @@
 #pragma once
 
 #include "testCommon.hpp"
-#include <gtest/gtest.h>
+#include <etest/etest.hpp>
 
 
 static etk::String refOutputNull("{\n\t\"tmpElement\": null\n}\n");
