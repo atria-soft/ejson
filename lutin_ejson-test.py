@@ -29,7 +29,13 @@ def get_maintainer():
 
 def configure(target, my_module):
 	my_module.add_src_file([
-	    'test/test.cpp'
+	    'test/test.cpp',
+	    'test/testCommon.cpp',
+	    'test/testDocument.cpp',
+	    'test/testBoolean.cpp',
+	    'test/testNull.cpp',
+	    'test/testNumber.cpp',
+	    'test/testAll.cpp',
 	    ])
 	my_module.add_depend([
 	    'ejson',

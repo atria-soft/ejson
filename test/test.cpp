@@ -1,8 +1,6 @@
 /**
  * @author Edouard DUPIN
- * 
  * @copyright 2014, Edouard DUPIN, all right reserved
- * 
  * @license MPL v2.0 (see license file)
  */
 
@@ -15,11 +13,6 @@
 #include <etest/etest.hpp>
 #include <etk/os/FSNode.hpp>
 
-#include "testDocument.hpp"
-#include "testBoolean.hpp"
-#include "testNull.hpp"
-#include "testNumber.hpp"
-#include "testAll.hpp"
 
 int main(int argc, const char *argv[]) {
 	// init test engine:

@@ -220,23 +220,23 @@ bool ejson::internal::Object::iGenerate(etk::String& _data, size_t _indent) cons
 		oneLine = false;
 	} else {
 		for (int32_t iii=0; iii<m_value.size() ; iii++) {
-			const ememory::SharedPtr<ejson::internal::Value> tmp = m_value[iii];
+			const ememory::SharedPtr<ejson::internal::Value> tmp = m_value.getValue(iii);
 			if (tmp == nullptr) {
 				continue;
 			}
 			if (    tmp->getType() == ejson::valueType::object
 			     || tmp->getType() == ejson::valueType::document) {
-				oneLine=false;
+				oneLine = false;
 				break;
 			}
 			if (tmp->getType() == ejson::valueType::array) {
-				oneLine=false;
+				oneLine = false;
 				break;
 			}
 			if (tmp->getType() == ejson::valueType::string) {
 				const ememory::SharedPtr<ejson::internal::String> tmp2 = ememory::staticPointerCast<ejson::internal::String>(tmp);
-				if(    tmp2->get().size()>25
-				    || m_value.getKey(iii).size()>25) {
+				if(    tmp2->get().size() > 25
+				    || m_value.getKey(iii).size() > 25) {
 					oneLine=false;
 					break;
 				}
@@ -256,7 +256,7 @@ bool ejson::internal::Object::iGenerate(etk::String& _data, size_t _indent) cons
 		_data += m_value.getKey(iii);
 		_data += "\": ";
 		m_value.getValue(iii)->iGenerate(_data, _indent+1);
-		if (iii<m_value.size()-1) {
+		if (iii < m_value.size()-1) {
 			_data += ",";
 		}
 		if (oneLine == true) {
