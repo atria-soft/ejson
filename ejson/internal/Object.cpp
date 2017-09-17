@@ -219,7 +219,7 @@ bool ejson::internal::Object::iGenerate(etk::String& _data, size_t _indent) cons
 	} else if (_indent<=1) {
 		oneLine = false;
 	} else {
-		for (int32_t iii=0; iii<m_value.size() ; iii++) {
+		for (size_t iii=0; iii<m_value.size() ; iii++) {
 			const ememory::SharedPtr<ejson::internal::Value> tmp = m_value.getValue(iii);
 			if (tmp == nullptr) {
 				continue;
@@ -248,7 +248,7 @@ bool ejson::internal::Object::iGenerate(etk::String& _data, size_t _indent) cons
 	} else {
 		_data += "{\n";
 	}
-	for (int32_t iii=0; iii<m_value.size(); ++iii) {
+	for (size_t iii=0; iii<m_value.size(); ++iii) {
 		if (oneLine == false) {
 			addIndent(_data, _indent);
 		}
@@ -275,7 +275,7 @@ bool ejson::internal::Object::iGenerate(etk::String& _data, size_t _indent) cons
 void ejson::internal::Object::iMachineGenerate(etk::String& _data) const {
 	_data += "{";
 	bool needComa = false;
-	for (int32_t iii=0; iii<m_value.size(); ++iii) {
+	for (size_t iii=0; iii<m_value.size(); ++iii) {
 		if (needComa == true) {
 			_data += ",";
 		}
@@ -374,7 +374,7 @@ bool ejson::internal::Object::cloneIn(ememory::SharedPtr<ejson::internal::Object
 		return false;
 	}
 	_obj->clear();
-	for (int32_t iii=0; iii<m_value.size(); ++iii) {
+	for (size_t iii=0; iii<m_value.size(); ++iii) {
 		_obj->add(m_value.getKey(iii), m_value[iii]->clone());
 	}
 	return true;
@@ -392,7 +392,7 @@ ememory::SharedPtr<ejson::internal::Object> ejson::internal::Object::cloneObj() 
 		EJSON_ERROR("Allocation error ...");
 		return ememory::SharedPtr<ejson::internal::Object>();
 	}
-	for (int32_t iii=0; iii<m_value.size(); ++iii) {
+	for (size_t iii=0; iii<m_value.size(); ++iii) {
 		ememory::SharedPtr<ejson::internal::Value> val = m_value.getValue(iii);
 		etk::String key = m_value.getKey(iii);
 		if (val == nullptr) {
