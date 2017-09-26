@@ -207,7 +207,7 @@ bool ejson::internal::Object::iParse(const etk::String& _data, size_t& _pos, ejs
 		}
 	}
 	_pos = _data.size();
-	if (false == standalone) {
+	if (standalone == false) {
 		return true;
 	}
 	return false;
@@ -301,11 +301,11 @@ size_t ejson::internal::Object::size() const {
 }
 
 ememory::SharedPtr<ejson::internal::Value> ejson::internal::Object::get(size_t _id) {
-	return m_value[_id];
+	return m_value.getValue(_id);
 }
 
 const ememory::SharedPtr<ejson::internal::Value> ejson::internal::Object::get(size_t _id) const{
-	return m_value[_id];
+	return m_value.getValue(_id);
 }
 
 ememory::SharedPtr<ejson::internal::Value> ejson::internal::Object::get(const etk::String& _name) {
