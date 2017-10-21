@@ -9,7 +9,7 @@
 #include <ejson/internal/Document.hpp>
 
 ememory::SharedPtr<ejson::internal::Boolean> ejson::internal::Boolean::create(bool _value) {
-	return ememory::SharedPtr<ejson::internal::Boolean>(new ejson::internal::Boolean(_value));
+	return ememory::SharedPtr<ejson::internal::Boolean>(ETK_NEW(ejson::internal::Boolean, _value));
 }
 
 ejson::internal::Boolean::Boolean(bool _value) :

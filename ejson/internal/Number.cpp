@@ -10,13 +10,13 @@
 #include <ejson/internal/Document.hpp>
 
 ememory::SharedPtr<ejson::internal::Number> ejson::internal::Number::create(double _value) {
-	return ememory::SharedPtr<ejson::internal::Number>(new ejson::internal::Number(_value));
+	return ememory::SharedPtr<ejson::internal::Number>(ETK_NEW(ejson::internal::Number, _value));
 }
 ememory::SharedPtr<ejson::internal::Number> ejson::internal::Number::create(uint64_t _value) {
-	return ememory::SharedPtr<ejson::internal::Number>(new ejson::internal::Number(_value));
+	return ememory::SharedPtr<ejson::internal::Number>(ETK_NEW(ejson::internal::Number, _value));
 }
 ememory::SharedPtr<ejson::internal::Number> ejson::internal::Number::create(int64_t _value) {
-	return ememory::SharedPtr<ejson::internal::Number>(new ejson::internal::Number(_value));
+	return ememory::SharedPtr<ejson::internal::Number>(ETK_NEW(ejson::internal::Number, _value));
 }
 
 ejson::internal::Number::Number(double _value) :

@@ -9,7 +9,7 @@
 #include <ejson/internal/Document.hpp>
 
 ememory::SharedPtr<ejson::internal::Null> ejson::internal::Null::create() {
-	return ememory::SharedPtr<ejson::internal::Null>(new ejson::internal::Null());
+	return ememory::SharedPtr<ejson::internal::Null>(ETK_NEW(ejson::internal::Null));
 }
 
 ejson::internal::Null::Null() {

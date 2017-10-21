@@ -16,7 +16,7 @@
 #include <ejson/internal/Boolean.hpp>
 
 ememory::SharedPtr<ejson::internal::Document> ejson::internal::Document::create() {
-	return ememory::SharedPtr<ejson::internal::Document>(new ejson::internal::Document());
+	return ememory::SharedPtr<ejson::internal::Document>(ETK_NEW(ejson::internal::Document));
 }
 
 ejson::internal::Document::Document() :

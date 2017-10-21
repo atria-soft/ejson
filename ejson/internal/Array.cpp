@@ -15,7 +15,7 @@
 #include <ejson/debug.hpp>
 
 ememory::SharedPtr<ejson::internal::Array> ejson::internal::Array::create() {
-	return ememory::SharedPtr<ejson::internal::Array>(new ejson::internal::Array());
+	return ememory::SharedPtr<ejson::internal::Array>(ETK_NEW(ejson::internal::Array));
 }
 
 void ejson::internal::Array::clear() {

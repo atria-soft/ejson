@@ -12,7 +12,7 @@
 #include <ejson/debug.hpp>
 
 ememory::SharedPtr<ejson::internal::String> ejson::internal::String::create(const etk::String& _value) {
-	return ememory::SharedPtr<ejson::internal::String>(new ejson::internal::String(_value));
+	return ememory::SharedPtr<ejson::internal::String>(ETK_NEW(ejson::internal::String, _value));
 }
 
 ejson::internal::String::String(const etk::String& _value) :

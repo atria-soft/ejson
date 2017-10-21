@@ -16,7 +16,7 @@
 
 
 ememory::SharedPtr<ejson::internal::Object> ejson::internal::Object::create() {
-	return ememory::SharedPtr<ejson::internal::Object>(new ejson::internal::Object());
+	return ememory::SharedPtr<ejson::internal::Object>(ETK_NEW(ejson::internal::Object));
 }
 ememory::SharedPtr<ejson::internal::Object> ejson::internal::Object::create(const etk::String& _data) {
 	ejson::internal::Document doc;
