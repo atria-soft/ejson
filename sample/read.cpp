@@ -199,12 +199,12 @@ static void readFull() {
 	{
 		// Get the value:
 		//! [ejson_sample_read_get_number]
-		double value = doc["object D"].toNumber().get();
+		double valueDouble = doc["object D"].toNumber().get();
 		//! [ejson_sample_read_get_number]
 		//! [ejson_sample_read_get_number_64_bits]
-		uint64_t value = doc["object D"].toNumber().getU64();
+		uint64_t valueUint = doc["object D"].toNumber().getU64();
 		//! [ejson_sample_read_get_number_64_bits]
-		TEST_INFO("    Number Value:" << value);
+		TEST_INFO("    Number Value double:" << valueDouble << "  int64=" << valueUint);
 	}
 	
 	TEST_INFO("Read Array:");
