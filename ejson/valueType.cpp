@@ -11,32 +11,32 @@
 
 etk::Stream& ejson::operator <<(etk::Stream& _os, enum ejson::valueType _obj) {
 	switch (_obj) {
-		case ejson::valueType::unknow:
-			_os << "ejson::valueType::unknow";
+		case ejson::valueType::Unknow:
+			_os << "ejson::valueType::Unknow";
 			break;
-		case ejson::valueType::value:
-			_os << "ejson::valueType::value";
+		case ejson::valueType::Value:
+			_os << "ejson::valueType::Value";
 			break;
-		case ejson::valueType::document:
-			_os << "ejson::valueType::document";
+		case ejson::valueType::Document:
+			_os << "ejson::valueType::Document";
 			break;
-		case ejson::valueType::array:
-			_os << "ejson::valueType::array";
+		case ejson::valueType::Array:
+			_os << "ejson::valueType::Array";
 			break;
-		case ejson::valueType::object:
-			_os << "ejson::valueType::object";
+		case ejson::valueType::Object:
+			_os << "ejson::valueType::Object";
 			break;
-		case ejson::valueType::string:
-			_os << "ejson::valueType::string";
+		case ejson::valueType::String:
+			_os << "ejson::valueType::String";
 			break;
-		case ejson::valueType::number:
-			_os << "ejson::valueType::number";
+		case ejson::valueType::Number:
+			_os << "ejson::valueType::Number";
 			break;
-		case ejson::valueType::null:
-			_os << "ejson::valueType::null";
+		case ejson::valueType::Null:
+			_os << "ejson::valueType::Null";
 			break;
-		case ejson::valueType::boolean:
-			_os << "ejson::valueType::boolean";
+		case ejson::valueType::Boolean:
+			_os << "ejson::valueType::Boolean";
 			break;
 	}
 	return _os;

@@ -19,7 +19,7 @@ namespace ejson {
 				 * @brief basic element of a xml structure
 				 */
 				Array() {
-					m_type = ejson::valueType::array;
+					m_type = ejson::valueType::Array;
 				}
 			public:
 				/**

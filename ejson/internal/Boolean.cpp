@@ -14,7 +14,7 @@ ememory::SharedPtr<ejson::internal::Boolean> ejson::internal::Boolean::create(bo
 
 ejson::internal::Boolean::Boolean(bool _value) :
   m_value(_value) {
-	m_type = ejson::valueType::boolean;
+	m_type = ejson::valueType::Boolean;
 }
 
 void ejson::internal::Boolean::set(bool _value) {
@@ -77,7 +77,7 @@ bool ejson::internal::Boolean::transfertIn(ememory::SharedPtr<ejson::internal::V
 		EJSON_ERROR("Request transfer on an NULL pointer");
 		return false;
 	}
-	if (_obj->getType() != ejson::valueType::boolean) {
+	if (_obj->getType() != ejson::valueType::Boolean) {
 		EJSON_ERROR("Request transfer on an element that is not an Boolean");
 		return false;
 	}

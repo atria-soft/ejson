@@ -13,7 +13,7 @@ ememory::SharedPtr<ejson::internal::Null> ejson::internal::Null::create() {
 }
 
 ejson::internal::Null::Null() {
-	m_type = ejson::valueType::null;
+	m_type = ejson::valueType::Null;
 }
 
 bool ejson::internal::Null::iParse(const etk::String& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
@@ -50,7 +50,7 @@ bool ejson::internal::Null::transfertIn(ememory::SharedPtr<ejson::internal::Valu
 		EJSON_ERROR("Request transfer on an null pointer");
 		return false;
 	}
-	if (_obj->getType() == ejson::valueType::null) {
+	if (_obj->getType() == ejson::valueType::Null) {
 		EJSON_ERROR("Request transfer on an element that is not an Null");
 		return false;
 	}

@@ -22,19 +22,19 @@ ememory::SharedPtr<ejson::internal::Number> ejson::internal::Number::create(int6
 ejson::internal::Number::Number(double _value) :
   m_typeNumber(ejson::internal::Number::type::tDouble),
   m_value(_value) {
-	m_type = ejson::valueType::number;
+	m_type = ejson::valueType::Number;
 }
 
 ejson::internal::Number::Number(uint64_t _value) :
   m_typeNumber(ejson::internal::Number::type::tUint),
   m_valueU64(_value) {
-	m_type = ejson::valueType::number;
+	m_type = ejson::valueType::Number;
 }
 
 ejson::internal::Number::Number(int64_t _value) :
   m_typeNumber(ejson::internal::Number::type::tInt),
   m_valueI64(_value) {
-	m_type = ejson::valueType::number;
+	m_type = ejson::valueType::Number;
 }
 
 bool ejson::internal::Number::iParse(const etk::String& _data, size_t& _pos, ejson::FilePos& _filePos, ejson::internal::Document& _doc) {
@@ -120,7 +120,7 @@ bool ejson::internal::Number::transfertIn(ememory::SharedPtr<ejson::internal::Va
 		EJSON_ERROR("Request transfer on an null pointer");
 		return false;
 	}
-	if (_obj->getType() != ejson::valueType::number) {
+	if (_obj->getType() != ejson::valueType::Number) {
 		EJSON_ERROR("Request transfer on an element that is not an Number");
 		return false;
 	}

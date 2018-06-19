@@ -53,8 +53,8 @@ namespace ejson {
 				 * @brief basic element of a xml structure
 				 */
 				Value() :
-				  m_type(ejson::valueType::unknow) {
-					m_type = ejson::valueType::value;
+				  m_type(ejson::valueType::Unknow) {
+					m_type = ejson::valueType::Value;
 				};
 			public:
 				/**

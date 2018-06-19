@@ -14,7 +14,7 @@ ejson::Boolean::Boolean(ememory::SharedPtr<ejson::internal::Value> _internalValu
 	if (m_data == null) {
 		return;
 	}
-	if (m_data->getType() != ejson::valueType::boolean) {
+	if (m_data->getType() != ejson::valueType::Boolean) {
 		// try to set wrong type inside ... ==> remove it ...
 		m_data = null;
 	}

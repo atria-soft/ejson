@@ -12,7 +12,7 @@ ejson::String::String(ememory::SharedPtr<ejson::internal::Value> _internalValue)
 	if (m_data == null) {
 		return;
 	}
-	if (m_data->getType() != ejson::valueType::string) {
+	if (m_data->getType() != ejson::valueType::String) {
 		// try to set wrong type inside ... ==> remove it ...
 		m_data = null;
 	}

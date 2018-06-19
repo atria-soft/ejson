@@ -17,7 +17,7 @@ ememory::SharedPtr<ejson::internal::String> ejson::internal::String::create(cons
 
 ejson::internal::String::String(const etk::String& _value) :
   m_value(_value) {
-	m_type = ejson::valueType::string;
+	m_type = ejson::valueType::String;
 }
 
 void ejson::internal::String::set(const etk::String& _value) {
@@ -96,7 +96,7 @@ bool ejson::internal::String::transfertIn(ememory::SharedPtr<ejson::internal::Va
 		EJSON_ERROR("Request transfer on an null pointer");
 		return false;
 	}
-	if (_obj->getType() != ejson::valueType::string) {
+	if (_obj->getType() != ejson::valueType::String) {
 		EJSON_ERROR("Request transfer on an element that is not an String");
 		return false;
 	}

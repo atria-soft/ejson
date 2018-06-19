@@ -160,16 +160,16 @@ bool ejson::internal::Array::iGenerate(etk::String& _data, size_t _indent) const
 			if (tmp == null) {
 				continue;
 			}
-			if (    tmp->getType() == ejson::valueType::object
-			     || tmp->getType() == ejson::valueType::document) {
+			if (    tmp->getType() == ejson::valueType::Object
+			     || tmp->getType() == ejson::valueType::Document) {
 				oneLine=false;
 				break;
 			}
-			if (tmp->getType() == ejson::valueType::array) {
+			if (tmp->getType() == ejson::valueType::Array) {
 				oneLine=false;
 				break;
 			}
-			if (tmp->getType() == ejson::valueType::string) {
+			if (tmp->getType() == ejson::valueType::String) {
 				const ememory::SharedPtr<ejson::internal::String> tmp2 = ememory::staticPointerCast<ejson::internal::String>(tmp);
 				if(tmp2->get().size()>40) {
 					oneLine=false;
@@ -256,7 +256,7 @@ bool ejson::internal::Array::transfertIn(ememory::SharedPtr<ejson::internal::Val
 		EJSON_ERROR("Request transfer on an null pointer");
 		return false;
 	}
-	if (_obj->getType() != ejson::valueType::array) {
+	if (_obj->getType() != ejson::valueType::Array) {
 		EJSON_ERROR("Request transfer on an element that is not an Array");
 		return false;
 	}

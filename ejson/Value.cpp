@@ -30,7 +30,7 @@ etk::Stream& ejson::operator <<(etk::Stream& _os, const ejson::Value& _obj) {
 enum ejson::valueType ejson::Value::getType() const {
 	if (m_data == null) {
 		EJSON_DEBUG("Can not get type ...");
-		return ejson::valueType::unknow;
+		return ejson::valueType::Unknow;
 	}
 	return m_data->getType();
 }
@@ -144,49 +144,49 @@ bool ejson::Value::isDocument() const {
 		return false;
 	}
 	enum ejson::valueType type = m_data->getType();
-	return type == ejson::valueType::document;
+	return type == ejson::valueType::Document;
 }
 
 bool ejson::Value::isArray() const {
 	if (m_data == null) {
 		return false;
 	}
-	return m_data->getType() == ejson::valueType::array;
+	return m_data->getType() == ejson::valueType::Array;
 }
 
 bool ejson::Value::isObject() const {
 	if (m_data == null) {
 		return false;
 	}
-	return m_data->getType() == ejson::valueType::object;
+	return m_data->getType() == ejson::valueType::Object;
 }
 
 bool ejson::Value::isString() const {
 	if (m_data == null) {
 		return false;
 	}
-	return m_data->getType() == ejson::valueType::string;
+	return m_data->getType() == ejson::valueType::String;
 }
 
 bool ejson::Value::isNumber() const {
 	if (m_data == null) {
 		return false;
 	}
-	return m_data->getType() == ejson::valueType::number;
+	return m_data->getType() == ejson::valueType::Number;
 }
 
 bool ejson::Value::isBoolean() const {
 	if (m_data == null) {
 		return false;
 	}
-	return m_data->getType() == ejson::valueType::boolean;
+	return m_data->getType() == ejson::valueType::Boolean;
 }
 
 bool ejson::Value::isNull() const {
 	if (m_data == null) {
 		return false;
 	}
-	return m_data->getType() == ejson::valueType::null;
+	return m_data->getType() == ejson::valueType::Null;
 }
 
 

@@ -16,7 +16,7 @@ ejson::Array::Array(ememory::SharedPtr<ejson::internal::Value> _internalValue) :
 	if (m_data == null) {
 		return;
 	}
-	if (m_data->getType() != ejson::valueType::array) {
+	if (m_data->getType() != ejson::valueType::Array) {
 		// try to set wrong type inside ... ==> remove it ...
 		m_data = null;
 	}

@@ -13,8 +13,8 @@ ejson::Object::Object(ememory::SharedPtr<ejson::internal::Value> _internalValue)
 	if (m_data == null) {
 		return;
 	}
-	if (    m_data->getType() != ejson::valueType::object
-	     && m_data->getType() != ejson::valueType::document) {
+	if (    m_data->getType() != ejson::valueType::Object
+	     && m_data->getType() != ejson::valueType::Document) {
 		// try to set wrong type inside ... ==> remove it ...
 		m_data = null;
 	}

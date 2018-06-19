@@ -13,7 +13,7 @@ ejson::Document::Document(ememory::SharedPtr<ejson::internal::Value> _internalVa
 	if (m_data == null) {
 		return;
 	}
-	if (m_data->getType() != ejson::valueType::document) {
+	if (m_data->getType() != ejson::valueType::Document) {
 		// try to set wrong type inside ... ==> remove it ...
 		m_data = null;
 	}

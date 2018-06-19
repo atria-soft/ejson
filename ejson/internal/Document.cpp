@@ -24,7 +24,7 @@ ejson::internal::Document::Document() :
   m_comment(""),
   m_Line(""),
   m_filePos(0,0) {
-	m_type = ejson::valueType::document;
+	m_type = ejson::valueType::Document;
 }
 
 bool ejson::internal::Document::iGenerate(etk::String& _data, size_t _indent) const {

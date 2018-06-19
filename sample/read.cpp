@@ -129,22 +129,22 @@ static void readFull() {
 	
 	for (size_t iii=0; iii<doc.size(); ++iii) {
 		switch (doc[iii].getType()) {
-			case ejson::valueType::object:
+			case ejson::valueType::Object:
 				TEST_INFO("		Get an Object:" << doc.getKey(iii) );
 				break;
-			case ejson::valueType::array:
+			case ejson::valueType::Array:
 				TEST_INFO("		Get an Array:" << doc.getKey(iii) );
 				break;
-			case ejson::valueType::boolean:
+			case ejson::valueType::Boolean:
 				TEST_INFO("		Get an Boolean:" << doc.getKey(iii) );
 				break;
-			case ejson::valueType::null:
+			case ejson::valueType::Null:
 				TEST_INFO("		Get an Null:" << doc.getKey(iii) );
 				break;
-			case ejson::valueType::number:
+			case ejson::valueType::Number:
 				TEST_INFO("		Get an Number:" << doc.getKey(iii) );
 				break;
-			case ejson::valueType::string:
+			case ejson::valueType::String:
 				TEST_INFO("		Get an String:" << doc.getKey(iii) );
 				break;
 			default:

@@ -21,7 +21,7 @@ namespace ejson {
 				 */
 				Object() :
 				  m_value(0, false) { // Force unorder map
-					m_type = ejson::valueType::object;
+					m_type = ejson::valueType::Object;
 				};
 			public:
 				/**
