@@ -141,7 +141,7 @@ namespace ejson {
 				virtual bool transfertIn(ememory::SharedPtr<ejson::internal::Value> _obj);
 				/**
 				 * @brief Copy the curent node and all the child in the curent one.
-				 * @return nullptr in an error occured, the pointer on the element otherwise
+				 * @return null in an error occured, the pointer on the element otherwise
 				 */
 				virtual ememory::SharedPtr<ejson::internal::Value> clone() const;
 			protected:

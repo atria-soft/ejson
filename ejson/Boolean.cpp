@@ -11,12 +11,12 @@
 
 ejson::Boolean::Boolean(ememory::SharedPtr<ejson::internal::Value> _internalValue) :
   ejson::Value(_internalValue) {
-	if (m_data == nullptr) {
+	if (m_data == null) {
 		return;
 	}
 	if (m_data->getType() != ejson::valueType::boolean) {
 		// try to set wrong type inside ... ==> remove it ...
-		m_data = nullptr;
+		m_data = null;
 	}
 }
 
@@ -36,16 +36,16 @@ ejson::Boolean& ejson::Boolean::operator= (const ejson::Boolean& _obj) {
 }
 
 void ejson::Boolean::set(bool _value) {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not set (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not set (null) ...");
 		return;
 	}
 	static_cast<ejson::internal::Boolean*>(m_data.get())->set(_value);
 }
 
 bool ejson::Boolean::get(bool _errorValue) const {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not get (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not get (null) ...");
 		return _errorValue;
 	}
 	return static_cast<const ejson::internal::Boolean*>(m_data.get())->get();

@@ -10,12 +10,12 @@
 
 ejson::Number::Number(ememory::SharedPtr<ejson::internal::Value> _internalValue) :
   ejson::Value(_internalValue) {
-	if (m_data == nullptr) {
+	if (m_data == null) {
 		return;
 	}
 	if (m_data->getType() != ejson::valueType::number) {
 		// try to set wrong type inside ... ==> remove it ...
-		m_data = nullptr;
+		m_data = null;
 	}
 }
 
@@ -35,56 +35,56 @@ ejson::Number& ejson::Number::operator= (const ejson::Number& _obj) {
 }
 
 void ejson::Number::set(double _value) {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not set (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not set (null) ...");
 		return;
 	}
 	static_cast<ejson::internal::Number*>(m_data.get())->set(_value);
 }
 
 void ejson::Number::set(uint64_t _value) {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not set (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not set (null) ...");
 		return;
 	}
 	static_cast<ejson::internal::Number*>(m_data.get())->set(_value);
 }
 
 void ejson::Number::set(int64_t _value) {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not set (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not set (null) ...");
 		return;
 	}
 	static_cast<ejson::internal::Number*>(m_data.get())->set(_value);
 }
 
 double ejson::Number::get(double _errorValue) const {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not get (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not get (null) ...");
 		return _errorValue;
 	}
 	return static_cast<const ejson::internal::Number*>(m_data.get())->get();
 }
 
 uint64_t ejson::Number::getU64(uint64_t _errorValue) const {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not get (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not get (null) ...");
 		return _errorValue;
 	}
 	return static_cast<const ejson::internal::Number*>(m_data.get())->getU64();
 }
 
 int64_t ejson::Number::getI64(int64_t _errorValue) const {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not get (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not get (null) ...");
 		return _errorValue;
 	}
 	return static_cast<const ejson::internal::Number*>(m_data.get())->getI64();
 }
 
 ejson::internal::Number::type ejson::Number::getType() const {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not get (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not get (null) ...");
 		return ejson::internal::Number::type::tDouble;
 	}
 	return static_cast<const ejson::internal::Number*>(m_data.get())->getType();

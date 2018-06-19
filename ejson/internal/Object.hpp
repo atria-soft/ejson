@@ -47,13 +47,13 @@ namespace ejson {
 				/**
 				 * @brief get the sub element with his name (no cast check)
 				 * @param[in] _name name of the object
-				 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
+				 * @return pointer on the element requested or null if it not the corect type or does not existed
 				 */
 				ememory::SharedPtr<ejson::internal::Value> get(const etk::String& _name);
 				/**
 				 * @brief get the sub element with his name (no cast check)
 				 * @param[in] _name name of the object
-				 * @return pointer on the element requested or nullptr if it not the corect type or does not existed
+				 * @return pointer on the element requested or null if it not the corect type or does not existed
 				 */
 				const ememory::SharedPtr<ejson::internal::Value> get(const etk::String& _name) const;
 			public:
@@ -70,13 +70,13 @@ namespace ejson {
 				/**
 				 * @brief get the pointer on an element reference with his ID.
 				 * @param[in] _id Id of the element.
-				 * @return nullptr if the element does not exist.
+				 * @return null if the element does not exist.
 				 */
 				ememory::SharedPtr<ejson::internal::Value> get(size_t _id);
 				/**
 				 * @brief get the pointer on an element reference with his ID.
 				 * @param[in] _id Id of the element.
-				 * @return nullptr if the element does not exist.
+				 * @return null if the element does not exist.
 				 */
 				const ememory::SharedPtr<ejson::internal::Value> get(size_t _id) const;
 				/**

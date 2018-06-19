@@ -67,72 +67,72 @@ namespace ejson {
 			bool exist() const;
 			/**
 			 * @brief Cast the element in a Document if it is possible.
-			 * @return pointer on the class or nullptr.
+			 * @return pointer on the class or null.
 			 */
 			ejson::Document toDocument();
 			/**
 			 * @brief Cast the element in a Document if it is possible.
-			 * @return CONST pointer on the class or nullptr.
+			 * @return CONST pointer on the class or null.
 			 */
 			const ejson::Document toDocument() const;
 			/**
 			 * @brief Cast the element in a Array if it is possible.
-			 * @return pointer on the class or nullptr.
+			 * @return pointer on the class or null.
 			 */
 			ejson::Array toArray();
 			/**
 			 * @brief Cast the element in a Array if it is possible.
-			 * @return CONST pointer on the class or nullptr.
+			 * @return CONST pointer on the class or null.
 			 */
 			const ejson::Array toArray() const;
 			/**
 			 * @brief Cast the element in a Object if it is possible.
-			 * @return pointer on the class or nullptr.
+			 * @return pointer on the class or null.
 			 */
 			ejson::Object toObject();
 			/**
 			 * @brief Cast the element in a Object if it is possible.
-			 * @return CONST pointer on the class or nullptr.
+			 * @return CONST pointer on the class or null.
 			 */
 			const ejson::Object toObject() const;
 			/**
 			 * @brief Cast the element in a String if it is possible.
-			 * @return pointer on the class or nullptr.
+			 * @return pointer on the class or null.
 			 */
 			ejson::String toString();
 			/**
 			 * @brief Cast the element in a String if it is possible.
-			 * @return CONST pointer on the class or nullptr.
+			 * @return CONST pointer on the class or null.
 			 */
 			const ejson::String toString() const;
 			/**
 			 * @brief Cast the element in a Number if it is possible.
-			 * @return pointer on the class or nullptr.
+			 * @return pointer on the class or null.
 			 */
 			ejson::Number toNumber();
 			/**
 			 * @brief Cast the element in a Number if it is possible.
-			 * @return CONST pointer on the class or nullptr.
+			 * @return CONST pointer on the class or null.
 			 */
 			const ejson::Number toNumber() const;
 			/**
 			 * @brief Cast the element in a Boolean if it is possible.
-			 * @return pointer on the class or nullptr.
+			 * @return pointer on the class or null.
 			 */
 			ejson::Boolean toBoolean();
 			/**
 			 * @brief Cast the element in a Boolean if it is possible.
-			 * @return CONST pointer on the class or nullptr.
+			 * @return CONST pointer on the class or null.
 			 */
 			const ejson::Boolean toBoolean() const;
 			/**
 			 * @brief Cast the element in a Null if it is possible.
-			 * @return pointer on the class or nullptr.
+			 * @return pointer on the class or null.
 			 */
 			ejson::Null toNull();
 			/**
 			 * @brief Cast the element in a Null if it is possible.
-			 * @return CONST pointer on the class or nullptr.
+			 * @return CONST pointer on the class or null.
 			 */
 			const ejson::Null toNull() const;
 			
@@ -184,7 +184,7 @@ namespace ejson {
 			bool transfertIn(ejson::Value& _obj);
 			/**
 			 * @brief Copy the curent node and all the child in the curent one.
-			 * @return nullptr in an error occured, the pointer on the element otherwise
+			 * @return null in an error occured, the pointer on the element otherwise
 			 */
 			ejson::Value clone() const;
 		public:

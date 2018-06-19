@@ -44,13 +44,13 @@ namespace ejson {
 			/**
 			 * @brief get the pointer on an element reference with his ID.
 			 * @param[in] _id Id of the element.
-			 * @return nullptr if the element does not exist.
+			 * @return null if the element does not exist.
 			 */
 			ejson::Value operator[] (size_t _id);
 			/**
 			 * @brief get the pointer on an element reference with his ID.
 			 * @param[in] _id Id of the element.
-			 * @return nullptr if the element does not exist.
+			 * @return null if the element does not exist.
 			 */
 			const ejson::Value operator[] (size_t _id) const;
 			/**

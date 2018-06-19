@@ -13,12 +13,12 @@
 
 ejson::Array::Array(ememory::SharedPtr<ejson::internal::Value> _internalValue) :
   ejson::Value(_internalValue) {
-	if (m_data == nullptr) {
+	if (m_data == null) {
 		return;
 	}
 	if (m_data->getType() != ejson::valueType::array) {
 		// try to set wrong type inside ... ==> remove it ...
-		m_data = nullptr;
+		m_data = null;
 	}
 }
 
@@ -38,48 +38,48 @@ ejson::Array& ejson::Array::operator= (const ejson::Array& _obj) {
 }
 
 size_t ejson::Array::size() const {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not size (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not size (null) ...");
 		return 0;
 	}
 	return static_cast<const ejson::internal::Array*>(m_data.get())->size();
 }
 
 ejson::Value ejson::Array::operator[] (size_t _id) {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not get (nullptr) ...");
-		return ejson::Value(nullptr);
+	if (m_data == null) {
+		EJSON_DEBUG("Can not get (null) ...");
+		return ejson::Value(null);
 	}
 	return ejson::Value(static_cast<ejson::internal::Array*>(m_data.get())->get(_id));
 }
 
 const ejson::Value ejson::Array::operator[] (size_t _id) const {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not get (nullptr) ...");
-		return ejson::Value(nullptr);;
+	if (m_data == null) {
+		EJSON_DEBUG("Can not get (null) ...");
+		return ejson::Value(null);;
 	}
 	return ejson::Value(static_cast<const ejson::internal::Array*>(m_data.get())->get(_id));
 }
 
 bool ejson::Array::add(const ejson::Value& _element) {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not add (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not add (null) ...");
 		return false;
 	}
 	return static_cast<ejson::internal::Array*>(m_data.get())->add(_element.m_data);
 }
 
 void ejson::Array::remove(size_t _id) {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not remove (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not remove (null) ...");
 		return;
 	}
 	static_cast<ejson::internal::Array*>(m_data.get())->remove(_id);
 }
 
 ejson::Array::iterator ejson::Array::remove(const ejson::Array::iterator& _it) {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not remove (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not remove (null) ...");
 		return _it;
 	}
 	static_cast<ejson::internal::Array*>(m_data.get())->remove(_it.getId());

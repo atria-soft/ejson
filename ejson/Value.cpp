@@ -10,7 +10,7 @@
 #include <ejson/Document.hpp>
 
 ejson::Value ejson::empty() {
-	return ejson::Value(ememory::SharedPtr<ejson::internal::Value>(nullptr));
+	return ejson::Value(ememory::SharedPtr<ejson::internal::Value>(null));
 }
 
 
@@ -28,7 +28,7 @@ etk::Stream& ejson::operator <<(etk::Stream& _os, const ejson::Value& _obj) {
 }
 
 enum ejson::valueType ejson::Value::getType() const {
-	if (m_data == nullptr) {
+	if (m_data == null) {
 		EJSON_DEBUG("Can not get type ...");
 		return ejson::valueType::unknow;
 	}
@@ -36,7 +36,7 @@ enum ejson::valueType ejson::Value::getType() const {
 }
 
 bool ejson::Value::exist() const {
-	if (m_data == nullptr) {
+	if (m_data == null) {
 		return false;
 	}
 	return true;
@@ -44,8 +44,8 @@ bool ejson::Value::exist() const {
 
 etk::String ejson::Value::generateHumanString() const {
 	etk::String out;
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not remove (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not remove (null) ...");
 		return out;
 	}
 	static_cast<const ejson::internal::Value*>(m_data.get())->iGenerate(out, 0);
@@ -54,8 +54,8 @@ etk::String ejson::Value::generateHumanString() const {
 
 etk::String ejson::Value::generateMachineString() const {
 	etk::String out;
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not remove (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not remove (null) ...");
 		return out;
 	}
 	static_cast<const ejson::internal::Value*>(m_data.get())->iMachineGenerate(out);
@@ -64,7 +64,7 @@ etk::String ejson::Value::generateMachineString() const {
 
 /*
 ejson::FilePos ejson::Value::getPos() const {
-	if (m_data == nullptr) {
+	if (m_data == null) {
 		return ejson::FilePos(0,0);
 	}
 	return m_data->getPos();
@@ -77,7 +77,7 @@ ejson::Value::Value(const ememory::SharedPtr<ejson::internal::Value>& _internalV
 }
 
 ejson::Value::Value() :
-  m_data(nullptr) {
+  m_data(null) {
 	
 }
 
@@ -131,8 +131,8 @@ const ejson::Null ejson::Value::toNull() const{
 }
 
 void ejson::Value::display() const {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not Display (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not Display (null) ...");
 		return;
 	}
 	return m_data->display();
@@ -140,7 +140,7 @@ void ejson::Value::display() const {
 
 
 bool ejson::Value::isDocument() const {
-	if (m_data == nullptr) {
+	if (m_data == null) {
 		return false;
 	}
 	enum ejson::valueType type = m_data->getType();
@@ -148,42 +148,42 @@ bool ejson::Value::isDocument() const {
 }
 
 bool ejson::Value::isArray() const {
-	if (m_data == nullptr) {
+	if (m_data == null) {
 		return false;
 	}
 	return m_data->getType() == ejson::valueType::array;
 }
 
 bool ejson::Value::isObject() const {
-	if (m_data == nullptr) {
+	if (m_data == null) {
 		return false;
 	}
 	return m_data->getType() == ejson::valueType::object;
 }
 
 bool ejson::Value::isString() const {
-	if (m_data == nullptr) {
+	if (m_data == null) {
 		return false;
 	}
 	return m_data->getType() == ejson::valueType::string;
 }
 
 bool ejson::Value::isNumber() const {
-	if (m_data == nullptr) {
+	if (m_data == null) {
 		return false;
 	}
 	return m_data->getType() == ejson::valueType::number;
 }
 
 bool ejson::Value::isBoolean() const {
-	if (m_data == nullptr) {
+	if (m_data == null) {
 		return false;
 	}
 	return m_data->getType() == ejson::valueType::boolean;
 }
 
 bool ejson::Value::isNull() const {
-	if (m_data == nullptr) {
+	if (m_data == null) {
 		return false;
 	}
 	return m_data->getType() == ejson::valueType::null;
@@ -191,24 +191,24 @@ bool ejson::Value::isNull() const {
 
 
 void ejson::Value::clear() {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not Clear (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not Clear (null) ...");
 		return;
 	}
 	return m_data->clear();
 }
 
 bool ejson::Value::transfertIn(ejson::Value& _obj) {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not transfert In (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not transfert In (null) ...");
 		return false;
 	}
 	return m_data->transfertIn(_obj.m_data);
 }
 
 ejson::Value ejson::Value::clone() const {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not transfert In (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not transfert In (null) ...");
 		return ejson::Value(m_data);
 	}
 	return ejson::Value(m_data->clone());

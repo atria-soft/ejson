@@ -46,8 +46,8 @@ void ejson::internal::Null::iMachineGenerate(etk::String& _data) const {
 
 
 bool ejson::internal::Null::transfertIn(ememory::SharedPtr<ejson::internal::Value> _obj) {
-	if (_obj == nullptr) {
-		EJSON_ERROR("Request transfer on an nullptr pointer");
+	if (_obj == null) {
+		EJSON_ERROR("Request transfer on an null pointer");
 		return false;
 	}
 	if (_obj->getType() == ejson::valueType::null) {
@@ -59,7 +59,7 @@ bool ejson::internal::Null::transfertIn(ememory::SharedPtr<ejson::internal::Valu
 
 ememory::SharedPtr<ejson::internal::Value> ejson::internal::Null::clone() const {
 	ememory::SharedPtr<ejson::internal::Null> output = ejson::internal::Null::create();
-	if (output == nullptr) {
+	if (output == null) {
 		EJSON_ERROR("Allocation error ...");
 		return ememory::SharedPtr<ejson::internal::Value>();
 	}

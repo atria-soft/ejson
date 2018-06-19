@@ -51,7 +51,7 @@ bool ejson::internal::Array::iParse(const etk::String& _data, size_t& _pos, ejso
 			// find an object:
 			EJSON_PARSE_ELEMENT("find Object");
 			ememory::SharedPtr<ejson::internal::Object> tmpElement = ejson::internal::Object::create();
-			if (tmpElement == nullptr) {
+			if (tmpElement == null) {
 				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in object");
 				_pos=iii;
 				return false;
@@ -63,7 +63,7 @@ bool ejson::internal::Array::iParse(const etk::String& _data, size_t& _pos, ejso
 			// find a string:
 			EJSON_PARSE_ELEMENT("find String quoted");
 			ememory::SharedPtr<ejson::internal::String> tmpElement = ejson::internal::String::create();
-			if (tmpElement == nullptr) {
+			if (tmpElement == null) {
 				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in String");
 				_pos=iii;
 				return false;
@@ -74,7 +74,7 @@ bool ejson::internal::Array::iParse(const etk::String& _data, size_t& _pos, ejso
 			// find a list:
 			EJSON_PARSE_ELEMENT("find List");
 			ememory::SharedPtr<ejson::internal::Array> tmpElement = ejson::internal::Array::create();
-			if (tmpElement == nullptr) {
+			if (tmpElement == null) {
 				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Array");
 				_pos=iii;
 				return false;
@@ -95,7 +95,7 @@ bool ejson::internal::Array::iParse(const etk::String& _data, size_t& _pos, ejso
 			// find boolean:
 			EJSON_PARSE_ELEMENT("find Boolean");
 			ememory::SharedPtr<ejson::internal::Boolean> tmpElement = ejson::internal::Boolean::create();
-			if (tmpElement == nullptr) {
+			if (tmpElement == null) {
 				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Boolean");
 				_pos=iii;
 				return false;
@@ -110,7 +110,7 @@ bool ejson::internal::Array::iParse(const etk::String& _data, size_t& _pos, ejso
 			// find null:
 			EJSON_PARSE_ELEMENT("find Null");
 			ememory::SharedPtr<ejson::internal::Null> tmpElement = ejson::internal::Null::create();
-			if (tmpElement == nullptr) {
+			if (tmpElement == null) {
 				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Boolean");
 				_pos = iii;
 				return false;
@@ -121,7 +121,7 @@ bool ejson::internal::Array::iParse(const etk::String& _data, size_t& _pos, ejso
 			// find number:
 			EJSON_PARSE_ELEMENT("find Number");
 			ememory::SharedPtr<ejson::internal::Number> tmpElement = ejson::internal::Number::create();
-			if (tmpElement == nullptr) {
+			if (tmpElement == null) {
 				EJSON_CREATE_ERROR(_doc, _data, iii, _filePos, "Allocation error in Boolean");
 				_pos=iii;
 				return false;
@@ -157,7 +157,7 @@ bool ejson::internal::Array::iGenerate(etk::String& _data, size_t _indent) const
 	} else {
 		for (size_t iii=0; iii<m_value.size() ; iii++) {
 			const ememory::SharedPtr<ejson::internal::Value> tmp = m_value[iii];
-			if (tmp == nullptr) {
+			if (tmp == null) {
 				continue;
 			}
 			if (    tmp->getType() == ejson::valueType::object
@@ -187,7 +187,7 @@ bool ejson::internal::Array::iGenerate(etk::String& _data, size_t _indent) const
 		if (false == oneLine) {
 			addIndent(_data, _indent);
 		}
-		if (m_value[iii] != nullptr) {
+		if (m_value[iii] != null) {
 			m_value[iii]->iGenerate(_data, _indent+1);
 			if (iii<m_value.size()-1) {
 				_data += ",";
@@ -210,7 +210,7 @@ void ejson::internal::Array::iMachineGenerate(etk::String& _data) const {
 	_data += "[";
 	bool needComa = false;
 	for (size_t iii=0; iii<m_value.size() ; iii++) {
-		if (m_value[iii] == nullptr) {
+		if (m_value[iii] == null) {
 			continue;
 		}
 		if (needComa == true) {
@@ -235,8 +235,8 @@ const ememory::SharedPtr<ejson::internal::Value> ejson::internal::Array::get(siz
 }
 
 bool ejson::internal::Array::add(ememory::SharedPtr<ejson::internal::Value> _element) {
-	if (_element == nullptr) {
-		EJSON_ERROR("Request add on an nullptr pointer");
+	if (_element == null) {
+		EJSON_ERROR("Request add on an null pointer");
 		return false;
 	}
 	m_value.pushBack(_element);
@@ -252,8 +252,8 @@ void ejson::internal::Array::remove(size_t _id) {
 
 
 bool ejson::internal::Array::transfertIn(ememory::SharedPtr<ejson::internal::Value> _obj) {
-	if (_obj == nullptr) {
-		EJSON_ERROR("Request transfer on an nullptr pointer");
+	if (_obj == null) {
+		EJSON_ERROR("Request transfer on an null pointer");
 		return false;
 	}
 	if (_obj->getType() != ejson::valueType::array) {
@@ -273,13 +273,13 @@ bool ejson::internal::Array::transfertIn(ememory::SharedPtr<ejson::internal::Val
 // TODO : Manage error ...
 ememory::SharedPtr<ejson::internal::Value> ejson::internal::Array::clone() const {
 	ememory::SharedPtr<ejson::internal::Array> output = ejson::internal::Array::create();
-	if (output == nullptr) {
+	if (output == null) {
 		EJSON_ERROR("Allocation error ...");
 		return ememory::SharedPtr<ejson::internal::Value>();
 	}
 	for (size_t iii=0; iii<m_value.size(); ++iii) {
 		ememory::SharedPtr<const ejson::internal::Value> val = m_value[iii];
-		if (val == nullptr) {
+		if (val == null) {
 			continue;
 		}
 		output->add(val->clone());

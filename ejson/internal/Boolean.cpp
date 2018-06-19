@@ -73,7 +73,7 @@ void ejson::internal::Boolean::iMachineGenerate(etk::String& _data) const {
 
 
 bool ejson::internal::Boolean::transfertIn(ememory::SharedPtr<ejson::internal::Value> _obj) {
-	if (_obj == nullptr) {
+	if (_obj == null) {
 		EJSON_ERROR("Request transfer on an NULL pointer");
 		return false;
 	}
@@ -90,7 +90,7 @@ bool ejson::internal::Boolean::transfertIn(ememory::SharedPtr<ejson::internal::V
 
 ememory::SharedPtr<ejson::internal::Value> ejson::internal::Boolean::clone() const {
 	ememory::SharedPtr<ejson::internal::Boolean> output = ejson::internal::Boolean::create(m_value);
-	if (output == nullptr) {
+	if (output == null) {
 		EJSON_ERROR("Allocation error ...");
 		return ememory::SharedPtr<ejson::internal::Value>();
 	}

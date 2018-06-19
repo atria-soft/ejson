@@ -9,12 +9,12 @@
 
 ejson::String::String(ememory::SharedPtr<ejson::internal::Value> _internalValue) :
   ejson::Value(_internalValue) {
-	if (m_data == nullptr) {
+	if (m_data == null) {
 		return;
 	}
 	if (m_data->getType() != ejson::valueType::string) {
 		// try to set wrong type inside ... ==> remove it ...
-		m_data = nullptr;
+		m_data = null;
 	}
 }
 
@@ -34,16 +34,16 @@ ejson::String& ejson::String::operator= (const ejson::String& _obj) {
 }
 
 void ejson::String::set(const etk::String& _value) {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not set (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not set (null) ...");
 		return;
 	}
 	static_cast<ejson::internal::String*>(m_data.get())->set(_value);
 }
 
 etk::String ejson::String::get(const etk::String& _errorValue) const {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not get (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not get (null) ...");
 		return _errorValue;
 	}
 	return static_cast<const ejson::internal::String*>(m_data.get())->get();

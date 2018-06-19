@@ -10,12 +10,12 @@
 
 ejson::Document::Document(ememory::SharedPtr<ejson::internal::Value> _internalValue) :
   ejson::Object(_internalValue) {
-	if (m_data == nullptr) {
+	if (m_data == null) {
 		return;
 	}
 	if (m_data->getType() != ejson::valueType::document) {
 		// try to set wrong type inside ... ==> remove it ...
-		m_data = nullptr;
+		m_data = null;
 	}
 }
 
@@ -35,40 +35,40 @@ ejson::Document& ejson::Document::operator= (const ejson::Document& _obj) {
 }
 
 bool ejson::Document::parse(const etk::String& _data) {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not parse (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not parse (null) ...");
 		return false;
 	}
 	return static_cast<ejson::internal::Document*>(m_data.get())->parse(_data);
 }
 
 bool ejson::Document::generate(etk::String& _data) {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not generate (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not generate (null) ...");
 		return false;
 	}
 	return static_cast<ejson::internal::Document*>(m_data.get())->generate(_data);
 }
 
 bool ejson::Document::load(const etk::String& _file) {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not load (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not load (null) ...");
 		return false;
 	}
 	return static_cast<ejson::internal::Document*>(m_data.get())->load(_file);
 }
 
 bool ejson::Document::store(const etk::String& _file) {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not store (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not store (null) ...");
 		return false;
 	}
 	return static_cast<ejson::internal::Document*>(m_data.get())->store(_file);
 }
 
 bool ejson::Document::storeSafe(const etk::String& _file) {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not store (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not store (null) ...");
 		return false;
 	}
 	bool done = static_cast<ejson::internal::Document*>(m_data.get())->store(_file+".tmp");
@@ -79,24 +79,24 @@ bool ejson::Document::storeSafe(const etk::String& _file) {
 }
 
 void ejson::Document::setDisplayError(bool _value){
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not setDisplayError (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not setDisplayError (null) ...");
 		return;
 	}
 	static_cast<ejson::internal::Document*>(m_data.get())->setDisplayError(_value);
 }
 
 bool ejson::Document::getDisplayError() {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not getDisplayError (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not getDisplayError (null) ...");
 		return false;
 	}
 	return static_cast<ejson::internal::Document*>(m_data.get())->getDisplayError();
 }
 
 void ejson::Document::displayError() {
-	if (m_data == nullptr) {
-		EJSON_DEBUG("Can not displayError (nullptr) ...");
+	if (m_data == null) {
+		EJSON_DEBUG("Can not displayError (null) ...");
 		return;
 	}
 	static_cast<ejson::internal::Document*>(m_data.get())->displayError();
