@@ -11,6 +11,7 @@
 #include <ejson/internal/String.hpp>
 #include <ejson/internal/Array.hpp>
 #include <ejson/internal/Object.hpp>
+#include <etk/uri/Uri.hpp>
 
 namespace ejson {
 	namespace internal {
@@ -30,33 +31,33 @@ namespace ejson {
 				static ememory::SharedPtr<Document> create();
 			public:
 				/**
-				 * @brief parse a string that contain an XML
+				 * @brief parse a string that contain an json
 				 * @param[in] _data Data to parse
 				 * @return false : An error occured
 				 * @return true : Parsing is OK
 				 */
 				bool parse(const etk::String& _data);
 				/**
-				 * @brief generate a string that contain the created XML
-				 * @param[out] _data Data where the xml is stored
+				 * @brief generate a string that contain the created json
+				 * @param[out] _data Data where the json is stored
 				 * @return false : An error occured
 				 * @return true : Parsing is OK
 				 */
 				bool generate(etk::String& _data);
 				/**
-				 * @brief Load the file that might contain the xml
-				 * @param[in] _file Filename of the xml (compatible with etk FSNode naming)
+				 * @brief Load the file that might contain the json
+				 * @param[in] _uri URI of the json
 				 * @return false : An error occured
 				 * @return true : Parsing is OK
 				 */
-				bool load(const etk::String& _file);
+				bool load(const etk::Uri& _uri);
 				/**
-				 * @brief Store the Xml in the file
-				 * @param[in] _file Filename of the xml (compatible with etk FSNode naming)
+				 * @brief Store the json in the file
+				 * @param[in] _uri URI of the json
 				 * @return false : An error occured
 				 * @return true : Parsing is OK
 				 */
-				bool store(const etk::String& _file);
+				bool store(const etk::Uri& _uri);
 			private:
 				bool m_writeErrorWhenDetexted; //!< Flag to know if we need to display error when they are detected
 				etk::String m_comment; //!< Error comment

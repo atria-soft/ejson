@@ -6,7 +6,6 @@
 
 #include <ejson/internal/Document.hpp>
 #include <ejson/debug.hpp>
-#include <etk/os/FSNode.hpp>
 
 #include <ejson/internal/Object.hpp>
 #include <ejson/internal/Array.hpp>
@@ -14,6 +13,8 @@
 #include <ejson/internal/Null.hpp>
 #include <ejson/internal/Number.hpp>
 #include <ejson/internal/Boolean.hpp>
+#include <etk/path/fileSystem.hpp>
+#include <etk/uri/uri.hpp>
 
 ememory::SharedPtr<ejson::internal::Document> ejson::internal::Document::create() {
 	return ememory::SharedPtr<ejson::internal::Document>(ETK_NEW(ejson::internal::Document));
@@ -46,56 +47,46 @@ bool ejson::internal::Document::generate(etk::String& _data) {
 	return iGenerate(_data,0);
 }
 
-bool ejson::internal::Document::load(const etk::String& _file) {
-	// Start loading the XML : 
-	EJSON_VERBOSE("open file (xml) \"" << _file << "\"");
+bool ejson::internal::Document::load(const etk::Uri& _uri) {
+	// Start loading the json : 
+	EJSON_VERBOSE("open file (json) " << _uri);
 	clear();
-	etk::FSNode tmpFile(_file);
-	if (false == tmpFile.exist()) {
-		EJSON_ERROR("File Does not exist : " << _file);
+	auto fileIo = etk::uri::get(_uri);
+	if (fileIo == null) {
+		EJSON_ERROR("File Does not exist : " << _uri);
 		return false;
 	}
-	int64_t fileSize = tmpFile.fileSize();
-	if (0 == fileSize) {
-		EJSON_ERROR("This file is empty : " << _file);
+	if (fileIo->open(etk::io::OpenMode::Read) == false) {
+		EJSON_ERROR("Can not open (r) the file : " << _uri);
 		return false;
 	}
-	if (false == tmpFile.fileOpenRead()) {
-		EJSON_ERROR("Can not open (r) the file : " << _file);
-		return false;
-	}
-	// allocate data
-	etk::Vector<char> fileBuffer;
-	fileBuffer.resize(fileSize+5, 0);
-	// load data from the file :
-	tmpFile.fileRead(&fileBuffer[0], 1, fileSize);
+	// load data from the file:
+	etk::String tmpDataUnicode = fileIo->readAllString();
 	// close the file:
-	tmpFile.fileClose();
-	
-	etk::String tmpDataUnicode(&fileBuffer[0]);
+	fileIo->close();
 	// parse the data :
 	bool ret = parse(tmpDataUnicode);
 	//Display();
 	return ret;
 }
 
-bool ejson::internal::Document::store(const etk::String& _file) {
+bool ejson::internal::Document::store(const etk::Uri& _uri) {
 	etk::String createData;
-	if (false == generate(createData)) {
-		EJSON_ERROR("Error while creating the XML : " << _file);
+	if (generate(createData) == false) {
+		EJSON_ERROR("Error while creating the JSON : " << _uri);
 		return false;
 	}
-	etk::FSNode tmpFile(_file);
-	if (false == tmpFile.fileOpenWrite()) {
-		EJSON_ERROR("Can not open (w) the file : " << _file);
+	auto fileIo = etk::uri::get(_uri);
+	if (fileIo == null) {
+		EJSON_ERROR("Can not create the uri: " << _uri);
 		return false;
 	}
-	if (tmpFile.fileWrite((char*)createData.c_str(), sizeof(char), createData.size()) != (int32_t)createData.size()) {
-		EJSON_ERROR("Error while writing output XML file : " << _file);
-		tmpFile.fileClose();
+	if (fileIo->open(etk::io::OpenMode::Write) == false) {
+		EJSON_ERROR("Can not open (r) the file : " << _uri);
 		return false;
 	}
-	tmpFile.fileClose();
+	fileIo->fileWriteAll(createData);
+	fileIo->close();
 	return true;
 }
 

@@ -11,6 +11,7 @@
 #include <ejson/String.hpp>
 #include <ejson/Array.hpp>
 #include <ejson/Object.hpp>
+#include <etk/uri/Uri.hpp>
 
 namespace ejson {
 	/**
@@ -54,25 +55,31 @@ namespace ejson {
 			bool generate(etk::String& _data);
 			/**
 			 * @brief Load the file that might contain the Json
-			 * @param[in] _file Filename of the Json (compatible with etk FSNode naming)
+			 * @param[in] _path/_uri Path/URI of the json
 			 * @return false : An error occured
 			 * @return true : Parsing is OK
 			 */
-			bool load(const etk::String& _file);
+			bool load(const etk::Path& _path);
+			/// @previous
+			bool load(const etk::Uri& _uri);
 			/**
 			 * @brief Store the Json in the file
-			 * @param[in] _file Filename of the Json (compatible with etk FSNode naming)
+			 * @param[in] _path/_uri Path/URI of the json
 			 * @return false : An error occured
 			 * @return true : Parsing is OK
 			 */
-			bool store(const etk::String& _file);
+			bool store(const etk::Path& _path);
+			/// @previous
+			bool store(const etk::Uri& _uri);
 			/**
 			 * @brief Store the Json in the file (safe mode mean that the file is store in a second file xxx.tmp and moved in the file xxx (only one mode to be really safe with filesystem ...)
-			 * @param[in] _file Filename of the Json (compatible with etk FSNode naming)
+			 * @param[in] _path/_uri Path/URI of the json
 			 * @return false : An error occured
 			 * @return true : Parsing is OK
 			 */
-			bool storeSafe(const etk::String& _file);
+			bool storeSafe(const etk::Path& _path);
+			/// @previous
+			bool storeSafe(const etk::Uri& _uri);
 			/**
 			 * @brief Set the display of the error when detected.
 			 * @param[in] _value true: display error, false not display error (get it at end)

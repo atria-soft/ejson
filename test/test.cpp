@@ -11,7 +11,6 @@
 #include <test-debug/debug.hpp>
 #include <ejson/ejson.hpp>
 #include <etest/etest.hpp>
-#include <etk/os/FSNode.hpp>
 
 
 int main(int argc, const char *argv[]) {

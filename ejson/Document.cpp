@@ -6,7 +6,8 @@
 #include <ejson/Document.hpp>
 #include <ejson/debug.hpp>
 #include <ejson/internal/Document.hpp>
-#include <etk/os/FSNode.hpp>
+#include <etk/path/fileSystem.hpp>
+#include <etk/uri/uri.hpp>
 
 ejson::Document::Document(ememory::SharedPtr<ejson::internal::Value> _internalValue) :
   ejson::Object(_internalValue) {
@@ -50,32 +51,65 @@ bool ejson::Document::generate(etk::String& _data) {
 	return static_cast<ejson::internal::Document*>(m_data.get())->generate(_data);
 }
 
-bool ejson::Document::load(const etk::String& _file) {
+bool ejson::Document::load(const etk::Path& _path) {
 	if (m_data == null) {
 		EJSON_DEBUG("Can not load (null) ...");
 		return false;
 	}
-	return static_cast<ejson::internal::Document*>(m_data.get())->load(_file);
+	return static_cast<ejson::internal::Document*>(m_data.get())->load(_path);
 }
 
-bool ejson::Document::store(const etk::String& _file) {
+bool ejson::Document::load(const etk::Uri& _uri) {
+	if (m_data == null) {
+		EJSON_DEBUG("Can not load (null) ...");
+		return false;
+	}
+	return static_cast<ejson::internal::Document*>(m_data.get())->load(_uri);
+}
+
+bool ejson::Document::store(const etk::Path& _path) {
 	if (m_data == null) {
 		EJSON_DEBUG("Can not store (null) ...");
 		return false;
 	}
-	return static_cast<ejson::internal::Document*>(m_data.get())->store(_file);
+	return static_cast<ejson::internal::Document*>(m_data.get())->store(_path);
 }
 
-bool ejson::Document::storeSafe(const etk::String& _file) {
+bool ejson::Document::store(const etk::Uri& _uri) {
 	if (m_data == null) {
 		EJSON_DEBUG("Can not store (null) ...");
 		return false;
 	}
-	bool done = static_cast<ejson::internal::Document*>(m_data.get())->store(_file+".tmp");
+	return static_cast<ejson::internal::Document*>(m_data.get())->store(_uri);
+}
+
+bool ejson::Document::storeSafe(const etk::Path& _path) {
+	if (m_data == null) {
+		EJSON_DEBUG("Can not store (null) ...");
+		return false;
+	}
+	bool done = static_cast<ejson::internal::Document*>(m_data.get())->store(_path+".tmp");
 	if (done == false) {
 		return false;
 	}
-	return etk::FSNodeMove(_file+".tmp", _file);
+	return etk::path::move(_path+".tmp", _path);
+}
+
+bool ejson::Document::storeSafe(const etk::Uri& _uri) {
+	if (m_data == null) {
+		EJSON_DEBUG("Can not store (null) ...");
+		return false;
+	}
+	if (etk::uri::canMove(_uri) == false) {
+		return static_cast<ejson::internal::Document*>(m_data.get())->store(_uri);
+	}
+	etk::Uri uriTmp = _uri;
+	uriTmp.setPath(uriTmp.getPath() + ".tmp");
+	bool done = static_cast<ejson::internal::Document*>(m_data.get())->store(uriTmp);
+	if (done == false) {
+		return false;
+	}
+	return etk::uri::move(uriTmp, _uri);
 }
 
 void ejson::Document::setDisplayError(bool _value){
