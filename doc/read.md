@@ -21,7 +21,7 @@ File to read: "read.json"
 Reading a file is done like this:
 @snippet read.cpp ejson_sample_read_file
 
-The file naming is manage by @ref etk::FSNode that provide "DATA:" start string for internal application asset. You can use external path like "./plop/file.json" too.
+The file naming is manage by @ref etk::FSNode that provide "DATA:///" start string for internal application asset. You can use external path like "./plop/file.json" too.
 
 
 Read an JSON Stream                              {#ejson_tutorial_read_stream}
