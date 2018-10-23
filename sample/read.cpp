@@ -16,7 +16,7 @@ static void readFromFile() {
 	ejson::Document doc;
 	//! [ejson_sample_declare_doc]
 	//! [ejson_sample_read_file]
-	bool retParse = doc.load("DATA:///read.json");
+	bool retParse = doc.load(etk::Uri("DATA:///read.json"));
 	//! [ejson_sample_read_file]
 	TEST_INFO("parse ret = " << retParse);
 	TEST_INFO("Debug display of the tree:");
@@ -76,7 +76,7 @@ static void readFromString2() {
 static void readFull() {
 	ejson::Document doc;
 	TEST_INFO("parse");
-	bool retParse = doc.load("DATA:///read.json");
+	bool retParse = doc.load(etk::Uri("DATA:///read.json"));
 	TEST_INFO("parse ret = " << retParse);
 	TEST_INFO("Debug display of the tree:");
 	doc.display();

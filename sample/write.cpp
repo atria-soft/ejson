@@ -16,10 +16,10 @@ static void writeToFile() {
 	doc.add("D", ejson::Array());
 	TEST_INFO("store");
 	//! [ejson_sample_write_file]
-	bool retGenerate = doc.store("generate.json");
+	bool retGenerate = doc.store(etk::Path("generate.json"));
 	//! [ejson_sample_write_file]
 	//! [ejson_sample_write_file_safe_mode]
-	retGenerate = doc.storeSafe("generate.json");
+	retGenerate = doc.storeSafe(etk::Path("generate.json"));
 	//! [ejson_sample_write_file_safe_mode]
 	TEST_INFO("parse ret = " << retGenerate);
 	TEST_INFO("Debug display of the tree:");
